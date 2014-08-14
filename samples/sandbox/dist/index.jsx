@@ -15,15 +15,19 @@ var App = React.createClass({
     return (
       <div>
         <div>Device Test!</div>
-        <mq query='(min-width: 1224px)'>
+        <mq query='(min-device-width: 1224px)'>
           <div>You are a desktop or laptop</div>
-          <mq query='(min-width: 1824px)'>
+          <mq query='(min-device-width: 1824px)'>
             <div>You also have a huge screen</div>
           </mq>
+          <mq query='(max-width: 1224px)'>
+            <div>You are sized like a tablet or mobile phone though</div>
+          </mq>
         </mq>
-        <mq query='(max-width: 1224px)'>
+        <mq query='(max-device-width: 1224px)'>
           <div>You are a tablet or mobile phone</div>
         </mq>
+
         <mq query='(orientation: portrait)'>
           <div>You are portrait</div>
         </mq>
