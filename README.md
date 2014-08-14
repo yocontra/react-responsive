@@ -125,8 +125,6 @@ Pretty much everything. Check out these polyfills:
 - [matchMedia.js by Paul Irish](https://github.com/paulirish/matchMedia.js/)
 - [media-match (faster, but larger and lacking some features)](https://github.com/weblinc/media-match)
 
-## Like what we do?
-
 [gittip-url]: https://www.gittip.com/WeAreFractal/
 [gittip-image]: http://img.shields.io/gittip/WeAreFractal.svg
 
