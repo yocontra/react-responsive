@@ -17,6 +17,8 @@
 </tr>
 </table>
 
+This module is pretty straightforward: You specify a set of requirements, and the children will be rendered if they are met. Also handles changes so if you resize or flip or whatever it will all be cool.
+
 ## Usage
 
 A mq element functions like any other React component, which means you can nest them and do all the normal jazz.
