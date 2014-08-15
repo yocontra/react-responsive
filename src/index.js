@@ -4,7 +4,7 @@
 
 var ReactCompositeComponent = require('react/lib/ReactCompositeComponent');
 var DOM = require('react/lib/ReactDOM');
-var merge = require('react/lib/merge');
+var mergeInto = require('react/lib/mergeInto');
 var PropTypes = require('react/lib/ReactPropTypes');
 
 var mediaQuery = require('./mediaQuery');
@@ -15,7 +15,7 @@ var types = {
   component: PropTypes.func,
   query: PropTypes.string
 };
-merge(types, mediaQuery);
+mergeInto(types, mediaQuery.all);
 
 var mq = ReactCompositeComponent.createClass({
   displayName: 'MediaQuery',
@@ -35,6 +35,9 @@ var mq = ReactCompositeComponent.createClass({
 
   componentWillMount: function(){
     this.query = this.props.query || toQuery(this.props);
+    if (!this.query) {
+      throw new Error('Invalid or missing MediaQuery!');
+    }
     this._mql = matchMedia(this.query);
     this._mql.addListener(this.updateMatches);
     this.updateMatches();

@@ -1,5 +1,10 @@
 var PropTypes = require('react/lib/ReactPropTypes');
-var merge = require('react/lib/merge');
+var mergeInto = require('react/lib/mergeInto');
+
+var stringOrNumber = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number
+]);
 
 var features = {
   // media features
@@ -20,19 +25,19 @@ var features = {
   minDeviceAspectRatio: PropTypes.string,
   maxDeviceAspectRatio: PropTypes.string,
 
-  height: PropTypes.number,
-  minHeight: PropTypes.number,
-  maxHeight: PropTypes.number,
-  deviceHeight: PropTypes.number,
-  minDeviceHeight: PropTypes.number,
-  maxDeviceHeight: PropTypes.number,
+  height: stringOrNumber,
+  minHeight: stringOrNumber,
+  maxHeight: stringOrNumber,
+  deviceHeight: stringOrNumber,
+  minDeviceHeight: stringOrNumber,
+  maxDeviceHeight: stringOrNumber,
 
-  width: PropTypes.number,
-  minWidth: PropTypes.number,
-  maxWidth: PropTypes.number,
-  deviceWidth: PropTypes.number,
-  minDeviceWidth: PropTypes.number,
-  maxDeviceWidth: PropTypes.number,
+  width: stringOrNumber,
+  minWidth: stringOrNumber,
+  maxWidth: stringOrNumber,
+  deviceWidth: stringOrNumber,
+  minDeviceWidth: stringOrNumber,
+  maxDeviceWidth: stringOrNumber,
 
   color: PropTypes.bool,
   minColor: PropTypes.number,
@@ -46,9 +51,9 @@ var features = {
   minMonochrome: PropTypes.number,
   maxMonochrome: PropTypes.number,
 
-  resolution: PropTypes.string,
-  minResolution: PropTypes.number,
-  maxResolution: PropTypes.number
+  resolution: stringOrNumber,
+  minResolution: stringOrNumber,
+  maxResolution: stringOrNumber
 };
 
 // media types
@@ -66,8 +71,8 @@ var types = {
 };
 
 var all = {};
-merge(all, types);
-merge(all, features);
+mergeInto(all, types);
+mergeInto(all, features);
 
 module.exports = {
   all: all,

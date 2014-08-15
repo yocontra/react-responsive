@@ -5,7 +5,7 @@
 
 var ReactCompositeComponent = require('react/lib/ReactCompositeComponent');
 var DOM = require('react/lib/ReactDOM');
-var merge = require('react/lib/merge');
+var mergeInto = require('react/lib/mergeInto');
 var PropTypes = require('react/lib/ReactPropTypes');
 
 var mediaQuery = require('./mediaQuery');
@@ -16,7 +16,7 @@ var types = {
   component: PropTypes.func,
   query: PropTypes.string
 };
-merge(types, mediaQuery);
+mergeInto(types, mediaQuery.all);
 
 var mq = ReactCompositeComponent.createClass({
   displayName: 'MediaQuery',
@@ -36,6 +36,9 @@ var mq = ReactCompositeComponent.createClass({
 
   componentWillMount: function(){
     this.query = this.props.query || toQuery(this.props);
+    if (!this.query) {
+      throw new Error('Invalid or missing MediaQuery!');
+    }
     this._mql = matchMedia(this.query);
     this._mql.addListener(this.updateMatches);
     this.updateMatches();
@@ -65,7 +68,7 @@ var mq = ReactCompositeComponent.createClass({
 });
 
 module.exports = mq;
-},{"./mediaQuery":"/Users/contra/Projects/react-responsive/src/mediaQuery.js","./toQuery":"/Users/contra/Projects/react-responsive/src/toQuery.js","react/lib/ReactCompositeComponent":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactCompositeComponent.js","react/lib/ReactDOM":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactDOM.js","react/lib/ReactPropTypes":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactPropTypes.js","react/lib/merge":"/Users/contra/Projects/react-responsive/node_modules/react/lib/merge.js"}],"/Users/contra/Projects/react-responsive/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
+},{"./mediaQuery":"/Users/contra/Projects/react-responsive/src/mediaQuery.js","./toQuery":"/Users/contra/Projects/react-responsive/src/toQuery.js","react/lib/ReactCompositeComponent":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactCompositeComponent.js","react/lib/ReactDOM":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactDOM.js","react/lib/ReactPropTypes":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactPropTypes.js","react/lib/mergeInto":"/Users/contra/Projects/react-responsive/node_modules/react/lib/mergeInto.js"}],"/Users/contra/Projects/react-responsive/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -10567,7 +10570,12 @@ module.exports = warning;
 }).call(this,require('_process'))
 },{"./emptyFunction":"/Users/contra/Projects/react-responsive/node_modules/react/lib/emptyFunction.js","_process":"/Users/contra/Projects/react-responsive/node_modules/browserify/node_modules/process/browser.js"}],"/Users/contra/Projects/react-responsive/src/mediaQuery.js":[function(require,module,exports){
 var PropTypes = require('react/lib/ReactPropTypes');
-var merge = require('react/lib/merge');
+var mergeInto = require('react/lib/mergeInto');
+
+var stringOrNumber = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number
+]);
 
 var features = {
   // media features
@@ -10588,19 +10596,19 @@ var features = {
   minDeviceAspectRatio: PropTypes.string,
   maxDeviceAspectRatio: PropTypes.string,
 
-  height: PropTypes.number,
-  minHeight: PropTypes.number,
-  maxHeight: PropTypes.number,
-  deviceHeight: PropTypes.number,
-  minDeviceHeight: PropTypes.number,
-  maxDeviceHeight: PropTypes.number,
+  height: stringOrNumber,
+  minHeight: stringOrNumber,
+  maxHeight: stringOrNumber,
+  deviceHeight: stringOrNumber,
+  minDeviceHeight: stringOrNumber,
+  maxDeviceHeight: stringOrNumber,
 
-  width: PropTypes.number,
-  minWidth: PropTypes.number,
-  maxWidth: PropTypes.number,
-  deviceWidth: PropTypes.number,
-  minDeviceWidth: PropTypes.number,
-  maxDeviceWidth: PropTypes.number,
+  width: stringOrNumber,
+  minWidth: stringOrNumber,
+  maxWidth: stringOrNumber,
+  deviceWidth: stringOrNumber,
+  minDeviceWidth: stringOrNumber,
+  maxDeviceWidth: stringOrNumber,
 
   color: PropTypes.bool,
   minColor: PropTypes.number,
@@ -10614,9 +10622,9 @@ var features = {
   minMonochrome: PropTypes.number,
   maxMonochrome: PropTypes.number,
 
-  resolution: PropTypes.string,
-  minResolution: PropTypes.number,
-  maxResolution: PropTypes.number
+  resolution: stringOrNumber,
+  minResolution: stringOrNumber,
+  maxResolution: stringOrNumber
 };
 
 // media types
@@ -10634,17 +10642,18 @@ var types = {
 };
 
 var all = {};
-merge(all, types);
-merge(all, features);
+mergeInto(all, types);
+mergeInto(all, features);
 
 module.exports = {
   all: all,
   types: types,
   features: features
 };
-},{"react/lib/ReactPropTypes":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactPropTypes.js","react/lib/merge":"/Users/contra/Projects/react-responsive/node_modules/react/lib/merge.js"}],"/Users/contra/Projects/react-responsive/src/toQuery.js":[function(require,module,exports){
+},{"react/lib/ReactPropTypes":"/Users/contra/Projects/react-responsive/node_modules/react/lib/ReactPropTypes.js","react/lib/mergeInto":"/Users/contra/Projects/react-responsive/node_modules/react/lib/mergeInto.js"}],"/Users/contra/Projects/react-responsive/src/toQuery.js":[function(require,module,exports){
 'use strict';
 
+var hyphenate = require('react/lib/hyphenateStyleName');
 var mq = require('./mediaQuery');
 
 function negate(cond) {
@@ -10652,11 +10661,19 @@ function negate(cond) {
 }
 
 function keyVal(k, v) {
+  var realKey = hyphenate(k);
+
   // px shorthand
   if (typeof v === 'number') {
-    return v+'px';
+    v = v+'px';
   }
-  return '('+k+': '+v+')';
+  if (v === true) {
+    return k;
+  }
+  if (v === false) {
+    return negate(k);
+  }
+  return '('+realKey+': '+v+')';
 }
 
 function join(conds) {
@@ -10664,25 +10681,16 @@ function join(conds) {
 }
 
 module.exports = function(obj){
-  var out = '';
-
-  // media types
-  var types = Object.keys(mq.types).map(function(type){
-    var val = obj[type];
-    if (val === true) {
-      return type;
-    }
-    if (val === false) {
-      return negate(type);
+  var rules = [];
+  Object.keys(mq.all).forEach(function(k){
+    var v = obj[k];
+    if (v != null) {
+      rules.push(keyVal(k, v));
     }
   });
-
-  // TODO: features
-
-  out += join(types);
-  return out;
+  return join(rules);
 };
-},{"./mediaQuery":"/Users/contra/Projects/react-responsive/src/mediaQuery.js"}]},{},["./src/index.js"])("./src/index.js")
+},{"./mediaQuery":"/Users/contra/Projects/react-responsive/src/mediaQuery.js","react/lib/hyphenateStyleName":"/Users/contra/Projects/react-responsive/node_modules/react/lib/hyphenateStyleName.js"}]},{},["./src/index.js"])("./src/index.js")
 });
 
 

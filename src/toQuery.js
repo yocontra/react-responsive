@@ -1,5 +1,6 @@
 'use strict';
 
+var hyphenate = require('react/lib/hyphenateStyleName');
 var mq = require('./mediaQuery');
 
 function negate(cond) {
@@ -7,11 +8,19 @@ function negate(cond) {
 }
 
 function keyVal(k, v) {
+  var realKey = hyphenate(k);
+
   // px shorthand
   if (typeof v === 'number') {
-    return v+'px';
+    v = v+'px';
   }
-  return '('+k+': '+v+')';
+  if (v === true) {
+    return k;
+  }
+  if (v === false) {
+    return negate(k);
+  }
+  return '('+realKey+': '+v+')';
 }
 
 function join(conds) {
@@ -19,21 +28,12 @@ function join(conds) {
 }
 
 module.exports = function(obj){
-  var out = '';
-
-  // media types
-  var types = Object.keys(mq.types).map(function(type){
-    var val = obj[type];
-    if (val === true) {
-      return type;
-    }
-    if (val === false) {
-      return negate(type);
+  var rules = [];
+  Object.keys(mq.all).forEach(function(k){
+    var v = obj[k];
+    if (v != null) {
+      rules.push(keyVal(k, v));
     }
   });
-
-  // TODO: features
-
-  out += join(types);
-  return out;
+  return join(rules);
 };

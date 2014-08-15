@@ -33,7 +33,7 @@
     "watchify": "^1.0.0"
   },
   "scripts": {
-    "lint": "jshint . --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules",
+    "lint": "jshint ./src --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules",
     "test": "npm run-script lint"
   },
   "engines": {
