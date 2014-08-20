@@ -7,8 +7,6 @@ var mq = require('../../../src');
 var React = require('react');
 window.React = React; // for dev
 
-var DOM = React.DOM;
-
 var App = React.createClass({
   displayName: 'demo',
   render: function(){

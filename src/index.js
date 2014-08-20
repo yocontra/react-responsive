@@ -6,15 +6,18 @@ var ReactCompositeComponent = require('react/lib/ReactCompositeComponent');
 var DOM = require('react/lib/ReactDOM');
 var mergeInto = require('react/lib/mergeInto');
 var PropTypes = require('react/lib/ReactPropTypes');
-
+var omit = require('lodash.omit');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
-var matchMedia = window.matchMedia;
+var matchMedia = window ? window.matchMedia : null;
 
 var types = {
   component: PropTypes.func,
   query: PropTypes.string
 };
+var excludedQueryKeys = Object.keys(types);
+var mediaKeys = Object.keys(mediaQuery.all);
+var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 mergeInto(types, mediaQuery.all);
 
 var mq = ReactCompositeComponent.createClass({
@@ -34,7 +37,20 @@ var mq = ReactCompositeComponent.createClass({
   },
 
   componentWillMount: function(){
-    this.query = this.props.query || toQuery(this.props);
+    this.updateQuery(this.props);
+  },
+
+  componentWillReceiveProps: function(props){
+    this.updateQuery(props);
+  },
+
+  updateQuery: function(props){
+    if (props.query) {
+      this.query = props.query;
+    } else {
+      this.query = toQuery(omit(props, excludedQueryKeys));
+    }
+
     if (!this.query) {
       throw new Error('Invalid or missing MediaQuery!');
     }
@@ -60,9 +76,8 @@ var mq = ReactCompositeComponent.createClass({
     if (this.state.matches === false) {
       return null;
     }
-
-    // TODO: transfer props but omit mq props
-    return this.props.component(null, this.props.children);
+    var props = omit(this.props, excludedPropKeys);
+    return this.props.component(props, this.props.children);
   }
 });
 
