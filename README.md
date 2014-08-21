@@ -62,7 +62,14 @@ var A = React.createClass({
 
 ### Using Properties
 
-We include a few shortcuts for common queries.
+To make things more idiomatic to react, you can use camelcased shorthands to construct media queries.
+
+
+For a list of all possible shorthands and value types see https://github.com/wearefractal/react-responsive/blob/master/src/mediaQuery.js#L9
+
+
+Any numbers given as a shorthand will be expanded to px (`1234` will become `'1234px'`)
+
 
 ```js
 var mq = require('react-responsive');

@@ -9,6 +9,20 @@
   },
   "author": "Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
   "main": "./src/index.js",
+  "keywords": [
+    "css",
+    "react-component",
+    "viewport",
+    "react",
+    "mobile",
+    "media queries",
+    "respond",
+    "media query",
+    "matchMedia",
+    "responsive",
+    "component"
+  ],
+
   "dependencies": {
     "lodash.omit": "^2.4.1",
     "react": "^0.11.0"
