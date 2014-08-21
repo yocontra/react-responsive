@@ -1,4 +1,4 @@
-# react-responsive [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Support us][gittip-image]][gittip-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url]
+# react-responsive [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Support us][gittip-image]][gittip-url]
 
 
 ## Information
@@ -146,9 +146,3 @@ Pretty much everything. Check out these polyfills:
 [downloads-image]: http://img.shields.io/npm/dm/react-responsive.svg
 [npm-url]: https://npmjs.org/package/react-responsive
 [npm-image]: http://img.shields.io/npm/v/react-responsive.svg
-
-[travis-url]: https://travis-ci.org/wearefractal/react-responsive
-[travis-image]: http://img.shields.io/travis/wearefractal/react-responsive.svg
-
-[coveralls-url]: https://coveralls.io/r/wearefractal/react-responsive
-[coveralls-image]: http://img.shields.io/coveralls/wearefractal/react-responsive/master.svg
