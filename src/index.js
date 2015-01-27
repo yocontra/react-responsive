@@ -2,31 +2,29 @@
 
 'use strict';
 
-var ReactCompositeComponent = require('react/lib/ReactCompositeComponent');
-var DOM = require('react/lib/ReactDOM');
-var mergeInto = require('react/lib/mergeInto');
-var PropTypes = require('react/lib/ReactPropTypes');
+var React = require('react');
+var assign = require('object-assign');
 var omit = require('lodash.omit');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
 var matchMedia = window ? window.matchMedia : null;
 
-var types = {
-  component: PropTypes.func,
-  query: PropTypes.string
+var defaultTypes = {
+  component: React.PropTypes.func,
+  query: React.PropTypes.string
 };
 var excludedQueryKeys = Object.keys(types);
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
-mergeInto(types, mediaQuery.all);
+var types = assign(defaultTypes, mediaQuery.all);
 
-var mq = ReactCompositeComponent.createClass({
+var mq = React.createClass({
   displayName: 'MediaQuery',
   propTypes: types,
 
   getDefaultProps: function(){
     return {
-      component: DOM.div
+      component: React.DOM.div
     };
   },
 
