@@ -13,10 +13,10 @@ var defaultTypes = {
   component: React.PropTypes.func,
   query: React.PropTypes.string
 };
-var excludedQueryKeys = Object.keys(types);
 var mediaKeys = Object.keys(mediaQuery.all);
-var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 var types = assign(defaultTypes, mediaQuery.all);
+var excludedQueryKeys = Object.keys(types);
+var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 var mq = React.createClass({
   displayName: 'MediaQuery',
