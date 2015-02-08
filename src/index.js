@@ -7,7 +7,7 @@ var assign = require('object-assign');
 var omit = require('lodash.omit');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
-var matchMedia = window ? window.matchMedia : null;
+var matchMedia = typeof window != 'undefined' ? window.matchMedia : null;
 
 var defaultTypes = {
   component: React.PropTypes.func,
