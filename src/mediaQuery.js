@@ -1,5 +1,5 @@
 var PropTypes = require('react/lib/ReactPropTypes');
-var mergeInto = require('react/lib/mergeInto');
+var assign = require('object-assign');
 
 var stringOrNumber = PropTypes.oneOfType([
   PropTypes.string,
@@ -71,8 +71,8 @@ var types = {
 };
 
 var all = {};
-mergeInto(all, types);
-mergeInto(all, features);
+assign(all, types);
+assign(all, features);
 
 module.exports = {
   all: all,
