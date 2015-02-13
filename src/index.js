@@ -46,7 +46,7 @@ var mq = React.createClass({
     if (props.query) {
       this.query = props.query;
     } else {
-      this.query = toQuery(omit(props, excludedQueryKeys));
+      this.query = toQuery(props);
     }
 
     if (!this.query) {
