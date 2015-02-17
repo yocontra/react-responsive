@@ -18,8 +18,7 @@ var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 var mq = React.createClass({
-  displayName: 'MediaQuery',
-  propTypes: types,
+  displayName: 'MediaQuery'
 
   getDefaultProps: function(){
     return {
