@@ -3,7 +3,6 @@
 'use strict';
 
 var React = require('react');
-var assign = require('object-assign');
 var omit = require('lodash.omit');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
@@ -18,7 +17,7 @@ var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 var mq = React.createClass({
-  displayName: 'MediaQuery'
+  displayName: 'MediaQuery',
 
   getDefaultProps: function(){
     return {
