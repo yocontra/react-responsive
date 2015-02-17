@@ -15,7 +15,7 @@ var defaultTypes = {
 };
 var mediaKeys = Object.keys(mediaQuery.all);
 var types = assign(defaultTypes, mediaQuery.all);
-var excludedQueryKeys = Object.keys(types);
+var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 var mq = React.createClass({
@@ -46,7 +46,7 @@ var mq = React.createClass({
     if (props.query) {
       this.query = props.query;
     } else {
-      this.query = toQuery(props);
+      this.query = toQuery(omit(props, excludedQueryKeys));
     }
 
     if (!this.query) {
