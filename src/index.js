@@ -14,7 +14,6 @@ var defaultTypes = {
   query: React.PropTypes.string
 };
 var mediaKeys = Object.keys(mediaQuery.all);
-var types = assign(defaultTypes, mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
