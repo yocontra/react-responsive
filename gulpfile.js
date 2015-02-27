@@ -42,6 +42,15 @@ var sampleBundler = watchify(browserify('./samples/sandbox/src/index.jsx', {
 }));
 sampleBundler.transform(reactify);
 
+var staticSampleBundler = watchify(browserify('./samples/static/src/index.jsx', {
+  cache: bundleCache,
+  packageCache: pkgCache,
+  fullPaths: true,
+  standalone: 'sample',
+  debug: true
+}));
+staticSampleBundler.transform(reactify);
+
 gulp.task('watch', function(){
   bundler.on('update', function(){
     gulp.start('js');
@@ -79,11 +88,20 @@ gulp.task('samples', function(){
     .pipe(gulp.dest('samples/sandbox/dist'))
     .pipe(lr());
 
+  var browserifyStream2 = staticSampleBundler.bundle()
+    // browserify -> gulp transfer
+    .pipe(source('index.js'))
+    .pipe(buffer())
+    .pipe(cached('index'))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('samples/static/dist'));
+
   var staticStream = gulp.src(['samples/sandbox/src/**/*', '!samples/sandbox/src/**/*.js'])
     .pipe(cached('static-samples'))
     .pipe(gulp.dest('samples/sandbox/dist'));
 
-  return merge(staticStream, browserifyStream);
+  return merge(staticStream, browserifyStream, browserifyStream2);
 });
 
 gulp.task('sample-server', function(cb){

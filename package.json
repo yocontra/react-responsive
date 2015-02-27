@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "lodash.omit": "^3.0.0",
+    "matchmedia": "^0.1.1",
     "object-assign": "^2.0.0"
   },
   "peerDependencies": {
@@ -43,7 +44,7 @@
     "jshint-stylish": "^0.4.0",
     "merge-stream": "^0.1.5",
     "mocha": "^1.20.1",
-    "reactify": "^0.14.0",
+    "reactify": "^1.0.0",
     "should": "^4.0.4",
     "vinyl-buffer": "0.0.0",
     "vinyl-source-stream": "^0.1.1",

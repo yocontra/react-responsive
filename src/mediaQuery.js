@@ -6,8 +6,8 @@ var stringOrNumber = PropTypes.oneOfType([
   PropTypes.number
 ]);
 
-var features = {
-  // media features
+// properties that match media queries
+var matchers = {
   orientation: PropTypes.oneOf([
     'portrait',
     'landscape'
@@ -19,45 +19,57 @@ var features = {
   ]),
 
   aspectRatio: PropTypes.string,
+  deviceAspectRatio: PropTypes.string,
+
+  height: stringOrNumber,
+  deviceHeight: stringOrNumber,
+
+  width: stringOrNumber,
+  deviceWidth: stringOrNumber,
+
+  color: PropTypes.bool,
+
+  colorIndex: PropTypes.bool,
+
+  monochrome: PropTypes.bool,
+  resolution: stringOrNumber
+};
+
+// media features
+var features = {
   minAspectRatio: PropTypes.string,
   maxAspectRatio: PropTypes.string,
-  deviceAspectRatio: PropTypes.string,
   minDeviceAspectRatio: PropTypes.string,
   maxDeviceAspectRatio: PropTypes.string,
 
-  height: stringOrNumber,
   minHeight: stringOrNumber,
   maxHeight: stringOrNumber,
-  deviceHeight: stringOrNumber,
   minDeviceHeight: stringOrNumber,
   maxDeviceHeight: stringOrNumber,
 
-  width: stringOrNumber,
   minWidth: stringOrNumber,
   maxWidth: stringOrNumber,
-  deviceWidth: stringOrNumber,
   minDeviceWidth: stringOrNumber,
   maxDeviceWidth: stringOrNumber,
 
-  color: PropTypes.bool,
   minColor: PropTypes.number,
   maxColor: PropTypes.number,
 
-  colorIndex: PropTypes.bool,
   minColorIndex: PropTypes.number,
   maxColorIndex: PropTypes.number,
 
-  monochrome: PropTypes.bool,
   minMonochrome: PropTypes.number,
   maxMonochrome: PropTypes.number,
 
-  resolution: stringOrNumber,
   minResolution: stringOrNumber,
   maxResolution: stringOrNumber
 };
 
+assign(features, matchers);
+
 // media types
 var types = {
+  all: PropTypes.bool,
   grid: PropTypes.bool,
   aural: PropTypes.bool,
   braille: PropTypes.bool,
@@ -74,8 +86,12 @@ var all = {};
 assign(all, types);
 assign(all, features);
 
+// add the type property
+assign(matchers, { type: Object.keys(types) });
+
 module.exports = {
   all: all,
   types: types,
+  matchers: matchers,
   features: features
 };
