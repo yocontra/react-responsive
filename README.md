@@ -21,39 +21,39 @@ This module is pretty straightforward: You specify a set of requirements, and th
 
 ## Usage
 
-A mq element functions like any other React component, which means you can nest them and do all the normal jazz.
+A Mq element functions like any other React component, which means you can nest them and do all the normal jazz.
 
 ### Using CSS Media Queries
 
-```js
-var mq = require('react-responsive');
+```jsx
+var Mq = require('react-responsive');
 
 var A = React.createClass({
   render: function(){
     return (
       <div>
         <div>Device Test!</div>
-        <mq query='(min-device-width: 1224px)'>
+        <Mq query='(min-device-width: 1224px)'>
           <div>You are a desktop or laptop</div>
-          <mq query='(min-device-width: 1824px)'>
+          <Mq query='(min-device-width: 1824px)'>
             <div>You also have a huge screen</div>
-          </mq>
-          <mq query='(max-width: 1224px)'>
+          </Mq>
+          <Mq query='(max-width: 1224px)'>
             <div>You are sized like a tablet or mobile phone though</div>
-          </mq>
-        </mq>
-        <mq query='(max-device-width: 1224px)'>
+          </Mq>
+        </Mq>
+        <Mq query='(max-device-width: 1224px)'>
           <div>You are a tablet or mobile phone</div>
-        </mq>
-        <mq query='(orientation: portrait)'>
+        </Mq>
+        <Mq query='(orientation: portrait)'>
           <div>You are portrait</div>
-        </mq>
-         <mq query='(orientation: landscape)'>
+        </Mq>
+         <Mq query='(orientation: landscape)'>
           <div>You are landscape</div>
-        </mq>
-        <mq query='(min-resolution: 2dppx)'>
+        </Mq>
+        <Mq query='(min-resolution: 2dppx)'>
           <div>You are retina</div>
-        </mq>
+        </Mq>
       </div>
     );
   }
@@ -71,35 +71,78 @@ For a list of all possible shorthands and value types see https://github.com/wea
 Any numbers given as a shorthand will be expanded to px (`1234` will become `'1234px'`)
 
 
-```js
-var mq = require('react-responsive');
+```jsx
+var Mq = require('react-responsive');
 
 var A = React.createClass({
   render: function(){
     return (
       <div>
         <div>Device Test!</div>
-        <mq minDeviceWidth={1224}>
+        <Mq minDeviceWidth={1224}>
           <div>You are a desktop or laptop</div>
-          <mq minDeviceWidth={1824}>
+          <Mq minDeviceWidth={1824}>
             <div>You also have a huge screen</div>
-          </mq>
-          <mq maxWidth={1224}>
+          </Mq>
+          <Mq maxWidth={1224}>
             <div>You are sized like a tablet or mobile phone though</div>
-          </mq>
-        </mq>
-        <mq maxDeviceWidth={1224}>
+          </Mq>
+        </Mq>
+        <Mq maxDeviceWidth={1224}>
           <div>You are a tablet or mobile phone</div>
-        </mq>
-        <mq orientation='portrait'>
+        </Mq>
+        <Mq orientation='portrait'>
           <div>You are portrait</div>
-        </mq>
-         <mq orientation='landscape'>
+        </Mq>
+         <Mq orientation='landscape'>
           <div>You are landscape</div>
-        </mq>
-        <mq minResolution='2dppx'>
+        </Mq>
+        <Mq minResolution='2dppx'>
           <div>You are retina</div>
-        </mq>
+        </Mq>
+      </div>
+    );
+  }
+});
+```
+
+### Server rendering
+
+Server rendering can be done by passing static values through the `values` property.
+
+The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
+`height`, `deviceHeight`, `width`, `deviceWidth`, `color`, `colorIndex`, `monochrome`,
+and `resolution` to be matched against the media query.
+
+```jsx
+var Mq = require('react-responsive');
+
+var A = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <div>Device Test!</div>
+        <Mq minDeviceWidth={1224} values={{deviceWidth: 1600}}>
+          <div>You are a desktop or laptop</div>
+          <Mq minDeviceWidth={1824}>
+            <div>You also have a huge screen</div>
+          </Mq>
+          <Mq maxWidth={1224}>
+            <div>You are sized like a tablet or mobile phone though</div>
+          </Mq>
+        </Mq>
+        <Mq maxDeviceWidth={1224}>
+          <div>You are a tablet or mobile phone</div>
+        </Mq>
+        <Mq orientation='portrait'>
+          <div>You are portrait</div>
+        </Mq>
+         <Mq orientation='landscape'>
+          <div>You are landscape</div>
+        </Mq>
+        <Mq minResolution='2dppx'>
+          <div>You are retina</div>
+        </Mq>
       </div>
     );
   }
