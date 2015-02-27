@@ -4,14 +4,15 @@
 
 var React = require('react');
 var omit = require('lodash.omit');
+var matchMedia = require('matchmedia');
+var hyphenate = require('react/lib/hyphenateStyleName');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
-var matchMedia = require('matchmedia');
 
 var defaultTypes = {
-  component: React.PropTypes.func,
+  component: React.PropTypes.node,
   query: React.PropTypes.string,
-  values: React.PropTypes.object
+  values: React.PropTypes.shape(mediaQuery.matchers)
 };
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
@@ -22,7 +23,8 @@ var mq = React.createClass({
 
   getDefaultProps: function(){
     return {
-      component: React.DOM.div
+      component: 'div',
+      values: {}
     };
   },
 
@@ -41,6 +43,7 @@ var mq = React.createClass({
   },
 
   updateQuery: function(props){
+    var values;
     if (props.query) {
       this.query = props.query;
     } else {
@@ -50,7 +53,16 @@ var mq = React.createClass({
     if (!this.query) {
       throw new Error('Invalid or missing MediaQuery!');
     }
-    this._mql = matchMedia(this.query, this.props.values);
+
+    if (props.values) {
+      values = Object.keys(props.values)
+        .reduce(function(result, key){
+          result[hyphenate(key)] = props.values[key];
+          return result;
+        }, {});
+    }
+
+    this._mql = matchMedia(this.query, values);
     this._mql.addListener(this.updateMatches);
     this.updateMatches();
   },
@@ -73,7 +85,7 @@ var mq = React.createClass({
       return null;
     }
     var props = omit(this.props, excludedPropKeys);
-    return this.props.component(props, this.props.children);
+    return React.createElement(this.props.component, props, this.props.children);
   }
 });
 

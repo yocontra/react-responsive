@@ -1,10 +1,7 @@
-/* global document, window */
-
 'use strict';
 
 var Mq = require('../../../src');
 var React = require('react');
-window.React = React; // for dev
 
 var App = React.createClass({
   displayName: 'demo',
@@ -12,7 +9,7 @@ var App = React.createClass({
     return (
       <div>
         <div>Device Test!</div>
-        <Mq minDeviceWidth={1224}>
+        <Mq minDeviceWidth={1224} values={{deviceWidth: 1230}}>
           <div>You are a desktop or laptop</div>
           <Mq minDeviceWidth={1824}>
             <div>You also have a huge screen</div>
@@ -39,4 +36,4 @@ var App = React.createClass({
   }
 });
 
-React.renderComponent(App(), document.body);
+console.log(React.renderToString(<App />));
