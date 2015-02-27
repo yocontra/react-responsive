@@ -21,39 +21,39 @@ This module is pretty straightforward: You specify a set of requirements, and th
 
 ## Usage
 
-A Mq element functions like any other React component, which means you can nest them and do all the normal jazz.
+A MediaQuery element functions like any other React component, which means you can nest them and do all the normal jazz.
 
 ### Using CSS Media Queries
 
 ```jsx
-var Mq = require('react-responsive');
+var MediaQuery = require('react-responsive');
 
 var A = React.createClass({
   render: function(){
     return (
       <div>
         <div>Device Test!</div>
-        <Mq query='(min-device-width: 1224px)'>
+        <MediaQuery query='(min-device-width: 1224px)'>
           <div>You are a desktop or laptop</div>
-          <Mq query='(min-device-width: 1824px)'>
+          <MediaQuery query='(min-device-width: 1824px)'>
             <div>You also have a huge screen</div>
-          </Mq>
-          <Mq query='(max-width: 1224px)'>
+          </MediaQuery>
+          <MediaQuery query='(max-width: 1224px)'>
             <div>You are sized like a tablet or mobile phone though</div>
-          </Mq>
-        </Mq>
-        <Mq query='(max-device-width: 1224px)'>
+          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery query='(max-device-width: 1224px)'>
           <div>You are a tablet or mobile phone</div>
-        </Mq>
-        <Mq query='(orientation: portrait)'>
+        </MediaQuery>
+        <MediaQuery query='(orientation: portrait)'>
           <div>You are portrait</div>
-        </Mq>
-         <Mq query='(orientation: landscape)'>
+        </MediaQuery>
+         <MediaQuery query='(orientation: landscape)'>
           <div>You are landscape</div>
-        </Mq>
-        <Mq query='(min-resolution: 2dppx)'>
+        </MediaQuery>
+        <MediaQuery query='(min-resolution: 2dppx)'>
           <div>You are retina</div>
-        </Mq>
+        </MediaQuery>
       </div>
     );
   }
@@ -72,34 +72,34 @@ Any numbers given as a shorthand will be expanded to px (`1234` will become `'12
 
 
 ```jsx
-var Mq = require('react-responsive');
+var MediaQuery = require('react-responsive');
 
 var A = React.createClass({
   render: function(){
     return (
       <div>
         <div>Device Test!</div>
-        <Mq minDeviceWidth={1224}>
+        <MediaQuery minDeviceWidth={1224}>
           <div>You are a desktop or laptop</div>
-          <Mq minDeviceWidth={1824}>
+          <MediaQuery minDeviceWidth={1824}>
             <div>You also have a huge screen</div>
-          </Mq>
-          <Mq maxWidth={1224}>
+          </MediaQuery>
+          <MediaQuery maxWidth={1224}>
             <div>You are sized like a tablet or mobile phone though</div>
-          </Mq>
-        </Mq>
-        <Mq maxDeviceWidth={1224}>
+          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery maxDeviceWidth={1224}>
           <div>You are a tablet or mobile phone</div>
-        </Mq>
-        <Mq orientation='portrait'>
+        </MediaQuery>
+        <MediaQuery orientation='portrait'>
           <div>You are portrait</div>
-        </Mq>
-         <Mq orientation='landscape'>
+        </MediaQuery>
+         <MediaQuery orientation='landscape'>
           <div>You are landscape</div>
-        </Mq>
-        <Mq minResolution='2dppx'>
+        </MediaQuery>
+        <MediaQuery minResolution='2dppx'>
           <div>You are retina</div>
-        </Mq>
+        </MediaQuery>
       </div>
     );
   }
@@ -112,37 +112,40 @@ Server rendering can be done by passing static values through the `values` prope
 
 The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
 `height`, `deviceHeight`, `width`, `deviceWidth`, `color`, `colorIndex`, `monochrome`,
-and `resolution` to be matched against the media query.
+ `resolution` and `type` to be matched against the media query.
+
+`type` can be one of: `all`, `grid`, `aural`, `braille`, `handheld`, `print`, `projection`,
+`screen`, `tty`, `tv` or `embossed`.
 
 ```jsx
-var Mq = require('react-responsive');
+var MediaQuery = require('react-responsive');
 
 var A = React.createClass({
   render: function(){
     return (
       <div>
         <div>Device Test!</div>
-        <Mq minDeviceWidth={1224} values={{deviceWidth: 1600}}>
+        <MediaQuery minDeviceWidth={1224} values={{deviceWidth: 1600}}>
           <div>You are a desktop or laptop</div>
-          <Mq minDeviceWidth={1824}>
+          <MediaQuery minDeviceWidth={1824}>
             <div>You also have a huge screen</div>
-          </Mq>
-          <Mq maxWidth={1224}>
+          </MediaQuery>
+          <MediaQuery maxWidth={1224}>
             <div>You are sized like a tablet or mobile phone though</div>
-          </Mq>
-        </Mq>
-        <Mq maxDeviceWidth={1224}>
+          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery maxDeviceWidth={1224}>
           <div>You are a tablet or mobile phone</div>
-        </Mq>
-        <Mq orientation='portrait'>
+        </MediaQuery>
+        <MediaQuery orientation='portrait'>
           <div>You are portrait</div>
-        </Mq>
-         <Mq orientation='landscape'>
+        </MediaQuery>
+         <MediaQuery orientation='landscape'>
           <div>You are landscape</div>
-        </Mq>
-        <Mq minResolution='2dppx'>
+        </MediaQuery>
+        <MediaQuery minResolution='2dppx'>
           <div>You are retina</div>
-        </Mq>
+        </MediaQuery>
       </div>
     );
   }

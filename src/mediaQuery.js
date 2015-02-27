@@ -69,6 +69,7 @@ assign(features, matchers);
 
 // media types
 var types = {
+  all: PropTypes.bool,
   grid: PropTypes.bool,
   aural: PropTypes.bool,
   braille: PropTypes.bool,
