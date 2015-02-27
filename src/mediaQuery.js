@@ -85,6 +85,9 @@ var all = {};
 assign(all, types);
 assign(all, features);
 
+// add the type property
+assign(matchers, { type: Object.keys(types) });
+
 module.exports = {
   all: all,
   types: types,
