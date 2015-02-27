@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "lodash.omit": "^3.0.0",
+    "matchmedia": "^0.1.1",
     "object-assign": "^2.0.0"
   },
   "peerDependencies": {

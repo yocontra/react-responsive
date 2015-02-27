@@ -6,11 +6,12 @@ var React = require('react');
 var omit = require('lodash.omit');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
-var matchMedia = typeof window !== 'undefined' ? window.matchMedia : null;
+var matchMedia = require('matchmedia');
 
 var defaultTypes = {
   component: React.PropTypes.func,
-  query: React.PropTypes.string
+  query: React.PropTypes.string,
+  values: React.PropTypes.object
 };
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
@@ -49,7 +50,7 @@ var mq = React.createClass({
     if (!this.query) {
       throw new Error('Invalid or missing MediaQuery!');
     }
-    this._mql = matchMedia(this.query);
+    this._mql = matchMedia(this.query, this.props.values);
     this._mql.addListener(this.updateMatches);
     this.updateMatches();
   },
