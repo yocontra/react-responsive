@@ -59,7 +59,7 @@
   },
   "licenses": [
     {
-      "type": "MPL",
+      "type": "MIT",
       "url": "http://github.com/wearefractal/react-responsive/raw/master/LICENSE"
     }
   ]
