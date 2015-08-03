@@ -3,7 +3,7 @@
 var React = require('react');
 var omit = require('lodash.omit');
 var matchMedia = require('matchmedia');
-var hyphenate = require('react/lib/hyphenateStyleName');
+var hyphenate = require('hyphenate-style-name');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
 
