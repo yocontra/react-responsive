@@ -1,6 +1,6 @@
 'use strict';
 
-var hyphenate = require('react/lib/hyphenateStyleName');
+var hyphenate = require('hyphenate-style-name');
 var mq = require('./mediaQuery');
 
 function negate(cond) {

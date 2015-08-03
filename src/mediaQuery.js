@@ -1,4 +1,4 @@
-var PropTypes = require('react/lib/ReactPropTypes');
+var PropTypes = require('react').PropTypes;
 var assign = require('object-assign');
 
 var stringOrNumber = PropTypes.oneOfType([
