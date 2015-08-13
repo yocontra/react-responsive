@@ -60,6 +60,10 @@ var mq = React.createClass({
         }, {});
     }
 
+    if (this._mql) {
+      this._mql.removeListener(this.updateMatches);
+    }
+
     this._mql = matchMedia(this.query, values);
     this._mql.addListener(this.updateMatches);
     this.updateMatches();
