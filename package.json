@@ -32,7 +32,7 @@
     "react": "*"
   },
   "devDependencies": {
-    "browserify": "^5.8.0",
+    "browserify": "11.2.0",
     "ecstatic": "^0.5.4",
     "gulp": "^3.8.6",
     "gulp-autowatch": "0.0.1",
