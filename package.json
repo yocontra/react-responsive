@@ -29,7 +29,7 @@
     "object-assign": "^2.0.0"
   },
   "peerDependencies": {
-    "react": "*"
+    "react": "* || 0.14.0-rc1"
   },
   "devDependencies": {
     "browserify": "^5.8.0",
