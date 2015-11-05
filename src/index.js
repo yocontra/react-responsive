@@ -21,7 +21,6 @@ var mq = React.createClass({
 
   getDefaultProps: function(){
     return {
-      component: 'div',
       values: {}
     };
   },
@@ -87,7 +86,15 @@ var mq = React.createClass({
       return null;
     }
     var props = omit(this.props, excludedPropKeys);
-    return React.createElement(this.props.component, props, this.props.children);
+    if (this.props.component || this.props.children.length > 1) {
+      return React.createElement(
+        this.props.component || 'div',
+        props,
+        this.props.children
+      );
+    } else {
+      return this.props.children;
+    }
   }
 });
 
