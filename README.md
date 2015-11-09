@@ -106,6 +106,54 @@ var A = React.createClass({
 });
 ```
 
+### Component Property
+
+You may specify an optional `component` property on the `MediaQuery` that indicates what component to wrap children with. Any additional props defined on the `MediaQuery` will be passed through to this "wrapper" component. If the `component` property is not defined and the `MediaQuery` has more than 1 child, a `div` will be used as the "wrapper" component by default. However, if the `component` prop is not defined and there is only 1 child, that child will be rendered alone without a component wrapping it.
+
+**Specifying Wrapper Component**
+
+```jsx
+<MediaQuery minDeviceWidth={700} component="ul">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</MediaQuery>
+
+// renders the following when the media query condition is met
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+```
+
+**Unwrapped Component**
+
+```jsx
+<MediaQuery minDeviceWidth={700}>
+  <div>Unwrapped component</div>
+</MediaQuery>
+
+// renders the following when the media query condition is met
+
+<div>Unwrapped component</div>
+```
+
+**Default div Wrapper Component**
+
+```jsx
+<MediaQuery minDeviceWidth={1200} className="some-class">
+  <div>Wrapped</div>
+  <div>Content</div>
+</MediaQuery>
+
+// renders the following when the media query condition is met
+
+<div className="some-class">
+  <div>Wrapped</div>
+  <div>Content</div>
+</div>
+```
+
 ### Server rendering
 
 Server rendering can be done by passing static values through the `values` property.
