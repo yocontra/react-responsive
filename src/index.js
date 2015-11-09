@@ -92,6 +92,11 @@ var mq = React.createClass({
         props,
         this.props.children
       );
+    } else if (props) {
+      return React.cloneElement(
+        this.props.children,
+        props
+      );
     } else {
       return this.props.children;
     }
