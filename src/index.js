@@ -10,7 +10,8 @@ var toQuery = require('./toQuery');
 var defaultTypes = {
   component: React.PropTypes.node,
   query: React.PropTypes.string,
-  values: React.PropTypes.shape(mediaQuery.matchers)
+  values: React.PropTypes.shape(mediaQuery.matchers),
+  children: React.PropTypes.array
 };
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
