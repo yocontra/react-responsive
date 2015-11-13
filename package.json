@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://github.com/wearefractal/react-responsive",
   "repository": {
     "type": "git",
