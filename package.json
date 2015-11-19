@@ -44,7 +44,7 @@
     "jshint": "^2.4.1",
     "jshint-stylish": "^0.4.0",
     "merge-stream": "^0.1.5",
-    "mocha": "^1.20.1",
+    "mocha": "2.3.3",
     "reactify": "^1.0.0",
     "should": "^4.0.4",
     "vinyl-buffer": "0.0.0",
