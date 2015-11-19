@@ -23,33 +23,33 @@
     "component"
   ],
   "dependencies": {
-    "hyphenate-style-name": "^1.0.0",
-    "lodash.omit": "^3.0.0",
-    "matchmedia": "^0.1.1",
-    "object-assign": "^2.0.0"
+    "hyphenate-style-name": "1.0.0",
+    "lodash.omit": "3.1.0",
+    "matchmedia": "0.1.2",
+    "object-assign": "2.1.1"
   },
   "peerDependencies": {
     "react": "^0.12.0 || ^0.13.0 || ^0.14.0"
   },
   "devDependencies": {
-    "browserify": "^5.8.0",
-    "ecstatic": "^0.5.4",
-    "gulp": "^3.8.6",
+    "browserify": "5.13.1",
+    "ecstatic": "0.5.8",
+    "gulp": "3.9.0",
     "gulp-autowatch": "0.0.1",
-    "gulp-cached": "^1.0.1",
-    "gulp-gh-pages": "^0.3.3",
-    "gulp-jshint": "^1.7.1",
-    "gulp-livereload": "^2.1.0",
-    "gulp-sourcemaps": "^1.1.0",
-    "jshint": "^2.4.1",
-    "jshint-stylish": "^0.4.0",
-    "merge-stream": "^0.1.5",
-    "mocha": "^1.20.1",
-    "reactify": "^1.0.0",
-    "should": "^4.0.4",
+    "gulp-cached": "1.1.0",
+    "gulp-gh-pages": "0.3.4",
+    "gulp-jshint": "1.11.2",
+    "gulp-livereload": "2.1.1",
+    "gulp-sourcemaps": "1.5.2",
+    "jshint": "2.8.0",
+    "jshint-stylish": "0.4.0",
+    "merge-stream": "0.1.8",
+    "mocha": "1.21.5",
+    "reactify": "1.1.1",
+    "should": "4.6.5",
     "vinyl-buffer": "0.0.0",
-    "vinyl-source-stream": "^0.1.1",
-    "watchify": "^1.0.0"
+    "vinyl-source-stream": "0.1.1",
+    "watchify": "1.0.6"
   },
   "scripts": {
     "lint": "jshint ./src --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules",
