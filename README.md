@@ -17,7 +17,10 @@
 </tr>
 </table>
 
-This module is pretty straightforward: You specify a set of requirements, and the children will be rendered if they are met. Also handles changes so if you resize or flip or whatever it will all be cool.
+The best supported, easiest to use react media query module.
+
+
+This module is pretty straightforward: You specify a set of requirements, and the children will be rendered if they are met. Also handles changes so if you resize or flip or whatever it all just works.
 
 ## Usage
 
@@ -212,6 +215,10 @@ var A = React.createClass({
 <tr>
 <td>Firefox (Gecko)</td>
 <td>6</td>
+</tr>
+<tr>
+<td>MS Edge</td>
+<td>All</td>
 </tr>
 <tr>
 <td>Internet Explorer</td>
