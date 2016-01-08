@@ -24,7 +24,6 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "lodash.omit": "^3.1.0",
     "matchmedia": "^0.1.2",
     "object-assign": "^4.0.1"
   },

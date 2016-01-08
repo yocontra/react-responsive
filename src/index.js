@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-var omit = require('lodash.omit');
 var matchMedia = require('matchmedia');
 var hyphenate = require('hyphenate-style-name');
 var mediaQuery = require('./mediaQuery');
@@ -16,6 +15,14 @@ var defaultTypes = {
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
+
+function omit(object, keys){
+  var newObject = Object.assign({}, object);
+  keys.forEach(function(key){
+    delete newObject[key];
+  });
+  return newObject;
+}
 
 var mq = React.createClass({
   displayName: 'MediaQuery',
