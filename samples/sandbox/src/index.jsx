@@ -4,6 +4,7 @@
 
 var MediaQuery = require('../../../src');
 var React = require('react');
+var ReactDOM = require('react-dom');
 window.React = React; // for dev
 
 var App = React.createClass({
@@ -39,4 +40,4 @@ var App = React.createClass({
   }
 });
 
-React.renderComponent(App(), document.body);
+ReactDOM.render(<App/>, document.getElementById('main'));

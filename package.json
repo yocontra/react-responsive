@@ -24,32 +24,33 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "lodash.omit": "^3.0.0",
-    "matchmedia": "^0.1.1",
-    "object-assign": "^2.0.0"
+    "lodash.omit": "^3.1.0",
+    "matchmedia": "^0.1.2",
+    "object-assign": "^4.0.1"
   },
   "peerDependencies": {
-    "react": "^0.12.0 || ^0.13.0 || ^0.14.0"
+    "react": "^0.14.0"
   },
   "devDependencies": {
-    "browserify": "^5.8.0",
-    "ecstatic": "^0.5.4",
-    "gulp": "^3.8.6",
-    "gulp-autowatch": "0.0.1",
-    "gulp-cached": "^1.0.1",
-    "gulp-gh-pages": "^0.3.3",
-    "gulp-jshint": "^1.7.1",
-    "gulp-livereload": "^2.1.0",
-    "gulp-sourcemaps": "^1.1.0",
-    "jshint": "^2.4.1",
-    "jshint-stylish": "^0.4.0",
-    "merge-stream": "^0.1.5",
-    "mocha": "^1.20.1",
-    "reactify": "^1.0.0",
-    "should": "^4.0.4",
-    "vinyl-buffer": "0.0.0",
-    "vinyl-source-stream": "^0.1.1",
-    "watchify": "^1.0.0"
+    "browserify": "^12.0.1",
+    "ecstatic": "^1.4.0",
+    "gulp": "^3.9.0",
+    "gulp-autowatch": "1.0.2",
+    "gulp-cached": "^1.1.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-jshint": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "jshint": "^2.x",
+    "jshint-stylish": "^2.1.0",
+    "merge-stream": "^1.0.0",
+    "mocha": "^2.3.4",
+    "react-dom": "^0.14.0",
+    "reactify": "^1.1.1",
+    "should": "^8.0.2",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
   },
   "scripts": {
     "lint": "jshint ./src --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules",
