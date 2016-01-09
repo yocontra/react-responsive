@@ -1,10 +1,10 @@
-/** @jsx React.DOM */
 /* global document, window */
 
 'use strict';
 
-var mq = require('../../../src');
+var MediaQuery = require('../../../src');
 var React = require('react');
+var ReactDOM = require('react-dom');
 window.React = React; // for dev
 
 var App = React.createClass({
@@ -13,31 +13,31 @@ var App = React.createClass({
     return (
       <div>
         <div>Device Test!</div>
-        <mq minDeviceWidth={1224}>
+        <MediaQuery minDeviceWidth={1224}>
           <div>You are a desktop or laptop</div>
-          <mq minDeviceWidth={1824}>
+          <MediaQuery minDeviceWidth={1824}>
             <div>You also have a huge screen</div>
-          </mq>
-          <mq maxWidth={1224}>
+          </MediaQuery>
+          <MediaQuery maxWidth={1224}>
             <div>You are sized like a tablet or mobile phone though</div>
-          </mq>
-        </mq>
-        <mq maxDeviceWidth={1224}>
+          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery maxDeviceWidth={1224}>
           <div>You are a tablet or mobile phone</div>
-        </mq>
+        </MediaQuery>
 
-        <mq orientation='portrait'>
+        <MediaQuery orientation='portrait'>
           <div>You are portrait</div>
-        </mq>
-         <mq orientation='landscape'>
+        </MediaQuery>
+         <MediaQuery orientation='landscape'>
           <div>You are landscape</div>
-        </mq>
-        <mq minResolution='2dppx'>
+        </MediaQuery>
+        <MediaQuery minResolution='2dppx'>
           <div>You are retina</div>
-        </mq>
+        </MediaQuery>
       </div>
     );
   }
 });
 
-React.renderComponent(App(), document.body);
+ReactDOM.render(<App/>, document.getElementById('main'));
