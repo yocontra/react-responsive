@@ -19404,6 +19404,7 @@ var matchMedia = require('matchmedia');
 var hyphenate = require('hyphenate-style-name');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
+var assign = require('object-assign');
 
 var defaultTypes = {
   component: React.PropTypes.node,
@@ -19416,7 +19417,7 @@ var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 function omit(object, keys){
-  var newObject = Object.assign({}, object);
+  var newObject = assign({}, object);
   keys.forEach(function(key){
     delete newObject[key];
   });
@@ -19512,7 +19513,7 @@ var mq = React.createClass({
 
 module.exports = mq;
 
-},{"./mediaQuery":"/Users/pekeler/Projects/react-responsive/src/mediaQuery.js","./toQuery":"/Users/pekeler/Projects/react-responsive/src/toQuery.js","hyphenate-style-name":"/Users/pekeler/Projects/react-responsive/node_modules/hyphenate-style-name/index.js","matchmedia":"/Users/pekeler/Projects/react-responsive/node_modules/matchmedia/index.js","react":"/Users/pekeler/Projects/react-responsive/node_modules/react/react.js"}],"/Users/pekeler/Projects/react-responsive/src/mediaQuery.js":[function(require,module,exports){
+},{"./mediaQuery":"/Users/pekeler/Projects/react-responsive/src/mediaQuery.js","./toQuery":"/Users/pekeler/Projects/react-responsive/src/toQuery.js","hyphenate-style-name":"/Users/pekeler/Projects/react-responsive/node_modules/hyphenate-style-name/index.js","matchmedia":"/Users/pekeler/Projects/react-responsive/node_modules/matchmedia/index.js","object-assign":"/Users/pekeler/Projects/react-responsive/node_modules/object-assign/index.js","react":"/Users/pekeler/Projects/react-responsive/node_modules/react/react.js"}],"/Users/pekeler/Projects/react-responsive/src/mediaQuery.js":[function(require,module,exports){
 var PropTypes = require('react').PropTypes;
 var assign = require('object-assign');
 

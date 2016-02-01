@@ -5,6 +5,7 @@ var matchMedia = require('matchmedia');
 var hyphenate = require('hyphenate-style-name');
 var mediaQuery = require('./mediaQuery');
 var toQuery = require('./toQuery');
+var assign = require('object-assign');
 
 var defaultTypes = {
   component: React.PropTypes.node,
@@ -17,7 +18,7 @@ var excludedQueryKeys = Object.keys(defaultTypes);
 var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
 function omit(object, keys){
-  var newObject = Object.assign({}, object);
+  var newObject = assign({}, object);
   keys.forEach(function(key){
     delete newObject[key];
   });
