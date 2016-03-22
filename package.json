@@ -58,7 +58,7 @@
     "watchify": "^3.6.1"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/eslint . --ext .jsx .js",
     "test": "npm run-script lint"
   },
   "engines": {
@@ -73,15 +73,14 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": "airbnb",
+    "ext": [".js", ".jsx"],
     "rules": {
       "react/prefer-es6-class": 0,
       "comma-dangle": 0,
       "react/prop-types": 0,
       "no-param-reassign": 0,
-      "no-else-return": 0
-    },
-    "plugins": [
-      "babel"
-    ]
+      "no-else-return": 0,
+      "arrow-body-style": [2, "always"]
+    }
   }
 }

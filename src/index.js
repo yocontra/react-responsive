@@ -1,9 +1,9 @@
-const React = require('react');
-const matchMedia = require('matchmedia');
-const hyphenate = require('hyphenate-style-name');
-const mediaQuery = require('./mediaQuery');
-const toQuery = require('./toQuery');
-const assign = require('object-assign');
+import React from 'react';
+import matchMedia from 'matchmedia';
+import hyphenate from 'hyphenate-style-name';
+import mediaQuery from './mediaQuery';
+import toQuery from './toQuery';
+import assign from 'object-assign';
 
 const defaultTypes = {
   component: React.PropTypes.node,
@@ -110,4 +110,4 @@ const mq = React.createClass({
   }
 });
 
-module.exports = mq;
+export default mq;

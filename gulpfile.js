@@ -19,7 +19,7 @@ var ecstatic = require('ecstatic');
 var babelify = require('babelify');
 
 var paths = {
-  js: 'src/**/*.js'
+  js: ['src/**/*.js', 'samples/**/index.jsx']
 };
 
 var bundleCache = {};
@@ -32,6 +32,7 @@ var bundler = watchify(browserify('./src/index.js', {
   standalone: 'react-responsive',
   debug: true
 }));
+bundler.transform(babelify, {presets: ['es2015', 'react']});
 
 var sampleBundler = watchify(browserify('./samples/sandbox/src/index.jsx', {
   cache: bundleCache,
@@ -60,6 +61,20 @@ gulp.task('watch', function(){
   });
 });
 
+gulp.task('lint', function(){
+ var lintStream = gulp.src(paths.js)
+    // eslint() attaches the lint output to the eslint property
+    // of the file object so it can be used by other modules.
+    .pipe(eslint())
+    // Output the lint results to the console.
+    .pipe(eslint.format())
+    // Cause the stream to stop(/fail) when the stream ends
+    // if any eslint error(s) occurred.
+    .pipe(eslint.failAfterError());
+
+  return lintStream;
+});
+
 gulp.task('js', function(){
   var browserifyStream = bundler.bundle()
     // browserify -> gulp transfer
@@ -70,17 +85,7 @@ gulp.task('js', function(){
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
 
-  var lintStream = gulp.src(paths.js)
-    // eslint() attaches the lint output to the eslint property
-    // of the file object so it can be used by other modules.
-    .pipe(eslint())
-    // Output the lint results to the console.
-    .pipe(eslint.format())
-    // Cause the stream to stop(/fail) when the stream ends
-    // if any eslint error(s) occurred.
-    .pipe(eslint.failAfterError());
-
-  return merge(browserifyStream, lintStream);
+  return browserifyStream;
 });
 
 gulp.task('samples', function(){

@@ -1,5 +1,5 @@
-const PropTypes = require('react').PropTypes;
-const assign = require('object-assign');
+import { PropTypes } from 'react';
+import assign from 'object-assign';
 
 const stringOrNumber = PropTypes.oneOfType([
   PropTypes.string,
@@ -89,7 +89,7 @@ assign(all, features);
 // add the type property
 assign(matchers, { type: Object.keys(types) });
 
-module.exports = {
+export default {
   all,
   types,
   matchers,

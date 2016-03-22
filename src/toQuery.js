@@ -1,5 +1,5 @@
-const hyphenate = require('hyphenate-style-name');
-const mq = require('./mediaQuery');
+import hyphenate from 'hyphenate-style-name';
+import mq from './mediaQuery';
 
 function negate(cond) {
   return `not ${cond}`;
@@ -25,7 +25,7 @@ function join(conds) {
   return conds.join(' and ');
 }
 
-module.exports = (obj) => {
+export default (obj) => {
   const rules = [];
   Object.keys(mq.all).forEach((k) => {
     const v = obj[k];
