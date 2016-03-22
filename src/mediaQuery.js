@@ -1,13 +1,13 @@
-var PropTypes = require('react').PropTypes;
-var assign = require('object-assign');
+import { PropTypes } from 'react';
+import assign from 'object-assign';
 
-var stringOrNumber = PropTypes.oneOfType([
+const stringOrNumber = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number
 ]);
 
 // properties that match media queries
-var matchers = {
+const matchers = {
   orientation: PropTypes.oneOf([
     'portrait',
     'landscape'
@@ -36,7 +36,7 @@ var matchers = {
 };
 
 // media features
-var features = {
+const features = {
   minAspectRatio: PropTypes.string,
   maxAspectRatio: PropTypes.string,
   minDeviceAspectRatio: PropTypes.string,
@@ -68,7 +68,7 @@ var features = {
 assign(features, matchers);
 
 // media types
-var types = {
+const types = {
   all: PropTypes.bool,
   grid: PropTypes.bool,
   aural: PropTypes.bool,
@@ -82,16 +82,16 @@ var types = {
   embossed: PropTypes.bool
 };
 
-var all = {};
+const all = {};
 assign(all, types);
 assign(all, features);
 
 // add the type property
 assign(matchers, { type: Object.keys(types) });
 
-module.exports = {
-  all: all,
-  types: types,
-  matchers: matchers,
-  features: features
+export default {
+  all,
+  types,
+  matchers,
+  features
 };

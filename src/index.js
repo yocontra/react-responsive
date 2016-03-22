@@ -1,55 +1,57 @@
-'use strict';
+import React from 'react';
+import matchMedia from 'matchmedia';
+import hyphenate from 'hyphenate-style-name';
+import mediaQuery from './mediaQuery';
+import toQuery from './toQuery';
+import assign from 'object-assign';
 
-var React = require('react');
-var matchMedia = require('matchmedia');
-var hyphenate = require('hyphenate-style-name');
-var mediaQuery = require('./mediaQuery');
-var toQuery = require('./toQuery');
-var assign = require('object-assign');
-
-var defaultTypes = {
+const defaultTypes = {
   component: React.PropTypes.node,
   query: React.PropTypes.string,
   values: React.PropTypes.shape(mediaQuery.matchers),
   children: React.PropTypes.array
 };
-var mediaKeys = Object.keys(mediaQuery.all);
-var excludedQueryKeys = Object.keys(defaultTypes);
-var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
+const mediaKeys = Object.keys(mediaQuery.all);
+const excludedQueryKeys = Object.keys(defaultTypes);
+const excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
 
-function omit(object, keys){
-  var newObject = assign({}, object);
-  keys.forEach(function(key){
+function omit(object, keys) {
+  const newObject = assign({}, object);
+  keys.forEach((key) => {
     delete newObject[key];
   });
   return newObject;
 }
 
-var mq = React.createClass({
+const mq = React.createClass({
   displayName: 'MediaQuery',
 
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
       values: {}
     };
   },
 
-  getInitialState: function(){
+  getInitialState() {
     return {
       matches: false
     };
   },
 
-  componentWillMount: function(){
+  componentWillMount() {
     this.updateQuery(this.props);
   },
 
-  componentWillReceiveProps: function(props){
+  componentWillReceiveProps(props) {
     this.updateQuery(props);
   },
 
-  updateQuery: function(props){
-    var values;
+  componentWillUnmount() {
+    this._mql.removeListener(this.updateMatches);
+  },
+
+  updateQuery(props) {
+    let values;
     if (props.query) {
       this.query = props.query;
     } else {
@@ -62,7 +64,7 @@ var mq = React.createClass({
 
     if (props.values) {
       values = Object.keys(props.values)
-        .reduce(function(result, key){
+        .reduce((result, key) => {
           result[hyphenate(key)] = props.values[key];
           return result;
         }, {});
@@ -77,11 +79,7 @@ var mq = React.createClass({
     this.updateMatches();
   },
 
-  componentWillUnmount: function(){
-    this._mql.removeListener(this.updateMatches);
-  },
-
-  updateMatches: function(){
+  updateMatches() {
     if (this._mql.matches === this.state.matches) {
       return;
     }
@@ -90,11 +88,11 @@ var mq = React.createClass({
     });
   },
 
-  render: function(){
+  render() {
     if (this.state.matches === false) {
       return null;
     }
-    var props = omit(this.props, excludedPropKeys);
+    const props = omit(this.props, excludedPropKeys);
     if (this.props.component || this.props.children.length > 1) {
       return React.createElement(
         this.props.component || 'div',
@@ -112,4 +110,4 @@ var mq = React.createClass({
   }
 });
 
-module.exports = mq;
+export default mq;
