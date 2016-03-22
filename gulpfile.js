@@ -4,7 +4,7 @@ var http = require('http');
 var path = require('path');
 
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var lr = require('gulp-livereload');
 var cached = require('gulp-cached');
@@ -71,8 +71,14 @@ gulp.task('js', function(){
     .pipe(gulp.dest('dist'));
 
   var lintStream = gulp.src(paths.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    // eslint() attaches the lint output to the eslint property
+    // of the file object so it can be used by other modules.
+    .pipe(eslint())
+    // Output the lint results to the console.
+    .pipe(eslint.format())
+    // Cause the stream to stop(/fail) when the stream ends
+    // if any eslint error(s) occurred.
+    .pipe(eslint.failAfterError());
 
   return merge(browserifyStream, lintStream);
 });
