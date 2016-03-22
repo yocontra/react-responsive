@@ -29,7 +29,7 @@ export default (obj) => {
   const rules = [];
   Object.keys(mq.all).forEach((k) => {
     const v = obj[k];
-    if (v !== null) {
+    if (v !== undefined) {
       rules.push(keyVal(k, v));
     }
   });
