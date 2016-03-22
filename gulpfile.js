@@ -54,10 +54,10 @@ staticSampleBundler.transform(babelify, {presets: ['es2015', 'react']});
 
 gulp.task('watch', function(){
   bundler.on('update', function(){
-    gulp.start('js');
+    gulp.start('lint', 'js');
   });
   sampleBundler.on('update', function(){
-    gulp.start('samples');
+    gulp.start('lint', 'samples');
   });
 });
 
@@ -127,4 +127,4 @@ gulp.task('deploy', function(){
     .pipe(deploy());
 });
 
-gulp.task('default', ['js', 'samples', 'sample-server', 'watch']);
+gulp.task('default', ['lint', 'js', 'samples', 'sample-server', 'watch']);
