@@ -355,12 +355,7 @@ module.exports = Object.assign || function (target, source) {
 	return to;
 };
 
-},{}],"/Users/karanjthakkar/Work/react-responsive/node_modules/react-dom/index.js":[function(require,module,exports){
-'use strict';
-
-module.exports = require('react/lib/ReactDOM');
-
-},{"react/lib/ReactDOM":"/Users/karanjthakkar/Work/react-responsive/node_modules/react/lib/ReactDOM.js"}],"/Users/karanjthakkar/Work/react-responsive/node_modules/react/lib/AutoFocusUtils.js":[function(require,module,exports){
+},{}],"/Users/karanjthakkar/Work/react-responsive/node_modules/react/lib/AutoFocusUtils.js":[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19357,15 +19352,11 @@ module.exports = warning;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":"/Users/karanjthakkar/Work/react-responsive/node_modules/react/lib/React.js"}],"/Users/karanjthakkar/Work/react-responsive/samples/sandbox/src/index.jsx":[function(require,module,exports){
-/* global document, window */
-
+},{"./lib/React":"/Users/karanjthakkar/Work/react-responsive/node_modules/react/lib/React.js"}],"/Users/karanjthakkar/Work/react-responsive/samples/static/src/index.jsx":[function(require,module,exports){
 'use strict';
 
 var MediaQuery = require('../../../src');
 var React = require('react');
-var ReactDOM = require('react-dom');
-window.React = React; // for dev
 
 var App = React.createClass({
   displayName: 'demo',
@@ -19380,7 +19371,7 @@ var App = React.createClass({
       ),
       React.createElement(
         MediaQuery,
-        { minDeviceWidth: 1224 },
+        { minDeviceWidth: 1224, values: { deviceWidth: 1230 } },
         React.createElement(
           'div',
           null,
@@ -19445,9 +19436,9 @@ var App = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(App, null), document.getElementById('main'));
+console.log(React.renderToString(React.createElement(App, null)));
 
-},{"../../../src":"/Users/karanjthakkar/Work/react-responsive/src/index.js","react":"/Users/karanjthakkar/Work/react-responsive/node_modules/react/react.js","react-dom":"/Users/karanjthakkar/Work/react-responsive/node_modules/react-dom/index.js"}],"/Users/karanjthakkar/Work/react-responsive/src/index.js":[function(require,module,exports){
+},{"../../../src":"/Users/karanjthakkar/Work/react-responsive/src/index.js","react":"/Users/karanjthakkar/Work/react-responsive/node_modules/react/react.js"}],"/Users/karanjthakkar/Work/react-responsive/src/index.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -19689,8 +19680,8 @@ module.exports = function (obj) {
   return join(rules);
 };
 
-},{"./mediaQuery":"/Users/karanjthakkar/Work/react-responsive/src/mediaQuery.js","hyphenate-style-name":"/Users/karanjthakkar/Work/react-responsive/node_modules/hyphenate-style-name/index.js"}]},{},["/Users/karanjthakkar/Work/react-responsive/samples/sandbox/src/index.jsx"])("/Users/karanjthakkar/Work/react-responsive/samples/sandbox/src/index.jsx")
+},{"./mediaQuery":"/Users/karanjthakkar/Work/react-responsive/src/mediaQuery.js","hyphenate-style-name":"/Users/karanjthakkar/Work/react-responsive/node_modules/hyphenate-style-name/index.js"}]},{},["/Users/karanjthakkar/Work/react-responsive/samples/static/src/index.jsx"])("/Users/karanjthakkar/Work/react-responsive/samples/static/src/index.jsx")
 });
 
 
-//# sourceMappingURL=sample.js.map
+//# sourceMappingURL=index.js.map
