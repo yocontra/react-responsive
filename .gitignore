@@ -6,3 +6,4 @@ build
 coverage
 *.orig
 .idea
+dist
