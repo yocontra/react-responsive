@@ -95,7 +95,7 @@ var mq = React.createClass({
       return null;
     }
     var props = omit(this.props, excludedPropKeys);
-    if (this.props.component || this.props.children.length > 1) {
+    if (this.props.component || React.Children.count(this.props.children) > 1) {
       return React.createElement(
         this.props.component || 'div',
         props,
