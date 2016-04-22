@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.reactResponsive = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/mthompson/workspace/react-responsive/node_modules/css-mediaquery/index.js":[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.sample = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/mthompson/workspace/react-responsive/node_modules/css-mediaquery/index.js":[function(require,module,exports){
 /*
 Copyright (c) 2014, Yahoo! Inc. All rights reserved.
 Copyrights licensed under the New BSD License.
@@ -3685,7 +3685,48 @@ module.exports = traverseAllChildren;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":"/Users/mthompson/workspace/react-responsive/node_modules/react/lib/React.js"}],"/Users/mthompson/workspace/react-responsive/src/index.js":[function(require,module,exports){
+},{"./lib/React":"/Users/mthompson/workspace/react-responsive/node_modules/react/lib/React.js"}],"/Users/mthompson/workspace/react-responsive/samples/static/src/index.jsx":[function(require,module,exports){
+'use strict';
+
+var MediaQuery = require('../../../src');
+var React = require('react');
+
+var App = React.createClass({
+  displayName: 'demo',
+  render: function(){
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", null, "Device Test!"), 
+        React.createElement(MediaQuery, {minDeviceWidth: 1224, values: {deviceWidth: 1230}}, 
+          React.createElement("div", null, "You are a desktop or laptop"), 
+          React.createElement(MediaQuery, {minDeviceWidth: 1824}, 
+            React.createElement("div", null, "You also have a huge screen")
+          ), 
+          React.createElement(MediaQuery, {maxWidth: 1224}, 
+            React.createElement("div", null, "You are sized like a tablet or mobile phone though")
+          )
+        ), 
+        React.createElement(MediaQuery, {maxDeviceWidth: 1224}, 
+          React.createElement("div", null, "You are a tablet or mobile phone")
+        ), 
+
+        React.createElement(MediaQuery, {orientation: "portrait"}, 
+          React.createElement("div", null, "You are portrait")
+        ), 
+         React.createElement(MediaQuery, {orientation: "landscape"}, 
+          React.createElement("div", null, "You are landscape")
+        ), 
+        React.createElement(MediaQuery, {minResolution: "2dppx"}, 
+          React.createElement("div", null, "You are retina")
+        )
+      )
+    );
+  }
+});
+
+console.log(React.renderToString(React.createElement(App, null)));
+
+},{"../../../src":"/Users/mthompson/workspace/react-responsive/src/index.js","react":"/Users/mthompson/workspace/react-responsive/node_modules/react/react.js"}],"/Users/mthompson/workspace/react-responsive/src/index.js":[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -3946,8 +3987,8 @@ module.exports = function(obj){
   return join(rules);
 };
 
-},{"./mediaQuery":"/Users/mthompson/workspace/react-responsive/src/mediaQuery.js","hyphenate-style-name":"/Users/mthompson/workspace/react-responsive/node_modules/hyphenate-style-name/index.js"}]},{},["/Users/mthompson/workspace/react-responsive/src/index.js"])("/Users/mthompson/workspace/react-responsive/src/index.js")
+},{"./mediaQuery":"/Users/mthompson/workspace/react-responsive/src/mediaQuery.js","hyphenate-style-name":"/Users/mthompson/workspace/react-responsive/node_modules/hyphenate-style-name/index.js"}]},{},["/Users/mthompson/workspace/react-responsive/samples/static/src/index.jsx"])("/Users/mthompson/workspace/react-responsive/samples/static/src/index.jsx")
 });
 
 
-//# sourceMappingURL=react-responsive.js.map
+//# sourceMappingURL=index.js.map

@@ -23,7 +23,7 @@ var App = React.createClass({
           </MediaQuery>
         </MediaQuery>
         <MediaQuery maxDeviceWidth={1224}>
-          <div>You are a tablet or mobile phone</div>
+          You are a tablet or mobile phone
         </MediaQuery>
 
         <MediaQuery orientation='portrait'>

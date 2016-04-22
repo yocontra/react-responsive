@@ -95,13 +95,17 @@ var mq = React.createClass({
       return null;
     }
     var props = omit(this.props, excludedPropKeys);
-    if (this.props.component || React.Children.count(this.props.children) > 1) {
+    var hasMergeProps = Object.keys(props).length > 0;
+    var wrapChildren = this.props.component ||
+      React.Children.count(this.props.children) > 1 ||
+      (typeof this.props.children === 'string' && hasMergeProps);
+    if (wrapChildren) {
       return React.createElement(
         this.props.component || 'div',
         props,
         this.props.children
       );
-    } else if (props) {
+    } else if (hasMergeProps) {
       return React.cloneElement(
         this.props.children,
         props
