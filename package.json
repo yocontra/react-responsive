@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
+    "chai": "^3.5.0",
     "ecstatic": "^1.4.0",
     "gulp": "^3.9.0",
     "gulp-autowatch": "1.0.2",
@@ -40,20 +41,24 @@
     "gulp-jshint": "^2.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-sourcemaps": "^1.6.0",
+    "jsdom": "^8.4.0",
     "jshint": "^2.x",
     "jshint-stylish": "^2.1.0",
     "merge-stream": "^1.0.0",
-    "mocha": "^2.3.4",
-    "react-dom": "^0.14.0",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^15.0.1",
+    "react-dom": "^0.14.0 || ^15.0.0",
+    "react-tools": "^0.13.3",
     "reactify": "^1.1.1",
     "should": "^8.0.2",
+    "sinon": "^1.17.3",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
   },
   "scripts": {
     "lint": "jshint ./src --reporter=node_modules/jshint-stylish --exclude node_modules",
-    "test": "npm run-script lint"
+    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R dot --compilers .:test/compiler.js --require ./test/setup.js test/*_test.js"
   },
   "engines": {
     "node": ">= 0.10"
