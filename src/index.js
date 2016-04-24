@@ -98,7 +98,7 @@ var mq = React.createClass({
     var hasMergeProps = Object.keys(props).length > 0;
     var wrapChildren = this.props.component ||
       React.Children.count(this.props.children) > 1 ||
-      (typeof this.props.children === 'string' && hasMergeProps);
+      typeof this.props.children === 'string';
     if (wrapChildren) {
       return React.createElement(
         this.props.component || 'div',
