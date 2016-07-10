@@ -100,7 +100,7 @@ describe('MediaQuery', function() {
     });
     it('throws if theres a bad query', function() {
       const mq = (
-        <MediaQuery>
+        <MediaQuery doesntExist='test'>
           <div className="childComponent"></div>
         </MediaQuery>
       );
@@ -116,4 +116,11 @@ describe('MediaQuery', function() {
     const e = TestUtils.renderIntoDocument(mq);
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/);
   });
+  it('doesnt throw error when unspecificed component with empty children', function() {
+    const mq = (
+      <MediaQuery all className='parentBox' />
+    );
+    const e = TestUtils.renderIntoDocument(mq);
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'));
+  })
 });
