@@ -28,7 +28,7 @@ var pkgCache = {};
 var bundler = watchify(browserify('./src/index.js', {
   cache: bundleCache,
   packageCache: pkgCache,
-  fullPaths: true,
+  fullPaths: false,
   standalone: 'react-responsive',
   debug: true
 }));
@@ -36,7 +36,7 @@ var bundler = watchify(browserify('./src/index.js', {
 var sampleBundler = watchify(browserify('./samples/sandbox/src/index.jsx', {
   cache: bundleCache,
   packageCache: pkgCache,
-  fullPaths: true,
+  fullPaths: false,
   standalone: 'sample',
   debug: true
 }));
