@@ -51,7 +51,7 @@ var A = React.createClass({
         <MediaQuery query='(orientation: portrait)'>
           <div>You are portrait</div>
         </MediaQuery>
-         <MediaQuery query='(orientation: landscape)'>
+        <MediaQuery query='(orientation: landscape)'>
           <div>You are landscape</div>
         </MediaQuery>
         <MediaQuery query='(min-resolution: 2dppx)'>
@@ -97,7 +97,7 @@ var A = React.createClass({
         <MediaQuery orientation='portrait'>
           <div>You are portrait</div>
         </MediaQuery>
-         <MediaQuery orientation='landscape'>
+        <MediaQuery orientation='landscape'>
           <div>You are landscape</div>
         </MediaQuery>
         <MediaQuery minResolution='2dppx'>
@@ -191,7 +191,7 @@ var A = React.createClass({
         <MediaQuery orientation='portrait'>
           <div>You are portrait</div>
         </MediaQuery>
-         <MediaQuery orientation='landscape'>
+        <MediaQuery orientation='landscape'>
           <div>You are landscape</div>
         </MediaQuery>
         <MediaQuery minResolution='2dppx'>
