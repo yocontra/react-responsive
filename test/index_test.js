@@ -106,6 +106,17 @@ describe('MediaQuery', function() {
       );
       assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!');
     });
+    it('renders nothing when children is an empty array', function() {
+      const mq = (
+        <MediaQuery query="all">
+          {[].map((content, index) => {
+            return <div key={index}>{content}</div>
+          })}
+        </MediaQuery>
+      );
+      const e = TestUtils.renderIntoDocument(mq);
+      assert.equal(e.render(), null);
+    });
   });
   it('renders nothing when no matches', function() {
     const mq = (
