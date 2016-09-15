@@ -96,8 +96,9 @@ var mq = React.createClass({
     }
     var props = omit(this.props, excludedPropKeys);
     var hasMergeProps = Object.keys(props).length > 0;
+    var childrenCount = React.Children.count(this.props.children);
     var wrapChildren = this.props.component ||
-      React.Children.count(this.props.children) > 1 ||
+      childrenCount > 1 ||
       typeof this.props.children === 'string' ||
       this.props.children === undefined;
     if (wrapChildren) {
@@ -111,8 +112,11 @@ var mq = React.createClass({
         this.props.children,
         props
       );
-    } else {
+    } else if (childrenCount){
       return this.props.children;
+    }
+    else {
+      return null;
     }
   }
 });
