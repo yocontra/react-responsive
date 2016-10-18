@@ -109,6 +109,22 @@ var A = React.createClass({
 });
 ```
 
+###Rendering with a child function
+
+You may also specify a function for the child of the MediaQuery component. When the component renders, it is passed whether or not the given media query matches. This function must return a single element or `null`.
+
+```jsx
+<MediaQuery minDeviceWidth={700}>
+  {(matches) => {
+    if (matches) {
+      return <div>Media query matches!</div>;
+    } else {
+      return <div>Media query does not match!</div>;
+    }
+  }}
+</MediaQuery>
+```
+
 ### Component Property
 
 You may specify an optional `component` property on the `MediaQuery` that indicates what component to wrap children with. Any additional props defined on the `MediaQuery` will be passed through to this "wrapper" component. If the `component` property is not defined and the `MediaQuery` has more than 1 child, a `div` will be used as the "wrapper" component by default. However, if the `component` prop is not defined and there is only 1 child, that child will be rendered alone without a component wrapping it.
