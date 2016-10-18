@@ -17,6 +17,15 @@ describe('MediaQuery', function() {
     after(function() {
       this.mmStub.restore();
     });
+    it('renders with output of callback', function() {
+      const mq = (
+        <MediaQuery query="all">
+          {matches => <div className={matches ? 'matched': ''} />}
+        </MediaQuery>
+      );
+      const e = TestUtils.renderIntoDocument(mq);
+      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'matched'));
+    });
     it('renders children', function() {
       const mq = (
         <MediaQuery query="all">
@@ -133,5 +142,14 @@ describe('MediaQuery', function() {
     );
     const e = TestUtils.renderIntoDocument(mq);
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'));
-  })
+  });
+  it('renders with output of callback', function() {
+    const mq = (
+      <MediaQuery maxWidth={300}>
+        {matches => <div className={matches ? 'matched': 'no-match'} />}
+      </MediaQuery>
+    );
+    const e = TestUtils.renderIntoDocument(mq);
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'no-match'));
+  });
 });

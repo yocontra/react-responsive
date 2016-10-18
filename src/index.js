@@ -11,7 +11,7 @@ var defaultTypes = {
   component: React.PropTypes.node,
   query: React.PropTypes.string,
   values: React.PropTypes.shape(mediaQuery.matchers),
-  children: React.PropTypes.array
+  children: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.function])
 };
 var mediaKeys = Object.keys(mediaQuery.all);
 var excludedQueryKeys = Object.keys(defaultTypes);
@@ -91,6 +91,10 @@ var mq = React.createClass({
   },
 
   render: function(){
+    if(typeof this.props.children === 'function') {
+      return this.props.children(this.state.matches);
+    }
+
     if (this.state.matches === false) {
       return null;
     }

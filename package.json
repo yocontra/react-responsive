@@ -59,7 +59,7 @@
   },
   "scripts": {
     "lint": "jshint ./src --reporter=node_modules/jshint-stylish --exclude node_modules",
-    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R dot --compilers .:test/compiler.js --require ./test/setup.js test/*_test.js"
+    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R spec --compilers .:test/compiler.js --require ./test/setup.js test/*_test.js"
   },
   "engines": {
     "node": ">= 0.10"
