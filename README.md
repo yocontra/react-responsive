@@ -109,7 +109,7 @@ var A = React.createClass({
 });
 ```
 
-###Rendering with a child function
+### Rendering with a child function
 
 You may also specify a function for the child of the MediaQuery component. When the component renders, it is passed whether or not the given media query matches. This function must return a single element or `null`.
 
