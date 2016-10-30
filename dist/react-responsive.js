@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -55,20 +55,20 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _keys = __webpack_require__(1);
-
+	
 	var _keys2 = _interopRequireDefault(_keys);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	var React = __webpack_require__(13);
 	var matchMedia = __webpack_require__(42);
 	var hyphenate = __webpack_require__(11);
 	var mediaQuery = __webpack_require__(7);
 	var toQuery = __webpack_require__(14);
 	var assign = __webpack_require__(12);
-
+	
 	var defaultTypes = {
 	  component: React.PropTypes.node,
 	  query: React.PropTypes.string,
@@ -78,7 +78,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var mediaKeys = (0, _keys2.default)(mediaQuery.all);
 	var excludedQueryKeys = (0, _keys2.default)(defaultTypes);
 	var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
-
+	
 	function omit(object, keys) {
 	  var newObject = assign({}, object);
 	  keys.forEach(function (key) {
@@ -86,62 +86,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	  return newObject;
 	}
-
+	
 	var mq = React.createClass({
 	  displayName: 'MediaQuery',
-
+	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      values: {}
 	    };
 	  },
-
+	
 	  getInitialState: function getInitialState() {
 	    return {
 	      matches: false
 	    };
 	  },
-
+	
 	  componentWillMount: function componentWillMount() {
 	    this.updateQuery(this.props);
 	  },
-
+	
 	  componentWillReceiveProps: function componentWillReceiveProps(props) {
 	    this.updateQuery(props);
 	  },
-
+	
 	  updateQuery: function updateQuery(props) {
-	    var values;
+	    var values = void 0;
 	    if (props.query) {
 	      this.query = props.query;
 	    } else {
 	      this.query = toQuery(omit(props, excludedQueryKeys));
 	    }
-
+	
 	    if (!this.query) {
 	      throw new Error('Invalid or missing MediaQuery!');
 	    }
-
+	
 	    if (props.values) {
 	      values = (0, _keys2.default)(props.values).reduce(function (result, key) {
 	        result[hyphenate(key)] = props.values[key];
 	        return result;
 	      }, {});
 	    }
-
+	
 	    if (this._mql) {
 	      this._mql.removeListener(this.updateMatches);
 	    }
-
+	
 	    this._mql = matchMedia(this.query, values);
 	    this._mql.addListener(this.updateMatches);
 	    this.updateMatches();
 	  },
-
+	
 	  componentWillUnmount: function componentWillUnmount() {
 	    this._mql.removeListener(this.updateMatches);
 	  },
-
+	
 	  updateMatches: function updateMatches() {
 	    if (this._mql.matches === this.state.matches) {
 	      return;
@@ -150,12 +150,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      matches: this._mql.matches
 	    });
 	  },
-
+	
 	  render: function render() {
 	    if (typeof this.props.children === 'function') {
 	      return this.props.children(this.state.matches);
 	    }
-
+	
 	    if (this.state.matches === false) {
 	      return null;
 	    }
@@ -174,7 +174,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	});
-
+	
 	module.exports = mq;
 
 /***/ },
@@ -233,73 +233,73 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _keys = __webpack_require__(1);
-
+	
 	var _keys2 = _interopRequireDefault(_keys);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	var PropTypes = __webpack_require__(13).PropTypes;
 	var assign = __webpack_require__(12);
-
+	
 	var stringOrNumber = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
-
+	
 	// properties that match media queries
 	var matchers = {
 	  orientation: PropTypes.oneOf(['portrait', 'landscape']),
-
+	
 	  scan: PropTypes.oneOf(['progressive', 'interlace']),
-
+	
 	  aspectRatio: PropTypes.string,
 	  deviceAspectRatio: PropTypes.string,
-
+	
 	  height: stringOrNumber,
 	  deviceHeight: stringOrNumber,
-
+	
 	  width: stringOrNumber,
 	  deviceWidth: stringOrNumber,
-
+	
 	  color: PropTypes.bool,
-
+	
 	  colorIndex: PropTypes.bool,
-
+	
 	  monochrome: PropTypes.bool,
 	  resolution: stringOrNumber
 	};
-
+	
 	// media features
 	var features = {
 	  minAspectRatio: PropTypes.string,
 	  maxAspectRatio: PropTypes.string,
 	  minDeviceAspectRatio: PropTypes.string,
 	  maxDeviceAspectRatio: PropTypes.string,
-
+	
 	  minHeight: stringOrNumber,
 	  maxHeight: stringOrNumber,
 	  minDeviceHeight: stringOrNumber,
 	  maxDeviceHeight: stringOrNumber,
-
+	
 	  minWidth: stringOrNumber,
 	  maxWidth: stringOrNumber,
 	  minDeviceWidth: stringOrNumber,
 	  maxDeviceWidth: stringOrNumber,
-
+	
 	  minColor: PropTypes.number,
 	  maxColor: PropTypes.number,
-
+	
 	  minColorIndex: PropTypes.number,
 	  maxColorIndex: PropTypes.number,
-
+	
 	  minMonochrome: PropTypes.number,
 	  maxMonochrome: PropTypes.number,
-
+	
 	  minResolution: stringOrNumber,
 	  maxResolution: stringOrNumber
 	};
-
+	
 	assign(features, matchers);
-
+	
 	// media types
 	var types = {
 	  all: PropTypes.bool,
@@ -314,14 +314,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  tv: PropTypes.bool,
 	  embossed: PropTypes.bool
 	};
-
+	
 	var all = {};
 	assign(all, types);
 	assign(all, features);
-
+	
 	// add the type property
 	assign(matchers, { type: (0, _keys2.default)(types) });
-
+	
 	module.exports = {
 	  all: all,
 	  types: types,
@@ -366,17 +366,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	var uppercasePattern = /[A-Z]/g;
 	var msPattern = /^ms-/;
-
+	
 	function hyphenateStyleName(string) {
 	    return string
 	        .replace(uppercasePattern, '-$&')
 	        .toLowerCase()
 	        .replace(msPattern, '-ms-');
 	}
-
+	
 	module.exports = hyphenateStyleName;
 
 
@@ -388,29 +388,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
+	
 	function toObject(val) {
 		if (val === null || val === undefined) {
 			throw new TypeError('Object.assign cannot be called with null or undefined');
 		}
-
+	
 		return Object(val);
 	}
-
+	
 	module.exports = Object.assign || function (target, source) {
 		var from;
 		var to = toObject(target);
 		var symbols;
-
+	
 		for (var s = 1; s < arguments.length; s++) {
 			from = Object(arguments[s]);
-
+	
 			for (var key in from) {
 				if (hasOwnProperty.call(from, key)) {
 					to[key] = from[key];
 				}
 			}
-
+	
 			if (Object.getOwnPropertySymbols) {
 				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
@@ -420,7 +420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			}
 		}
-
+	
 		return to;
 	};
 
@@ -436,23 +436,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _keys = __webpack_require__(1);
-
+	
 	var _keys2 = _interopRequireDefault(_keys);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	var hyphenate = __webpack_require__(11);
 	var mq = __webpack_require__(7);
-
+	
 	function negate(cond) {
 	  return 'not ' + cond;
 	}
-
+	
 	function keyVal(k, v) {
 	  var realKey = hyphenate(k);
-
+	
 	  // px shorthand
 	  if (typeof v === 'number') {
 	    v = v + 'px';
@@ -465,11 +465,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	  return '(' + realKey + ': ' + v + ')';
 	}
-
+	
 	function join(conds) {
 	  return conds.join(' and ');
 	}
-
+	
 	module.exports = function (obj) {
 	  var rules = [];
 	  (0, _keys2.default)(mq.all).forEach(function (k) {
@@ -538,7 +538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
-
+	
 	module.exports = function(it){
 	  return toString.call(it).slice(8, -1);
 	};
@@ -598,7 +598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , ctx       = __webpack_require__(20)
 	  , hide      = __webpack_require__(25)
 	  , PROTOTYPE = 'prototype';
-
+	
 	var $export = function(type, name, source){
 	  var IS_FORCED = type & $export.F
 	    , IS_GLOBAL = type & $export.G
@@ -703,7 +703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , IE8_DOM_DEFINE = __webpack_require__(26)
 	  , toPrimitive    = __webpack_require__(38)
 	  , dP             = Object.defineProperty;
-
+	
 	exports.f = __webpack_require__(3) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
@@ -724,7 +724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , toIObject    = __webpack_require__(10)
 	  , arrayIndexOf = __webpack_require__(18)(false)
 	  , IE_PROTO     = __webpack_require__(33)('IE_PROTO');
-
+	
 	module.exports = function(object, names){
 	  var O      = toIObject(object)
 	    , i      = 0
@@ -745,7 +745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
 	var $keys       = __webpack_require__(29)
 	  , enumBugKeys = __webpack_require__(22);
-
+	
 	module.exports = Object.keys || function keys(O){
 	  return $keys(O, enumBugKeys);
 	};
@@ -866,7 +866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// 19.1.2.14 Object.keys(O)
 	var toObject = __webpack_require__(37)
 	  , $keys    = __webpack_require__(30);
-
+	
 	__webpack_require__(31)('keys', function(){
 	  return function keys(it){
 	    return $keys(toObject(it));
@@ -882,47 +882,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	Copyrights licensed under the New BSD License.
 	See the accompanying LICENSE file for terms.
 	*/
-
+	
 	'use strict';
-
+	
 	exports.match = matchQuery;
 	exports.parse = parseQuery;
-
+	
 	// -----------------------------------------------------------------------------
-
+	
 	var RE_MEDIA_QUERY     = /(?:(only|not)?\s*([^\s\(\)]+)(?:\s*and)?\s*)?(.+)?/i,
 	    RE_MQ_EXPRESSION   = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/,
 	    RE_MQ_FEATURE      = /^(?:(min|max)-)?(.+)/,
 	    RE_LENGTH_UNIT     = /(em|rem|px|cm|mm|in|pt|pc)?$/,
 	    RE_RESOLUTION_UNIT = /(dpi|dpcm|dppx)?$/;
-
+	
 	function matchQuery(mediaQuery, values) {
 	    return parseQuery(mediaQuery).some(function (query) {
 	        var inverse = query.inverse;
-
+	
 	        // Either the parsed or specified `type` is "all", or the types must be
 	        // equal for a match.
 	        var typeMatch = query.type === 'all' || values.type === query.type;
-
+	
 	        // Quit early when `type` doesn't match, but take "not" into account.
 	        if ((typeMatch && inverse) || !(typeMatch || inverse)) {
 	            return false;
 	        }
-
+	
 	        var expressionsMatch = query.expressions.every(function (expression) {
 	            var feature  = expression.feature,
 	                modifier = expression.modifier,
 	                expValue = expression.value,
 	                value    = values[feature];
-
+	
 	            // Missing or falsy values don't match.
 	            if (!value) { return false; }
-
+	
 	            switch (feature) {
 	                case 'orientation':
 	                case 'scan':
 	                    return value.toLowerCase() === expValue.toLowerCase();
-
+	
 	                case 'width':
 	                case 'height':
 	                case 'device-width':
@@ -930,19 +930,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    expValue = toPx(expValue);
 	                    value    = toPx(value);
 	                    break;
-
+	
 	                case 'resolution':
 	                    expValue = toDpi(expValue);
 	                    value    = toDpi(value);
 	                    break;
-
+	
 	                case 'aspect-ratio':
 	                case 'device-aspect-ratio':
 	                case /* Deprecated */ 'device-pixel-ratio':
 	                    expValue = toDecimal(expValue);
 	                    value    = toDecimal(value);
 	                    break;
-
+	
 	                case 'grid':
 	                case 'color':
 	                case 'color-index':
@@ -951,78 +951,78 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    value    = parseInt(value, 10) || 0;
 	                    break;
 	            }
-
+	
 	            switch (modifier) {
 	                case 'min': return value >= expValue;
 	                case 'max': return value <= expValue;
 	                default   : return value === expValue;
 	            }
 	        });
-
+	
 	        return (expressionsMatch && !inverse) || (!expressionsMatch && inverse);
 	    });
 	}
-
+	
 	function parseQuery(mediaQuery) {
 	    return mediaQuery.split(',').map(function (query) {
 	        query = query.trim();
-
+	
 	        var captures    = query.match(RE_MEDIA_QUERY),
 	            modifier    = captures[1],
 	            type        = captures[2],
 	            expressions = captures[3] || '',
 	            parsed      = {};
-
+	
 	        parsed.inverse = !!modifier && modifier.toLowerCase() === 'not';
 	        parsed.type    = type ? type.toLowerCase() : 'all';
-
+	
 	        // Split expressions into a list.
 	        expressions = expressions.match(/\([^\)]+\)/g) || [];
-
+	
 	        parsed.expressions = expressions.map(function (expression) {
 	            var captures = expression.match(RE_MQ_EXPRESSION),
 	                feature  = captures[1].toLowerCase().match(RE_MQ_FEATURE);
-
+	
 	            return {
 	                modifier: feature[1],
 	                feature : feature[2],
 	                value   : captures[2]
 	            };
 	        });
-
+	
 	        return parsed;
 	    });
 	}
-
+	
 	// -- Utilities ----------------------------------------------------------------
-
+	
 	function toDecimal(ratio) {
 	    var decimal = Number(ratio),
 	        numbers;
-
+	
 	    if (!decimal) {
 	        numbers = ratio.match(/^(\d+)\s*\/\s*(\d+)$/);
 	        decimal = numbers[1] / numbers[2];
 	    }
-
+	
 	    return decimal;
 	}
-
+	
 	function toDpi(resolution) {
 	    var value = parseFloat(resolution),
 	        units = String(resolution).match(RE_RESOLUTION_UNIT)[1];
-
+	
 	    switch (units) {
 	        case 'dpcm': return value / 2.54;
 	        case 'dppx': return value * 96;
 	        default    : return value;
 	    }
 	}
-
+	
 	function toPx(length) {
 	    var value = parseFloat(length),
 	        units = String(length).match(RE_LENGTH_UNIT)[1];
-
+	
 	    switch (units) {
 	        case 'em' : return value * 16;
 	        case 'rem': return value * 16;
@@ -1041,7 +1041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var staticMatch = __webpack_require__(41).match;
 	var dynamicMatch = typeof window !== 'undefined' ? window.matchMedia : null;
 	// our fake MediaQueryList
@@ -1057,33 +1057,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.matches = staticMatch(query, values);
 	    this.media = query;
 	  }
-
+	
 	  this.addListener = addListener;
 	  this.removeListener = removeListener;
-
+	
 	  function addListener(listener){
 	    if(mql){
 	      mql.addListener(listener);
 	    }
 	  }
-
+	
 	  function removeListener(listener){
 	    if(mql){
 	      mql.removeListener(listener);
 	    }
 	  }
-
+	
 	  // update ourselves!
 	  function update(evt){
 	    self.matches = evt.matches;
 	    self.media = evt.media;
 	  }
 	}
-
+	
 	function matchMedia(query, values){
 	  return new Mql(query, values);
 	}
-
+	
 	module.exports = matchMedia;
 
 
@@ -1091,3 +1091,4 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
+//# sourceMappingURL=react-responsive.js.map
