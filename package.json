@@ -36,6 +36,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
+    "babel-eslint": "^7.1.0",
     "babel-loader": "^6.2.7",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
@@ -46,6 +47,7 @@
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
     "eslint": "^3.9.0",
+    "eslint-config-rackt": "^1.1.1",
     "jsdom": "^8.4.0",
     "mocha": "^2.4.5",
     "react": "^15.0.1",
@@ -73,6 +75,24 @@
       "transform-runtime",
       "add-module-exports"
     ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "rackt",
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    }
   },
   "engines": {
     "node": ">= 0.10"
