@@ -2,12 +2,13 @@
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
   "version": "1.2.1",
-  "homepage": "http://github.com/wearefractal/react-responsive",
+  "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wearefractal/react-responsive.git"
+    "url": "git://github.com/contra/react-responsive.git"
   },
-  "author": "Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
+  "author": "Contra <yo@contra.io> (http://contra.io)",
+  "license": "MIT",
   "main": "./src/index.js",
   "keywords": [
     "css",
@@ -63,11 +64,5 @@
   },
   "engines": {
     "node": ">= 0.10"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/wearefractal/react-responsive/raw/master/LICENSE"
-    }
-  ]
+  }
 }
