@@ -35,17 +35,20 @@ var mq = React.createClass({
   },
 
   getInitialState: function(){
+    this.updateQuery(this.props);
     return {
-      matches: false
+      matches: this._mql.matches
     };
   },
 
   componentWillMount: function(){
     this.updateQuery(this.props);
+    this.updateMatches();
   },
 
   componentWillReceiveProps: function(props){
     this.updateQuery(props);
+    this.updateMatches();
   },
 
   updateQuery: function(props){
@@ -74,7 +77,6 @@ var mq = React.createClass({
 
     this._mql = matchMedia(this.query, values);
     this._mql.addListener(this.updateMatches);
-    this.updateMatches();
   },
 
   componentWillUnmount: function(){
