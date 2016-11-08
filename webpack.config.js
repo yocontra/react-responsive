@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
@@ -19,13 +19,13 @@ module.exports = {
     new webpack.optimize.DedupePlugin()
   ],
   resolve: {
-    extensions: ['', '.js'],
+    extensions: [ '', '.js' ],
     root: path.resolve('src'),
     modulesDirectory: 'node_modules'
   },
   module: {
     loaders: [
-      { test: [/\.js$/, /\.jsx$/], loader: 'babel', exclude: /node_modules/ },
+      { test: [ /\.js$/, /\.jsx$/ ], loader: 'babel', exclude: /node_modules/ }
     ]
   }
-};
+}
