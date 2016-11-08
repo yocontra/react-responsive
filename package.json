@@ -27,8 +27,7 @@
   "dependencies": {
     "babel-runtime": "^6.18.0",
     "hyphenate-style-name": "^1.0.0",
-    "matchmedia": "^0.1.2",
-    "object-assign": "^4.0.1"
+    "matchmedia": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^0.12.0 || ^0.13.0 || ^0.14.0 || ^15.0.0"

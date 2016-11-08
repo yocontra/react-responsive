@@ -1,54 +1,43 @@
-'use strict'
+import React from 'react'
+import matchMedia from 'matchmedia'
+import hyphenate  from 'hyphenate-style-name'
+import mediaQuery from './mediaQuery'
+import toQuery  from './toQuery'
 
-let React = require('react')
-let matchMedia = require('matchmedia')
-let hyphenate = require('hyphenate-style-name')
-let mediaQuery = require('./mediaQuery')
-let toQuery = require('./toQuery')
-let assign = require('object-assign')
 
-let defaultTypes = {
+const defaultTypes = {
   component: React.PropTypes.node,
   query: React.PropTypes.string,
   values: React.PropTypes.shape(mediaQuery.matchers),
   children: React.PropTypes.oneOfType([ React.PropTypes.node, React.PropTypes.function ])
 }
-let mediaKeys = Object.keys(mediaQuery.all)
-let excludedQueryKeys = Object.keys(defaultTypes)
-let excludedPropKeys = excludedQueryKeys.concat(mediaKeys)
+const mediaKeys = Object.keys(mediaQuery.all)
+const excludedQueryKeys = Object.keys(defaultTypes)
+const excludedPropKeys = excludedQueryKeys.concat(mediaKeys)
 
 function omit(object, keys) {
-  let newObject = assign({}, object)
-  keys.forEach(function (key) {
-    delete newObject[key]
-  })
+  const newObject = { ...object }
+  keys.forEach(key => delete newObject[key])
   return newObject
 }
 
-let mq = React.createClass({
-  displayName: 'MediaQuery',
+export default class MediaQuery extends React.Component {
+  static displayName = 'MediaQuery'
+  static defaultProps = {
+    values: {}
+  }
 
-  getDefaultProps: function () {
-    return {
-      values: {}
-    }
-  },
+  state = { matches: false }
 
-  getInitialState: function () {
-    return {
-      matches: false
-    }
-  },
-
-  componentWillMount: function () {
+  componentWillMount() {
     this.updateQuery(this.props)
-  },
+  }
 
-  componentWillReceiveProps: function (props) {
-    this.updateQuery(props)
-  },
+  componentWillReceiveProps(nextProps) {
+    this.updateQuery(nextProps)
+  }
 
-  updateQuery: function (props) {
+  updateQuery(props) {
     let values
     if (props.query) {
       this.query = props.query
@@ -75,22 +64,23 @@ let mq = React.createClass({
     this._mql = matchMedia(this.query, values)
     this._mql.addListener(this.updateMatches)
     this.updateMatches()
-  },
+  }
 
-  componentWillUnmount: function () {
+
+  componentWillUnmount() {
     this._mql.removeListener(this.updateMatches)
-  },
+  }
 
-  updateMatches: function () {
+  updateMatches = () => {
     if (this._mql.matches === this.state.matches) {
       return
     }
     this.setState({
       matches: this._mql.matches
     })
-  },
+  }
 
-  render: function () {
+  render() {
     if(typeof this.props.children === 'function') {
       return this.props.children(this.state.matches)
     }
@@ -98,10 +88,10 @@ let mq = React.createClass({
     if (this.state.matches === false) {
       return null
     }
-    let props = omit(this.props, excludedPropKeys)
-    let hasMergeProps = Object.keys(props).length > 0
-    let childrenCount = React.Children.count(this.props.children)
-    let wrapChildren = this.props.component ||
+    const props = omit(this.props, excludedPropKeys)
+    const hasMergeProps = Object.keys(props).length > 0
+    const childrenCount = React.Children.count(this.props.children)
+    const wrapChildren = this.props.component ||
       childrenCount > 1 ||
       typeof this.props.children === 'string' ||
       this.props.children === undefined
@@ -123,6 +113,4 @@ let mq = React.createClass({
       return null
     }
   }
-})
-
-module.exports = mq
+}
