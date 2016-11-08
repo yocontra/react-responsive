@@ -2,13 +2,15 @@
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
   "version": "1.2.1",
-  "homepage": "http://github.com/wearefractal/react-responsive",
+  "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wearefractal/react-responsive.git"
+    "url": "git://github.com/contra/react-responsive.git"
   },
-  "author": "Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
-  "main": "./src/index.js",
+  "author": "Contra <yo@contra.io> (http://contra.io)",
+  "license": "MIT",
+  "main": "./dist/react-responsive.js",
+  "jsnext:main": "./src/index.js",
   "keywords": [
     "css",
     "react-component",
@@ -23,51 +25,83 @@
     "component"
   ],
   "dependencies": {
+    "babel-runtime": "^6.18.0",
     "hyphenate-style-name": "^1.0.0",
-    "matchmedia": "^0.1.2",
-    "object-assign": "^4.0.1"
+    "matchmedia": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^0.12.0 || ^0.13.0 || ^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
-    "browserify": "^12.0.1",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2015-loose": "^8.0.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
     "chai": "^3.5.0",
-    "ecstatic": "^1.4.0",
-    "gulp": "^3.9.0",
-    "gulp-autowatch": "1.0.2",
-    "gulp-cached": "^1.1.0",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-jshint": "^2.0.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-sourcemaps": "^1.6.0",
+    "eslint": "^3.9.0",
+    "eslint-config-rackt": "^1.1.1",
     "jsdom": "^8.4.0",
-    "jshint": "^2.x",
-    "jshint-stylish": "^2.1.0",
-    "merge-stream": "^1.0.0",
     "mocha": "^2.4.5",
     "react": "^15.0.1",
     "react-addons-test-utils": "^15.0.1",
     "react-dom": "^0.14.0 || ^15.0.0",
-    "react-tools": "^0.13.3",
-    "reactify": "^1.1.1",
     "should": "^8.0.2",
     "sinon": "^1.17.3",
-    "vinyl-buffer": "1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.6.1"
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
-    "lint": "jshint ./src --reporter=node_modules/jshint-stylish --exclude node_modules",
-    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R spec --compilers .:test/compiler.js --require ./test/setup.js test/*_test.js"
+    "preversion": "npm run clean && npm run build && npm docs",
+    "postversion": "npm run changelog",
+    "start": "$(npm bin)/webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
+    "build": "$(npm bin)/webpack",
+    "build:watch": "npm run build -- --watch",
+    "clean": "rimraf dist",
+    "lint": "$(npm bin)/eslint src",
+    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
+    "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body",
+    "docs": "npm run docs:pre && npm run docs:build && npm run docs:publish",
+    "docs:pre": "gitbook install && rimraf _book",
+    "docs:build": "gitbook build -g contra/react-responsive",
+    "docs:publish": "cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:contra/react-responsive gh-pages --force"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "add-module-exports"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "rackt",
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    }
   },
   "engines": {
     "node": ">= 0.10"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/wearefractal/react-responsive/raw/master/LICENSE"
-    }
-  ]
+  }
 }

@@ -1,128 +1,116 @@
-'use strict';
+import React from 'react'
+import matchMedia from 'matchmedia'
+import hyphenate  from 'hyphenate-style-name'
+import mediaQuery from './mediaQuery'
+import toQuery  from './toQuery'
 
-var React = require('react');
-var matchMedia = require('matchmedia');
-var hyphenate = require('hyphenate-style-name');
-var mediaQuery = require('./mediaQuery');
-var toQuery = require('./toQuery');
-var assign = require('object-assign');
 
-var defaultTypes = {
+const defaultTypes = {
   component: React.PropTypes.node,
   query: React.PropTypes.string,
   values: React.PropTypes.shape(mediaQuery.matchers),
-  children: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.function])
-};
-var mediaKeys = Object.keys(mediaQuery.all);
-var excludedQueryKeys = Object.keys(defaultTypes);
-var excludedPropKeys = excludedQueryKeys.concat(mediaKeys);
+  children: React.PropTypes.oneOfType([ React.PropTypes.node, React.PropTypes.function ])
+}
+const mediaKeys = Object.keys(mediaQuery.all)
+const excludedQueryKeys = Object.keys(defaultTypes)
+const excludedPropKeys = excludedQueryKeys.concat(mediaKeys)
 
-function omit(object, keys){
-  var newObject = assign({}, object);
-  keys.forEach(function(key){
-    delete newObject[key];
-  });
-  return newObject;
+function omit(object, keys) {
+  const newObject = { ...object }
+  keys.forEach(key => delete newObject[key])
+  return newObject
 }
 
-var mq = React.createClass({
-  displayName: 'MediaQuery',
+export default class MediaQuery extends React.Component {
+  static displayName = 'MediaQuery'
+  static defaultProps = {
+    values: {}
+  }
 
-  getDefaultProps: function(){
-    return {
-      values: {}
-    };
-  },
+  state = { matches: false }
 
-  getInitialState: function(){
-    return {
-      matches: false
-    };
-  },
+  componentWillMount() {
+    this.updateQuery(this.props)
+  }
 
-  componentWillMount: function(){
-    this.updateQuery(this.props);
-  },
+  componentWillReceiveProps(nextProps) {
+    this.updateQuery(nextProps)
+  }
 
-  componentWillReceiveProps: function(props){
-    this.updateQuery(props);
-  },
-
-  updateQuery: function(props){
-    var values;
+  updateQuery(props) {
+    let values
     if (props.query) {
-      this.query = props.query;
+      this.query = props.query
     } else {
-      this.query = toQuery(omit(props, excludedQueryKeys));
+      this.query = toQuery(omit(props, excludedQueryKeys))
     }
 
     if (!this.query) {
-      throw new Error('Invalid or missing MediaQuery!');
+      throw new Error('Invalid or missing MediaQuery!')
     }
 
     if (props.values) {
       values = Object.keys(props.values)
-        .reduce(function(result, key){
-          result[hyphenate(key)] = props.values[key];
-          return result;
-        }, {});
+        .reduce(function (result, key) {
+          result[hyphenate(key)] = props.values[key]
+          return result
+        }, {})
     }
 
     if (this._mql) {
-      this._mql.removeListener(this.updateMatches);
+      this._mql.removeListener(this.updateMatches)
     }
 
-    this._mql = matchMedia(this.query, values);
-    this._mql.addListener(this.updateMatches);
-    this.updateMatches();
-  },
+    this._mql = matchMedia(this.query, values)
+    this._mql.addListener(this.updateMatches)
+    this.updateMatches()
+  }
 
-  componentWillUnmount: function(){
-    this._mql.removeListener(this.updateMatches);
-  },
 
-  updateMatches: function(){
+  componentWillUnmount() {
+    this._mql.removeListener(this.updateMatches)
+  }
+
+  updateMatches = () => {
     if (this._mql.matches === this.state.matches) {
-      return;
+      return
     }
     this.setState({
       matches: this._mql.matches
-    });
-  },
+    })
+  }
 
-  render: function(){
+  render() {
     if(typeof this.props.children === 'function') {
-      return this.props.children(this.state.matches);
+      return this.props.children(this.state.matches)
     }
 
     if (this.state.matches === false) {
-      return null;
+      return null
     }
-    var props = omit(this.props, excludedPropKeys);
-    var hasMergeProps = Object.keys(props).length > 0;
-    var childrenCount = React.Children.count(this.props.children);
-    var wrapChildren = this.props.component ||
+    const props = omit(this.props, excludedPropKeys)
+    const hasMergeProps = Object.keys(props).length > 0
+    const childrenCount = React.Children.count(this.props.children)
+    const wrapChildren = this.props.component ||
       childrenCount > 1 ||
       typeof this.props.children === 'string' ||
-      this.props.children === undefined;
+      this.props.children === undefined
     if (wrapChildren) {
       return React.createElement(
         this.props.component || 'div',
         props,
         this.props.children
-      );
+      )
     } else if (hasMergeProps) {
       return React.cloneElement(
         this.props.children,
         props
-      );
-    } else if (childrenCount){
-      return this.props.children;
+      )
+    } else if (childrenCount) {
+      return this.props.children
     }
     else {
-      return null;
+      return null
     }
   }
-});
-
-module.exports = mq;
+}

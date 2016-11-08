@@ -1,39 +1,35 @@
-'use strict';
+import hyphenate from 'hyphenate-style-name'
+import mq from './mediaQuery'
 
-var hyphenate = require('hyphenate-style-name');
-var mq = require('./mediaQuery');
-
-function negate(cond) {
-  return 'not ' + cond;
-}
+const negate = cond => `not ${cond}`
 
 function keyVal(k, v) {
-  var realKey = hyphenate(k);
+  const realKey = hyphenate(k)
 
   // px shorthand
   if (typeof v === 'number') {
-    v = v+'px';
+    v = `${v}px`
   }
   if (v === true) {
-    return k;
+    return k
   }
   if (v === false) {
-    return negate(k);
+    return negate(k)
   }
-  return '('+realKey+': '+v+')';
+  return `(${realKey}: ${v})`
 }
 
 function join(conds) {
-  return conds.join(' and ');
+  return conds.join(' and ')
 }
 
-module.exports = function(obj){
-  var rules = [];
-  Object.keys(mq.all).forEach(function(k){
-    var v = obj[k];
+export default function (obj) {
+  const rules = []
+  Object.keys(mq.all).forEach(function (k) {
+    const v = obj[k]
     if (v != null) {
-      rules.push(keyVal(k, v));
+      rules.push(keyVal(k, v))
     }
-  });
-  return join(rules);
-};
+  })
+  return join(rules)
+}
