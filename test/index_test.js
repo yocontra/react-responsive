@@ -63,6 +63,15 @@ describe('MediaQuery', function() {
       const e = TestUtils.renderIntoDocument(mq);
       assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'));
     });
+    it('renders a div when children is a single-element array', function() {
+      const mq = (
+        <MediaQuery query="all">
+          {['single element'].map((content, index) => <span key={index}>{content}</span>)}
+        </MediaQuery>
+      );
+      const e = TestUtils.renderIntoDocument(mq);
+      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'));
+    });
     it('passes extra props', function() {
       const mq = (
         <MediaQuery query="all" className="passedProp">

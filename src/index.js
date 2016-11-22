@@ -94,6 +94,7 @@ export default class MediaQuery extends React.Component {
     const wrapChildren = this.props.component ||
       childrenCount > 1 ||
       typeof this.props.children === 'string' ||
+      Array.isArray(this.props.children) && childrenCount == 1 ||
       this.props.children === undefined
     if (wrapChildren) {
       return React.createElement(
