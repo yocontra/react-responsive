@@ -47,6 +47,7 @@
     "chai": "^3.5.0",
     "eslint": "^3.9.0",
     "eslint-config-rackt": "^1.1.1",
+    "github-changes": "^1.0.4",
     "jsdom": "^8.4.0",
     "mocha": "^2.4.5",
     "react": "^15.0.1",
