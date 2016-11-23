@@ -10,7 +10,7 @@
   "author": "Contra <yo@contra.io> (http://contra.io)",
   "license": "MIT",
   "main": "./dist/react-responsive.js",
-  "jsnext:main": "./src/index.js",
+  "jsnext:main": "./es/index.js",
   "keywords": [
     "css",
     "react-component",
@@ -45,6 +45,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
+    "cross-env": "^3.1.3",
     "eslint": "^3.9.0",
     "eslint-config-rackt": "^1.1.1",
     "github-changes": "^1.0.4",
@@ -61,12 +62,14 @@
   "scripts": {
     "preversion": "npm run clean && npm run build && npm docs",
     "postversion": "npm run changelog",
-    "start": "$(npm bin)/webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
-    "build": "$(npm bin)/webpack",
+    "start": "cross-env BABEL_ENV=commonjs $(npm bin)/webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
+    "build": "npm run build:umd && npm run build:es",
+    "build:umd": "cross-env BABEL_ENV=commonjs $(npm bin)/webpack",
+    "build:es": "cross-env BABEL_ENV=es $(npm bin)/babel ./src --out-dir=./es -s true",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
-    "lint": "$(npm bin)/eslint src",
-    "test": "NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
+    "lint": "cross-env BABEL_ENV=commonjs $(npm bin)/eslint src",
+    "test": "cross-env BABEL_ENV=commonjs NODE_PATH=$NODE_PATH:$PWD/src $(npm bin)/mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
     "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body",
     "docs": "npm run docs:pre && npm run docs:build && npm run docs:publish",
     "docs:pre": "gitbook install && rimraf _book",
@@ -74,15 +77,36 @@
     "docs:publish": "cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:contra/react-responsive gh-pages --force"
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "add-module-exports"
-    ]
+    "env": {
+      "commonjs": {
+        "presets": [
+          "es2015",
+          "react",
+          "stage-0"
+        ],
+        "plugins": [
+          "transform-runtime",
+          "add-module-exports"
+        ]
+      },
+      "es": {
+        "presets": [
+          [
+            "es2015",
+            {
+              "loose": false,
+              "modules": false
+            }
+          ],
+          "react",
+          "stage-0"
+        ],
+        "plugins": [
+          "transform-runtime",
+          "add-module-exports"
+        ]
+      }
+    }
   },
   "eslintConfig": {
     "parser": "babel-eslint",
