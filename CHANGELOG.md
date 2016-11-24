@@ -1,6 +1,8 @@
 ## Change Log
 
-### upcoming (2016/11/23 00:24 +00:00)
+### upcoming (2016/11/23 00:26 +00:00)
+- [404924f](https://github.com/contra/react-responsive/commit/404924ff302378a30dbb4f438b237c955b5528b0) changelog fix (@contra)
+- [d337ce3](https://github.com/contra/react-responsive/commit/d337ce35a00bbb383a656d7453e8b28a2b30ea87) 1.2.2 (@contra)
 - [#70](https://github.com/contra/react-responsive/pull/70) Wrap children if it's single-element array (@Instamotor-Labs)
 - [341fdec](https://github.com/contra/react-responsive/commit/341fdecc2c3f7f56529dc9941768690457a27c30) Wrap children if it's single-element array (@skydan)
 - [#65](https://github.com/contra/react-responsive/pull/65) Use ES2015 (@whatknight)
