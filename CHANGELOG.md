@@ -1,7 +1,13 @@
 ## Change Log
 
-### upcoming (2016/11/23 00:26 +00:00)
+### upcoming (2016/11/24 00:51 +00:00)
+- [2b36c54](https://github.com/contra/react-responsive/commit/2b36c54847f084e1830a1bcd1c885b6ab5102185) changelog (@contra)
+
+### v1.2.3 (2016/11/23 00:26 +00:00)
+- [7d95ef1](https://github.com/contra/react-responsive/commit/7d95ef1d83e6acba43ac15aedda03eecdf66f6bf) 1.2.3 (@contra)
 - [404924f](https://github.com/contra/react-responsive/commit/404924ff302378a30dbb4f438b237c955b5528b0) changelog fix (@contra)
+
+### v1.2.2 (2016/11/22 23:57 +00:00)
 - [d337ce3](https://github.com/contra/react-responsive/commit/d337ce35a00bbb383a656d7453e8b28a2b30ea87) 1.2.2 (@contra)
 - [#70](https://github.com/contra/react-responsive/pull/70) Wrap children if it's single-element array (@Instamotor-Labs)
 - [341fdec](https://github.com/contra/react-responsive/commit/341fdecc2c3f7f56529dc9941768690457a27c30) Wrap children if it's single-element array (@skydan)
@@ -21,6 +27,8 @@
 - [5ce699b](https://github.com/contra/react-responsive/commit/5ce699bc02929f48da4a2cc32568d6905a0db346) Add space to readme. (@whatknight)
 - [b27da86](https://github.com/contra/react-responsive/commit/b27da8658410a4a069858f9d1cd0c684f9a2df96) Update docs with new feature. (@whatknight)
 - [80fddd9](https://github.com/contra/react-responsive/commit/80fddd971f9239ba885fa9892a80cd5081f7e401) Add ability to render with a function as the component child. (@whatknight)
+
+### v1.1.5 (2016/09/15 04:13 +00:00)
 - [b6364b6](https://github.com/contra/react-responsive/commit/b6364b6157a9fca972cdb9170bed494b805948da) 1.1.5 (@contra)
 - [#62](https://github.com/contra/react-responsive/pull/62) Fix for Uncaught Invariant Violation #56. (@rhavill)
 - [3199bef](https://github.com/contra/react-responsive/commit/3199bef42f9d715701e276740bb997c2b474b51c) Added unit test to make sure MediaQuery render function can handle an empty array as children.
@@ -30,6 +38,8 @@
 - [eac6444](https://github.com/contra/react-responsive/commit/eac6444d4059268b4744679edd209e484d222758) 1.1.4 (@contra)
 - [#58](https://github.com/contra/react-responsive/pull/58) Doesn't throw error with empty children (@nkov)
 - [df33365](https://github.com/contra/react-responsive/commit/df333655bdb658d2046289ac19e7153594cb8cd9) doesnt throw error with empty children (@nkov)
+
+### v1.1.3 (2016/04/25 17:03 +00:00)
 - [ba1cb39](https://github.com/contra/react-responsive/commit/ba1cb39afa5259bda12ffe0dd7c57919c535397e) 1.1.3 (@contra)
 - [#53](https://github.com/contra/react-responsive/pull/53) Always wrap children if it's a string. (@whatknight)
 - [23f35cb](https://github.com/contra/react-responsive/commit/23f35cb2f4b9c906c267854077cb00f298c89e41) Always wrap children if it's a string. (@whatknight)
@@ -38,6 +48,8 @@
 - [#51](https://github.com/contra/react-responsive/pull/51) Fix bug where string would cause invariant error. (@whatknight)
 - [55707f1](https://github.com/contra/react-responsive/commit/55707f103ac9d53441943e80b96f0ece1b189ba5) Add testing with jsdom. (@whatknight)
 - [7dacb42](https://github.com/contra/react-responsive/commit/7dacb423884bc00aefc5579674f498af0eede79a) Fix bug where string would cause invariant error. (@whatknight)
+
+### v1.1.2 (2016/04/08 05:07 +00:00)
 - [8d03ff0](https://github.com/contra/react-responsive/commit/8d03ff03e69d2c967a4c0c522523d0dc7af7c960) 1.1.2 (@contra)
 - [#47](https://github.com/contra/react-responsive/pull/47) Bump react peer dependency to allow v15 (@cesarandreu)
 - [87619fe](https://github.com/contra/react-responsive/commit/87619fe29ab529cd9e6b4e8a1a22dfc820b11a34) Bump react peer dependency to allow v15 (@cesarandreu)
