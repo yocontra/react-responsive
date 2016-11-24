@@ -10,7 +10,7 @@
   "author": "Contra <yo@contra.io> (http://contra.io)",
   "license": "MIT",
   "main": "./dist/react-responsive.js",
-  "jsnext:main": "./src/index.js",
+  "files": [ "./dist" ],
   "keywords": [
     "css",
     "react-component",
