@@ -1,6 +1,14 @@
 ## Change Log
 
-### upcoming (2016/11/24 00:51 +00:00)
+### upcoming (2017/01/19 03:06 +00:00)
+- [#78](https://github.com/contra/react-responsive/pull/78) Removed babel-polyfill (@vjancik)
+- [ebfeec0](https://github.com/contra/react-responsive/commit/ebfeec0473b2ca8040dbe13e698fa08366a7808b) Removed babel-polyfill (@vjancik)
+- [9b91c9c](https://github.com/contra/react-responsive/commit/9b91c9cc341693a8282199edaed04a9c4b7a7f7a) #66 (@contra)
+- [56b794a](https://github.com/contra/react-responsive/commit/56b794a0fcac2a28c7bd87e7263ad2b93c52e348) dist fix (@contra)
+
+### v1.2.4 (2016/11/24 00:51 +00:00)
+- [5e8ae33](https://github.com/contra/react-responsive/commit/5e8ae33d53e390193cf289b9f2ce7a6f95c47d90) 1.2.4 (@contra)
+- [708e250](https://github.com/contra/react-responsive/commit/708e25030963d967db7dcfa5b21f95bcd84832ed) only publish dist (@contra)
 - [2b36c54](https://github.com/contra/react-responsive/commit/2b36c54847f084e1830a1bcd1c885b6ab5102185) changelog (@contra)
 
 ### v1.2.3 (2016/11/23 00:26 +00:00)
