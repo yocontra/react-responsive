@@ -3,7 +3,7 @@ import matchMedia from 'matchmedia'
 import hyphenate  from 'hyphenate-style-name'
 import mediaQuery from './mediaQuery'
 import toQuery  from './toQuery'
-
+import isValidQuery from './isValidQuery'
 
 const defaultTypes = {
   component: React.PropTypes.node,
@@ -14,6 +14,8 @@ const defaultTypes = {
 const mediaKeys = Object.keys(mediaQuery.all)
 const excludedQueryKeys = Object.keys(defaultTypes)
 const excludedPropKeys = excludedQueryKeys.concat(mediaKeys)
+
+const invalidOrMissingError = 'Invalid or missing MediaQuery!'
 
 function omit(object, keys) {
   const newObject = { ...object }
@@ -40,13 +42,17 @@ export default class MediaQuery extends React.Component {
   updateQuery(props) {
     let values
     if (props.query) {
-      this.query = props.query
+      if(!isValidQuery(props.query)){
+        throw new Error(invalidOrMissingError)
+      } else {
+        this.query = props.query
+      }
     } else {
       this.query = toQuery(omit(props, excludedQueryKeys))
     }
 
     if (!this.query) {
-      throw new Error('Invalid or missing MediaQuery!')
+      throw new Error(invalidOrMissingError)
     }
 
     if (props.values) {
