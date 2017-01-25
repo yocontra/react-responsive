@@ -42,11 +42,10 @@ export default class MediaQuery extends React.Component {
   updateQuery(props) {
     let values
     if (props.query) {
-      if(!isValidQuery(props.query)){
+      if (!isValidQuery(props.query)) {
         throw new Error(invalidOrMissingError)
-      } else {
-        this.query = props.query
       }
+      this.query = props.query
     } else {
       this.query = toQuery(omit(props, excludedQueryKeys))
     }
