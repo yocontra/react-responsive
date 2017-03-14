@@ -1,6 +1,13 @@
 ## Change Log
 
-### upcoming (2017/01/19 03:06 +00:00)
+### upcoming (2017/03/14 16:17 +00:00)
+- [#83](https://github.com/contra/react-responsive/pull/83) Add react 0.14.x as potential peer dep (@jesstelford)
+- [29266f0](https://github.com/contra/react-responsive/commit/29266f0db6598feaebcd4dc9dc907cdda3bafc2f) Peer dep on all react versions (@jesstelford)
+- [1007031](https://github.com/contra/react-responsive/commit/100703116f9649cf1e0e125a10c9384a9366ecd3) Add react 0.14.x as potential peer dep (@jesstelford)
+- [bc69299](https://github.com/contra/react-responsive/commit/bc692990d149f8a08bad4a12df78691816f75e81) changes (@contra)
+
+### v1.2.6 (2017/01/19 03:06 +00:00)
+- [342621d](https://github.com/contra/react-responsive/commit/342621d0407ae2e590a33c280ec2ca39d8bf3e8e) 1.2.6 (@contra)
 - [#78](https://github.com/contra/react-responsive/pull/78) Removed babel-polyfill (@vjancik)
 - [ebfeec0](https://github.com/contra/react-responsive/commit/ebfeec0473b2ca8040dbe13e698fa08366a7808b) Removed babel-polyfill (@vjancik)
 - [9b91c9c](https://github.com/contra/react-responsive/commit/9b91c9cc341693a8282199edaed04a9c4b7a7f7a) #66 (@contra)
@@ -108,7 +115,7 @@
 - [45861f7](https://github.com/contra/react-responsive/commit/45861f7dea95a4b7486be7949b7e08bee24bed74) Update package.json (@frederickfogerty)
 - [84fb5a8](https://github.com/contra/react-responsive/commit/84fb5a849845c77ecdbd2a8c89524241a83f33b3) Add support for React 0.14.0-beta1 (@frederickfogerty)
 - [#16](https://github.com/contra/react-responsive/pull/16) Use `hyphenate-style-name` module instead of React internal (@rexxars)
-- [7046106](https://github.com/contra/react-responsive/commit/704610624d1ede95c0043e43a4be8fa6346315c3) Use `hyphenate-style-name` module instead of React internal (@rexxars)
+- [7046106](https://github.com/contra/react-responsive/commit/704610624d1ede95c0043e43a4be8fa6346315c3) Use `hyphenate-style-name` module instead of React internal
 
 ### v0.0.7 (2015/07/22 06:22 +00:00)
 - [4050ab3](https://github.com/contra/react-responsive/commit/4050ab3041ea7075e2f59c5a5acd95451d648aaa) 0.0.7 (@contra)
