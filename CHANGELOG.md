@@ -1,6 +1,14 @@
 ## Change Log
 
-### upcoming (2017/03/14 16:17 +00:00)
+### upcoming (2017/04/18 18:45 +00:00)
+- [#88](https://github.com/contra/react-responsive/pull/88) Added prop-type library for React 16 (@rmdort)
+- [7039ef6](https://github.com/contra/react-responsive/commit/7039ef6e30e409d83a8cf5e3a894cfdb136d3582) Added prop-type library for react 16 (@rmdort)
+- [#86](https://github.com/contra/react-responsive/pull/86) docs(readme): add install part (@kud)
+- [4665934](https://github.com/contra/react-responsive/commit/4665934ac824bca12c009a98f40c71bc8f47a081) docs(readme): add install part (@kud)
+- [8c53639](https://github.com/contra/react-responsive/commit/8c536392459673d46e0df3682adf42c8196b17e0) changelog (@contra)
+
+### v1.2.7 (2017/03/14 16:17 +00:00)
+- [ee6b142](https://github.com/contra/react-responsive/commit/ee6b1429caa0fefd6e6f7c9313fe54fe13a61d82) 1.2.7 (@contra)
 - [#83](https://github.com/contra/react-responsive/pull/83) Add react 0.14.x as potential peer dep (@jesstelford)
 - [29266f0](https://github.com/contra/react-responsive/commit/29266f0db6598feaebcd4dc9dc907cdda3bafc2f) Peer dep on all react versions (@jesstelford)
 - [1007031](https://github.com/contra/react-responsive/commit/100703116f9649cf1e0e125a10c9384a9366ecd3) Add react 0.14.x as potential peer dep (@jesstelford)
