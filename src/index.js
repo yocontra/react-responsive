@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import matchMedia from 'matchmedia'
 import hyphenate  from 'hyphenate-style-name'
 import mediaQuery from './mediaQuery'
@@ -6,10 +7,10 @@ import toQuery  from './toQuery'
 
 
 const defaultTypes = {
-  component: React.PropTypes.node,
-  query: React.PropTypes.string,
-  values: React.PropTypes.shape(mediaQuery.matchers),
-  children: React.PropTypes.oneOfType([ React.PropTypes.node, React.PropTypes.function ])
+  component: ProptyPes.node,
+  query: ProptyPes.string,
+  values: ProptyPes.shape(mediaQuery.matchers),
+  children: ProptyPes.oneOfType([ ProptyPes.node, ProptyPes.function ])
 }
 const mediaKeys = Object.keys(mediaQuery.all)
 const excludedQueryKeys = Object.keys(defaultTypes)
