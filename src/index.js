@@ -7,10 +7,10 @@ import toQuery  from './toQuery'
 
 
 const defaultTypes = {
-  component: ProptyPes.node,
-  query: ProptyPes.string,
-  values: ProptyPes.shape(mediaQuery.matchers),
-  children: ProptyPes.oneOfType([ ProptyPes.node, ProptyPes.function ])
+  component: PropTypes.string.node,
+  query: PropTypes.string,
+  values: PropTypes.shape(mediaQuery.matchers),
+  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.function ])
 }
 const mediaKeys = Object.keys(mediaQuery.all)
 const excludedQueryKeys = Object.keys(defaultTypes)
