@@ -7,7 +7,7 @@ import toQuery  from './toQuery'
 
 
 const defaultTypes = {
-  component: PropTypes.string.node,
+  component: PropTypes.node,
   query: PropTypes.string,
   values: PropTypes.shape(mediaQuery.matchers),
   children: PropTypes.oneOfType([ PropTypes.node, PropTypes.function ])
