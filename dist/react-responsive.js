@@ -68,7 +68,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _matchmedia = __webpack_require__(10);
+	var _propTypes = __webpack_require__(7);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _matchmedia = __webpack_require__(11);
 	
 	var _matchmedia2 = _interopRequireDefault(_matchmedia);
 	
@@ -80,7 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _mediaQuery2 = _interopRequireDefault(_mediaQuery);
 	
-	var _toQuery = __webpack_require__(8);
+	var _toQuery = __webpack_require__(9);
 	
 	var _toQuery2 = _interopRequireDefault(_toQuery);
 	
@@ -93,10 +97,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var defaultTypes = {
-	  component: _react2.default.PropTypes.node,
-	  query: _react2.default.PropTypes.string,
-	  values: _react2.default.PropTypes.shape(_mediaQuery2.default.matchers),
-	  children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.node, _react2.default.PropTypes.function])
+	  component: _propTypes2.default.node,
+	  query: _propTypes2.default.string,
+	  values: _propTypes2.default.shape(_mediaQuery2.default.matchers),
+	  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.function])
 	};
 	var mediaKeys = Object.keys(_mediaQuery2.default.all);
 	var excludedQueryKeys = Object.keys(defaultTypes);
@@ -516,7 +520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _propTypes = __webpack_require__(14);
+	var _propTypes = __webpack_require__(7);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -702,6 +706,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	if (process.env.NODE_ENV !== 'production') {
+	  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+	    Symbol.for &&
+	    Symbol.for('react.element')) ||
+	    0xeac7;
+	
+	  var isValidElement = function(object) {
+	    return typeof object === 'object' &&
+	      object !== null &&
+	      object.$$typeof === REACT_ELEMENT_TYPE;
+	  };
+	
+	  // By explicitly using `prop-types` you are opting into new development behavior.
+	  // http://fb.me/prop-types-in-prod
+	  var throwOnDirectAccess = true;
+	  module.exports = __webpack_require__(14)(isValidElement, throwOnDirectAccess);
+	} else {
+	  // By explicitly using `prop-types` you are opting into new production behavior.
+	  // http://fb.me/prop-types-in-prod
+	  module.exports = __webpack_require__(13)();
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 	/**
@@ -721,7 +762,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -778,7 +819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 	/*
@@ -941,12 +982,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var staticMatch = __webpack_require__(9).match;
+	var staticMatch = __webpack_require__(10).match;
 	var dynamicMatch = typeof window !== 'undefined' ? window.matchMedia : null;
 	
 	// our fake MediaQueryList
@@ -993,7 +1034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1010,7 +1051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (process.env.NODE_ENV !== 'production') {
 	  var invariant = __webpack_require__(3);
 	  var warning = __webpack_require__(5);
-	  var ReactPropTypesSecret = __webpack_require__(7);
+	  var ReactPropTypesSecret = __webpack_require__(8);
 	  var loggedTypeFailures = {};
 	}
 	
@@ -1061,7 +1102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -1121,7 +1162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -1139,8 +1180,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var invariant = __webpack_require__(3);
 	var warning = __webpack_require__(5);
 	
-	var ReactPropTypesSecret = __webpack_require__(7);
-	var checkPropTypes = __webpack_require__(11);
+	var ReactPropTypesSecret = __webpack_require__(8);
+	var checkPropTypes = __webpack_require__(12);
 	
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -1602,43 +1643,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return ReactPropTypes;
 	};
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-	
-	if (process.env.NODE_ENV !== 'production') {
-	  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-	    Symbol.for &&
-	    Symbol.for('react.element')) ||
-	    0xeac7;
-	
-	  var isValidElement = function(object) {
-	    return typeof object === 'object' &&
-	      object !== null &&
-	      object.$$typeof === REACT_ELEMENT_TYPE;
-	  };
-	
-	  // By explicitly using `prop-types` you are opting into new development behavior.
-	  // http://fb.me/prop-types-in-prod
-	  var throwOnDirectAccess = true;
-	  module.exports = __webpack_require__(13)(isValidElement, throwOnDirectAccess);
-	} else {
-	  // By explicitly using `prop-types` you are opting into new production behavior.
-	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(12)();
-	}
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 

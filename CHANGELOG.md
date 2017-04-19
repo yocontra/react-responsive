@@ -1,6 +1,14 @@
 ## Change Log
 
-### upcoming (2017/04/18 18:45 +00:00)
+### upcoming (2017/04/19 03:27 +00:00)
+- [#90](https://github.com/contra/react-responsive/pull/90) Replace proptypes in index file (@rmdort)
+- [a4a9120](https://github.com/contra/react-responsive/commit/a4a912073dff91401196fd8bc0ff41253573c49d) Removed React proptype in index (@rmdort)
+- [c1a8081](https://github.com/contra/react-responsive/commit/c1a8081809d91542f7ce77e13bec42cbc26cd067) Spellfix (@rmdort)
+- [0d7ffb6](https://github.com/contra/react-responsive/commit/0d7ffb6cf27027d7f1e64157a4d1b7ba45ffb0b1) Replace react proptypes (@rmdort)
+- [48c303f](https://github.com/contra/react-responsive/commit/48c303f7c47e1d553f4e4d5d639073e72f7822e7) build (@contra)
+
+### v1.2.8 (2017/04/18 18:45 +00:00)
+- [4778c1e](https://github.com/contra/react-responsive/commit/4778c1e3793bffe15fd66cc0f7c8cb30c7cc59f0) 1.2.8 (@contra)
 - [#88](https://github.com/contra/react-responsive/pull/88) Added prop-type library for React 16 (@rmdort)
 - [7039ef6](https://github.com/contra/react-responsive/commit/7039ef6e30e409d83a8cf5e3a894cfdb136d3582) Added prop-type library for react 16 (@rmdort)
 - [#86](https://github.com/contra/react-responsive/pull/86) docs(readme): add install part (@kud)
