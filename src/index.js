@@ -10,7 +10,8 @@ const defaultTypes = {
   component: PropTypes.node,
   query: PropTypes.string,
   values: PropTypes.shape(mediaQuery.matchers),
-  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.function ])
+  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.function ]),
+  onChange: PropTypes.function
 }
 const mediaKeys = Object.keys(mediaQuery.all)
 const excludedQueryKeys = Object.keys(defaultTypes)
@@ -79,6 +80,12 @@ export default class MediaQuery extends React.Component {
     this.setState({
       matches: this._mql.matches
     })
+  }
+  
+  componentDidUpdate(_, prevState) {
+   if(this.props.onChange && prevState.matches !== this.state.matches) {
+     this.props.onChange(this.state.matches);
+   }
   }
 
   render() {

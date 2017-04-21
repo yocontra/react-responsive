@@ -161,4 +161,15 @@ describe('MediaQuery', function() {
     const e = TestUtils.renderIntoDocument(mq);
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'no-match'));
   });
+  it('calls onChange callback if provided', function() {
+    const callback = sinon.spy()
+    const mq = (
+      <MediaQuery onChange={callback} query="all">
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq);
+    e.setState({ matches: false })
+    assert.isNotFalse(callback.calledOnce)
+  })
 });
