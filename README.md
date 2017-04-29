@@ -15,6 +15,10 @@
 <td>Browser Version</td>
 <td>>= IE6*</td>
 </tr>
+</tr>
+<tr>
+<td colspan="2"><a href="http://contra.io/react-responsive/">Demo</a></td>
+</tr>
 </table>
 
 The best supported, easiest to use react media query module.
