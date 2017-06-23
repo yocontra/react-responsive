@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "matchmedia": "^0.1.2",
+    "matchmedia": "git+https://github.com/iceddev/matchmedia.git",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {
@@ -47,6 +47,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
+    "cross-env": "^5.0.1",
     "eslint": "^3.9.0",
     "eslint-config-rackt": "^1.1.1",
     "github-changes": "^1.0.4",
@@ -64,8 +65,8 @@
     "preversion": "npm run clean && npm run build && npm docs",
     "postversion": "npm run changelog",
     "start": "webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
-    "build:umd": "BUILD_MODE=umd webpack",
-    "build:umd-min": "BUILD_MODE=umd-min webpack",
+    "build:umd": "cross-env BUILD_MODE=umd webpack",
+    "build:umd-min": "cross-env BUILD_MODE=umd-min webpack",
     "build": "npm run build:umd && npm run build:umd-min",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
