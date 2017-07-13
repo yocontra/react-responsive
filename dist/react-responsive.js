@@ -72,9 +72,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _matchmedia = __webpack_require__(11);
+	var _matchmediaquery = __webpack_require__(11);
 	
-	var _matchmedia2 = _interopRequireDefault(_matchmedia);
+	var _matchmediaquery2 = _interopRequireDefault(_matchmediaquery);
 	
 	var _hyphenateStyleName = __webpack_require__(7);
 	
@@ -173,9 +173,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      if (this._mql) {
 	        this._mql.removeListener(this.updateMatches);
+	        this._mql.dispose();
 	      }
 	
-	      this._mql = (0, _matchmedia2.default)(this.query, values);
+	      this._mql = (0, _matchmediaquery2.default)(this.query, values);
 	      this._mql.addListener(this.updateMatches);
 	      this.updateMatches();
 	    }
@@ -197,6 +198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      this._mql.removeListener(this.updateMatches);
+	      this._mql.dispose();
 	    }
 	  }, {
 	    key: 'render',
@@ -566,10 +568,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var stringOrNumber = _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]
+	var stringOrNumber = _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]);
 	
 	// properties that match media queries
-	);var matchers = {
+	var matchers = {
 	  orientation: _propTypes2.default.oneOf(['portrait', 'landscape']),
 	
 	  scan: _propTypes2.default.oneOf(['progressive', 'interlace']),
@@ -816,10 +818,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function keyVal(k, v) {
-	  var realKey = (0, _hyphenateStyleName2.default)(k
+	  var realKey = (0, _hyphenateStyleName2.default)(k);
 	
 	  // px shorthand
-	  );if (typeof v === 'number') {
+	  if (typeof v === 'number') {
 	    v = v + 'px';
 	  }
 	  if (v === true) {
@@ -1025,6 +1027,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  this.addListener = addListener;
 	  this.removeListener = removeListener;
+	  this.dispose = dispose;
 	
 	  function addListener(listener){
 	    if(mql){
@@ -1042,6 +1045,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function update(evt){
 	    self.matches = evt.matches;
 	    self.media = evt.media;
+	  }
+	
+	  function dispose(){
+	    mql.removeListener(update);
 	  }
 	}
 	
