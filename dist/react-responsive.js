@@ -72,9 +72,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _matchmedia = __webpack_require__(11);
+	var _matchmediaquery = __webpack_require__(11);
 	
-	var _matchmedia2 = _interopRequireDefault(_matchmedia);
+	var _matchmediaquery2 = _interopRequireDefault(_matchmediaquery);
 	
 	var _hyphenateStyleName = __webpack_require__(7);
 	
@@ -176,7 +176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this._mql.dispose();
 	      }
 	
-	      this._mql = (0, _matchmedia2.default)(this.query, values);
+	      this._mql = (0, _matchmediaquery2.default)(this.query, values);
 	      this._mql.addListener(this.updateMatches);
 	      this.updateMatches();
 	    }

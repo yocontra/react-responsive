@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "matchmedia": "git+https://github.com/iceddev/matchmedia.git",
+    "matchmediaquery": "^0.2.0",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {
@@ -71,7 +71,7 @@
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "lint": "eslint src",
-    "test": "NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
+    "test": "cross-env NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
     "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body",
     "docs": "npm run docs:pre && npm run docs:build && npm run docs:publish",
     "docs:pre": "gitbook install && rimraf _book",

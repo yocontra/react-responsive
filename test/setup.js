@@ -1,5 +1,5 @@
 var jsdom = require('jsdom').jsdom;
-var matchMedia = require('matchmedia');
+var matchMedia = require('matchmediaquery');
 
 process.env.NODE_ENV = 'test';
 
