@@ -1,6 +1,25 @@
 ## Change Log
 
-### upcoming (2017/05/09 01:13 +00:00)
+### upcoming (2017/07/14 14:47 +00:00)
+- [516f270](https://github.com/contra/react-responsive/commit/516f2703dd4f35611d60a399ebd61273140ff88e) merge (@contra)
+- [40fe34e](https://github.com/contra/react-responsive/commit/40fe34e003669f44692aedb054079126bedc5bc4) build (@contra)
+- [85ae4cd](https://github.com/contra/react-responsive/commit/85ae4cd10fb0ea98a313f4335590452893f329ad) build (@contra)
+- [69cde10](https://github.com/contra/react-responsive/commit/69cde106d817b3f4df7cbdd540ed27edfcc7f2d8) changes (@contra)
+- [#106](https://github.com/contra/react-responsive/pull/106) Fixing a memory leak. (@ncochard)
+- [00af280](https://github.com/contra/react-responsive/commit/00af280f57d979963d6c1d445e9c8c088ee03b82) 1.3.1
+- [1e8dcb9](https://github.com/contra/react-responsive/commit/1e8dcb9b790c4ce8cf24b96936f4d5760c3a3494) Created 'matchmediaquery' as a replacement for 'matchmedia'.
+- [6df7684](https://github.com/contra/react-responsive/commit/6df7684736797589245a643eb72e8e243dd987be) Fix for a memory leak.
+- [#102](https://github.com/contra/react-responsive/pull/102) Close #74 (@WRONGWAY4YOU)
+- [7877b80](https://github.com/contra/react-responsive/commit/7877b8003dc8f69f6350304c319daa3e35351aae) Merge branch 'master' into iss74 (@wrongway4you)
+- [374b290](https://github.com/contra/react-responsive/commit/374b290722e50c7bade5e136a08ad53671b7df4a) Close #74 (@wrongway4you)
+- [4156475](https://github.com/contra/react-responsive/commit/4156475e882fa3f8098991a6b713dd743b24a739) Merge branch 'remove-npm-bin-prefixes' (@wrongway4you)
+- [#101](https://github.com/contra/react-responsive/pull/101) Remove unneeded "$(npm bin)/" prefixes (@WRONGWAY4YOU)
+- [adfaf69](https://github.com/contra/react-responsive/commit/adfaf69be82b56f91c66da7b17735aa4faa901f5) Remove unneeded "$(npm bin)/" prefixes in `package.json` (@wrongway4you)
+- [#100](https://github.com/contra/react-responsive/pull/100) Document common use cases (@sonaye)
+- [b917322](https://github.com/contra/react-responsive/commit/b917322352dbb68939f2e1f140a89e4836dad4d4) Document common use cases (@sonaye)
+
+### v1.3.0 (2017/05/09 01:13 +00:00)
+- [44a7bf8](https://github.com/contra/react-responsive/commit/44a7bf8bd6f4289c4a644d4d1cdefbc5b01523c2) 1.3.0 (@contra)
 - [#97](https://github.com/contra/react-responsive/pull/97) Add onChange and onChangeBefore callbacks (@hiddenboox)
 - [6cb52b1](https://github.com/contra/react-responsive/commit/6cb52b15a452f1189bd4f89a4c5ce41bee21fe02) Add onBeforeChange callback (@hiddenboox)
 - [#96](https://github.com/contra/react-responsive/pull/96) Adding demo link to readme (@scottwarren)
@@ -143,7 +162,7 @@
 - [45861f7](https://github.com/contra/react-responsive/commit/45861f7dea95a4b7486be7949b7e08bee24bed74) Update package.json (@frederickfogerty)
 - [84fb5a8](https://github.com/contra/react-responsive/commit/84fb5a849845c77ecdbd2a8c89524241a83f33b3) Add support for React 0.14.0-beta1 (@frederickfogerty)
 - [#16](https://github.com/contra/react-responsive/pull/16) Use `hyphenate-style-name` module instead of React internal (@rexxars)
-- [7046106](https://github.com/contra/react-responsive/commit/704610624d1ede95c0043e43a4be8fa6346315c3) Use `hyphenate-style-name` module instead of React internal
+- [7046106](https://github.com/contra/react-responsive/commit/704610624d1ede95c0043e43a4be8fa6346315c3) Use `hyphenate-style-name` module instead of React internal (@rexxars)
 
 ### v0.0.7 (2015/07/22 06:22 +00:00)
 - [4050ab3](https://github.com/contra/react-responsive/commit/4050ab3041ea7075e2f59c5a5acd95451d648aaa) 0.0.7 (@contra)
@@ -157,8 +176,8 @@
 - [7db99e3](https://github.com/contra/react-responsive/commit/7db99e321db4f4c24b7da759bb4247658208ec2f) Provide more flexible React peer dependency range (@colindresj)
 - [#11](https://github.com/contra/react-responsive/pull/11) switch to matchmedia module for client/server abstraction (@phated)
 - [7d05ab6](https://github.com/contra/react-responsive/commit/7d05ab60e7feb53d118ea94f92e5103bdae08627) change names to MediaQuery and add `all` type (@phated)
-- [6c6054a](https://github.com/contra/react-responsive/commit/6c6054a48df4620c301f31ffe6e456f0a2000142) update readme (@phated)
 - [39ab71d](https://github.com/contra/react-responsive/commit/39ab71d2f60a238ae3ac78bc485f804f2e2fc07e) add type property (@phated)
+- [6c6054a](https://github.com/contra/react-responsive/commit/6c6054a48df4620c301f31ffe6e456f0a2000142) update readme (@phated)
 - [48e6c5d](https://github.com/contra/react-responsive/commit/48e6c5d6c3b8360603f2aeabb599b3c601cb74b9) update reactify, add example, use React.PropTypes.shape to define values (@phated)
 - [759154b](https://github.com/contra/react-responsive/commit/759154bfb098aed3be707086d0448ec39cc42ffe) switch to matchmedia module for client/server abstraction (@phated)
 
