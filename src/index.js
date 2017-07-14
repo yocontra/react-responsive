@@ -10,9 +10,9 @@ const defaultTypes = {
   component: PropTypes.node,
   query: PropTypes.string,
   values: PropTypes.shape(mediaQuery.matchers),
-  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.function ]),
-  onChange: PropTypes.function,
-  onBeforeChange: PropTypes.function,
+  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
+  onChange: PropTypes.func,
+  onBeforeChange: PropTypes.func
 }
 const mediaKeys = Object.keys(mediaQuery.all)
 const excludedQueryKeys = Object.keys(defaultTypes)
@@ -62,7 +62,7 @@ export default class MediaQuery extends React.Component {
 
     if (this._mql) {
       this._mql.removeListener(this.updateMatches)
-      this._mql.dispose();
+      this._mql.dispose()
     }
 
     this._mql = matchMedia(this.query, values)
@@ -77,14 +77,14 @@ export default class MediaQuery extends React.Component {
   }
 
   componentDidUpdate(_, prevState) {
-   if(this.props.onChange && prevState.matches !== this.state.matches) {
-     this.props.onChange(this.state.matches)
-   }
+    if(this.props.onChange && prevState.matches !== this.state.matches) {
+      this.props.onChange(this.state.matches)
+    }
   }
 
   componentWillUnmount() {
     this._mql.removeListener(this.updateMatches)
-    this._mql.dispose();
+    this._mql.dispose()
   }
 
   updateMatches = () => {

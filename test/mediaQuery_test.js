@@ -1,12 +1,12 @@
-var assert = require('chai').assert;
-var mediaQuery = require('mediaQuery');
+const assert = require('chai').assert
+const mediaQuery = require('mediaQuery')
 
-describe('mediaQuery', function() {
-  it('has types and features in [all]', function() {
-    assert.deepEqual(Object.keys(mediaQuery.all), Object.keys(mediaQuery.types).concat(Object.keys(mediaQuery.features)));
-  });
+describe('mediaQuery', function () {
+  it('has types and features in [all]', function () {
+    assert.deepEqual(Object.keys(mediaQuery.all), Object.keys(mediaQuery.types).concat(Object.keys(mediaQuery.features)))
+  })
   it('has all media types', function () {
-    var types = [
+    let types = [
       'all',
       'grid',
       'aural',
@@ -18,10 +18,10 @@ describe('mediaQuery', function() {
       'tty',
       'tv',
       'embossed'
-    ];
-    assert.deepEqual(Object.keys(mediaQuery.types), types);
-  });
-  it('has matchers', function() {
+    ]
+    assert.deepEqual(Object.keys(mediaQuery.types), types)
+  })
+  it('has matchers', function () {
     const matchers = [
       'orientation',
       'scan',
@@ -35,11 +35,11 @@ describe('mediaQuery', function() {
       'colorIndex',
       'monochrome',
       'resolution'
-    ];
-    matchers.push('type');
-    assert.deepEqual(Object.keys(mediaQuery.matchers), matchers);
-  });
-  it('has features', function() {
+    ]
+    matchers.push('type')
+    assert.deepEqual(Object.keys(mediaQuery.matchers), matchers)
+  })
+  it('has features', function () {
     const features = [
       'minAspectRatio',
       'maxAspectRatio',
@@ -61,10 +61,10 @@ describe('mediaQuery', function() {
       'maxMonochrome',
       'minResolution',
       'maxResolution'
-    ];
-    const keys = features.concat(Object.keys(mediaQuery.matchers));
-    keys.splice(keys.indexOf('type'), 1);
+    ]
+    const keys = features.concat(Object.keys(mediaQuery.matchers))
+    keys.splice(keys.indexOf('type'), 1)
 
-    assert.deepEqual(Object.keys(mediaQuery.features), keys);
-  });
-});
+    assert.deepEqual(Object.keys(mediaQuery.features), keys)
+  })
+})

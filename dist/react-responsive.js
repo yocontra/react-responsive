@@ -100,9 +100,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  component: _propTypes2.default.node,
 	  query: _propTypes2.default.string,
 	  values: _propTypes2.default.shape(_mediaQuery2.default.matchers),
-	  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.function]),
-	  onChange: _propTypes2.default.function,
-	  onBeforeChange: _propTypes2.default.function
+	  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.func]),
+	  onChange: _propTypes2.default.func,
+	  onBeforeChange: _propTypes2.default.func
 	};
 	var mediaKeys = Object.keys(_mediaQuery2.default.all);
 	var excludedQueryKeys = Object.keys(defaultTypes);
