@@ -1049,7 +1049,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  function dispose(){
-	    mql.removeListener(update);
+	    if(mql){
+	      mql.removeListener(update);
+	    }
 	  }
 	}
 	
