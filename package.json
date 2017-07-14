@@ -50,11 +50,11 @@
     "cross-env": "^5.0.1",
     "eslint": "^3.9.0",
     "eslint-config-rackt": "^1.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "github-changes": "^1.0.4",
     "jsdom": "^8.4.0",
     "mocha": "^2.4.5",
     "react": "^15.0.1",
-    "react-addons-test-utils": "^15.0.1",
     "react-dom": "^0.14.0 || ^15.0.0",
     "should": "^8.0.2",
     "sinon": "^1.17.3",
@@ -70,7 +70,7 @@
     "build": "npm run build:umd && npm run build:umd-min",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "test": "cross-env NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
     "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body",
     "docs": "npm run docs:pre && npm run docs:build && npm run docs:publish",
@@ -90,21 +90,28 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": "rackt",
+    "extends": ["rackt","plugin:react/recommended"],
     "env": {
       "browser": true,
       "node": true,
-      "es6": true
+      "es6": true,
+      "mocha": true
     },
     "ecmaFeatures": {
-      "modules": true
+      "modules": true,
+      "ecmaVersion": 7,
+      "jsx": true
     },
     "rules": {
       "semi": [
         2,
         "never"
-      ]
-    }
+      ],
+      "react/prop-types": 0
+    },
+    "plugins": [
+      "react"
+    ]
   },
   "engines": {
     "node": ">= 0.10"
