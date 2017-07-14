@@ -1,6 +1,12 @@
 ## Change Log
 
-### upcoming (2017/07/14 14:47 +00:00)
+### upcoming (2017/07/14 19:32 +00:00)
+- [#108](https://github.com/contra/react-responsive/pull/108) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix … (@modosc)
+- [49919d0](https://github.com/contra/react-responsive/commit/49919d09b7a4e984873b570132ada5554300f071) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix eslint to work with test/ (@modosc)
+- [9957f24](https://github.com/contra/react-responsive/commit/9957f2445bd4d16b8d2ae1ae8a335dc2c95d476f) 1.3.2 (@contra)
+
+### v1.3.2 (2017/07/14 14:47 +00:00)
+- [a595593](https://github.com/contra/react-responsive/commit/a595593f413b5012de57f8ca7eabec5490a7426c) 1.3.2 (@contra)
 - [516f270](https://github.com/contra/react-responsive/commit/516f2703dd4f35611d60a399ebd61273140ff88e) merge (@contra)
 - [40fe34e](https://github.com/contra/react-responsive/commit/40fe34e003669f44692aedb054079126bedc5bc4) build (@contra)
 - [85ae4cd](https://github.com/contra/react-responsive/commit/85ae4cd10fb0ea98a313f4335590452893f329ad) build (@contra)
