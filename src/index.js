@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import matchMedia from 'matchmedia'
+import matchMedia from 'matchmediaquery'
 import hyphenate  from 'hyphenate-style-name'
 import mediaQuery from './mediaQuery'
 import toQuery  from './toQuery'
@@ -62,6 +62,7 @@ export default class MediaQuery extends React.Component {
 
     if (this._mql) {
       this._mql.removeListener(this.updateMatches)
+      this._mql.dispose();
     }
 
     this._mql = matchMedia(this.query, values)
@@ -74,7 +75,7 @@ export default class MediaQuery extends React.Component {
       this.props.onBeforeChange(this.state.matches)
     }
   }
-  
+
   componentDidUpdate(_, prevState) {
    if(this.props.onChange && prevState.matches !== this.state.matches) {
      this.props.onChange(this.state.matches)
@@ -83,6 +84,7 @@ export default class MediaQuery extends React.Component {
 
   componentWillUnmount() {
     this._mql.removeListener(this.updateMatches)
+    this._mql.dispose();
   }
 
   updateMatches = () => {

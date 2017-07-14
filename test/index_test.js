@@ -1,6 +1,6 @@
 var React = require('react');
 var MediaQuery = require('index');
-var mm = { default: require('matchmedia') };
+var mm = { default: require('matchmediaquery') };
 var assert = require('chai').assert;
 var sinon = require('sinon');
 var TestUtils = require('react-addons-test-utils');

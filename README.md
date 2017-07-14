@@ -229,6 +229,34 @@ var A = React.createClass({
 });
 ```
 
+### Common use cases
+
+```javascript
+import Responsive from 'react-responsive';
+
+// Desktop, tablet and mobile setup
+const Desktop = ({ children }) => <Responsive minWidth={992} children={children} />;
+const Tablet = ({ children }) => <Responsive minWidth={768} maxWidth={992} children={children} />;
+const Mobile = ({ children }) => <Responsive maxWidth={768} children={children} />;
+
+// Default (desktop, tablet) and mobile setup
+const Default = ({ children }) => <Responsive minWidth={768} children={children} />;
+const Mobile = ({ children }) => <Responsive maxWidth={768} children={children} />;
+
+const Example = () => (
+  <div>
+    <Desktop>You are a desktop or laptop</Desktop>
+    <Tablet>You are a tablet</Tablet>
+    <Mobile>You are a mobile phone</Mobile>
+    
+    <Default>You are not a mobile phone</Default>
+    <Mobile>You are a mobile phone</Mobile>
+  </div>
+);
+
+export default Example;
+```
+
 ## Browser Support
 
 ### Out of the box
