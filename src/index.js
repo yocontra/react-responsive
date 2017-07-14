@@ -60,10 +60,7 @@ export default class MediaQuery extends React.Component {
         }, {})
     }
 
-    if (this._mql) {
-      this._mql.removeListener(this.updateMatches)
-      this._mql.dispose()
-    }
+    this.removeMql()
 
     this._mql = matchMedia(this.query, values)
     this._mql.addListener(this.updateMatches)
@@ -83,8 +80,7 @@ export default class MediaQuery extends React.Component {
   }
 
   componentWillUnmount() {
-    this._mql.removeListener(this.updateMatches)
-    this._mql.dispose()
+    this.removeMql()
   }
 
   updateMatches = () => {
@@ -94,6 +90,13 @@ export default class MediaQuery extends React.Component {
     this.setState({
       matches: this._mql.matches
     })
+  }
+
+  removeMql = () => {
+    if (this._mql) {
+      this._mql.removeListener(this.updateMatches)
+      this._mql.dispose()
+    }
   }
 
   render() {
