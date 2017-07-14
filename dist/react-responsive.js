@@ -100,7 +100,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  component: _propTypes2.default.node,
 	  query: _propTypes2.default.string,
 	  values: _propTypes2.default.shape(_mediaQuery2.default.matchers),
-	  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.function])
+	  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.function]),
+	  onChange: _propTypes2.default.function,
+	  onBeforeChange: _propTypes2.default.function
 	};
 	var mediaKeys = Object.keys(_mediaQuery2.default.all);
 	var excludedQueryKeys = Object.keys(defaultTypes);
@@ -176,6 +178,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this._mql = (0, _matchmedia2.default)(this.query, values);
 	      this._mql.addListener(this.updateMatches);
 	      this.updateMatches();
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(_, nextState) {
+	      if (this.props.onBeforeChange && this.state.matches !== nextState.matches) {
+	        this.props.onBeforeChange(this.state.matches);
+	      }
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(_, prevState) {
+	      if (this.props.onChange && prevState.matches !== this.state.matches) {
+	        this.props.onChange(this.state.matches);
+	      }
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -392,6 +408,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+	
+	process.listeners = function (name) { return [] }
 	
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
