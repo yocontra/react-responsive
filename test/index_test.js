@@ -3,6 +3,7 @@ const MediaQuery = require('index')
 const mm = { default: require('matchmediaquery') }
 const assert = require('chai').assert
 const sinon = require('sinon')
+const ReactDOM = require('react-dom')
 const TestUtils = require('react-dom/test-utils')
 
 describe('MediaQuery', function () {
@@ -199,5 +200,15 @@ describe('MediaQuery', function () {
     const e = TestUtils.renderIntoDocument(mq)
     e.setState({ matches: false })
     assert.isNotFalse(onBeforeChangeCallback.calledBefore(onChangeCallback))
+  })
+  it('handles unmount', function () {
+    const container = document.createElement('div')
+    const mq = (
+        <MediaQuery query="all">
+          <div className="childComponent"/>
+        </MediaQuery>
+      )
+    ReactDOM.render(mq, container)
+    assert.doesNotThrow(() => ReactDOM.unmountComponentAtNode(container))
   })
 })

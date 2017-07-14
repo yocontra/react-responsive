@@ -137,6 +137,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _this.setState({
 	        matches: _this._mql.matches
 	      });
+	    }, _this.removeMql = function () {
+	      if (_this._mql) {
+	        _this._mql.removeListener(_this.updateMatches);
+	        _this._mql.dispose();
+	      }
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
@@ -171,10 +176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }, {});
 	      }
 	
-	      if (this._mql) {
-	        this._mql.removeListener(this.updateMatches);
-	        this._mql.dispose();
-	      }
+	      this.removeMql();
 	
 	      this._mql = (0, _matchmediaquery2.default)(this.query, values);
 	      this._mql.addListener(this.updateMatches);
@@ -197,8 +199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      this._mql.removeListener(this.updateMatches);
-	      this._mql.dispose();
+	      this.removeMql();
 	    }
 	  }, {
 	    key: 'render',
@@ -1048,7 +1049,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  function dispose(){
-	    mql.removeListener(update);
+	    if(mql){
+	      mql.removeListener(update);
+	    }
 	  }
 	}
 	

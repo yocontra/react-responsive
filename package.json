@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "matchmediaquery": "^0.2.0",
+    "matchmediaquery": "^0.2.1",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {
