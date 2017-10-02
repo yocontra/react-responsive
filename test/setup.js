@@ -1,12 +1,12 @@
-const jsdom = require('jsdom').jsdom
+const JSDOM = require('jsdom').JSDOM
 const matchMedia = require('matchmediaquery')
 
 process.env.NODE_ENV = 'test'
 
-global.document = jsdom('<!doctype html><html><body><div id="app"></div></body></html>', {
+global.window = new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>', {
   url: 'http://test.page'
-})
-global.window = document.defaultView
+}).window
+global.document = window.document
 global.self = global.window
 global.navigator = global.window.navigator
 

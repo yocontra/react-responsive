@@ -1,11 +1,10 @@
 /* global document, window */
 
-'use strict';
 
-var MediaQuery = require('../../../src');
-var React = require('react');
-var ReactDOM = require('react-dom');
-window.React = React; // for dev
+var MediaQuery = require('index')
+var React = require('react')
+var ReactDOM = require('react-dom')
+window.React = React // for dev
 
 var App = React.createClass({
   displayName: 'demo',
@@ -36,8 +35,8 @@ var App = React.createClass({
           <div>You are retina</div>
         </MediaQuery>
       </div>
-    );
+    )
   }
-});
+})
 
-ReactDOM.render(<App/>, document.getElementById('main'));
+ReactDOM.render(<App/>, document.getElementById('main'))

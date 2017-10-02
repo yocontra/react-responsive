@@ -39,38 +39,34 @@ A MediaQuery element functions like any other React component, which means you c
 ### Using CSS Media Queries
 
 ```jsx
-var MediaQuery = require('react-responsive');
+import MediaQuery from 'react-responsive';
 
-var A = React.createClass({
-  render: function(){
-    return (
-      <div>
-        <div>Device Test!</div>
-        <MediaQuery query='(min-device-width: 1224px)'>
-          <div>You are a desktop or laptop</div>
-          <MediaQuery query='(min-device-width: 1824px)'>
-            <div>You also have a huge screen</div>
-          </MediaQuery>
-          <MediaQuery query='(max-width: 1224px)'>
-            <div>You are sized like a tablet or mobile phone though</div>
-          </MediaQuery>
-        </MediaQuery>
-        <MediaQuery query='(max-device-width: 1224px)'>
-          <div>You are a tablet or mobile phone</div>
-        </MediaQuery>
-        <MediaQuery query='(orientation: portrait)'>
-          <div>You are portrait</div>
-        </MediaQuery>
-        <MediaQuery query='(orientation: landscape)'>
-          <div>You are landscape</div>
-        </MediaQuery>
-        <MediaQuery query='(min-resolution: 2dppx)'>
-          <div>You are retina</div>
-        </MediaQuery>
-      </div>
-    );
-  }
-});
+const Example = () => (
+  <div>
+    <div>Device Test!</div>
+    <MediaQuery query="(min-device-width: 1224px)">
+      <div>You are a desktop or laptop</div>
+      <MediaQuery query="(min-device-width: 1824px)">
+        <div>You also have a huge screen</div>
+      </MediaQuery>
+      <MediaQuery query="(max-width: 1224px)">
+        <div>You are sized like a tablet or mobile phone though</div>
+      </MediaQuery>
+    </MediaQuery>
+    <MediaQuery query="(max-device-width: 1224px)">
+      <div>You are a tablet or mobile phone</div>
+    </MediaQuery>
+    <MediaQuery query="(orientation: portrait)">
+      <div>You are portrait</div>
+    </MediaQuery>
+    <MediaQuery query="(orientation: landscape)">
+      <div>You are landscape</div>
+    </MediaQuery>
+    <MediaQuery query="(min-resolution: 2dppx)">
+      <div>You are retina</div>
+    </MediaQuery>
+  </div>
+);
 ```
 
 ### Using Properties
@@ -85,38 +81,34 @@ Any numbers given as a shorthand will be expanded to px (`1234` will become `'12
 
 
 ```jsx
-var MediaQuery = require('react-responsive');
+import MediaQuery from 'react-responsive';
 
-var A = React.createClass({
-  render: function(){
-    return (
-      <div>
-        <div>Device Test!</div>
-        <MediaQuery minDeviceWidth={1224}>
-          <div>You are a desktop or laptop</div>
-          <MediaQuery minDeviceWidth={1824}>
-            <div>You also have a huge screen</div>
-          </MediaQuery>
-          <MediaQuery maxWidth={1224}>
-            <div>You are sized like a tablet or mobile phone though</div>
-          </MediaQuery>
-        </MediaQuery>
-        <MediaQuery maxDeviceWidth={1224}>
-          <div>You are a tablet or mobile phone</div>
-        </MediaQuery>
-        <MediaQuery orientation='portrait'>
-          <div>You are portrait</div>
-        </MediaQuery>
-        <MediaQuery orientation='landscape'>
-          <div>You are landscape</div>
-        </MediaQuery>
-        <MediaQuery minResolution='2dppx'>
-          <div>You are retina</div>
-        </MediaQuery>
-      </div>
-    );
-  }
-});
+const Example = () => (
+  <div>
+    <div>Device Test!</div>
+    <MediaQuery minDeviceWidth={1224}>
+      <div>You are a desktop or laptop</div>
+      <MediaQuery minDeviceWidth={1824}>
+        <div>You also have a huge screen</div>
+      </MediaQuery>
+      <MediaQuery maxWidth={1224}>
+        <div>You are sized like a tablet or mobile phone though</div>
+      </MediaQuery>
+    </MediaQuery>
+    <MediaQuery maxDeviceWidth={1224}>
+      <div>You are a tablet or mobile phone</div>
+    </MediaQuery>
+    <MediaQuery orientation="portrait">
+      <div>You are portrait</div>
+    </MediaQuery>
+    <MediaQuery orientation="landscape">
+      <div>You are landscape</div>
+    </MediaQuery>
+    <MediaQuery minResolution="2dppx">
+      <div>You are retina</div>
+    </MediaQuery>
+  </div>
+);
 ```
 
 ### Rendering with a child function
@@ -198,38 +190,34 @@ If you are using [redux](http://redux.js.org/) you can automatically pass `width
 
 
 ```jsx
-var MediaQuery = require('react-responsive');
+import MediaQuery from 'react-responsive';
 
-var A = React.createClass({
-  render: function(){
-    return (
-      <div>
-        <div>Device Test!</div>
-        <MediaQuery minDeviceWidth={1224} values={{deviceWidth: 1600}}>
-          <div>You are a desktop or laptop</div>
-          <MediaQuery minDeviceWidth={1824}>
-            <div>You also have a huge screen</div>
-          </MediaQuery>
-          <MediaQuery maxWidth={1224}>
-            <div>You are sized like a tablet or mobile phone though</div>
-          </MediaQuery>
-        </MediaQuery>
-        <MediaQuery maxDeviceWidth={1224}>
-          <div>You are a tablet or mobile phone</div>
-        </MediaQuery>
-        <MediaQuery orientation='portrait'>
-          <div>You are portrait</div>
-        </MediaQuery>
-        <MediaQuery orientation='landscape'>
-          <div>You are landscape</div>
-        </MediaQuery>
-        <MediaQuery minResolution='2dppx'>
-          <div>You are retina</div>
-        </MediaQuery>
-      </div>
-    );
-  }
-});
+const Example = () => (
+  <div>
+    <div>Device Test!</div>
+    <MediaQuery minDeviceWidth={1224} values={{ deviceWidth: 1600 }}>
+      <div>You are a desktop or laptop</div>
+      <MediaQuery minDeviceWidth={1824}>
+        <div>You also have a huge screen</div>
+      </MediaQuery>
+      <MediaQuery maxWidth={1224}>
+        <div>You are sized like a tablet or mobile phone though</div>
+      </MediaQuery>
+    </MediaQuery>
+    <MediaQuery maxDeviceWidth={1224}>
+      <div>You are a tablet or mobile phone</div>
+    </MediaQuery>
+    <MediaQuery orientation="portrait">
+      <div>You are portrait</div>
+    </MediaQuery>
+    <MediaQuery orientation="landscape">
+      <div>You are landscape</div>
+    </MediaQuery>
+    <MediaQuery minResolution="2dppx">
+      <div>You are retina</div>
+    </MediaQuery>
+  </div>
+);
 ```
 
 ### Common use cases
