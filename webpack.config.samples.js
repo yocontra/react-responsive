@@ -12,7 +12,7 @@ conf.devServer = {
   hot: true,
   disableHostCheck: true
 }
-conf.plugins = [...conf.plugins,  new webpack.HotModuleReplacementPlugin()]
+conf.plugins = [ ...conf.plugins,  new webpack.HotModuleReplacementPlugin() ]
 conf.cache = true
 conf.devtool = 'inline-source-map'
 

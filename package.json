@@ -53,15 +53,15 @@
     "github-changes": "^1.0.4",
     "jsdom": "^11.2.0",
     "mocha": "^3.5.3",
-    "react": "^16.0.0",
-    "react-dom": "^0.14.0 || ^16.0.0",
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0",
     "should": "^13.0.1",
     "sinon": "^4.0.0",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.8.1"
   },
   "scripts": {
-    "preversion": "npm run clean && npm run build && npm docs",
+    "preversion": "npm run clean && npm run build",
     "postversion": "npm run changelog",
     "start": "webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
     "build:umd": "cross-env BUILD_MODE=umd webpack",
@@ -71,11 +71,7 @@
     "clean": "rimraf dist",
     "lint": "eslint src test",
     "test": "cross-env NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
-    "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body",
-    "docs": "npm run docs:pre && npm run docs:build && npm run docs:publish",
-    "docs:pre": "gitbook install && rimraf _book",
-    "docs:build": "gitbook build -g contra/react-responsive",
-    "docs:publish": "cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:contra/react-responsive gh-pages --force"
+    "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body"
   },
   "babel": {
     "presets": [
