@@ -11,3 +11,7 @@ global.self = global.window
 global.navigator = global.window.navigator
 
 global.window.matchMedia = matchMedia
+
+global.requestAnimationFrame = function (callback) {
+  setTimeout(callback, 0)
+}
