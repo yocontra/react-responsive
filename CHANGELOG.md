@@ -1,6 +1,14 @@
 ## Change Log
 
-### upcoming (2017/07/14 19:32 +00:00)
+### upcoming (2017/07/14 21:36 +00:00)
+- [#109](https://github.com/contra/react-responsive/pull/109) fix Cannot read property 'removeListener' of undefined (@modosc)
+- [ea3d577](https://github.com/contra/react-responsive/commit/ea3d5774bc59fa06ad50d60e582a9f6da94b9bd5) update matchmediaquery@^0.2.1 (@modosc)
+- [3687115](https://github.com/contra/react-responsive/commit/3687115de3603cfb32eb5f3e4d3b9883b12f3ed3) fix Cannot read property 'removeListener' of undefined (@modosc)
+- [83c2409](https://github.com/contra/react-responsive/commit/83c24092225fa20c96c4bded03e845cb4baf5bec) 1.3.3 (@contra)
+
+### v1.3.3 (2017/07/14 19:32 +00:00)
+- [58fdb89](https://github.com/contra/react-responsive/commit/58fdb89893de8a9ec5495624c19f54bcced220c3) 1.3.3 (@contra)
+- [e3781d2](https://github.com/contra/react-responsive/commit/e3781d208f7d7528add58b9b69fb998fe8f1e94e) diff (@contra)
 - [#108](https://github.com/contra/react-responsive/pull/108) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix … (@modosc)
 - [49919d0](https://github.com/contra/react-responsive/commit/49919d09b7a4e984873b570132ada5554300f071) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix eslint to work with test/ (@modosc)
 - [9957f24](https://github.com/contra/react-responsive/commit/9957f2445bd4d16b8d2ae1ae8a335dc2c95d476f) 1.3.2 (@contra)
@@ -182,8 +190,8 @@
 - [7db99e3](https://github.com/contra/react-responsive/commit/7db99e321db4f4c24b7da759bb4247658208ec2f) Provide more flexible React peer dependency range (@colindresj)
 - [#11](https://github.com/contra/react-responsive/pull/11) switch to matchmedia module for client/server abstraction (@phated)
 - [7d05ab6](https://github.com/contra/react-responsive/commit/7d05ab60e7feb53d118ea94f92e5103bdae08627) change names to MediaQuery and add `all` type (@phated)
-- [39ab71d](https://github.com/contra/react-responsive/commit/39ab71d2f60a238ae3ac78bc485f804f2e2fc07e) add type property (@phated)
 - [6c6054a](https://github.com/contra/react-responsive/commit/6c6054a48df4620c301f31ffe6e456f0a2000142) update readme (@phated)
+- [39ab71d](https://github.com/contra/react-responsive/commit/39ab71d2f60a238ae3ac78bc485f804f2e2fc07e) add type property (@phated)
 - [48e6c5d](https://github.com/contra/react-responsive/commit/48e6c5d6c3b8360603f2aeabb599b3c601cb74b9) update reactify, add example, use React.PropTypes.shape to define values (@phated)
 - [759154b](https://github.com/contra/react-responsive/commit/759154bfb098aed3be707086d0448ec39cc42ffe) switch to matchmedia module for client/server abstraction (@phated)
 
