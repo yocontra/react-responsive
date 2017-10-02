@@ -1,6 +1,8 @@
 ## Change Log
 
-### upcoming (2017/10/02 19:22 +00:00)
+### upcoming (2017/10/02 21:11 +00:00)
+- [14004ab](https://github.com/contra/react-responsive/commit/14004aba9ec54fd7b807abf6ed960a6cff87ada3) housekeeping (@contra)
+- [8ff7425](https://github.com/contra/react-responsive/commit/8ff742533e3fdf8d113c945cbe9291c16b8b3278) rebuild (@contra)
 - [#120](https://github.com/contra/react-responsive/pull/120) support react 16. (@whatknight)
 - [6b300d7](https://github.com/contra/react-responsive/commit/6b300d7cc1bb340afa14eb046290a5d03064120b) Merge branch 'master' into react16 (@contra)
 - [#119](https://github.com/contra/react-responsive/pull/119) Housekeeping (@whatknight)
