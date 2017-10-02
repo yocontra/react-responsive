@@ -1,6 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const plugins = [new webpack.EnvironmentPlugin({
+  NODE_ENV: process.env.BUILD_MODE == 'umd-min' ? 'production' : 'development'
+})]
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -15,20 +19,26 @@ module.exports = {
     'react': 'umd react',
     'react-dom': 'umd react-dom'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    ...((process.env.BUILD_MODE == 'umd-min') ?
-        [new webpack.optimize.UglifyJsPlugin()] : [])
-  ],
+  plugins: process.env.BUILD_MODE == 'umd-min' ? [
+    ...plugins,
+    new webpack.optimize.UglifyJsPlugin({
+          sourceMap: true,
+          parellel: true
+    })
+  ] : plugins,
   resolve: {
-    extensions: [ '', '.js' ],
-    root: path.resolve('src'),
-    modulesDirectory: 'node_modules'
+    modules: [
+      path.resolve('src'),
+      'node_modules'
+    ]
   },
   module: {
-    loaders: [
-      { test: [ /\.js$/, /\.jsx$/ ], loader: 'babel', exclude: /node_modules/ }
+    rules: [
+      { test: [ /\.js$/, /\.jsx$/ ], use: 'babel-loader', exclude: /node_modules/ }
     ]
+  },
+  node: {
+    process: false,
+    setImmediate: false
   }
 }

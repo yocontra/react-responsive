@@ -204,10 +204,10 @@ describe('MediaQuery', function () {
   it('handles unmount', function () {
     const container = document.createElement('div')
     const mq = (
-        <MediaQuery query="all">
-          <div className="childComponent"/>
-        </MediaQuery>
-      )
+      <MediaQuery query="all">
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
     ReactDOM.render(mq, container)
     assert.doesNotThrow(() => ReactDOM.unmountComponentAtNode(container))
   })
