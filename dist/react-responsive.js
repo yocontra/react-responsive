@@ -430,6 +430,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.toQuery = exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -606,7 +607,7 @@ MediaQuery.defaultProps = {
   values: {}
 };
 exports.default = MediaQuery;
-module.exports = exports['default'];
+exports.toQuery = _toQuery2.default;
 
 /***/ }),
 /* 8 */

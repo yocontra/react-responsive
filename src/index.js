@@ -5,7 +5,6 @@ import hyphenate  from 'hyphenate-style-name'
 import mediaQuery from './mediaQuery'
 import toQuery  from './toQuery'
 
-
 const defaultTypes = {
   component: PropTypes.node,
   query: PropTypes.string,
@@ -24,7 +23,7 @@ function omit(object, keys) {
   return newObject
 }
 
-export default class MediaQuery extends React.Component {
+class MediaQuery extends React.Component {
   static displayName = 'MediaQuery'
   static defaultProps = {
     values: {}
@@ -134,3 +133,8 @@ export default class MediaQuery extends React.Component {
     }
   }
 }
+
+export {
+  MediaQuery as default,
+  toQuery
+};
