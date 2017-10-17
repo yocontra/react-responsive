@@ -1,5 +1,5 @@
 const React = require('react')
-const MediaQuery = require('index')
+const MediaQuery = require('index').default
 const mm = { default: require('matchmediaquery') }
 const assert = require('chai').assert
 const sinon = require('sinon')
