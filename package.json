@@ -2,10 +2,10 @@
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
   "version": "2.0.0",
-  "homepage": "http://github.com/refinery29/react-responsive",
+  "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
-    "url": "git://github.com/refinery29/react-responsive.git"
+    "url": "git://github.com/contra/react-responsive.git"
   },
   "author": "Contra <yo@contra.io> (http://contra.io)",
   "license": "MIT",
