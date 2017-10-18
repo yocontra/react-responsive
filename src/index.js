@@ -137,4 +137,5 @@ class MediaQuery extends React.Component {
 export {
   MediaQuery as default,
   toQuery
-};
+}
+
