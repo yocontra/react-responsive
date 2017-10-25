@@ -225,17 +225,17 @@ const Example = () => (
 ```javascript
 import Responsive from 'react-responsive';
 
-const Desktop = ({ children }) => <Responsive minWidth={992} children={children} />;
-const Tablet = ({ children }) => <Responsive minWidth={768} maxWidth={992} children={children} />;
-const Mobile = ({ children }) => <Responsive maxWidth={768} children={children} />;
-const Default = ({ children }) => <Responsive minWidth={768} children={children} />;
+const Desktop = props => <Responsive {...props} minWidth={992} />;
+const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />;
+const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Default = props => <Responsive {...props} minWidth={768} />;
 
 const Example = () => (
   <div>
-    <Desktop>You are a desktop or laptop</Desktop>
-    <Tablet>You are a tablet</Tablet>
-    <Mobile>You are a mobile phone</Mobile>
-    <Default>You are not a mobile phone</Default>
+    <Desktop>Desktop or laptop</Desktop>
+    <Tablet>Tablet</Tablet>
+    <Mobile>Mobile</Mobile>
+    <Default>Not mobile (desktop or laptop or tablet)</Default>
   </div>
 );
 
