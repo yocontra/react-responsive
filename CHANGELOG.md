@@ -1,6 +1,6 @@
 ## Change Log
 
-### upcoming (2017/10/18 00:14 +00:00)
+### v3.0.0 (2017/10/18 00:14 +00:00)
 - [#128](https://github.com/contra/react-responsive/pull/128) Fix linter and tests (@refinery29)
 - [71b611e](https://github.com/contra/react-responsive/commit/71b611eeabc52b271ebd3127223dd7b4b7824df2) Fix repo attribution (@cribbles)
 - [4e8186a](https://github.com/contra/react-responsive/commit/4e8186aeaae10c8ffe757e101e4e029ef8e9da4b) Fix test (import as default) (@cribbles)
