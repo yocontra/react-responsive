@@ -54,7 +54,7 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'section'))
     })
-    it('renders a div when theres multiple children', function () {
+    it('does not render a div when there are multiple children', function () {
       const mq = (
         <MediaQuery query="all">
           <span className="childComponent"/>
@@ -62,16 +62,17 @@ describe('MediaQuery', function () {
         </MediaQuery>
       )
       const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'))
+      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
     })
-    it('renders a div when children is a single-element array', function () {
+    it('renders the first child when children is a single-element array', function () {
       const mq = (
         <MediaQuery query="all">
           {[ 'single element' ].map((content, index) => <span key={index}>{content}</span>)}
         </MediaQuery>
       )
       const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'))
+      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'span'))
+      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
     })
     it('passes extra props', function () {
       const mq = (
