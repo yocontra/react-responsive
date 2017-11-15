@@ -586,7 +586,7 @@ var MediaQuery = function (_React$Component) {
       var props = omit(this.props, excludedPropKeys);
       var hasMergeProps = Object.keys(props).length > 0;
       var childrenCount = _react2.default.Children.count(this.props.children);
-      var wrapChildren = this.props.component || typeof this.props.children === 'string' || this.props.children === undefined;
+      var wrapChildren = this.props.component || this.props.children === undefined;
       if (wrapChildren) {
         return _react2.default.createElement(this.props.component || 'div', props, this.props.children);
       } else if (hasMergeProps) {
