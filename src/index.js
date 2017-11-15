@@ -110,7 +110,6 @@ class MediaQuery extends React.Component {
     const hasMergeProps = Object.keys(props).length > 0
     const childrenCount = React.Children.count(this.props.children)
     const wrapChildren = this.props.component ||
-      typeof this.props.children === 'string' ||
       this.props.children === undefined
     if (wrapChildren) {
       return React.createElement(

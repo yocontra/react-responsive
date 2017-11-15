@@ -45,6 +45,15 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.isNotFalse(TestUtils.findAllInRenderedTree(e, function () {return true}))
     })
+    it('does not wrap text node', function () {
+      const mq = (
+        <MediaQuery query="all">
+          1231
+        </MediaQuery>
+      )
+      const e = TestUtils.renderIntoDocument(mq)
+      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
+    })
     it('renders the wrapper', function () {
       const mq = (
         <MediaQuery query="all" component="section">
