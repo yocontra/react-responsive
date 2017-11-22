@@ -6,15 +6,29 @@ const env = new webpack.EnvironmentPlugin({
 })
 const uglify = new webpack.optimize.UglifyJsPlugin({
   sourceMap: true,
-  parellel: true
+  parallel: true,
+  cache: true
+})
+const uglifyLite = new webpack.optimize.UglifyJsPlugin({
+  sourceMap: true,
+  cache: true,
+  parallel: true,
+  compress: {
+    dead_code: true,
+    unused: true
+  },
+  mangle: false,
+  output: {
+    beautify: true
+  }
 })
 
 const filename = process.env.BUILD_MODE === 'umd'
   ? './dist/react-responsive.js'
   : './dist/react-responsive.min.js'
-const plugins = process.env.BUILD_MODE == 'umd-min'
+const plugins = process.env.BUILD_MODE === 'umd-min'
   ? [ env, uglify ]
-  : [ env ]
+  : [ env, uglifyLite ]
 
 module.exports = {
   entry: './src/index.js',

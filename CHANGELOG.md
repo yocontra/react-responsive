@@ -1,5 +1,8 @@
 ## Change Log
 
+### upcoming (2017/11/21 19:55 +00:00)
+- [6908332](https://github.com/contra/react-responsive/commit/6908332218359646416d568c75bf6ef7e974b82f) maybe fixes #134 (@contra)
+
 ### v4.0.0 (2017/11/16 00:14 +00:00)
 - [b78938d](https://github.com/contra/react-responsive/commit/b78938d9f51dea13cc14e3227fce3694cde9dc63) 4.0.0 (@contra)
 - [bd1c554](https://github.com/contra/react-responsive/commit/bd1c5547a30483367479803799f264d160d86a1e) deps (@contra)
@@ -41,11 +44,11 @@
 - [1d19af9](https://github.com/contra/react-responsive/commit/1d19af9a5e6ddf5baf11eb27f455165430cdd405) Update README.txt (@vpicone)
 - [bb69da2](https://github.com/contra/react-responsive/commit/bb69da2e74b615132dd30c4eecad2b88080e5287) support react 16. (@whatknight)
 - [e78cab9](https://github.com/contra/react-responsive/commit/e78cab9fafceb30195ffca6858df35560f3675b6) bump sinon (@whatknight)
-- [8380bd9](https://github.com/contra/react-responsive/commit/8380bd91c3fbb73957f7410bd2512266f7c7053a) update webpack (@whatknight)
 - [9429386](https://github.com/contra/react-responsive/commit/9429386ce0891c1904baadf725837e0a3f282746) remove transform runtime (@whatknight)
+- [8380bd9](https://github.com/contra/react-responsive/commit/8380bd91c3fbb73957f7410bd2512266f7c7053a) update webpack (@whatknight)
+- [48b2a33](https://github.com/contra/react-responsive/commit/48b2a33ad9a6c61fbbbac6dad6f54838f949d61a) update test deps (@whatknight)
 - [307b31d](https://github.com/contra/react-responsive/commit/307b31d16cf4d336f50ad4c53739166e4bd1d80e) update babel config (@whatknight)
 - [81d9d18](https://github.com/contra/react-responsive/commit/81d9d181d08634527b49bb62c66f5b2c72e606f1) update eslint (@whatknight)
-- [48b2a33](https://github.com/contra/react-responsive/commit/48b2a33ad9a6c61fbbbac6dad6f54838f949d61a) update test deps (@whatknight)
 - [#117](https://github.com/contra/react-responsive/pull/117) Update README.md (@modosc)
 - [0b4d019](https://github.com/contra/react-responsive/commit/0b4d0197d1011c3e5899cc6003556a6526350bc1) Update README.md (@modosc)
 - [c55a77e](https://github.com/contra/react-responsive/commit/c55a77ec86c2db7d2aae4a3e67a08dba09a3a455) closes #116 (@contra)
