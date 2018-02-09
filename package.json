@@ -28,11 +28,11 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "matchmediaquery": "^0.2.1"
+    "matchmediaquery": "^0.2.1",
+    "prop-types": "^15.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "prop-types": "^15.0.0"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
