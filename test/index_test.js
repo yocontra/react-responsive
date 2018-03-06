@@ -163,6 +163,14 @@ describe('MediaQuery', function () {
     const e = TestUtils.renderIntoDocument(mq)
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'))
   })
+  it('doesnt throw error when component with null children', function () {
+    const mq = (
+      <MediaQuery all className="parentBox">{null}</MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'))
+  })
+
   it('renders with output of callback', function () {
     const mq = (
       <MediaQuery maxWidth={300}>
