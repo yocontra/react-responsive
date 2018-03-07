@@ -29,7 +29,7 @@
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
     "matchmediaquery": "^0.2.1",
-    "prop-types": "^15.0.0"
+    "prop-types": "^15.6.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -37,8 +37,8 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
-    "babel-eslint": "^8.0.2",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -46,19 +46,19 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "chai": "^4.1.2",
-    "cross-env": "^5.1.1",
-    "eslint": "^4.11.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-react": "^7.5.1",
-    "github-changes": "^1.1.1",
-    "jsdom": "^11.4.0",
-    "mocha": "^4.0.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "should": "^13.1.3",
-    "sinon": "^4.1.2",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-react": "^7.7.0",
+    "github-changes": "^1.1.2",
+    "jsdom": "^11.6.2",
+    "mocha": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "should": "^13.2.1",
+    "sinon": "^4.4.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.2"
   },
   "scripts": {
     "preversion": "npm run clean && npm run build",

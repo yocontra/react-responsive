@@ -1,6 +1,6 @@
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.react);
-}(this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
             if (installedModules[moduleId]) return installedModules[moduleId].exports;
@@ -282,7 +282,7 @@
                     if ("function" == typeof this.props.children) return this.props.children(this.state.matches);
                     if (!1 === this.state.matches) return null;
                     var props = omit(this.props, excludedPropKeys), hasMergeProps = Object.keys(props).length > 0, childrenCount = _react2.default.Children.count(this.props.children);
-                    return this.props.component || void 0 === this.props.children ? _react2.default.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? _react2.default.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
+                    return this.props.component || null == this.props.children ? _react2.default.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? _react2.default.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
                 }
             } ]), MediaQuery;
         }(_react2.default.Component);
