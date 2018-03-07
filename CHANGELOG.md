@@ -1,6 +1,11 @@
 ## Change Log
 
-### upcoming (2018/02/09 22:43 +00:00)
+### upcoming (2018/03/07 17:11 +00:00)
+- [#146](https://github.com/contra/react-responsive/pull/146) Guard against null children (@lunaleaps)
+- [3b40652](https://github.com/contra/react-responsive/commit/3b40652acbca56dc644e1b36fa50cabdb106ccdb) Guard against null children (@lunaleaps)
+
+### v4.0.4 (2018/02/09 22:43 +00:00)
+- [77d37de](https://github.com/contra/react-responsive/commit/77d37de00c8ebeffe478ab0ef748d10b7862975a) 4.0.4 (@contra)
 - [19191ed](https://github.com/contra/react-responsive/commit/19191ed2522460109bfff19f22d6b879925599d3) closes #140 (@contra)
 
 ### v4.0.3 (2017/11/22 03:26 +00:00)
@@ -55,8 +60,8 @@
 - [1d19af9](https://github.com/contra/react-responsive/commit/1d19af9a5e6ddf5baf11eb27f455165430cdd405) Update README.txt (@vpicone)
 - [bb69da2](https://github.com/contra/react-responsive/commit/bb69da2e74b615132dd30c4eecad2b88080e5287) support react 16. (@whatknight)
 - [e78cab9](https://github.com/contra/react-responsive/commit/e78cab9fafceb30195ffca6858df35560f3675b6) bump sinon (@whatknight)
-- [8380bd9](https://github.com/contra/react-responsive/commit/8380bd91c3fbb73957f7410bd2512266f7c7053a) update webpack (@whatknight)
 - [9429386](https://github.com/contra/react-responsive/commit/9429386ce0891c1904baadf725837e0a3f282746) remove transform runtime (@whatknight)
+- [8380bd9](https://github.com/contra/react-responsive/commit/8380bd91c3fbb73957f7410bd2512266f7c7053a) update webpack (@whatknight)
 - [307b31d](https://github.com/contra/react-responsive/commit/307b31d16cf4d336f50ad4c53739166e4bd1d80e) update babel config (@whatknight)
 - [48b2a33](https://github.com/contra/react-responsive/commit/48b2a33ad9a6c61fbbbac6dad6f54838f949d61a) update test deps (@whatknight)
 - [81d9d18](https://github.com/contra/react-responsive/commit/81d9d181d08634527b49bb62c66f5b2c72e606f1) update eslint (@whatknight)
