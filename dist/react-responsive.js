@@ -282,7 +282,7 @@
                     if ("function" == typeof this.props.children) return this.props.children(this.state.matches);
                     if (!1 === this.state.matches) return null;
                     var props = omit(this.props, excludedPropKeys), hasMergeProps = Object.keys(props).length > 0, childrenCount = _react2.default.Children.count(this.props.children);
-                    return this.props.component || null == this.props.children ? _react2.default.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? _react2.default.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
+                    return this.props.component || null == this.props.children || hasMergeProps && childrenCount > 1 ? _react2.default.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? _react2.default.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
                 }
             } ]), MediaQuery;
         }(_react2.default.Component);

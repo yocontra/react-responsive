@@ -1,6 +1,13 @@
 ## Change Log
 
-### upcoming (2018/03/07 17:11 +00:00)
+### upcoming (2018/03/26 15:26 +00:00)
+- [#149](https://github.com/contra/react-responsive/pull/149) bugfix: Invariant Violation: Element type is invalid: (@ignatiusreza)
+- [9818a9e](https://github.com/contra/react-responsive/commit/9818a9ed933dbbed8133eb441f4382269c6d927b) bugfix: Invariant Violation: Element type is invalid: (@ignatiusreza)
+- [a6fe9a6](https://github.com/contra/react-responsive/commit/a6fe9a6b56cfa428460f97b9efc67e3ea5d31df4) 4.0.5 (@contra)
+
+### v4.0.5 (2018/03/07 17:11 +00:00)
+- [e61ec94](https://github.com/contra/react-responsive/commit/e61ec9482ae6ff17d3b73fab1fbcc445aab9e9aa) 4.0.5 (@contra)
+- [a8ec8e6](https://github.com/contra/react-responsive/commit/a8ec8e63221fccaef245366cd707aae3c19cb233) pre-release (@contra)
 - [#146](https://github.com/contra/react-responsive/pull/146) Guard against null children (@lunaleaps)
 - [3b40652](https://github.com/contra/react-responsive/commit/3b40652acbca56dc644e1b36fa50cabdb106ccdb) Guard against null children (@lunaleaps)
 
@@ -60,11 +67,11 @@
 - [1d19af9](https://github.com/contra/react-responsive/commit/1d19af9a5e6ddf5baf11eb27f455165430cdd405) Update README.txt (@vpicone)
 - [bb69da2](https://github.com/contra/react-responsive/commit/bb69da2e74b615132dd30c4eecad2b88080e5287) support react 16. (@whatknight)
 - [e78cab9](https://github.com/contra/react-responsive/commit/e78cab9fafceb30195ffca6858df35560f3675b6) bump sinon (@whatknight)
-- [9429386](https://github.com/contra/react-responsive/commit/9429386ce0891c1904baadf725837e0a3f282746) remove transform runtime (@whatknight)
 - [8380bd9](https://github.com/contra/react-responsive/commit/8380bd91c3fbb73957f7410bd2512266f7c7053a) update webpack (@whatknight)
-- [307b31d](https://github.com/contra/react-responsive/commit/307b31d16cf4d336f50ad4c53739166e4bd1d80e) update babel config (@whatknight)
+- [9429386](https://github.com/contra/react-responsive/commit/9429386ce0891c1904baadf725837e0a3f282746) remove transform runtime (@whatknight)
 - [48b2a33](https://github.com/contra/react-responsive/commit/48b2a33ad9a6c61fbbbac6dad6f54838f949d61a) update test deps (@whatknight)
 - [81d9d18](https://github.com/contra/react-responsive/commit/81d9d181d08634527b49bb62c66f5b2c72e606f1) update eslint (@whatknight)
+- [307b31d](https://github.com/contra/react-responsive/commit/307b31d16cf4d336f50ad4c53739166e4bd1d80e) update babel config (@whatknight)
 - [#117](https://github.com/contra/react-responsive/pull/117) Update README.md (@modosc)
 - [0b4d019](https://github.com/contra/react-responsive/commit/0b4d0197d1011c3e5899cc6003556a6526350bc1) Update README.md (@modosc)
 - [c55a77e](https://github.com/contra/react-responsive/commit/c55a77ec86c2db7d2aae4a3e67a08dba09a3a455) closes #116 (@contra)
@@ -72,15 +79,15 @@
 ### v1.3.4 (2017/07/14 21:36 +00:00)
 - [c93ac7a](https://github.com/contra/react-responsive/commit/c93ac7a696a8d3f0f8a5b71ce7836375de13a28d) 1.3.4 (@contra)
 - [#109](https://github.com/contra/react-responsive/pull/109) fix Cannot read property 'removeListener' of undefined (@modosc)
-- [ea3d577](https://github.com/contra/react-responsive/commit/ea3d5774bc59fa06ad50d60e582a9f6da94b9bd5) update matchmediaquery@^0.2.1 (@modosc)
-- [3687115](https://github.com/contra/react-responsive/commit/3687115de3603cfb32eb5f3e4d3b9883b12f3ed3) fix Cannot read property 'removeListener' of undefined (@modosc)
+- [ea3d577](https://github.com/contra/react-responsive/commit/ea3d5774bc59fa06ad50d60e582a9f6da94b9bd5) update matchmediaquery@^0.2.1
+- [3687115](https://github.com/contra/react-responsive/commit/3687115de3603cfb32eb5f3e4d3b9883b12f3ed3) fix Cannot read property 'removeListener' of undefined
 - [83c2409](https://github.com/contra/react-responsive/commit/83c24092225fa20c96c4bded03e845cb4baf5bec) 1.3.3 (@contra)
 
 ### v1.3.3 (2017/07/14 19:32 +00:00)
 - [58fdb89](https://github.com/contra/react-responsive/commit/58fdb89893de8a9ec5495624c19f54bcced220c3) 1.3.3 (@contra)
 - [e3781d2](https://github.com/contra/react-responsive/commit/e3781d208f7d7528add58b9b69fb998fe8f1e94e) diff (@contra)
 - [#108](https://github.com/contra/react-responsive/pull/108) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix … (@modosc)
-- [49919d0](https://github.com/contra/react-responsive/commit/49919d09b7a4e984873b570132ada5554300f071) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix eslint to work with test/ (@modosc)
+- [49919d0](https://github.com/contra/react-responsive/commit/49919d09b7a4e984873b570132ada5554300f071) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix eslint to work with test/
 - [9957f24](https://github.com/contra/react-responsive/commit/9957f2445bd4d16b8d2ae1ae8a335dc2c95d476f) 1.3.2 (@contra)
 
 ### v1.3.2 (2017/07/14 14:47 +00:00)
@@ -260,8 +267,8 @@
 - [7db99e3](https://github.com/contra/react-responsive/commit/7db99e321db4f4c24b7da759bb4247658208ec2f) Provide more flexible React peer dependency range (@colindresj)
 - [#11](https://github.com/contra/react-responsive/pull/11) switch to matchmedia module for client/server abstraction (@phated)
 - [7d05ab6](https://github.com/contra/react-responsive/commit/7d05ab60e7feb53d118ea94f92e5103bdae08627) change names to MediaQuery and add `all` type (@phated)
-- [6c6054a](https://github.com/contra/react-responsive/commit/6c6054a48df4620c301f31ffe6e456f0a2000142) update readme (@phated)
 - [39ab71d](https://github.com/contra/react-responsive/commit/39ab71d2f60a238ae3ac78bc485f804f2e2fc07e) add type property (@phated)
+- [6c6054a](https://github.com/contra/react-responsive/commit/6c6054a48df4620c301f31ffe6e456f0a2000142) update readme (@phated)
 - [48e6c5d](https://github.com/contra/react-responsive/commit/48e6c5d6c3b8360603f2aeabb599b3c601cb74b9) update reactify, add example, use React.PropTypes.shape to define values (@phated)
 - [759154b](https://github.com/contra/react-responsive/commit/759154bfb098aed3be707086d0448ec39cc42ffe) switch to matchmedia module for client/server abstraction (@phated)
 
