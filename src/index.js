@@ -109,7 +109,7 @@ class MediaQuery extends React.Component {
     const props = omit(this.props, excludedPropKeys)
     const hasMergeProps = Object.keys(props).length > 0
     const childrenCount = React.Children.count(this.props.children)
-    const wrapChildren = this.props.component || this.props.children == null
+    const wrapChildren = this.props.component || this.props.children == null || (hasMergeProps && childrenCount > 1)
     if (wrapChildren) {
       return React.createElement(
         this.props.component || 'div',
@@ -134,4 +134,3 @@ export {
   MediaQuery as default,
   toQuery
 }
-

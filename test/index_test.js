@@ -73,6 +73,16 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
     })
+    it('render a div when there are extra props and multiple children', function () {
+      const mq = (
+        <MediaQuery query="all" className="wrapper">
+          <span className="childComponent"/>
+          <span className="childComponent"/>
+        </MediaQuery>
+      )
+      const e = TestUtils.renderIntoDocument(mq)
+      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'))
+    })
     it('renders the first child when children is a single-element array', function () {
       const mq = (
         <MediaQuery query="all">
