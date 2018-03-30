@@ -37,15 +37,13 @@ class MediaQuery extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.updateQuery(nextProps)
-  }
 
   componentDidUpdate(_, prevState) {
     if(this.state.matches !== prevState.matches) {
       this.props.onBeforeChange && this.props.onBeforeChange(this.state.matches)
       this.props.onChange && this.props.onChange(this.state.matches)
     }
+    this.updateQuery(this.props)
   }
 
   componentWillUnmount() {

@@ -190,7 +190,7 @@ describe('MediaQuery', function () {
     const e = TestUtils.renderIntoDocument(mq)
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'no-match'))
   })
-  it('calls onChange callback if provided', function () {
+  it('calls onChange callback if provided', function (done) {
     const callback = sinon.spy()
     const mq = (
       <MediaQuery onChange={callback} query="all">
@@ -198,10 +198,12 @@ describe('MediaQuery', function () {
       </MediaQuery>
     )
     const e = TestUtils.renderIntoDocument(mq)
-    e.setState({ matches: false })
-    assert.isNotFalse(callback.calledOnce)
+    e.setState({ matches: false }, () => {
+      assert.isNotFalse(callback.calledOnce)
+      done()
+    })
   })
-  it('calls onBeforeChange callback if provided', function () {
+  it('calls onBeforeChange callback if provided', function (done) {
     const callback = sinon.spy()
     const mq = (
       <MediaQuery onBeforeChange={callback} query="all">
@@ -209,8 +211,10 @@ describe('MediaQuery', function () {
       </MediaQuery>
     )
     const e = TestUtils.renderIntoDocument(mq)
-    e.setState({ matches: false })
-    assert.isNotFalse(callback.calledOnce)
+    e.setState({ matches: false }, () => {
+      assert.isNotFalse(callback.calledOnce)
+      done()
+    })
   })
   it('calls onChange callback after onBeforeChange if booth are provided', function () {
     const onChangeCallback = sinon.spy()
