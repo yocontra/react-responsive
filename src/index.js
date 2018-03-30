@@ -29,28 +29,17 @@ class MediaQuery extends React.Component {
     values: {}
   }
 
-  constructor(props) {
-    super(props)
-    this.initMql(props)
-    this.state = {
-      matches: this._mql.matches
-    }
-  }
+  state = { matches: false }
 
-
-  componentDidUpdate(_, prevState) {
-    if(this.state.matches !== prevState.matches) {
-      this.props.onBeforeChange && this.props.onBeforeChange(this.state.matches)
-      this.props.onChange && this.props.onChange(this.state.matches)
-    }
+  UNSAFE_componentWillMount() {
     this.updateQuery(this.props)
   }
 
-  componentWillUnmount() {
-    this.removeMql()
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.updateQuery(nextProps)
   }
 
-  initMql(props) {
+  updateQuery(props) {
     let values
     if (props.query) {
       this.query = props.query
@@ -74,11 +63,23 @@ class MediaQuery extends React.Component {
 
     this._mql = matchMedia(this.query, values)
     this._mql.addListener(this.updateMatches)
+    this.updateMatches()
   }
 
-  updateQuery(props) {
-    this.initMql(props)
-    this.updateMatches()
+  UNSAFE_componentWillUpdate(_, nextState) {
+    if(this.props.onBeforeChange && this.state.matches !== nextState.matches) {
+      this.props.onBeforeChange(this.state.matches)
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if(this.props.onChange && prevState.matches !== this.state.matches) {
+      this.props.onChange(this.state.matches)
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeMql()
   }
 
   updateMatches = () => {
