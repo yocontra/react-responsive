@@ -39,6 +39,17 @@ class MediaQuery extends React.Component {
     this.updateQuery(nextProps)
   }
 
+  componentDidUpdate(_, prevState) {
+    if(this.state.matches !== prevState.matches) {
+      this.props.onBeforeChange && this.props.onBeforeChange(this.state.matches)
+      this.props.onChange && this.props.onChange(this.state.matches)
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeMql()
+  }
+
   updateQuery(props) {
     let values
     if (props.query) {
@@ -64,22 +75,6 @@ class MediaQuery extends React.Component {
     this._mql = matchMedia(this.query, values)
     this._mql.addListener(this.updateMatches)
     this.updateMatches()
-  }
-
-  componentWillUpdate(_, nextState) {
-    if(this.props.onBeforeChange && this.state.matches !== nextState.matches) {
-      this.props.onBeforeChange(this.state.matches)
-    }
-  }
-
-  componentDidUpdate(_, prevState) {
-    if(this.props.onChange && prevState.matches !== this.state.matches) {
-      this.props.onChange(this.state.matches)
-    }
-  }
-
-  componentWillUnmount() {
-    this.removeMql()
   }
 
   updateMatches = () => {
