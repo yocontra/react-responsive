@@ -1,14 +1,13 @@
 /* global document, window */
 
 
-var MediaQuery = require('index')
-var React = require('react')
-var ReactDOM = require('react-dom')
+import MediaQuery from 'index'
+import React from 'react'
+import ReactDOM from 'react-dom'
 window.React = React // for dev
 
-var App = React.createClass({
-  displayName: 'demo',
-  render: function(){
+class App extends React.Component {
+  render() {
     return (
       <div>
         <div>Device Test!</div>
@@ -37,6 +36,6 @@ var App = React.createClass({
       </div>
     )
   }
-})
+}
 
 ReactDOM.render(<App/>, document.getElementById('main'))
