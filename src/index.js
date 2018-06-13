@@ -41,6 +41,7 @@ class MediaQuery extends React.Component {
 
   updateQuery(props) {
     let values
+    let forceStatic = false
     if (props.query) {
       this.query = props.query
     } else {
@@ -57,11 +58,12 @@ class MediaQuery extends React.Component {
           result[hyphenate(key)] = props.values[key]
           return result
         }, {})
+      if (Object.keys(values).length !== 0) forceStatic = true 
     }
 
     this.removeMql()
 
-    this._mql = matchMedia(this.query, values)
+    this._mql = matchMedia(this.query, values, forceStatic)
     this._mql.addListener(this.updateMatches)
     this.updateMatches()
   }

@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "hyphenate-style-name": "^1.0.0",
-    "matchmediaquery": "^0.2.1",
+    "matchmediaquery": "git+https://github.com/deployed/matchmediaquery.git",
     "prop-types": "^15.6.1"
   },
   "peerDependencies": {
