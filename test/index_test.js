@@ -156,10 +156,40 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.equal(e.render(), null)
     })
+    it.skip('forces static check if values are specified', function () {
+      const values = { width: 150 }
+      const query = '(max-width: 300px)'
+      const mq = (
+        <MediaQuery values={values} query={query}>
+          <div className="childComponent"/>
+        </MediaQuery>
+      )
+      const e = TestUtils.renderIntoDocument(mq)
+      // TODO: looks like this.mmStub is never called?
+      assert.isNotFalse(this.mmStub.calledWithMatch(e.query, values, true))
+    })
   })
   it('renders nothing when no matches', function () {
     const mq = (
       <MediaQuery maxWidth={300}>
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
+  })
+  it('renders taking values with precedence', function () {
+    const mq = (
+      <MediaQuery values={{ width: 150 }} maxWidth={300}>
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
+  })
+  it('doesnt render taking values with precedence', function () {
+    const mq = (
+      <MediaQuery values={{ width: 350 }} maxWidth={300}>
         <div className="childComponent"/>
       </MediaQuery>
     )
