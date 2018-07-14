@@ -156,18 +156,6 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.equal(e.render(), null)
     })
-    it.skip('forces static check if values are specified', function () {
-      const values = { width: 150 }
-      const query = '(max-width: 300px)'
-      const mq = (
-        <MediaQuery values={values} query={query}>
-          <div className="childComponent"/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      // TODO: looks like this.mmStub is never called?
-      assert.isNotFalse(this.mmStub.calledWithMatch(e.query, values, true))
-    })
   })
   it('renders nothing when no matches', function () {
     const mq = (
