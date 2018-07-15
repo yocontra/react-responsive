@@ -186,7 +186,7 @@ The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAsp
 `type` can be one of: `all`, `grid`, `aural`, `braille`, `handheld`, `print`, `projection`,
 `screen`, `tty`, `tv` or `embossed`.
 
-Be aware, that `values` property takes precedence over actual window values (even on client where window object exists).
+Note: The `values` property always takes precedence, even on the client where a `window` object exists and matchMedia can be used.
 
 If you are using [redux](http://redux.js.org/) you can automatically pass `width` / `deviceWidth` values to your components with [react-responsive-redux](https://github.com/modosc/react-responsive-redux). 
 
