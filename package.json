@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -50,7 +50,6 @@
     "eslint": "^4.18.2",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-react": "^7.7.0",
-    "github-changes": "^1.1.2",
     "jsdom": "^11.6.2",
     "mocha": "^5.0.0",
     "react": "^16.2.0",
@@ -62,7 +61,6 @@
   },
   "scripts": {
     "preversion": "npm run clean && npm run build",
-    "postversion": "npm run changelog",
     "start": "webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
     "build:umd": "cross-env BUILD_MODE=umd webpack",
     "build:umd-min": "cross-env BUILD_MODE=umd-min webpack",
@@ -70,8 +68,7 @@
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "lint": "eslint src test",
-    "test": "cross-env NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js",
-    "changelog": "github-changes -o contra -r react-responsive -b master -f ./CHANGELOG.md --order-semver --use-commit-body"
+    "test": "cross-env NODE_PATH=$NODE_PATH:$PWD/src mocha -R spec --compilers js:babel-register --require ./test/setup.js test/*_test.js"
   },
   "babel": {
     "presets": [

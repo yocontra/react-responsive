@@ -1,9 +1,8 @@
 ## Change Log
 
-### upcoming (2018/03/26 15:26 +00:00)
-- [#149](https://github.com/contra/react-responsive/pull/149) bugfix: Invariant Violation: Element type is invalid: (@ignatiusreza)
-- [9818a9e](https://github.com/contra/react-responsive/commit/9818a9ed933dbbed8133eb441f4382269c6d927b) bugfix: Invariant Violation: Element type is invalid: (@ignatiusreza)
-- [a6fe9a6](https://github.com/contra/react-responsive/commit/a6fe9a6b56cfa428460f97b9efc67e3ea5d31df4) 4.0.5 (@contra)
+### v5.0.0
+- New changelog system, all manual now since the automated system was overcomplicated and missed things.
+- Breaking: `values` property always takes precedence when provided, no matter what (https://github.com/contra/react-responsive/issues/161)
 
 ### v4.0.5 (2018/03/07 17:11 +00:00)
 - [e61ec94](https://github.com/contra/react-responsive/commit/e61ec9482ae6ff17d3b73fab1fbcc445aab9e9aa) 4.0.5 (@contra)
