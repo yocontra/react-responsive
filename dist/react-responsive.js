@@ -253,13 +253,14 @@
             }, {
                 key: "updateQuery",
                 value: function(props) {
-                    var values = void 0;
+                    var values = void 0, forceStatic = !1;
                     if (props.query ? this.query = props.query : this.query = (0, _toQuery2.default)(omit(props, excludedQueryKeys)), 
                     !this.query) throw new Error("Invalid or missing MediaQuery!");
                     props.values && (values = Object.keys(props.values).reduce(function(result, key) {
                         return result[(0, _hyphenateStyleName2.default)(key)] = props.values[key], result;
-                    }, {})), this.removeMql(), this._mql = (0, _matchmediaquery2.default)(this.query, values), 
-                    this._mql.addListener(this.updateMatches), this.updateMatches();
+                    }, {}), 0 !== Object.keys(values).length && (forceStatic = !0)), this.removeMql(), 
+                    this._mql = (0, _matchmediaquery2.default)(this.query, values, forceStatic), this._mql.addListener(this.updateMatches), 
+                    this.updateMatches();
                 }
             }, {
                 key: "componentWillUpdate",
@@ -581,7 +582,7 @@ object-assign
         module.exports = checkPropTypes;
     }, function(module, exports, __webpack_require__) {
         "use strict";
-        function Mql(query, values) {
+        function Mql(query, values, forceStatic) {
             function addListener(listener) {
                 mql && mql.addListener(listener);
             }
@@ -595,14 +596,14 @@ object-assign
                 mql && mql.removeListener(update);
             }
             var self = this;
-            if (dynamicMatch) {
+            if (dynamicMatch && !forceStatic) {
                 var mql = dynamicMatch.call(window, query);
                 this.matches = mql.matches, this.media = mql.media, mql.addListener(update);
             } else this.matches = staticMatch(query, values), this.media = query;
             this.addListener = addListener, this.removeListener = removeListener, this.dispose = dispose;
         }
-        function matchMedia(query, values) {
-            return new Mql(query, values);
+        function matchMedia(query, values, forceStatic) {
+            return new Mql(query, values, forceStatic);
         }
         var staticMatch = __webpack_require__(13).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
         module.exports = matchMedia;

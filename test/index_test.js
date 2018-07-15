@@ -166,6 +166,24 @@ describe('MediaQuery', function () {
     const e = TestUtils.renderIntoDocument(mq)
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
   })
+  it('renders taking values with precedence', function () {
+    const mq = (
+      <MediaQuery values={{ width: 150 }} maxWidth={300}>
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
+  })
+  it('doesnt render taking values with precedence', function () {
+    const mq = (
+      <MediaQuery values={{ width: 350 }} maxWidth={300}>
+        <div className="childComponent"/>
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
+  })
   it('doesnt throw error when unspecificed component with empty children', function () {
     const mq = (
       <MediaQuery all className="parentBox" />
