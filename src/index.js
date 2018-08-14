@@ -114,7 +114,7 @@ class MediaQuery extends React.Component {
     const wrapChildren = this.props.component || this.props.children == null || (hasMergeProps && childrenCount > 1)
     if (wrapChildren) {
       return React.createElement(
-        this.props.component || 'div',
+        this.props.component || React.Fragment,
         props,
         this.props.children
       )
