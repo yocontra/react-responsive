@@ -29,17 +29,24 @@ class MediaQuery extends React.Component {
     values: {}
   }
 
-  state = { matches: false }
+  constructor(props) {
+    super(props)
+    this.buildMatcher(props)
+    this.state = {
+      matches: this._mql.matches
+    }
+  }
 
-  componentWillMount() {
-    this.updateQuery(this.props)
+  componentDidMount() {
+    this._mql.addListener(this.updateMatches)
+    this.updateMatches()
   }
 
   componentWillReceiveProps(nextProps) {
     this.updateQuery(nextProps)
   }
 
-  updateQuery(props) {
+  buildMatcher(props) {
     let values
     let forceStatic = false
     if (props.query) {
@@ -64,6 +71,10 @@ class MediaQuery extends React.Component {
     this.removeMql()
 
     this._mql = matchMedia(this.query, values, forceStatic)
+  }
+
+  updateQuery(props) {
+    this.buildMatcher(props)
     this._mql.addListener(this.updateMatches)
     this.updateMatches()
   }
