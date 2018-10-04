@@ -1,6 +1,6 @@
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.react);
-}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
             if (installedModules[moduleId]) return installedModules[moduleId].exports;
@@ -29,12 +29,12 @@
             return __webpack_require__.d(getter, "a", getter), getter;
         }, __webpack_require__.o = function(object, property) {
             return Object.prototype.hasOwnProperty.call(object, property);
-        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 4);
+        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 5);
     }([ function(module, exports, __webpack_require__) {
         var REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103, isValidElement = function(object) {
             return "object" == typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         };
-        module.exports = __webpack_require__(6)(isValidElement, !0);
+        module.exports = __webpack_require__(7)(isValidElement, !0);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
@@ -45,148 +45,208 @@
         }
         var uppercasePattern = /[A-Z]/g, msPattern = /^ms-/, cache = {};
         module.exports = hyphenateStyleName;
-    }, function(module, exports, __webpack_require__) {
+    }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        Object.defineProperty(exports, "__esModule", {
-            value: !0
-        });
-        var _extends = Object.assign || function(target) {
-            for (var i = 1; i < arguments.length; i++) {
-                var source = arguments[i];
-                for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        (function(module) {
+            function _objectSpread(target) {
+                for (var i = 1; i < arguments.length; i++) {
+                    var source = null != arguments[i] ? arguments[i] : {}, ownKeys = Object.keys(source);
+                    "function" == typeof Object.getOwnPropertySymbols && (ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+                    }))), ownKeys.forEach(function(key) {
+                        _defineProperty(target, key, source[key]);
+                    });
+                }
+                return target;
             }
-            return target;
-        }, _propTypes = __webpack_require__(0), _propTypes2 = function(obj) {
-            return obj && obj.__esModule ? obj : {
-                default: obj
-            };
-        }(_propTypes), stringOrNumber = _propTypes2.default.oneOfType([ _propTypes2.default.string, _propTypes2.default.number ]), matchers = {
-            orientation: _propTypes2.default.oneOf([ "portrait", "landscape" ]),
-            scan: _propTypes2.default.oneOf([ "progressive", "interlace" ]),
-            aspectRatio: _propTypes2.default.string,
-            deviceAspectRatio: _propTypes2.default.string,
-            height: stringOrNumber,
-            deviceHeight: stringOrNumber,
-            width: stringOrNumber,
-            deviceWidth: stringOrNumber,
-            color: _propTypes2.default.bool,
-            colorIndex: _propTypes2.default.bool,
-            monochrome: _propTypes2.default.bool,
-            resolution: stringOrNumber
-        }, features = _extends({
-            minAspectRatio: _propTypes2.default.string,
-            maxAspectRatio: _propTypes2.default.string,
-            minDeviceAspectRatio: _propTypes2.default.string,
-            maxDeviceAspectRatio: _propTypes2.default.string,
-            minHeight: stringOrNumber,
-            maxHeight: stringOrNumber,
-            minDeviceHeight: stringOrNumber,
-            maxDeviceHeight: stringOrNumber,
-            minWidth: stringOrNumber,
-            maxWidth: stringOrNumber,
-            minDeviceWidth: stringOrNumber,
-            maxDeviceWidth: stringOrNumber,
-            minColor: _propTypes2.default.number,
-            maxColor: _propTypes2.default.number,
-            minColorIndex: _propTypes2.default.number,
-            maxColorIndex: _propTypes2.default.number,
-            minMonochrome: _propTypes2.default.number,
-            maxMonochrome: _propTypes2.default.number,
-            minResolution: stringOrNumber,
-            maxResolution: stringOrNumber
-        }, matchers), types = {
-            all: _propTypes2.default.bool,
-            grid: _propTypes2.default.bool,
-            aural: _propTypes2.default.bool,
-            braille: _propTypes2.default.bool,
-            handheld: _propTypes2.default.bool,
-            print: _propTypes2.default.bool,
-            projection: _propTypes2.default.bool,
-            screen: _propTypes2.default.bool,
-            tty: _propTypes2.default.bool,
-            tv: _propTypes2.default.bool,
-            embossed: _propTypes2.default.bool
-        }, all = _extends({}, types, features);
-        matchers.type = Object.keys(types), exports.default = {
-            all: all,
-            types: types,
-            matchers: matchers,
-            features: features
-        }, module.exports = exports.default;
-    }, function(module, exports, __webpack_require__) {
+            function _defineProperty(obj, key, value) {
+                return key in obj ? Object.defineProperty(obj, key, {
+                    value: value,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : obj[key] = value, obj;
+            }
+            var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__), stringOrNumber = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number ]), matchers = {
+                orientation: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "portrait", "landscape" ]),
+                scan: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "progressive", "interlace" ]),
+                aspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                deviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                height: stringOrNumber,
+                deviceHeight: stringOrNumber,
+                width: stringOrNumber,
+                deviceWidth: stringOrNumber,
+                color: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                colorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                monochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                resolution: stringOrNumber
+            }, features = _objectSpread({
+                minAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                maxAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                minDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                maxDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+                minHeight: stringOrNumber,
+                maxHeight: stringOrNumber,
+                minDeviceHeight: stringOrNumber,
+                maxDeviceHeight: stringOrNumber,
+                minWidth: stringOrNumber,
+                maxWidth: stringOrNumber,
+                minDeviceWidth: stringOrNumber,
+                maxDeviceWidth: stringOrNumber,
+                minColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                maxColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                minColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                maxColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                minMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                maxMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+                minResolution: stringOrNumber,
+                maxResolution: stringOrNumber
+            }, matchers), types = {
+                all: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                grid: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                aural: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                braille: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                handheld: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                print: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                projection: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                screen: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                tty: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                tv: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+                embossed: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool
+            }, all = _objectSpread({}, types, features);
+            matchers.type = Object.keys(types), __webpack_exports__.a = {
+                all: all,
+                types: types,
+                matchers: matchers,
+                features: features
+            }, module.exports = exports.default;
+        }).call(__webpack_exports__, __webpack_require__(4)(module));
+    }, function(module, exports) {
+        module.exports = function(originalModule) {
+            if (!originalModule.webpackPolyfill) {
+                var module = Object.create(originalModule);
+                module.children || (module.children = []), Object.defineProperty(module, "loaded", {
+                    enumerable: !0,
+                    get: function() {
+                        return module.l;
+                    }
+                }), Object.defineProperty(module, "id", {
+                    enumerable: !0,
+                    get: function() {
+                        return module.i;
+                    }
+                }), Object.defineProperty(module, "exports", {
+                    enumerable: !0
+                }), module.webpackPolyfill = 1;
+            }
+            return module;
+        };
+    }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        function _interopRequireDefault(obj) {
-            return obj && obj.__esModule ? obj : {
-                default: obj
-            };
+        function _typeof(obj) {
+            return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj) {
+                return typeof obj;
+            } : function(obj) {
+                return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+            })(obj);
         }
         function _classCallCheck(instance, Constructor) {
             if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
         }
+        function _defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, 
+                "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+        function _createClass(Constructor, protoProps, staticProps) {
+            return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), 
+            Constructor;
+        }
         function _possibleConstructorReturn(self, call) {
-            if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-            return !call || "object" != typeof call && "function" != typeof call ? self : call;
+            return !call || "object" !== _typeof(call) && "function" != typeof call ? _assertThisInitialized(self) : call;
+        }
+        function _getPrototypeOf(o) {
+            return (_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o) {
+                return o.__proto__ || Object.getPrototypeOf(o);
+            })(o);
         }
         function _inherits(subClass, superClass) {
-            if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+            if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function");
             subClass.prototype = Object.create(superClass && superClass.prototype, {
                 constructor: {
                     value: subClass,
-                    enumerable: !1,
                     writable: !0,
                     configurable: !0
                 }
-            }), superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
+            }), superClass && _setPrototypeOf(subClass, superClass);
+        }
+        function _setPrototypeOf(o, p) {
+            return (_setPrototypeOf = Object.setPrototypeOf || function(o, p) {
+                return o.__proto__ = p, o;
+            })(o, p);
+        }
+        function _assertThisInitialized(self) {
+            if (void 0 === self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+            return self;
+        }
+        function _objectSpread(target) {
+            for (var i = 1; i < arguments.length; i++) {
+                var source = null != arguments[i] ? arguments[i] : {}, ownKeys = Object.keys(source);
+                "function" == typeof Object.getOwnPropertySymbols && (ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                    return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+                }))), ownKeys.forEach(function(key) {
+                    _defineProperty(target, key, source[key]);
+                });
+            }
+            return target;
+        }
+        function _defineProperty(obj, key, value) {
+            return key in obj ? Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: !0,
+                configurable: !0,
+                writable: !0
+            }) : obj[key] = value, obj;
         }
         function omit(object, keys) {
-            var newObject = _extends({}, object);
+            var newObject = _objectSpread({}, object);
             return keys.forEach(function(key) {
                 return delete newObject[key];
             }), newObject;
         }
-        Object.defineProperty(exports, "__esModule", {
+        Object.defineProperty(__webpack_exports__, "__esModule", {
             value: !0
-        }), exports.toQuery = exports.default = void 0;
-        var _createClass = function() {
-            function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                    var descriptor = props[i];
-                    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, 
-                    "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
-                }
-            }
-            return function(Constructor, protoProps, staticProps) {
-                return protoProps && defineProperties(Constructor.prototype, protoProps), staticProps && defineProperties(Constructor, staticProps), 
-                Constructor;
-            };
-        }(), _extends = Object.assign || function(target) {
-            for (var i = 1; i < arguments.length; i++) {
-                var source = arguments[i];
-                for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
-            }
-            return target;
-        }, _react = __webpack_require__(5), _react2 = _interopRequireDefault(_react), _propTypes = __webpack_require__(0), _propTypes2 = _interopRequireDefault(_propTypes), _matchmediaquery = __webpack_require__(9), _matchmediaquery2 = _interopRequireDefault(_matchmediaquery), _hyphenateStyleName = __webpack_require__(2), _hyphenateStyleName2 = _interopRequireDefault(_hyphenateStyleName), _mediaQuery = __webpack_require__(3), _mediaQuery2 = _interopRequireDefault(_mediaQuery), _toQuery = __webpack_require__(11), _toQuery2 = _interopRequireDefault(_toQuery), defaultTypes = {
-            component: _propTypes2.default.node,
-            query: _propTypes2.default.string,
-            values: _propTypes2.default.shape(_mediaQuery2.default.matchers),
-            children: _propTypes2.default.oneOfType([ _propTypes2.default.node, _propTypes2.default.func ]),
-            onChange: _propTypes2.default.func,
-            onBeforeChange: _propTypes2.default.func
-        }, mediaKeys = Object.keys(_mediaQuery2.default.all), excludedQueryKeys = Object.keys(defaultTypes), excludedPropKeys = excludedQueryKeys.concat(mediaKeys), MediaQuery = function(_React$Component) {
+        }), __webpack_require__.d(__webpack_exports__, "default", function() {
+            return MediaQuery;
+        });
+        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(10), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(12);
+        __webpack_require__.d(__webpack_exports__, "toQuery", function() {
+            return __WEBPACK_IMPORTED_MODULE_5__toQuery__.a;
+        });
+        var defaultTypes = {
+            component: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node,
+            query: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+            values: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape(__WEBPACK_IMPORTED_MODULE_4__mediaQuery__.a.matchers),
+            children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func ]),
+            onChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
+            onBeforeChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func
+        }, mediaKeys = Object.keys(__WEBPACK_IMPORTED_MODULE_4__mediaQuery__.a.all), excludedQueryKeys = Object.keys(defaultTypes), excludedPropKeys = excludedQueryKeys.concat(mediaKeys), MediaQuery = function(_React$Component) {
             function MediaQuery() {
-                var _ref, _temp, _this, _ret;
+                var _getPrototypeOf2, _this;
                 _classCallCheck(this, MediaQuery);
-                for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
-                return _temp = _this = _possibleConstructorReturn(this, (_ref = MediaQuery.__proto__ || Object.getPrototypeOf(MediaQuery)).call.apply(_ref, [ this ].concat(args))), 
-                _this.state = {
+                for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
+                return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MediaQuery)).call.apply(_getPrototypeOf2, [ this ].concat(args))), 
+                _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
                     matches: !1
-                }, _this.updateMatches = function() {
+                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateMatches", function() {
                     _this._mql.matches !== _this.state.matches && _this.setState({
                         matches: _this._mql.matches
                     });
-                }, _this.removeMql = function() {
+                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "removeMql", function() {
                     _this._mql && (_this._mql.removeListener(_this.updateMatches), _this._mql.dispose());
-                }, _ret = _temp, _possibleConstructorReturn(_this, _ret);
+                }), _this;
             }
             return _inherits(MediaQuery, _React$Component), _createClass(MediaQuery, [ {
                 key: "componentWillMount",
@@ -201,14 +261,15 @@
             }, {
                 key: "updateQuery",
                 value: function(props) {
-                    var values = void 0, forceStatic = !1;
-                    if (props.query ? this.query = props.query : this.query = (0, _toQuery2.default)(omit(props, excludedQueryKeys)), 
+                    var values, forceStatic = !1;
+                    if (props.query ? this.query = props.query : this.query = Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys)), 
                     !this.query) throw new Error("Invalid or missing MediaQuery!");
                     props.values && (values = Object.keys(props.values).reduce(function(result, key) {
-                        return result[(0, _hyphenateStyleName2.default)(key)] = props.values[key], result;
+                        return result[__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default()(key)] = props.values[key], 
+                        result;
                     }, {}), 0 !== Object.keys(values).length && (forceStatic = !0)), this.removeMql(), 
-                    this._mql = (0, _matchmediaquery2.default)(this.query, values, forceStatic), this._mql.addListener(this.updateMatches), 
-                    this.updateMatches();
+                    this._mql = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(this.query, values, forceStatic), 
+                    this._mql.addListener(this.updateMatches), this.updateMatches();
                 }
             }, {
                 key: "componentWillUpdate",
@@ -230,22 +291,22 @@
                 value: function() {
                     if ("function" == typeof this.props.children) return this.props.children(this.state.matches);
                     if (!1 === this.state.matches) return null;
-                    var props = omit(this.props, excludedPropKeys), hasMergeProps = Object.keys(props).length > 0, childrenCount = _react2.default.Children.count(this.props.children);
-                    return this.props.component || null == this.props.children || hasMergeProps && childrenCount > 1 ? _react2.default.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? _react2.default.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
+                    var props = omit(this.props, excludedPropKeys), hasMergeProps = Object.keys(props).length > 0, childrenCount = __WEBPACK_IMPORTED_MODULE_0_react___default.a.Children.count(this.props.children);
+                    return this.props.component || null == this.props.children || hasMergeProps && childrenCount > 1 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
                 }
             } ]), MediaQuery;
-        }(_react2.default.Component);
-        MediaQuery.displayName = "MediaQuery", MediaQuery.defaultProps = {
+        }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+        _defineProperty(MediaQuery, "displayName", "MediaQuery"), _defineProperty(MediaQuery, "defaultProps", {
             values: {}
-        }, exports.default = MediaQuery, exports.toQuery = _toQuery2.default;
+        });
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         function emptyFunctionThatReturnsNull() {
             return null;
         }
-        var assign = __webpack_require__(7), ReactPropTypesSecret = __webpack_require__(1), checkPropTypes = __webpack_require__(8), printWarning = function() {};
+        var assign = __webpack_require__(8), ReactPropTypesSecret = __webpack_require__(1), checkPropTypes = __webpack_require__(9), printWarning = function() {};
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
@@ -577,7 +638,7 @@ object-assign
         function matchMedia(query, values, forceStatic) {
             return new Mql(query, values, forceStatic);
         }
-        var staticMatch = __webpack_require__(10).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
+        var staticMatch = __webpack_require__(11).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
         module.exports = matchMedia;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -691,33 +752,27 @@ object-assign
         }
         exports.match = matchQuery, exports.parse = parseQuery;
         var RE_MEDIA_QUERY = /(?:(only|not)?\s*([^\s\(\)]+)(?:\s*and)?\s*)?(.+)?/i, RE_MQ_EXPRESSION = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/, RE_MQ_FEATURE = /^(?:(min|max)-)?(.+)/, RE_LENGTH_UNIT = /(em|rem|px|cm|mm|in|pt|pc)?$/, RE_RESOLUTION_UNIT = /(dpi|dpcm|dppx)?$/;
-    }, function(module, exports, __webpack_require__) {
+    }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        function _interopRequireDefault(obj) {
-            return obj && obj.__esModule ? obj : {
-                default: obj
+        (function(module) {
+            function keyVal(k, v) {
+                var realKey = __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default()(k);
+                return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? k : !1 === v ? negate(k) : "(".concat(realKey, ": ").concat(v, ")");
+            }
+            function join(conds) {
+                return conds.join(" and ");
+            }
+            var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
+                return "not ".concat(cond);
             };
-        }
-        function keyVal(k, v) {
-            var realKey = (0, _hyphenateStyleName2.default)(k);
-            return "number" == typeof v && (v += "px"), !0 === v ? k : !1 === v ? negate(k) : "(" + realKey + ": " + v + ")";
-        }
-        function join(conds) {
-            return conds.join(" and ");
-        }
-        Object.defineProperty(exports, "__esModule", {
-            value: !0
-        }), exports.default = function(obj) {
-            var rules = [];
-            return Object.keys(_mediaQuery2.default.all).forEach(function(k) {
-                var v = obj[k];
-                null != v && rules.push(keyVal(k, v));
-            }), join(rules);
-        };
-        var _hyphenateStyleName = __webpack_require__(2), _hyphenateStyleName2 = _interopRequireDefault(_hyphenateStyleName), _mediaQuery = __webpack_require__(3), _mediaQuery2 = _interopRequireDefault(_mediaQuery), negate = function(cond) {
-            return "not " + cond;
-        };
-        module.exports = exports.default;
+            __webpack_exports__.a = function(obj) {
+                var rules = [];
+                return Object.keys(__WEBPACK_IMPORTED_MODULE_1__mediaQuery__.a.all).forEach(function(k) {
+                    var v = obj[k];
+                    null != v && rules.push(keyVal(k, v));
+                }), join(rules);
+            }, module.exports = exports.default;
+        }).call(__webpack_exports__, __webpack_require__(4)(module));
     } ]);
 });
 //# sourceMappingURL=react-responsive.js.map
