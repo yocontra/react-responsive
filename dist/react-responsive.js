@@ -1,6 +1,6 @@
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.react);
-}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
             if (installedModules[moduleId]) return installedModules[moduleId].exports;
@@ -29,12 +29,12 @@
             return __webpack_require__.d(getter, "a", getter), getter;
         }, __webpack_require__.o = function(object, property) {
             return Object.prototype.hasOwnProperty.call(object, property);
-        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 5);
+        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 4);
     }([ function(module, exports, __webpack_require__) {
         var REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103, isValidElement = function(object) {
             return "object" == typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         };
-        module.exports = __webpack_require__(7)(isValidElement, !0);
+        module.exports = __webpack_require__(6)(isValidElement, !0);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
@@ -47,99 +47,77 @@
         module.exports = hyphenateStyleName;
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        (function(module) {
-            function _objectSpread(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                    var source = null != arguments[i] ? arguments[i] : {}, ownKeys = Object.keys(source);
-                    "function" == typeof Object.getOwnPropertySymbols && (ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-                    }))), ownKeys.forEach(function(key) {
-                        _defineProperty(target, key, source[key]);
-                    });
-                }
-                return target;
+        function _objectSpread(target) {
+            for (var i = 1; i < arguments.length; i++) {
+                var source = null != arguments[i] ? arguments[i] : {}, ownKeys = Object.keys(source);
+                "function" == typeof Object.getOwnPropertySymbols && (ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                    return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+                }))), ownKeys.forEach(function(key) {
+                    _defineProperty(target, key, source[key]);
+                });
             }
-            function _defineProperty(obj, key, value) {
-                return key in obj ? Object.defineProperty(obj, key, {
-                    value: value,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0
-                }) : obj[key] = value, obj;
-            }
-            var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__), stringOrNumber = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number ]), matchers = {
-                orientation: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "portrait", "landscape" ]),
-                scan: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "progressive", "interlace" ]),
-                aspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                deviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                height: stringOrNumber,
-                deviceHeight: stringOrNumber,
-                width: stringOrNumber,
-                deviceWidth: stringOrNumber,
-                color: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                colorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                monochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                resolution: stringOrNumber
-            }, features = _objectSpread({
-                minAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                maxAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                minDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                maxDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-                minHeight: stringOrNumber,
-                maxHeight: stringOrNumber,
-                minDeviceHeight: stringOrNumber,
-                maxDeviceHeight: stringOrNumber,
-                minWidth: stringOrNumber,
-                maxWidth: stringOrNumber,
-                minDeviceWidth: stringOrNumber,
-                maxDeviceWidth: stringOrNumber,
-                minColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                maxColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                minColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                maxColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                minMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                maxMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-                minResolution: stringOrNumber,
-                maxResolution: stringOrNumber
-            }, matchers), types = {
-                all: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                grid: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                aural: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                braille: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                handheld: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                print: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                projection: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                screen: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                tty: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                tv: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-                embossed: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool
-            }, all = _objectSpread({}, types, features);
-            matchers.type = Object.keys(types), __webpack_exports__.a = {
-                all: all,
-                types: types,
-                matchers: matchers,
-                features: features
-            }, module.exports = exports.default;
-        }).call(__webpack_exports__, __webpack_require__(4)(module));
-    }, function(module, exports) {
-        module.exports = function(originalModule) {
-            if (!originalModule.webpackPolyfill) {
-                var module = Object.create(originalModule);
-                module.children || (module.children = []), Object.defineProperty(module, "loaded", {
-                    enumerable: !0,
-                    get: function() {
-                        return module.l;
-                    }
-                }), Object.defineProperty(module, "id", {
-                    enumerable: !0,
-                    get: function() {
-                        return module.i;
-                    }
-                }), Object.defineProperty(module, "exports", {
-                    enumerable: !0
-                }), module.webpackPolyfill = 1;
-            }
-            return module;
+            return target;
+        }
+        function _defineProperty(obj, key, value) {
+            return key in obj ? Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: !0,
+                configurable: !0,
+                writable: !0
+            }) : obj[key] = value, obj;
+        }
+        var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__), stringOrNumber = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number ]), matchers = {
+            orientation: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "portrait", "landscape" ]),
+            scan: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "progressive", "interlace" ]),
+            aspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            deviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            height: stringOrNumber,
+            deviceHeight: stringOrNumber,
+            width: stringOrNumber,
+            deviceWidth: stringOrNumber,
+            color: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            colorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            monochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            resolution: stringOrNumber
+        }, features = _objectSpread({
+            minAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            maxAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            minDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            maxDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            minHeight: stringOrNumber,
+            maxHeight: stringOrNumber,
+            minDeviceHeight: stringOrNumber,
+            maxDeviceHeight: stringOrNumber,
+            minWidth: stringOrNumber,
+            maxWidth: stringOrNumber,
+            minDeviceWidth: stringOrNumber,
+            maxDeviceWidth: stringOrNumber,
+            minColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            maxColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            minColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            maxColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            minMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            maxMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            minResolution: stringOrNumber,
+            maxResolution: stringOrNumber
+        }, matchers), types = {
+            all: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            grid: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            aural: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            braille: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            handheld: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            print: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            projection: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            screen: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            tty: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            tv: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
+            embossed: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool
+        }, all = _objectSpread({}, types, features);
+        matchers.type = Object.keys(types), __webpack_exports__.a = {
+            all: all,
+            types: types,
+            matchers: matchers,
+            features: features
         };
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
@@ -221,7 +199,7 @@
         }), __webpack_require__.d(__webpack_exports__, "default", function() {
             return MediaQuery;
         });
-        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(10), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(12);
+        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(9), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(11);
         __webpack_require__.d(__webpack_exports__, "toQuery", function() {
             return __WEBPACK_IMPORTED_MODULE_5__toQuery__.a;
         });
@@ -300,13 +278,13 @@
             values: {}
         });
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         function emptyFunctionThatReturnsNull() {
             return null;
         }
-        var assign = __webpack_require__(8), ReactPropTypesSecret = __webpack_require__(1), checkPropTypes = __webpack_require__(9), printWarning = function() {};
+        var assign = __webpack_require__(7), ReactPropTypesSecret = __webpack_require__(1), checkPropTypes = __webpack_require__(8), printWarning = function() {};
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
@@ -638,7 +616,7 @@ object-assign
         function matchMedia(query, values, forceStatic) {
             return new Mql(query, values, forceStatic);
         }
-        var staticMatch = __webpack_require__(11).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
+        var staticMatch = __webpack_require__(10).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
         module.exports = matchMedia;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -754,25 +732,23 @@ object-assign
         var RE_MEDIA_QUERY = /(?:(only|not)?\s*([^\s\(\)]+)(?:\s*and)?\s*)?(.+)?/i, RE_MQ_EXPRESSION = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/, RE_MQ_FEATURE = /^(?:(min|max)-)?(.+)/, RE_LENGTH_UNIT = /(em|rem|px|cm|mm|in|pt|pc)?$/, RE_RESOLUTION_UNIT = /(dpi|dpcm|dppx)?$/;
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        (function(module) {
-            function keyVal(k, v) {
-                var realKey = __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default()(k);
-                return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? k : !1 === v ? negate(k) : "(".concat(realKey, ": ").concat(v, ")");
-            }
-            function join(conds) {
-                return conds.join(" and ");
-            }
-            var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
-                return "not ".concat(cond);
-            };
-            __webpack_exports__.a = function(obj) {
-                var rules = [];
-                return Object.keys(__WEBPACK_IMPORTED_MODULE_1__mediaQuery__.a.all).forEach(function(k) {
-                    var v = obj[k];
-                    null != v && rules.push(keyVal(k, v));
-                }), join(rules);
-            }, module.exports = exports.default;
-        }).call(__webpack_exports__, __webpack_require__(4)(module));
+        function keyVal(k, v) {
+            var realKey = __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default()(k);
+            return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? k : !1 === v ? negate(k) : "(".concat(realKey, ": ").concat(v, ")");
+        }
+        function join(conds) {
+            return conds.join(" and ");
+        }
+        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
+            return "not ".concat(cond);
+        };
+        __webpack_exports__.a = function(obj) {
+            var rules = [];
+            return Object.keys(__WEBPACK_IMPORTED_MODULE_1__mediaQuery__.a.all).forEach(function(k) {
+                var v = obj[k];
+                null != v && rules.push(keyVal(k, v));
+            }), join(rules);
+        };
     } ]);
 });
 //# sourceMappingURL=react-responsive.js.map
