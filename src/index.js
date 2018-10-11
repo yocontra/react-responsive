@@ -79,11 +79,6 @@ class MediaQuery extends React.Component {
     this.updateMatches()
   }
 
-  UNSAFE_componentWillUpdate(_, nextState) {
-    if(this.props.onBeforeChange && this.state.matches !== nextState.matches) {
-      this.props.onBeforeChange(this.state.matches)
-    }
-  }
 
   componentDidUpdate(_, prevState) {
     if(this.props.onChange && prevState.matches !== this.state.matches) {
