@@ -109,7 +109,7 @@ describe('MediaQuery', function () {
         </MediaQuery>
       )
       const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.query, 'all')
+      assert.equal(e.state.query, 'all')
     })
     it('builds query from props', function () {
       const mq = (
@@ -118,7 +118,7 @@ describe('MediaQuery', function () {
         </MediaQuery>
       )
       const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.query, 'all')
+      assert.equal(e.state.query, 'all')
     })
     it('builds query from values', function () {
       const mq = (
@@ -127,7 +127,7 @@ describe('MediaQuery', function () {
         </MediaQuery>
       )
       const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.query, '(orientation: portrait)')
+      assert.equal(e.state.query, '(orientation: portrait)')
     })
     it('throws if theres no query', function () {
       const mq = (
