@@ -13,9 +13,8 @@ const defaultTypes = {
   onChange: PropTypes.func,
   onBeforeChange: PropTypes.func
 }
-const mediaKeys = Object.keys(mediaQuery.all)
+
 const excludedQueryKeys = Object.keys(defaultTypes)
-const excludedPropKeys = excludedQueryKeys.concat(mediaKeys)
 
 function omit(object, keys) {
   const newObject = { ...object }
@@ -58,7 +57,7 @@ class MediaQuery extends React.Component {
           result[hyphenate(key)] = props.values[key]
           return result
         }, {})
-      if (Object.keys(values).length !== 0) forceStatic = true 
+      if (Object.keys(values).length !== 0) forceStatic = true
     }
 
     this.removeMql()
@@ -108,27 +107,8 @@ class MediaQuery extends React.Component {
     if (this.state.matches === false) {
       return null
     }
-    const props = omit(this.props, excludedPropKeys)
-    const hasMergeProps = Object.keys(props).length > 0
-    const childrenCount = React.Children.count(this.props.children)
-    const wrapChildren = this.props.component || this.props.children == null || (hasMergeProps && childrenCount > 1)
-    if (wrapChildren) {
-      return React.createElement(
-        this.props.component || 'div',
-        props,
-        this.props.children
-      )
-    } else if (hasMergeProps) {
-      return React.cloneElement(
-        this.props.children,
-        props
-      )
-    } else if (childrenCount) {
-      return this.props.children
-    }
-    else {
-      return null
-    }
+
+    return this.props.children
   }
 }
 
