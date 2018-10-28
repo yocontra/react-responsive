@@ -15,24 +15,22 @@ const defaultTypes = {
 
 const excludedQueryKeys = Object.keys(defaultTypes)
 
-function omit(object, keys) {
+const omit = (object, keys) => {
   const newObject = { ...object }
   keys.forEach(key => delete newObject[key])
   return newObject
 }
 
-function getValues({values}) {
-  return  Object.keys(values || {}).reduce(function (result, key) {
+const getValues = ({ values={} }) =>
+  Object.keys(values).reduce((result, key) => {
     result[hyphenate(key)] = values[key]
     return result
   }, {})
-}
 
-function getQuery(props) {
-  return props.query || toQuery(omit(props, excludedQueryKeys))
-}
+const getQuery = (props) =>
+  props.query || toQuery(omit(props, excludedQueryKeys))
 
-function buildMatcher(props, query) {
+const createMatchMedia = (props, query) => {
   const values = getValues(props)
   const forceStatic = values.length === 0
   return matchMedia(query, values, forceStatic)
@@ -46,19 +44,15 @@ class MediaQuery extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     const query = getQuery(props)
-    if (!query) {
-      throw new Error('Invalid or missing MediaQuery!')
-    }
+    if (!query) throw new Error('Invalid or missing MediaQuery!')
+    if (query === state.query) return null
 
-    if(query !== state.query){
-      const mq = buildMatcher(props, query)
-      return {
-        matches: mq.matches,
-        mq,
-        query
-      }
+    const mq = createMatchMedia(props, query)
+    return {
+      matches: mq.matches,
+      mq,
+      query
     }
-    return null
   }
 
   state = {
@@ -74,48 +68,40 @@ class MediaQuery extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.mq !== prevState.mq) {
-      this.removeMq(prevState.mq)
+    if (this.state.mq !== prevState.mq) {
+      this.cleanupMediaQuery(prevState.mq)
       this.state.mq.addListener(this.updateMatches)
       // we don't need to call updateMatches here because even if the old mq fired before
       // we could safely remove it, updateMatches refers to the new one mq instance
       // and it will be accurate.
     }
-    if(this.props.onChange && prevState.matches !== this.state.matches) {
+    if (this.props.onChange && prevState.matches !== this.state.matches) {
       this.props.onChange(this.state.matches)
     }
   }
 
   componentWillUnmount() {
-    this.removeMq(this.state.mq)
+    this._unmounted = true
+    this.cleanupMediaQuery(this.state.mq)
   }
 
-  removeMq = (mq) => {
-    if (mq) {
-      mq.removeListener(this.updateMatches)
-      mq.dispose()
-    }
+  cleanupMediaQuery = (mq) => {
+    if (!mq) return
+    mq.removeListener(this.updateMatches)
+    mq.dispose()
   }
 
   updateMatches = () => {
-    if (this.state.mq.matches === this.state.matches) {
-      return
-    }
-    this.setState({
-      matches: this.state.mq.matches
-    })
+    if (this._unmounted) return
+    if (this.state.mq.matches === this.state.matches) return
+    this.setState({ matches: this.state.mq.matches })
   }
 
   render() {
-    if(typeof this.props.children === 'function') {
+    if (typeof this.props.children === 'function') {
       return this.props.children(this.state.matches)
     }
-
-    if (this.state.matches === false) {
-      return null
-    }
-
-    return this.props.children
+    return this.state.matches ? this.props.children : null
   }
 }
 

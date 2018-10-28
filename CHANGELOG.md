@@ -1,5 +1,14 @@
 ## Change Log
 
+### v6.0.0
+
+- Require React v16 or higher
+- Update and simplify all lifecycle functions
+- Remove all support for wrapper elements
+  - Previously, when either `component` or non-mediaquery props were provided, we would render a wrapper element. This behavior no longer exists.
+  - The rendering logic is now a basic ternary - `matches ? props.children : null`
+- Thanks to @whatknight for doing the work here.
+
 ### v5.0.0
 - New changelog system, all manual now since the automated system was overcomplicated and missed things.
 - Breaking: `values` property always takes precedence when provided, no matter what (https://github.com/contra/react-responsive/issues/161)

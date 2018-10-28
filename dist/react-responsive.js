@@ -188,12 +188,6 @@
                 writable: !0
             }) : obj[key] = value, obj;
         }
-        function omit(object, keys) {
-            var newObject = _objectSpread({}, object);
-            return keys.forEach(function(key) {
-                return delete newObject[key];
-            }), newObject;
-        }
         Object.defineProperty(__webpack_exports__, "__esModule", {
             value: !0
         }), __webpack_require__.d(__webpack_exports__, "default", function() {
@@ -208,69 +202,74 @@
             query: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
             values: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape(__WEBPACK_IMPORTED_MODULE_4__mediaQuery__.a.matchers),
             children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func ]),
-            onChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
-            onBeforeChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func
-        }, mediaKeys = Object.keys(__WEBPACK_IMPORTED_MODULE_4__mediaQuery__.a.all), excludedQueryKeys = Object.keys(defaultTypes), excludedPropKeys = excludedQueryKeys.concat(mediaKeys), MediaQuery = function(_React$Component) {
+            onChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func
+        }, excludedQueryKeys = Object.keys(defaultTypes), omit = function(object, keys) {
+            var newObject = _objectSpread({}, object);
+            return keys.forEach(function(key) {
+                return delete newObject[key];
+            }), newObject;
+        }, getValues = function(_ref) {
+            var _ref$values = _ref.values, values = void 0 === _ref$values ? {} : _ref$values;
+            return Object.keys(values).reduce(function(result, key) {
+                return result[__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default()(key)] = values[key], 
+                result;
+            }, {});
+        }, getQuery = function(props) {
+            return props.query || Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys));
+        }, createMatchMedia = function(props, query) {
+            var values = getValues(props), forceStatic = 0 === values.length;
+            return __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, values, forceStatic);
+        }, MediaQuery = function(_React$Component) {
             function MediaQuery() {
                 var _getPrototypeOf2, _this;
                 _classCallCheck(this, MediaQuery);
                 for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
                 return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MediaQuery)).call.apply(_getPrototypeOf2, [ this ].concat(args))), 
                 _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-                    matches: !1
+                    matches: !1,
+                    mq: null,
+                    query: ""
+                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "cleanupMediaQuery", function(mq) {
+                    mq && (mq.removeListener(_this.updateMatches), mq.dispose());
                 }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateMatches", function() {
-                    _this._mql.matches !== _this.state.matches && _this.setState({
-                        matches: _this._mql.matches
+                    _this._unmounted || _this.state.mq.matches !== _this.state.matches && _this.setState({
+                        matches: _this.state.mq.matches
                     });
-                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "removeMql", function() {
-                    _this._mql && (_this._mql.removeListener(_this.updateMatches), _this._mql.dispose());
                 }), _this;
             }
             return _inherits(MediaQuery, _React$Component), _createClass(MediaQuery, [ {
-                key: "componentWillMount",
+                key: "componentDidMount",
                 value: function() {
-                    this.updateQuery(this.props);
-                }
-            }, {
-                key: "componentWillReceiveProps",
-                value: function(nextProps) {
-                    this.updateQuery(nextProps);
-                }
-            }, {
-                key: "updateQuery",
-                value: function(props) {
-                    var values, forceStatic = !1;
-                    if (props.query ? this.query = props.query : this.query = Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys)), 
-                    !this.query) throw new Error("Invalid or missing MediaQuery!");
-                    props.values && (values = Object.keys(props.values).reduce(function(result, key) {
-                        return result[__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default()(key)] = props.values[key], 
-                        result;
-                    }, {}), 0 !== Object.keys(values).length && (forceStatic = !0)), this.removeMql(), 
-                    this._mql = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(this.query, values, forceStatic), 
-                    this._mql.addListener(this.updateMatches), this.updateMatches();
-                }
-            }, {
-                key: "componentWillUpdate",
-                value: function(_, nextState) {
-                    this.props.onBeforeChange && this.state.matches !== nextState.matches && this.props.onBeforeChange(this.state.matches);
+                    this.state.mq.addListener(this.updateMatches), this.updateMatches();
                 }
             }, {
                 key: "componentDidUpdate",
-                value: function(_, prevState) {
+                value: function(prevProps, prevState) {
+                    this.state.mq !== prevState.mq && (this.cleanupMediaQuery(prevState.mq), this.state.mq.addListener(this.updateMatches)), 
                     this.props.onChange && prevState.matches !== this.state.matches && this.props.onChange(this.state.matches);
                 }
             }, {
                 key: "componentWillUnmount",
                 value: function() {
-                    this.removeMql();
+                    this._unmounted = !0, this.cleanupMediaQuery(this.state.mq);
                 }
             }, {
                 key: "render",
                 value: function() {
-                    if ("function" == typeof this.props.children) return this.props.children(this.state.matches);
-                    if (!1 === this.state.matches) return null;
-                    var props = omit(this.props, excludedPropKeys), hasMergeProps = Object.keys(props).length > 0, childrenCount = __WEBPACK_IMPORTED_MODULE_0_react___default.a.Children.count(this.props.children);
-                    return this.props.component || null == this.props.children || hasMergeProps && childrenCount > 1 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(this.props.component || "div", props, this.props.children) : hasMergeProps ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.cloneElement(this.props.children, props) : childrenCount ? this.props.children : null;
+                    return "function" == typeof this.props.children ? this.props.children(this.state.matches) : this.state.matches ? this.props.children : null;
+                }
+            } ], [ {
+                key: "getDerivedStateFromProps",
+                value: function(props, state) {
+                    var query = getQuery(props);
+                    if (!query) throw new Error("Invalid or missing MediaQuery!");
+                    if (query === state.query) return null;
+                    var mq = createMatchMedia(props, query);
+                    return {
+                        matches: mq.matches,
+                        mq: mq,
+                        query: query
+                    };
                 }
             } ]), MediaQuery;
         }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
