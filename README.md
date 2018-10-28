@@ -127,43 +127,9 @@ You may also specify a function for the child of the MediaQuery component. When 
 </MediaQuery>
 ```
 
-### Component Property
-
-You may specify an optional `component` property on the `MediaQuery` that indicates what component to wrap children with. Any additional props defined on the `MediaQuery` will be passed through to this "wrapper" component.
-
-**Specifying Wrapper Component**
-
-```jsx
-<MediaQuery minDeviceWidth={700} component="ul">
-  <li>Item 1</li>
-  <li>Item 2</li>
-</MediaQuery>
-
-// renders the following when the media query condition is met
-
-<ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
-</ul>
-```
-
-**Normal Behavior**
-
-```jsx
-<MediaQuery minDeviceWidth={700}>
-  <div>Unwrapped content</div>
-  <div>Unwrapped content</div>
-</MediaQuery>
-
-// renders the following when the media query condition is met
-
-<div>Unwrapped content</div>
-<div>Unwrapped content</div>
-```
-
 ### Server rendering
 
-Server rendering can be done by passing static values through the `values` property. 
+Server rendering can be done by passing static values through the `values` property.
 
 The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
 `height`, `deviceHeight`, `width`, `deviceWidth`, `color`, `colorIndex`, `monochrome`,
@@ -174,7 +140,7 @@ The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAsp
 
 Note: The `values` property always takes precedence, even on the client where a `window` object exists and matchMedia can be used.
 
-If you are using [redux](http://redux.js.org/) you can automatically pass `width` / `deviceWidth` values to your components with [react-responsive-redux](https://github.com/modosc/react-responsive-redux). 
+If you are using [redux](http://redux.js.org/) you can automatically pass `width` / `deviceWidth` values to your components with [react-responsive-redux](https://github.com/modosc/react-responsive-redux).
 
 
 ```jsx

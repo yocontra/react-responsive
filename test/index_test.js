@@ -54,54 +54,6 @@ describe('MediaQuery', function () {
       const e = TestUtils.renderIntoDocument(mq)
       assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
     })
-    it('renders the wrapper', function () {
-      const mq = (
-        <MediaQuery query="all" component="section">
-          <div className="childComponent"/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'section'))
-    })
-    it('does not render a div when there are multiple children', function () {
-      const mq = (
-        <MediaQuery query="all">
-          <span className="childComponent"/>
-          <span className="childComponent"/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
-    })
-    it('render a div when there are extra props and multiple children', function () {
-      const mq = (
-        <MediaQuery query="all" className="wrapper">
-          <span className="childComponent"/>
-          <span className="childComponent"/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'div'))
-    })
-    it('renders the first child when children is a single-element array', function () {
-      const mq = (
-        <MediaQuery query="all">
-          {[ 'single element' ].map((content, index) => <span key={index}>{content}</span>)}
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithTag(e, 'span'))
-      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
-    })
-    it('passes extra props', function () {
-      const mq = (
-        <MediaQuery query="all" className="passedProp">
-          <div/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'passedProp'))
-    })
     it('uses query prop if it has one', function () {
       const mq = (
         <MediaQuery query="all" className="passedProp">
@@ -145,17 +97,6 @@ describe('MediaQuery', function () {
       )
       assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!')
     })
-    it('renders nothing when children is an empty array', function () {
-      const mq = (
-        <MediaQuery query="all">
-          {[].map((content, index) => {
-            return <div key={index}>{content}</div>
-          })}
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.render(), null)
-    })
   })
   it('renders nothing when no matches', function () {
     const mq = (
@@ -184,21 +125,6 @@ describe('MediaQuery', function () {
     const e = TestUtils.renderIntoDocument(mq)
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
   })
-  it('doesnt throw error when unspecificed component with empty children', function () {
-    const mq = (
-      <MediaQuery all className="parentBox" />
-    )
-    const e = TestUtils.renderIntoDocument(mq)
-    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'))
-  })
-  it('doesnt throw error when component with null children', function () {
-    const mq = (
-      <MediaQuery all className="parentBox">{null}</MediaQuery>
-    )
-    const e = TestUtils.renderIntoDocument(mq)
-    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'parentBox'))
-  })
-
   it('renders with output of callback', function () {
     const mq = (
       <MediaQuery maxWidth={300}>
