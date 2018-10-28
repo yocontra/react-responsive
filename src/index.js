@@ -10,8 +10,7 @@ const defaultTypes = {
   query: PropTypes.string,
   values: PropTypes.shape(mediaQuery.matchers),
   children: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
-  onChange: PropTypes.func,
-  onBeforeChange: PropTypes.func
+  onChange: PropTypes.func
 }
 
 const excludedQueryKeys = Object.keys(defaultTypes)
@@ -22,81 +21,89 @@ function omit(object, keys) {
   return newObject
 }
 
+function getValues({values}) {
+  return  Object.keys(values || {}).reduce(function (result, key) {
+    result[hyphenate(key)] = values[key]
+    return result
+  }, {})
+}
+
+function getQuery(props) {
+  return props.query || toQuery(omit(props, excludedQueryKeys))
+}
+
+function buildMatcher(props, query) {
+  const values = getValues(props)
+  const forceStatic = values.length === 0
+  return matchMedia(query, values, forceStatic)
+}
+
 class MediaQuery extends React.Component {
   static displayName = 'MediaQuery'
   static defaultProps = {
     values: {}
   }
 
-  state = { matches: false }
-
-  componentWillMount() {
-    this.updateQuery(this.props)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.updateQuery(nextProps)
-  }
-
-  updateQuery(props) {
-    let values
-    let forceStatic = false
-    if (props.query) {
-      this.query = props.query
-    } else {
-      this.query = toQuery(omit(props, excludedQueryKeys))
-    }
-
-    if (!this.query) {
+  static getDerivedStateFromProps(props, state) {
+    const query = getQuery(props)
+    if (!query) {
       throw new Error('Invalid or missing MediaQuery!')
     }
 
-    if (props.values) {
-      values = Object.keys(props.values)
-        .reduce(function (result, key) {
-          result[hyphenate(key)] = props.values[key]
-          return result
-        }, {})
-      if (Object.keys(values).length !== 0) forceStatic = true
+    if(query !== state.query){
+      const mq = buildMatcher(props, query)
+      return {
+        matches: mq.matches,
+        mq,
+        query
+      }
     }
+    return null
+  }
 
-    this.removeMql()
+  state = {
+    matches: false,
+    mq: null,
+    query: ''
+  }
 
-    this._mql = matchMedia(this.query, values, forceStatic)
-    this._mql.addListener(this.updateMatches)
+  componentDidMount() {
+    this.state.mq.addListener(this.updateMatches)
+    // make sure match is correct since status could have since first render and now
     this.updateMatches()
   }
 
-  componentWillUpdate(_, nextState) {
-    if(this.props.onBeforeChange && this.state.matches !== nextState.matches) {
-      this.props.onBeforeChange(this.state.matches)
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.mq !== prevState.mq) {
+      this.removeMq(prevState.mq)
+      this.state.mq.addListener(this.updateMatches)
+      // we don't need to call updateMatches here because even if the old mq fired before
+      // we could safely remove it, updateMatches refers to the new one mq instance
+      // and it will be accurate.
     }
-  }
-
-  componentDidUpdate(_, prevState) {
     if(this.props.onChange && prevState.matches !== this.state.matches) {
       this.props.onChange(this.state.matches)
     }
   }
 
   componentWillUnmount() {
-    this.removeMql()
+    this.removeMq(this.state.mq)
+  }
+
+  removeMq = (mq) => {
+    if (mq) {
+      mq.removeListener(this.updateMatches)
+      mq.dispose()
+    }
   }
 
   updateMatches = () => {
-    if (this._mql.matches === this.state.matches) {
+    if (this.state.mq.matches === this.state.matches) {
       return
     }
     this.setState({
-      matches: this._mql.matches
+      matches: this.state.mq.matches
     })
-  }
-
-  removeMql = () => {
-    if (this._mql) {
-      this._mql.removeListener(this.updateMatches)
-      this._mql.dispose()
-    }
   }
 
   render() {
