@@ -2,7 +2,7 @@
 
 ### v6.0.0
 
-- Require React v16 or higher
+- Require React v16.3.0 or higher
 - Update and simplify all lifecycle functions
 - Remove all support for wrapper elements
   - Previously, when either `component` or non-mediaquery props were provided, we would render a wrapper element. This behavior no longer exists.
