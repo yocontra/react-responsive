@@ -38,13 +38,18 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
-    }, function(module, exports, __webpack_require__) {
+    }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
-        function hyphenateStyleName(string) {
-            return string in cache ? cache[string] : cache[string] = string.replace(uppercasePattern, "-$&").toLowerCase().replace(msPattern, "-ms-");
+        function toHyphenLower(match) {
+            return "-" + match.toLowerCase();
+        }
+        function hyphenateStyleName(name) {
+            if (cache.hasOwnProperty(name)) return cache[name];
+            var hName = name.replace(uppercasePattern, toHyphenLower);
+            return cache[name] = msPattern.test(hName) ? "-" + hName : hName;
         }
         var uppercasePattern = /[A-Z]/g, msPattern = /^ms-/, cache = {};
-        module.exports = hyphenateStyleName;
+        __webpack_exports__.a = hyphenateStyleName;
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
         function _objectSpread(target) {
@@ -193,7 +198,7 @@
         }), __webpack_require__.d(__webpack_exports__, "default", function() {
             return MediaQuery;
         });
-        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(9), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(11);
+        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(9), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(11);
         __webpack_require__.d(__webpack_exports__, "toQuery", function() {
             return __WEBPACK_IMPORTED_MODULE_5__toQuery__.a;
         });
@@ -211,13 +216,13 @@
         }, getValues = function(_ref) {
             var _ref$values = _ref.values, values = void 0 === _ref$values ? {} : _ref$values;
             return Object.keys(values).reduce(function(result, key) {
-                return result[__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name___default()(key)] = values[key], 
+                return result[Object(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__.a)(key)] = values[key], 
                 result;
             }, {});
         }, getQuery = function(props) {
             return props.query || Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys));
         }, createMatchMedia = function(props, query) {
-            var values = getValues(props), forceStatic = 0 === values.length;
+            var values = getValues(props), forceStatic = 0 === Object.keys(values).length;
             return __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, values, forceStatic);
         }, MediaQuery = function(_React$Component) {
             function MediaQuery() {
@@ -732,13 +737,13 @@ object-assign
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
         function keyVal(k, v) {
-            var realKey = __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default()(k);
+            var realKey = Object(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__.a)(k);
             return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? k : !1 === v ? negate(k) : "(".concat(realKey, ": ").concat(v, ")");
         }
         function join(conds) {
             return conds.join(" and ");
         }
-        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
+        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
             return "not ".concat(cond);
         };
         __webpack_exports__.a = function(obj) {
