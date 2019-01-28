@@ -222,7 +222,7 @@
         }, getQuery = function(props) {
             return props.query || Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys));
         }, createMatchMedia = function(props, query) {
-            var values = getValues(props), forceStatic = 0 === Object.keys(values).length;
+            var values = getValues(props), forceStatic = 0 !== Object.keys(values).length;
             return __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, values, forceStatic);
         }, MediaQuery = function(_React$Component) {
             function MediaQuery() {

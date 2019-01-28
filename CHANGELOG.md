@@ -1,5 +1,9 @@
 ## Change Log
 
+### v6.1.1
+
+- Fix `forceStatic` issue with previous release
+
 ### v6.1.0
 
 - Fix `values` prop existence not forcing static query resolution (Thanks @Herdismaria)

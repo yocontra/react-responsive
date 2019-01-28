@@ -32,7 +32,7 @@ const getQuery = (props) =>
 
 const createMatchMedia = (props, query) => {
   const values = getValues(props)
-  const forceStatic = Object.keys(values).length === 0
+  const forceStatic = Object.keys(values).length !== 0
   return matchMedia(query, values, forceStatic)
 }
 
