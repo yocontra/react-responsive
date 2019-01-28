@@ -1,5 +1,9 @@
 ## Change Log
 
+### v6.1.0
+
+- Fix `values` prop existence not forcing static query resolution (Thanks @Herdismaria)
+
 ### v6.0.0
 
 - Require React v16.3.0 or higher
