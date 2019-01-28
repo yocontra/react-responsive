@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import matchMedia from 'matchmediaquery'
-import hyphenate  from 'hyphenate-style-name'
+import hyphenate from 'hyphenate-style-name'
 import mediaQuery from './mediaQuery'
-import toQuery  from './toQuery'
+import toQuery from './toQuery'
 
 const defaultTypes = {
   component: PropTypes.node,
@@ -32,7 +32,7 @@ const getQuery = (props) =>
 
 const createMatchMedia = (props, query) => {
   const values = getValues(props)
-  const forceStatic = values.length === 0
+  const forceStatic = Object.keys(values).length === 0
   return matchMedia(query, values, forceStatic)
 }
 
