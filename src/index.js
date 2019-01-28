@@ -9,8 +9,8 @@ const defaultTypes = {
   component: PropTypes.node,
   query: PropTypes.string,
   values: PropTypes.shape(mediaQuery.matchers),
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  onChange: PropTypes.func,
+  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
+  onChange: PropTypes.func
 }
 
 const excludedQueryKeys = Object.keys(defaultTypes)
@@ -21,46 +21,44 @@ const omit = (object, keys) => {
   return newObject
 }
 
-const getValues = ({ values = {} }) =>
+const getValues = ({ values={} }) =>
   Object.keys(values).reduce((result, key) => {
     result[hyphenate(key)] = values[key]
     return result
   }, {})
 
-const getQuery = props => props.query || toQuery(omit(props, excludedQueryKeys))
+const getQuery = (props) =>
+  props.query || toQuery(omit(props, excludedQueryKeys))
 
 const createMatchMedia = (props, query) => {
   const values = getValues(props)
-  const forceStatic = Object.keys(values).length !== 0
+  const forceStatic = Object.keys(values).length === 0
   return matchMedia(query, values, forceStatic)
 }
 
 class MediaQuery extends React.Component {
   static displayName = 'MediaQuery'
   static defaultProps = {
-    values: {},
+    values: {}
   }
 
   static getDerivedStateFromProps(props, state) {
     const query = getQuery(props)
     if (!query) throw new Error('Invalid or missing MediaQuery!')
-    const forceStatic = Object.keys(props.values).length !== 0
-    if (query === state.query && forceStatic === state.forceStatic) return null
+    if (query === state.query) return null
 
     const mq = createMatchMedia(props, query)
     return {
       matches: mq.matches,
       mq,
-      query,
-      forceStatic,
+      query
     }
   }
 
   state = {
     matches: false,
     mq: null,
-    query: '',
-    forceStatic: false,
+    query: ''
   }
 
   componentDidMount() {
@@ -87,7 +85,7 @@ class MediaQuery extends React.Component {
     this.cleanupMediaQuery(this.state.mq)
   }
 
-  cleanupMediaQuery = mq => {
+  cleanupMediaQuery = (mq) => {
     if (!mq) return
     mq.removeListener(this.updateMatches)
     mq.dispose()
@@ -107,4 +105,7 @@ class MediaQuery extends React.Component {
   }
 }
 
-export { MediaQuery as default, toQuery }
+export {
+  MediaQuery as default,
+  toQuery
+}
