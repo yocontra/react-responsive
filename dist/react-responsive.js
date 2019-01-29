@@ -270,7 +270,7 @@
                     if (!query) throw new Error("Invalid or missing MediaQuery!");
                     var values = getValues(props);
                     if (query === state.query && values === state.values) return null;
-                    var forceStatic = 0 !== Object.keys(values).length, mq = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(props, query, forceStatic);
+                    var mq = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(props, query, !!values);
                     return {
                         matches: mq.matches,
                         mq: mq,
