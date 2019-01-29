@@ -21,20 +21,18 @@ const omit = (object, keys) => {
   return newObject
 }
 
-const getValues = ({ values={} }) =>
-  Object.keys(values).reduce((result, key) => {
+const getValues = ({ values }) => {
+  if (!values) return null
+  const keys = Object.keys(values)
+  if (keys.length === 0) return null
+  return keys.reduce((result, key) => {
     result[hyphenate(key)] = values[key]
     return result
   }, {})
+}
 
 const getQuery = (props) =>
   props.query || toQuery(omit(props, excludedQueryKeys))
-
-const createMatchMedia = (props, query) => {
-  const values = getValues(props)
-  const forceStatic = Object.keys(values).length !== 0
-  return matchMedia(query, values, forceStatic)
-}
 
 class MediaQuery extends React.Component {
   static displayName = 'MediaQuery'
@@ -45,20 +43,23 @@ class MediaQuery extends React.Component {
   static getDerivedStateFromProps(props, state) {
     const query = getQuery(props)
     if (!query) throw new Error('Invalid or missing MediaQuery!')
-    if (query === state.query) return null
-
-    const mq = createMatchMedia(props, query)
+    const values = getValues(props)
+    if (query === state.query && values === state.values) return null // nothing changed
+    const forceStatic = Object.keys(values).length !== 0
+    const mq = matchMedia(props, query, forceStatic)
     return {
       matches: mq.matches,
       mq,
-      query
+      query,
+      values
     }
   }
 
   state = {
     matches: false,
     mq: null,
-    query: ''
+    query: '',
+    values: null
   }
 
   componentDidMount() {

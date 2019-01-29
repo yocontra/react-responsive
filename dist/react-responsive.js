@@ -214,16 +214,15 @@
                 return delete newObject[key];
             }), newObject;
         }, getValues = function(_ref) {
-            var _ref$values = _ref.values, values = void 0 === _ref$values ? {} : _ref$values;
-            return Object.keys(values).reduce(function(result, key) {
+            var values = _ref.values;
+            if (!values) return null;
+            var keys = Object.keys(values);
+            return 0 === keys.length ? null : keys.reduce(function(result, key) {
                 return result[Object(__WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__.a)(key)] = values[key], 
                 result;
             }, {});
         }, getQuery = function(props) {
             return props.query || Object(__WEBPACK_IMPORTED_MODULE_5__toQuery__.a)(omit(props, excludedQueryKeys));
-        }, createMatchMedia = function(props, query) {
-            var values = getValues(props), forceStatic = 0 !== Object.keys(values).length;
-            return __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, values, forceStatic);
         }, MediaQuery = function(_React$Component) {
             function MediaQuery() {
                 var _getPrototypeOf2, _this;
@@ -233,7 +232,8 @@
                 _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
                     matches: !1,
                     mq: null,
-                    query: ""
+                    query: "",
+                    values: null
                 }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "cleanupMediaQuery", function(mq) {
                     mq && (mq.removeListener(_this.updateMatches), mq.dispose());
                 }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateMatches", function() {
@@ -268,12 +268,14 @@
                 value: function(props, state) {
                     var query = getQuery(props);
                     if (!query) throw new Error("Invalid or missing MediaQuery!");
-                    if (query === state.query) return null;
-                    var mq = createMatchMedia(props, query);
+                    var values = getValues(props);
+                    if (query === state.query && values === state.values) return null;
+                    var forceStatic = 0 !== Object.keys(values).length, mq = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(props, query, forceStatic);
                     return {
                         matches: mq.matches,
                         mq: mq,
-                        query: query
+                        query: query,
+                        values: values
                     };
                 }
             } ]), MediaQuery;
