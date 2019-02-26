@@ -37,7 +37,7 @@ const getQuery = (props) =>
 class MediaQuery extends React.Component {
   static displayName = 'MediaQuery'
   static defaultProps = {
-    values: {}
+    values: null
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -45,7 +45,7 @@ class MediaQuery extends React.Component {
     if (!query) throw new Error('Invalid or missing MediaQuery!')
     const values = getValues(props)
     if (query === state.query && values === state.values) return null // nothing changed
-    const mq = matchMedia(props, query, !!values)
+    const mq = matchMedia(query, props, !!values)
     return {
       matches: mq.matches,
       mq,
