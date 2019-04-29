@@ -45,7 +45,7 @@ class MediaQuery extends React.Component {
     if (!query) throw new Error('Invalid or missing MediaQuery!')
     const values = getValues(props)
     if (query === state.query && values === state.values) return null // nothing changed
-    const mq = matchMedia(query, props, !!values)
+    const mq = matchMedia(query, values || {}, !!values)
     return {
       matches: mq.matches,
       mq,
@@ -61,13 +61,13 @@ class MediaQuery extends React.Component {
     values: null
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.state.mq.addListener(this.updateMatches)
     // make sure match is correct since status could have since first render and now
     this.updateMatches()
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if (this.state.mq !== prevState.mq) {
       this.cleanupMediaQuery(prevState.mq)
       this.state.mq.addListener(this.updateMatches)
@@ -80,7 +80,7 @@ class MediaQuery extends React.Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     this._unmounted = true
     this.cleanupMediaQuery(this.state.mq)
   }
@@ -97,7 +97,7 @@ class MediaQuery extends React.Component {
     this.setState({ matches: this.state.mq.matches })
   }
 
-  render() {
+  render = () => {
     if (typeof this.props.children === 'function') {
       return this.props.children(this.state.matches)
     }

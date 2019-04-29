@@ -1,6 +1,6 @@
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.react);
-}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
             if (installedModules[moduleId]) return installedModules[moduleId].exports;
@@ -29,12 +29,13 @@
             return __webpack_require__.d(getter, "a", getter), getter;
         }, __webpack_require__.o = function(object, property) {
             return Object.prototype.hasOwnProperty.call(object, property);
-        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 4);
+        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 5);
     }([ function(module, exports, __webpack_require__) {
-        var REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103, isValidElement = function(object) {
-            return "object" == typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
-        };
-        module.exports = __webpack_require__(6)(isValidElement, !0);
+        var ReactIs = __webpack_require__(1);
+        module.exports = __webpack_require__(8)(ReactIs.isElement, !0);
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        module.exports = __webpack_require__(7);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
@@ -155,6 +156,10 @@
                 return o.__proto__ || Object.getPrototypeOf(o);
             })(o);
         }
+        function _assertThisInitialized(self) {
+            if (void 0 === self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+            return self;
+        }
         function _inherits(subClass, superClass) {
             if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function");
             subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -169,10 +174,6 @@
             return (_setPrototypeOf = Object.setPrototypeOf || function(o, p) {
                 return o.__proto__ = p, o;
             })(o, p);
-        }
-        function _assertThisInitialized(self) {
-            if (void 0 === self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-            return self;
         }
         function _objectSpread(target) {
             for (var i = 1; i < arguments.length; i++) {
@@ -198,7 +199,7 @@
         }), __webpack_require__.d(__webpack_exports__, "default", function() {
             return MediaQuery;
         });
-        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(9), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(11);
+        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(11), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(4), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(13);
         __webpack_require__.d(__webpack_exports__, "toQuery", function() {
             return __WEBPACK_IMPORTED_MODULE_5__toQuery__.a;
         });
@@ -229,48 +230,36 @@
                 _classCallCheck(this, MediaQuery);
                 for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
                 return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MediaQuery)).call.apply(_getPrototypeOf2, [ this ].concat(args))), 
-                _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+                _defineProperty(_assertThisInitialized(_this), "state", {
                     matches: !1,
                     mq: null,
                     query: "",
                     values: null
-                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "cleanupMediaQuery", function(mq) {
+                }), _defineProperty(_assertThisInitialized(_this), "componentDidMount", function() {
+                    _this.state.mq.addListener(_this.updateMatches), _this.updateMatches();
+                }), _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function(prevProps, prevState) {
+                    _this.state.mq !== prevState.mq && (_this.cleanupMediaQuery(prevState.mq), _this.state.mq.addListener(_this.updateMatches)), 
+                    _this.props.onChange && prevState.matches !== _this.state.matches && _this.props.onChange(_this.state.matches);
+                }), _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function() {
+                    _this._unmounted = !0, _this.cleanupMediaQuery(_this.state.mq);
+                }), _defineProperty(_assertThisInitialized(_this), "cleanupMediaQuery", function(mq) {
                     mq && (mq.removeListener(_this.updateMatches), mq.dispose());
-                }), _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateMatches", function() {
+                }), _defineProperty(_assertThisInitialized(_this), "updateMatches", function() {
                     _this._unmounted || _this.state.mq.matches !== _this.state.matches && _this.setState({
                         matches: _this.state.mq.matches
                     });
+                }), _defineProperty(_assertThisInitialized(_this), "render", function() {
+                    return "function" == typeof _this.props.children ? _this.props.children(_this.state.matches) : _this.state.matches ? _this.props.children : null;
                 }), _this;
             }
-            return _inherits(MediaQuery, _React$Component), _createClass(MediaQuery, [ {
-                key: "componentDidMount",
-                value: function() {
-                    this.state.mq.addListener(this.updateMatches), this.updateMatches();
-                }
-            }, {
-                key: "componentDidUpdate",
-                value: function(prevProps, prevState) {
-                    this.state.mq !== prevState.mq && (this.cleanupMediaQuery(prevState.mq), this.state.mq.addListener(this.updateMatches)), 
-                    this.props.onChange && prevState.matches !== this.state.matches && this.props.onChange(this.state.matches);
-                }
-            }, {
-                key: "componentWillUnmount",
-                value: function() {
-                    this._unmounted = !0, this.cleanupMediaQuery(this.state.mq);
-                }
-            }, {
-                key: "render",
-                value: function() {
-                    return "function" == typeof this.props.children ? this.props.children(this.state.matches) : this.state.matches ? this.props.children : null;
-                }
-            } ], [ {
+            return _inherits(MediaQuery, _React$Component), _createClass(MediaQuery, null, [ {
                 key: "getDerivedStateFromProps",
                 value: function(props, state) {
                     var query = getQuery(props);
                     if (!query) throw new Error("Invalid or missing MediaQuery!");
                     var values = getValues(props);
                     if (query === state.query && values === state.values) return null;
-                    var mq = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, props, !!values);
+                    var mq = __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default()(query, values || {}, !!values);
                     return {
                         matches: mq.matches,
                         mq: mq,
@@ -281,16 +270,130 @@
             } ]), MediaQuery;
         }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
         _defineProperty(MediaQuery, "displayName", "MediaQuery"), _defineProperty(MediaQuery, "defaultProps", {
-            values: {}
+            values: null
         });
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        !function() {
+            function isValidElementType(type) {
+                return "string" == typeof type || "function" == typeof type || type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || "object" == typeof type && null !== type && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+            }
+            function typeOf(object) {
+                if ("object" == typeof object && null !== object) {
+                    var $$typeof = object.$$typeof;
+                    switch ($$typeof) {
+                      case REACT_ELEMENT_TYPE:
+                        var type = object.type;
+                        switch (type) {
+                          case REACT_ASYNC_MODE_TYPE:
+                          case REACT_CONCURRENT_MODE_TYPE:
+                          case REACT_FRAGMENT_TYPE:
+                          case REACT_PROFILER_TYPE:
+                          case REACT_STRICT_MODE_TYPE:
+                          case REACT_SUSPENSE_TYPE:
+                            return type;
+
+                          default:
+                            var $$typeofType = type && type.$$typeof;
+                            switch ($$typeofType) {
+                              case REACT_CONTEXT_TYPE:
+                              case REACT_FORWARD_REF_TYPE:
+                              case REACT_PROVIDER_TYPE:
+                                return $$typeofType;
+
+                              default:
+                                return $$typeof;
+                            }
+                        }
+
+                      case REACT_LAZY_TYPE:
+                      case REACT_MEMO_TYPE:
+                      case REACT_PORTAL_TYPE:
+                        return $$typeof;
+                    }
+                }
+            }
+            function isAsyncMode(object) {
+                return hasWarnedAboutDeprecatedIsAsyncMode || (hasWarnedAboutDeprecatedIsAsyncMode = !0, 
+                lowPriorityWarning$1(!1, "The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), 
+                isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+            }
+            function isConcurrentMode(object) {
+                return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+            }
+            function isContextConsumer(object) {
+                return typeOf(object) === REACT_CONTEXT_TYPE;
+            }
+            function isContextProvider(object) {
+                return typeOf(object) === REACT_PROVIDER_TYPE;
+            }
+            function isElement(object) {
+                return "object" == typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
+            }
+            function isForwardRef(object) {
+                return typeOf(object) === REACT_FORWARD_REF_TYPE;
+            }
+            function isFragment(object) {
+                return typeOf(object) === REACT_FRAGMENT_TYPE;
+            }
+            function isLazy(object) {
+                return typeOf(object) === REACT_LAZY_TYPE;
+            }
+            function isMemo(object) {
+                return typeOf(object) === REACT_MEMO_TYPE;
+            }
+            function isPortal(object) {
+                return typeOf(object) === REACT_PORTAL_TYPE;
+            }
+            function isProfiler(object) {
+                return typeOf(object) === REACT_PROFILER_TYPE;
+            }
+            function isStrictMode(object) {
+                return typeOf(object) === REACT_STRICT_MODE_TYPE;
+            }
+            function isSuspense(object) {
+                return typeOf(object) === REACT_SUSPENSE_TYPE;
+            }
+            Object.defineProperty(exports, "__esModule", {
+                value: !0
+            });
+            var hasSymbol = "function" == typeof Symbol && Symbol.for, REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for("react.element") : 60103, REACT_PORTAL_TYPE = hasSymbol ? Symbol.for("react.portal") : 60106, REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for("react.fragment") : 60107, REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for("react.strict_mode") : 60108, REACT_PROFILER_TYPE = hasSymbol ? Symbol.for("react.profiler") : 60114, REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for("react.provider") : 60109, REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for("react.context") : 60110, REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for("react.async_mode") : 60111, REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for("react.concurrent_mode") : 60111, REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for("react.forward_ref") : 60112, REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for("react.suspense") : 60113, REACT_MEMO_TYPE = hasSymbol ? Symbol.for("react.memo") : 60115, REACT_LAZY_TYPE = hasSymbol ? Symbol.for("react.lazy") : 60116, lowPriorityWarning = function() {}, printWarning = function(format) {
+                for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) args[_key - 1] = arguments[_key];
+                var argIndex = 0, message = "Warning: " + format.replace(/%s/g, function() {
+                    return args[argIndex++];
+                });
+                "undefined" != typeof console && console.warn(message);
+                try {
+                    throw new Error(message);
+                } catch (x) {}
+            };
+            lowPriorityWarning = function(condition, format) {
+                if (void 0 === format) throw new Error("`lowPriorityWarning(condition, format, ...args)` requires a warning message argument");
+                if (!condition) {
+                    for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) args[_key2 - 2] = arguments[_key2];
+                    printWarning.apply(void 0, [ format ].concat(args));
+                }
+            };
+            var lowPriorityWarning$1 = lowPriorityWarning, AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
+            exports.typeOf = typeOf, exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, 
+            exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, 
+            exports.Element = Element, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment, 
+            exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, 
+            exports.StrictMode = StrictMode, exports.Suspense = Suspense, exports.isValidElementType = isValidElementType, 
+            exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, 
+            exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, 
+            exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, 
+            exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, 
+            exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense;
+        }();
     }, function(module, exports, __webpack_require__) {
         "use strict";
         function emptyFunctionThatReturnsNull() {
             return null;
         }
-        var assign = __webpack_require__(7), ReactPropTypesSecret = __webpack_require__(1), checkPropTypes = __webpack_require__(8), printWarning = function() {};
+        var ReactIs = __webpack_require__(1), assign = __webpack_require__(9), ReactPropTypesSecret = __webpack_require__(2), checkPropTypes = __webpack_require__(10), has = Function.call.bind(Object.prototype.hasOwnProperty), printWarning = function() {};
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
@@ -363,9 +466,12 @@
             function createEnumTypeChecker(expectedValues) {
                 function validate(props, propName, componentName, location, propFullName) {
                     for (var propValue = props[propName], i = 0; i < expectedValues.length; i++) if (is(propValue, expectedValues[i])) return null;
-                    return new PropTypeError("Invalid " + location + " `" + propFullName + "` of value `" + propValue + "` supplied to `" + componentName + "`, expected one of " + JSON.stringify(expectedValues) + ".");
+                    var valuesString = JSON.stringify(expectedValues, function(key, value) {
+                        return "symbol" === getPreciseType(value) ? String(value) : value;
+                    });
+                    return new PropTypeError("Invalid " + location + " `" + propFullName + "` of value `" + String(propValue) + "` supplied to `" + componentName + "`, expected one of " + valuesString + ".");
                 }
-                return Array.isArray(expectedValues) ? createChainableTypeChecker(validate) : (printWarning("Invalid argument supplied to oneOf, expected an instance of array."), 
+                return Array.isArray(expectedValues) ? createChainableTypeChecker(validate) : (printWarning(arguments.length > 1 ? "Invalid arguments supplied to oneOf, expected an array, got " + arguments.length + " arguments. A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z])." : "Invalid argument supplied to oneOf, expected an array."), 
                 emptyFunctionThatReturnsNull);
             }
             function createObjectOfTypeChecker(typeChecker) {
@@ -373,7 +479,7 @@
                     if ("function" != typeof typeChecker) return new PropTypeError("Property `" + propFullName + "` of component `" + componentName + "` has invalid PropType notation inside objectOf.");
                     var propValue = props[propName], propType = getPropType(propValue);
                     if ("object" !== propType) return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + propType + "` supplied to `" + componentName + "`, expected an object.");
-                    for (var key in propValue) if (propValue.hasOwnProperty(key)) {
+                    for (var key in propValue) if (has(propValue, key)) {
                         var error = typeChecker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
                         if (error instanceof Error) return error;
                     }
@@ -456,7 +562,7 @@
                 }
             }
             function isSymbol(propType, propValue) {
-                return "symbol" === propType || ("Symbol" === propValue["@@toStringTag"] || "function" == typeof Symbol && propValue instanceof Symbol);
+                return "symbol" === propType || !!propValue && ("Symbol" === propValue["@@toStringTag"] || "function" == typeof Symbol && propValue instanceof Symbol);
             }
             function getPropType(propValue) {
                 var propType = typeof propValue;
@@ -512,6 +618,16 @@
                     }
                     return createChainableTypeChecker(validate);
                 }(),
+                elementType: function() {
+                    function validate(props, propName, componentName, location, propFullName) {
+                        var propValue = props[propName];
+                        if (!ReactIs.isValidElementType(propValue)) {
+                            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + getPropType(propValue) + "` supplied to `" + componentName + "`, expected a single ReactElement type.");
+                        }
+                        return null;
+                    }
+                    return createChainableTypeChecker(validate);
+                }(),
                 instanceOf: createInstanceTypeChecker,
                 node: function() {
                     function validate(props, propName, componentName, location, propFullName) {
@@ -526,7 +642,8 @@
                 exact: createStrictShapeTypeChecker
             };
             return PropTypeError.prototype = Error.prototype, ReactPropTypes.checkPropTypes = checkPropTypes, 
-            ReactPropTypes.PropTypes = ReactPropTypes, ReactPropTypes;
+            ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache, ReactPropTypes.PropTypes = ReactPropTypes, 
+            ReactPropTypes;
         };
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -570,7 +687,7 @@ object-assign
     }, function(module, exports, __webpack_require__) {
         "use strict";
         function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-            for (var typeSpecName in typeSpecs) if (typeSpecs.hasOwnProperty(typeSpecName)) {
+            for (var typeSpecName in typeSpecs) if (has(typeSpecs, typeSpecName)) {
                 var error;
                 try {
                     if ("function" != typeof typeSpecs[typeSpecName]) {
@@ -589,13 +706,15 @@ object-assign
                 }
             }
         }
-        var printWarning = function() {}, ReactPropTypesSecret = __webpack_require__(1), loggedTypeFailures = {};
+        var printWarning = function() {}, ReactPropTypesSecret = __webpack_require__(2), loggedTypeFailures = {}, has = Function.call.bind(Object.prototype.hasOwnProperty);
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
             try {
                 throw new Error(message);
             } catch (x) {}
+        }, checkPropTypes.resetWarningCache = function() {
+            loggedTypeFailures = {};
         }, module.exports = checkPropTypes;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -622,7 +741,7 @@ object-assign
         function matchMedia(query, values, forceStatic) {
             return new Mql(query, values, forceStatic);
         }
-        var staticMatch = __webpack_require__(10).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
+        var staticMatch = __webpack_require__(12).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
         module.exports = matchMedia;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -745,7 +864,7 @@ object-assign
         function join(conds) {
             return conds.join(" and ");
         }
-        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(3), negate = function(cond) {
+        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(4), negate = function(cond) {
             return "not ".concat(cond);
         };
         __webpack_exports__.a = function(obj) {

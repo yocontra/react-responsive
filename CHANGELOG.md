@@ -1,5 +1,9 @@
 ## Change Log
 
+### v6.1.2
+
+- Fix issue with values prop changing (https://github.com/contra/react-responsive/issues/197)
+
 ### v6.1.1
 
 - Fix `forceStatic` issue with previous release
