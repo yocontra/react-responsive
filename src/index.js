@@ -105,7 +105,18 @@ class MediaQuery extends React.Component {
   }
 }
 
+const Context = React.createContext()
+
+const MediaQueryContextConsumer = props => {
+  const values = React.useContext(Context)
+  return <MediaQuery values={values} {...props} />
+}
+
+MediaQueryContextConsumer.displayName = "MediaQueryContextConsumer"
+
 export {
-  MediaQuery as default,
+  MediaQueryContextConsumer as default,
+  MediaQuery,
+  Context,
   toQuery
 }
