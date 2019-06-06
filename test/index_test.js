@@ -1,5 +1,5 @@
 const React = require('react')
-const MediaQuery = require('index').default
+const { default: MediaQueryContextConsumer, MediaQuery, Context } = require('index')
 const mm = { default: require('matchmediaquery') }
 const assert = require('chai').assert
 const sinon = require('sinon')
@@ -124,6 +124,44 @@ describe('MediaQuery', function () {
     )
     const e = TestUtils.renderIntoDocument(mq)
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
+  })
+  it('renders using values from context', () => {
+    class App extends React.Component {
+      render() {
+        return (
+          <Context.Provider value={this.props.values}>
+            <MediaQueryContextConsumer maxWidth={300}>
+              <div className="childComponent"/>
+            </MediaQueryContextConsumer>
+          </Context.Provider>
+        )
+      }
+    }
+
+    const mq = <App values={{ width: 300 }} />
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
+
+    const mq2 = <App values={{ width: 301 }} />
+    const e2 = TestUtils.renderIntoDocument(mq2)
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e2, 'childComponent')), /Did not find exactly one match/)
+  })
+  it('renders taking direct values prop with precedence to values from context', () => {
+    class App extends React.Component {
+      render() {
+        return (
+          <Context.Provider value={{ width: 400 }}>
+            <MediaQueryContextConsumer values={{ width: 100 }} maxWidth={300}>
+              <div className="childComponent"/>
+            </MediaQueryContextConsumer>
+          </Context.Provider>
+        )
+      }
+    }
+
+    const mq = <App values={{ width: 300 }} />
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
   })
   it('renders with output of callback', function () {
     const mq = (

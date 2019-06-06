@@ -127,21 +127,19 @@ You may also specify a function for the child of the MediaQuery component. When 
 </MediaQuery>
 ```
 
-### Server rendering
+### Overriding device properties with `values` prop
 
-Server rendering can be done by passing static values through the `values` property.
+At times you may need to render components in different settings than automatically detected in a browser or when you're in a Node environment where these settings cannot be detected.
 
-The values property can contain `orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
+This can be done trough `values` prop and it may contain: 
+`orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
 `height`, `deviceHeight`, `width`, `deviceWidth`, `color`, `colorIndex`, `monochrome`,
- `resolution` and `type` to be matched against the media query.
+`resolution` and `type` to be matched against the media query.
 
 `type` can be one of: `all`, `grid`, `aural`, `braille`, `handheld`, `print`, `projection`,
 `screen`, `tty`, `tv` or `embossed`.
 
 Note: The `values` property always takes precedence, even on the client where a `window` object exists and matchMedia can be used.
-
-If you are using [redux](http://redux.js.org/) you can automatically pass `width` / `deviceWidth` values to your components with [react-responsive-redux](https://github.com/modosc/react-responsive-redux).
-
 
 ```jsx
 import MediaQuery from 'react-responsive';
@@ -173,6 +171,59 @@ const Example = () => (
   </div>
 );
 ```
+
+### Supplying `values` to underlying components trough Context
+
+You can also pass `values` to all components in the tree through a React [Context](https://reactjs.org/docs/context.html).
+This should ease up server-side-rendering and testing in a Node environment, e.g:
+
+#### Server Side Rendering
+
+```javascript
+import Responsive, { Context as ResponsiveContext } from 'react-responsive';
+import { renderToString } from "react-dom/server";
+import App from './App';
+
+...
+  // Context is just a regular React Context component, it accepts a `value` prop to be passed to consuming components
+  const mobileApp = renderToString(
+    <ResponsiveContext.Provider value={{ deviceWidth: 500 }}>
+      <App />
+    </ResponsiveContext.Provider>
+  );
+...
+```
+
+#### Testing
+
+```javascript
+import Responsive, { Context as ResponsiveContext } from 'react-responsive';
+import { render } from '@testing-library/react';
+import ProductsListing from './ProductsListing';
+
+describe('ProductsListing', () => {
+  test('matches the snapshot', () => {
+    const { container: mobile } = render(
+      <ResponsiveContext.Provider value={{ deviceWidth: 300 }}>
+        <ProductsListing />
+      </ResponsiveContext>  
+    )
+    expect(mobile).toMatchSnapshot();
+
+    const { container: desktop } = render(
+      <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
+        <ProductsListing />
+      </ResponsiveContext>  
+    )
+    expect(desktop).toMatchSnapshot();
+  })
+})
+```
+
+Note that if underlying component already has a `values` prop passed in it will take precedence over the one passed from context.
+
+If this doesn't fit your needs and you are using [redux](http://redux.js.org/) you might want to take a look 
+at [react-responsive-redux](https://github.com/modosc/react-responsive-redux) which was made to solve a similar problem.
 
 ### Common use cases
 

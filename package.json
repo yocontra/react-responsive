@@ -32,7 +32,7 @@
     "prop-types": "^15.6.1"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -53,8 +53,8 @@
     "eslint-plugin-react": "^7.7.0",
     "jsdom": "^15.0.0",
     "mocha": "^6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "should": "^13.2.1",
     "sinon": "^7.0.0",
     "webpack": "^3.0.0",
