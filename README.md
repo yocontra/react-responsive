@@ -127,19 +127,22 @@ You may also specify a function for the child of the MediaQuery component. When 
 </MediaQuery>
 ```
 
-### Overriding device properties with `values` prop
+### Forcing device properties with `values` prop
 
-At times you may need to render components in different settings than automatically detected in a browser or when you're in a Node environment where these settings cannot be detected.
+At times you may need to render components with different values than what gets automatically detected. This is especially useful in a Node environment where these settings can't be detected (SSR) or for testing.
 
-This can be done trough `values` prop and it may contain: 
+#### Possible Values
+
 `orientation`, `scan`, `aspectRatio`, `deviceAspectRatio`,
 `height`, `deviceHeight`, `width`, `deviceWidth`, `color`, `colorIndex`, `monochrome`,
-`resolution` and `type` to be matched against the media query.
+`resolution` and `type`
+
+##### Possible Types
 
 `type` can be one of: `all`, `grid`, `aural`, `braille`, `handheld`, `print`, `projection`,
-`screen`, `tty`, `tv` or `embossed`.
+`screen`, `tty`, `tv` or `embossed`
 
-Note: The `values` property always takes precedence, even on the client where a `window` object exists and matchMedia can be used.
+Note: The `values` property always applies, even when values could be detected (where window.matchMedia exists).
 
 ```jsx
 import MediaQuery from 'react-responsive';
@@ -172,12 +175,12 @@ const Example = () => (
 );
 ```
 
-### Supplying `values` to underlying components trough Context
+#### Supplying through Context
 
 You can also pass `values` to all components in the tree through a React [Context](https://reactjs.org/docs/context.html).
 This should ease up server-side-rendering and testing in a Node environment, e.g:
 
-#### Server Side Rendering
+##### Server Side Rendering
 
 ```javascript
 import Responsive, { Context as ResponsiveContext } from 'react-responsive';
@@ -194,7 +197,7 @@ import App from './App';
 ...
 ```
 
-#### Testing
+##### Testing
 
 ```javascript
 import Responsive, { Context as ResponsiveContext } from 'react-responsive';
@@ -220,9 +223,9 @@ describe('ProductsListing', () => {
 })
 ```
 
-Note that if underlying component already has a `values` prop passed in it will take precedence over the one passed from context.
+Note that if any underlying component already has a `values` prop passed in it will take precedence over the one from context.
 
-If this doesn't fit your needs and you are using [redux](http://redux.js.org/) you might want to take a look 
+If this doesn't fit your needs and you are using [redux](http://redux.js.org/) you might want to take a look
 at [react-responsive-redux](https://github.com/modosc/react-responsive-redux) which was made to solve a similar problem.
 
 ### Common use cases

@@ -1,5 +1,5 @@
 !function(root, factory) {
-    "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.react);
+    "object" == typeof exports && "object" == typeof module ? module.exports = factory(require("react")) : "function" == typeof define && define.amd ? define([ "react" ], factory) : "object" == typeof exports ? exports.MediaQuery = factory(require("react")) : root.MediaQuery = factory(root.React);
 }("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
@@ -127,6 +127,15 @@
         };
     }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
+        function _extends() {
+            return _extends = Object.assign || function(target) {
+                for (var i = 1; i < arguments.length; i++) {
+                    var source = arguments[i];
+                    for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+                }
+                return target;
+            }, _extends.apply(this, arguments);
+        }
         function _typeof(obj) {
             return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj) {
                 return typeof obj;
@@ -197,7 +206,11 @@
         Object.defineProperty(__webpack_exports__, "__esModule", {
             value: !0
         }), __webpack_require__.d(__webpack_exports__, "default", function() {
+            return MediaQueryContextConsumer;
+        }), __webpack_require__.d(__webpack_exports__, "MediaQuery", function() {
             return MediaQuery;
+        }), __webpack_require__.d(__webpack_exports__, "Context", function() {
+            return Context;
         });
         var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery__ = __webpack_require__(11), __WEBPACK_IMPORTED_MODULE_2_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_3_hyphenate_style_name__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_4__mediaQuery__ = __webpack_require__(4), __WEBPACK_IMPORTED_MODULE_5__toQuery__ = __webpack_require__(13);
         __webpack_require__.d(__webpack_exports__, "toQuery", function() {
@@ -272,6 +285,13 @@
         _defineProperty(MediaQuery, "displayName", "MediaQuery"), _defineProperty(MediaQuery, "defaultProps", {
             values: null
         });
+        var Context = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createContext(), MediaQueryContextConsumer = function(props) {
+            var values = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useContext(Context);
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(MediaQuery, _extends({
+                values: values
+            }, props));
+        };
+        MediaQueryContextConsumer.displayName = "MediaQueryContextConsumer";
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
     }, function(module, exports, __webpack_require__) {
