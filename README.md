@@ -190,7 +190,7 @@ import App from './App';
 ...
   // Context is just a regular React Context component, it accepts a `value` prop to be passed to consuming components
   const mobileApp = renderToString(
-    <ResponsiveContext.Provider value={{ deviceWidth: 500 }}>
+    <ResponsiveContext.Provider value={{ width: 500 }}>
       <App />
     </ResponsiveContext.Provider>
   );
@@ -207,14 +207,14 @@ import ProductsListing from './ProductsListing';
 describe('ProductsListing', () => {
   test('matches the snapshot', () => {
     const { container: mobile } = render(
-      <ResponsiveContext.Provider value={{ deviceWidth: 300 }}>
+      <ResponsiveContext.Provider value={{ width: 300 }}>
         <ProductsListing />
       </ResponsiveContext>  
     )
     expect(mobile).toMatchSnapshot();
 
     const { container: desktop } = render(
-      <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
+      <ResponsiveContext.Provider value={{ width: 1000 }}>
         <ProductsListing />
       </ResponsiveContext>  
     )
