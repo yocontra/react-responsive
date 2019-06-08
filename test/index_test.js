@@ -1,5 +1,5 @@
 const React = require('react')
-const { default: MediaQueryContextConsumer, MediaQuery, Context } = require('index')
+const { default: MediaQuery, Context } = require('index')
 const mm = { default: require('matchmediaquery') }
 const assert = require('chai').assert
 const sinon = require('sinon')
@@ -7,6 +7,18 @@ const ReactDOM = require('react-dom')
 const TestUtils = require('react-dom/test-utils')
 
 describe('MediaQuery', function () {
+  let container
+
+  beforeEach(() => {
+    container = document.createElement('div')
+    document.body.appendChild(container)
+  })
+  
+  afterEach(() => {
+    document.body.removeChild(container)
+    container = null
+  })
+  
   describe('when query matches', function () {
     before(function () {
       this.mmStub = sinon.stub(mm, 'default').returns({
@@ -19,21 +31,31 @@ describe('MediaQuery', function () {
       this.mmStub.restore()
     })
     it('renders with output of callback', function () {
-      const mq = (
-        <MediaQuery query="all">
-          {matches => <div className={matches ? 'matched': ''} />}
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
+      class App extends React.Component {
+        render() {
+          return (
+            <MediaQuery query="all">
+              {matches => <div className={matches ? 'matched': ''} />}
+            </MediaQuery>    
+          )
+        }
+      }
+    
+      const e = TestUtils.renderIntoDocument(<App />)
       assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'matched'))
     })
     it('renders children', function () {
-      const mq = (
-        <MediaQuery query="all">
-          <div className="childComponent"/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
+      class App extends React.Component {
+        render() {
+          return (
+            <MediaQuery query="all">
+              <div className="childComponent"/>
+            </MediaQuery>
+          )
+        }
+      }
+    
+      const e = TestUtils.renderIntoDocument(<App />)
       assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
     })
     it('renders text node', function () {
@@ -55,31 +77,60 @@ describe('MediaQuery', function () {
       assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
     })
     it('uses query prop if it has one', function () {
-      const mq = (
-        <MediaQuery query="all" className="passedProp">
-          <div/>
-        </MediaQuery>
+      class App extends React.Component {
+        render() {
+          const { query } = this.props
+          return (
+            <MediaQuery values={{ orientation: 'landscape' }} query={query}>
+              <div className="childComponent" />
+            </MediaQuery>    
+          )
+        }
+      }
+      
+      const tree = TestUtils.renderIntoDocument(
+        <App query="(orientation: landscape)" />
       )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.state.query, 'all')
+      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
+
+      const tree2 = TestUtils.renderIntoDocument(
+        <App query="(orientation: portrait)" />
+      )
+      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
     })
     it('builds query from props', function () {
-      const mq = (
-        <MediaQuery all className="passedProp">
-          <div/>
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.state.query, 'all')
+      class App extends React.Component {
+        render() {
+          return (
+            <MediaQuery all>
+              <div className="childComponent" />
+            </MediaQuery>
+          )
+        }
+      }
+      const tree = TestUtils.renderIntoDocument(<App />)
+      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
     })
     it('builds query from values', function () {
-      const mq = (
-        <MediaQuery orientation="portrait" className="passedProp">
-          <div/>
-        </MediaQuery>
+      class App extends React.Component {
+        render() {
+          return (
+            <MediaQuery values={{ orientation: 'landscape' }} {...this.props}>
+              <div className="childComponent" />
+            </MediaQuery>    
+          )
+        }
+      }
+
+      const tree = TestUtils.renderIntoDocument(
+        <App orientation="landscape" />
       )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.equal(e.state.query, '(orientation: portrait)')
+      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
+        
+      const tree2 = TestUtils.renderIntoDocument(
+        <App orientation="portrait" />
+      )
+      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
     })
     it('throws if theres no query', function () {
       const mq = (
@@ -108,12 +159,16 @@ describe('MediaQuery', function () {
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent')), /Did not find exactly one match/)
   })
   it('renders taking values with precedence', function () {
-    const mq = (
-      <MediaQuery values={{ width: 150 }} maxWidth={300}>
-        <div className="childComponent"/>
-      </MediaQuery>
-    )
-    const e = TestUtils.renderIntoDocument(mq)
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery values={{ width: 150 }} maxWidth={300}>
+            <div className="childComponent"/>
+          </MediaQuery>
+        )
+      }
+    }
+    const e = TestUtils.renderIntoDocument(<App />)
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
   })
   it('doesnt render taking values with precedence', function () {
@@ -130,9 +185,9 @@ describe('MediaQuery', function () {
       render() {
         return (
           <Context.Provider value={this.props.values}>
-            <MediaQueryContextConsumer maxWidth={300}>
+            <MediaQuery maxWidth={300}>
               <div className="childComponent"/>
-            </MediaQueryContextConsumer>
+            </MediaQuery>
           </Context.Provider>
         )
       }
@@ -151,9 +206,9 @@ describe('MediaQuery', function () {
       render() {
         return (
           <Context.Provider value={{ width: 400 }}>
-            <MediaQueryContextConsumer values={{ width: 100 }} maxWidth={300}>
+            <MediaQuery values={{ width: 100 }} maxWidth={300}>
               <div className="childComponent"/>
-            </MediaQueryContextConsumer>
+            </MediaQuery>
           </Context.Provider>
         )
       }
@@ -164,24 +219,32 @@ describe('MediaQuery', function () {
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
   })
   it('renders with output of callback', function () {
-    const mq = (
-      <MediaQuery maxWidth={300}>
-        {matches => <div className={matches ? 'matched': 'no-match'} />}
-      </MediaQuery>
-    )
-    const e = TestUtils.renderIntoDocument(mq)
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery maxWidth={300}>
+            {matches => <div className={matches ? 'matched': 'no-match'} />}
+          </MediaQuery>
+        )
+      }
+    }
+
+    const e = TestUtils.renderIntoDocument(<App />)
     assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'no-match'))
   })
   it('calls onChange callback if provided', function () {
     const callback = sinon.spy()
-    const mq = (
-      <MediaQuery onChange={callback} query="all">
-        <div className="childComponent"/>
-      </MediaQuery>
-    )
-    const e = TestUtils.renderIntoDocument(mq)
-    e.setState({ matches: false })
-    assert.isNotFalse(callback.calledOnce)
+
+    TestUtils.act(() => {
+      ReactDOM.render(
+        <MediaQuery onChange={callback} query="all">
+          <div className="childComponent"/>
+        </MediaQuery>, 
+        container
+      )
+    })
+    
+    assert.equal(callback.calledOnce, true)
   })
   it('handles unmount', function () {
     const container = document.createElement('div')
