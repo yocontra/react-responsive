@@ -1,5 +1,5 @@
-const assert = require('chai').assert
-const mediaQuery = require('mediaQuery')
+import { assert } from 'chai'
+import mediaQuery from 'mediaQuery'
 
 describe('mediaQuery', function () {
   it('has types and features in [all]', function () {
