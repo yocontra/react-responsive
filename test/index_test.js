@@ -1,6 +1,5 @@
 const React = require('react')
 const { default: MediaQuery, Context } = require('index')
-const mm = { default: require('matchmediaquery') }
 const assert = require('chai').assert
 const sinon = require('sinon')
 const ReactDOM = require('react-dom')
@@ -19,135 +18,123 @@ describe('MediaQuery', function () {
     container = null
   })
   
-  describe('when query matches', function () {
-    before(function () {
-      this.mmStub = sinon.stub(mm, 'default').returns({
-        matches: true,
-        addListener: function () {},
-        removeListener: function () {}
-      })
-    })
-    after(function () {
-      this.mmStub.restore()
-    })
-    it('renders with output of callback', function () {
-      class App extends React.Component {
-        render() {
-          return (
-            <MediaQuery query="all">
-              {matches => <div className={matches ? 'matched': ''} />}
-            </MediaQuery>    
-          )
-        }
+  it('renders with output of callback', function () {
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery query="all">
+            {matches => <div className={matches ? 'matched': ''} />}
+          </MediaQuery>    
+        )
       }
+    }
+  
+    const e = TestUtils.renderIntoDocument(<App />)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'matched'))
+  })
+  it('renders children', function () {
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery query="all">
+            <div className="childComponent"/>
+          </MediaQuery>
+        )
+      }
+    }
+  
+    const e = TestUtils.renderIntoDocument(<App />)
+    assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
+  })
+  it('renders text node', function () {
+    const mq = (
+      <MediaQuery query="all">
+        1231
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.isNotFalse(TestUtils.findAllInRenderedTree(e, function () {return true}))
+  })
+  it('does not wrap text node', function () {
+    const mq = (
+      <MediaQuery query="all">
+        1231
+      </MediaQuery>
+    )
+    const e = TestUtils.renderIntoDocument(mq)
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
+  })
+  it('uses query prop if it has one', function () {
+    class App extends React.Component {
+      render() {
+        const { query } = this.props
+        return (
+          <MediaQuery values={{ orientation: 'landscape' }} query={query}>
+            <div className="childComponent" />
+          </MediaQuery>    
+        )
+      }
+    }
     
-      const e = TestUtils.renderIntoDocument(<App />)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'matched'))
-    })
-    it('renders children', function () {
-      class App extends React.Component {
-        render() {
-          return (
-            <MediaQuery query="all">
-              <div className="childComponent"/>
-            </MediaQuery>
-          )
-        }
+    const tree = TestUtils.renderIntoDocument(
+      <App query="(orientation: landscape)" />
+    )
+    assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
+
+    const tree2 = TestUtils.renderIntoDocument(
+      <App query="(orientation: portrait)" />
+    )
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
+  })
+  it('builds query from props', function () {
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery all>
+            <div className="childComponent" />
+          </MediaQuery>
+        )
       }
-    
-      const e = TestUtils.renderIntoDocument(<App />)
-      assert.isNotFalse(TestUtils.findRenderedDOMComponentWithClass(e, 'childComponent'))
-    })
-    it('renders text node', function () {
-      const mq = (
-        <MediaQuery query="all">
-          1231
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.isNotFalse(TestUtils.findAllInRenderedTree(e, function () {return true}))
-    })
-    it('does not wrap text node', function () {
-      const mq = (
-        <MediaQuery query="all">
-          1231
-        </MediaQuery>
-      )
-      const e = TestUtils.renderIntoDocument(mq)
-      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(e, 'div')), /Did not find exactly one match/)
-    })
-    it('uses query prop if it has one', function () {
-      class App extends React.Component {
-        render() {
-          const { query } = this.props
-          return (
-            <MediaQuery values={{ orientation: 'landscape' }} query={query}>
-              <div className="childComponent" />
-            </MediaQuery>    
-          )
-        }
+    }
+    const tree = TestUtils.renderIntoDocument(<App />)
+    assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
+  })
+  it('builds query from values', function () {
+    class App extends React.Component {
+      render() {
+        return (
+          <MediaQuery values={{ orientation: 'landscape' }} {...this.props}>
+            <div className="childComponent" />
+          </MediaQuery>    
+        )
       }
+    }
+
+    const tree = TestUtils.renderIntoDocument(
+      <App orientation="landscape" />
+    )
+    assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
       
-      const tree = TestUtils.renderIntoDocument(
-        <App query="(orientation: landscape)" />
-      )
-      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
-
-      const tree2 = TestUtils.renderIntoDocument(
-        <App query="(orientation: portrait)" />
-      )
-      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
-    })
-    it('builds query from props', function () {
-      class App extends React.Component {
-        render() {
-          return (
-            <MediaQuery all>
-              <div className="childComponent" />
-            </MediaQuery>
-          )
-        }
-      }
-      const tree = TestUtils.renderIntoDocument(<App />)
-      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
-    })
-    it('builds query from values', function () {
-      class App extends React.Component {
-        render() {
-          return (
-            <MediaQuery values={{ orientation: 'landscape' }} {...this.props}>
-              <div className="childComponent" />
-            </MediaQuery>    
-          )
-        }
-      }
-
-      const tree = TestUtils.renderIntoDocument(
-        <App orientation="landscape" />
-      )
-      assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
-        
-      const tree2 = TestUtils.renderIntoDocument(
-        <App orientation="portrait" />
-      )
-      assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
-    })
-    it('throws if theres no query', function () {
-      const mq = (
-        <MediaQuery>
-          <div className="childComponent"></div>
-        </MediaQuery>
-      )
-      assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!')
-    })
-    it('throws if theres a bad query', function () {
-      const mq = (
-        <MediaQuery doesntExist="test">
-          <div className="childComponent"></div>
-        </MediaQuery>
-      )
-      assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!')
-    })
+    const tree2 = TestUtils.renderIntoDocument(
+      <App orientation="portrait" />
+    )
+    assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
+  })
+  it('throws if theres no query', function () {
+    const mq = (
+      <MediaQuery>
+        <div className="childComponent"></div>
+      </MediaQuery>
+    )
+    assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!')
+  })
+  it('throws if theres a bad query', function () {
+    const mq = (
+      <MediaQuery doesntExist="test">
+        <div className="childComponent"></div>
+      </MediaQuery>
+    )
+    assert.throws(() => (TestUtils.renderIntoDocument(mq)), 'Invalid or missing MediaQuery!')
   })
   it('renders nothing when no matches', function () {
     const mq = (
