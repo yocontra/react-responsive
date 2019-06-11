@@ -49,18 +49,6 @@ const getState = (props, state, contextValues) => {
   }
 }
 
-function useIsMounted() {
-  const isMounted = React.useRef(true)
-
-  React.useEffect(() => {
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
-
-  return isMounted
-}
-
 function usePrevious(value) {
   const ref = React.useRef({})
   React.useEffect(() => {
@@ -86,17 +74,6 @@ function useMediaQuery(props) {
     )
   )
   const prevState = usePrevious(state)
-  const isMounted = useIsMounted()
-
-  const updateMatches = React.useCallback(() => {
-    if (!isMounted.current) return
-    if (state.mq.matches === state.matches) return
-
-    setState(state => ({ 
-      ...state, 
-      matches: state.mq.matches 
-    }))
-  }, [state])
 
   React.useEffect(() => {
     const nextState = getState(props, state, contextValues)
@@ -106,18 +83,22 @@ function useMediaQuery(props) {
   })
 
   React.useEffect(() => {
-    state.mq.addListener(updateMatches)
-    return () => {
-      if (state.mq) {
-        state.mq.removeListener(updateMatches)
-        state.mq.dispose()
-      }
+    const updateMatches = () => {
+      setState(state => ({ 
+        ...state, 
+        matches: state.mq.matches 
+      }))
     }
-  }, [state.mq])
 
-  React.useEffect(() => {
+    state.mq.addListener(updateMatches)
+
     // make sure match is correct since status could have since first render and now
     updateMatches()
+
+    return () => {
+      state.mq.removeListener(updateMatches)
+      state.mq.dispose()
+    }
   }, [])
 
   React.useEffect(() => {
@@ -125,7 +106,6 @@ function useMediaQuery(props) {
       props.onChange(state.matches)
     }
   })
-  
 
   return state.matches
 }
