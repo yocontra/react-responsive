@@ -15,7 +15,7 @@ describe('useMediaQuery', () => {
 
   it('builds query from props', () => {
     function Component (props) {
-      const { matches } = useMediaQuery(props)
+      const matches = useMediaQuery(props)
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
@@ -33,7 +33,7 @@ describe('useMediaQuery', () => {
 
   it('builds query from values', () => {
     function Component (props) {
-      const { matches } = useMediaQuery({
+      const matches = useMediaQuery({
         values: {
           orientation: 'landscape'
         },
@@ -60,7 +60,7 @@ describe('useMediaQuery', () => {
 
   it('matches taking values with precedence', () => {
     function Component ({ values }) {
-      const { matches } = useMediaQuery({
+      const matches = useMediaQuery({
         minWidth: 1000,
         values
       })
@@ -119,7 +119,7 @@ describe('useMediaQuery', () => {
     })
 
     function Component ({ query }) {
-      const { matches } = useMediaQuery({ query })
+      const matches = useMediaQuery({ query })
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
@@ -141,7 +141,7 @@ describe('useMediaQuery', () => {
 
   it('renders using values from context', () => {
     function Component() {
-      const { matches } = useMediaQuery({ maxWidth: 300 })
+      const matches = useMediaQuery({ maxWidth: 300 })
       return matches ? <div className="childComponent"/> : null
     }
     class App extends React.Component {
@@ -163,7 +163,7 @@ describe('useMediaQuery', () => {
 
   it('renders taking direct values prop with precedence to values from context', () => {
     function Component() {
-      const { matches } = useMediaQuery({
+      const matches = useMediaQuery({
         maxWidth: 300,
         values: {
           width: 100

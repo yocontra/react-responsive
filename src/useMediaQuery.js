@@ -127,7 +127,7 @@ function useMediaQuery(props) {
   })
   
 
-  return state
+  return state.matches
 }
 
 export {
