@@ -22,30 +22,18 @@ const omit = (object, keys) => {
   return newObject
 }
 
-const getValues = ({ values }) => {
-  if (!values) return null
-  const keys = Object.keys(values)
-  if (keys.length === 0) return null
-  return keys.reduce((result, key) => {
-    result[hyphenate(key)] = values[key]
-    return result
-  }, {})
-}
-
 const getQuery = (props) =>
   props.query || toQuery(omit(props, excludedQueryKeys))
 
-const getState = (props, state, contextValues) => {
+const getState = (props, state, values) => {
   const query = getQuery(props)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
-  const values = getValues(props) || getValues({ values: contextValues })
-  if (query === state.query && areObjectsEqual(values, state.values)) return // nothing changed
+  if (query === state.query) return // nothing changed
   const mq = matchMedia(query, values || {}, !!values)
   return {
     matches: mq.matches,
     mq,
-    query,
-    values
+    query
   }
 }
 
@@ -57,26 +45,49 @@ function usePrevious(value) {
   return ref.current
 }
 
+const getValues = values => {
+  if (!values) return null
+  const keys = Object.keys(values)
+  if (keys.length === 0) return null
+  return keys.reduce((result, key) => {
+    result[hyphenate(key)] = values[key]
+    return result
+  }, {})
+}
+
 const Context = React.createContext()
 
-function useMediaQuery(props) {
+function useValues (props) {
   const contextValues = React.useContext(Context)
+  const newValues = getValues(props.values) || getValues(contextValues)
+  const [values, setValues] = React.useState(newValues)
+
+  React.useEffect(() => {
+    if(!areObjectsEqual(values, newValues)) {
+      setValues(newValues)
+    }
+  })
+
+  return values
+}
+
+function useMediaQuery(props) {
+  const values = useValues(props)
   const [state, setState] = React.useState(
     getState(
       props, 
       {
         matches: false,
         mq: null,
-        query: '',
-        values: null
+        query: ''
       },
-      contextValues
+      values
     )
   )
   const prevState = usePrevious(state)
 
   React.useEffect(() => {
-    const nextState = getState(props, state, contextValues)
+    const nextState = getState(props, state, values)
     if (nextState) {
       setState(nextState)
     }
