@@ -5,6 +5,7 @@ import hyphenate from 'hyphenate-style-name'
 import areObjectsEqual from "shallow-equal/objects"
 import mediaQuery from './mediaQuery'
 import toQuery from './toQuery'
+import Context from './Context'
 
 const defaultTypes = {
   component: PropTypes.node,
@@ -54,8 +55,6 @@ const getValues = values => {
     return result
   }, {})
 }
-
-const Context = React.createContext()
 
 function useValues (props) {
   const contextValues = React.useContext(Context)
@@ -121,7 +120,4 @@ function useMediaQuery(props) {
   return state.matches
 }
 
-export {
-  useMediaQuery as default,
-  Context,
-}
+export default useMediaQuery

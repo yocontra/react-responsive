@@ -1,5 +1,6 @@
 import React from 'react'
-import useMediaQuery, { Context } from 'useMediaQuery'
+import useMediaQuery from 'useMediaQuery'
+import Context from 'Context'
 import { assert } from 'chai'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
