@@ -119,9 +119,10 @@ function useMediaQuery(props) {
   if (!query) throw new Error('Invalid or missing MediaQuery!')
   const mq = useMatchMedia(query, hyphenatedValues)
   const matches = useMatches(mq)
+  const isUpdate = useIsUpdate()
 
   React.useEffect(() => {
-    if (props.onChange) {
+    if (isUpdate && props.onChange) {
       props.onChange(matches)
     }
   }, [matches])

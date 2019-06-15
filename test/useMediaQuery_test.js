@@ -1,9 +1,12 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import useMediaQuery from 'useMediaQuery'
 import Context from 'Context'
 import { assert } from 'chai'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
+
+const sleep = (timeOut) => new Promise(resolve => setTimeout(resolve, timeOut)) 
 
 describe('useMediaQuery', () => {
   beforeEach(() => {
@@ -95,23 +98,31 @@ describe('useMediaQuery', () => {
     }
     assert.throws(() => TestUtils.renderIntoDocument(<App />), 'Invalid or missing MediaQuery!')
   })
-  
-  it('calls onChange callback if provided', () => {
-    const callback = sinon.spy()
 
-    function App () {
-      useMediaQuery({
-        all: true,
-        onChange: callback,
-      })
+  it('calls onChange callback on updates', () => {
+    const container = document.createElement('div')
+    function App (props) {
+      useMediaQuery(props)
       return null
     }
+    const callback = sinon.spy(() => null)
 
     TestUtils.act(() => {
-      TestUtils.renderIntoDocument(<App />)
+      ReactDOM.render(<App minWidth="100" onChange={callback} />, container)  
+    })
+
+    // should still match so nothing has changed
+    TestUtils.act(() => {
+      ReactDOM.render(<App minWidth="200" onChange={callback} />, container)  
     })
     
-    assert.equal(callback.calledOnce, true)
+    TestUtils.act(() => {
+      ReactDOM.render(<App minWidth="1201" onChange={callback} />, container)  
+    })
+
+    return sleep(0).then(() => {
+      assert.isTrue(callback.calledOnce)
+    })
   })
 
   it('uses query prop if it has one', () => {
