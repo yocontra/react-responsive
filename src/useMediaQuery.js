@@ -32,18 +32,9 @@ const getState = (props, state, values) => {
   if (query === state.query) return // nothing changed
   const mq = matchMedia(query, values || {}, !!values)
   return {
-    matches: mq.matches,
     mq,
     query
   }
-}
-
-function usePrevious(value) {
-  const ref = React.useRef({})
-  React.useEffect(() => {
-    ref.current = value
-  })
-  return ref.current
 }
 
 const getValues = values => {
@@ -70,20 +61,39 @@ function useValues (props) {
   return values
 }
 
+function useMatches (mediaQuery) {
+  const [matches, setMatches] = React.useState(mediaQuery.matches)
+
+  React.useEffect(() => {
+    const updateMatches = () => {
+      setMatches(mediaQuery.matches)
+    }
+    mediaQuery.addListener(updateMatches)
+
+    // make sure match is correct since status could have since first render and now
+    updateMatches()
+
+    return () => {
+      mediaQuery.removeListener(updateMatches)
+      mediaQuery.dispose()
+    }
+  }, [mediaQuery])
+
+  return matches
+}
+
 function useMediaQuery(props) {
   const values = useValues(props)
   const [state, setState] = React.useState(
     getState(
       props, 
       {
-        matches: false,
         mq: null,
         query: ''
       },
       values
     )
   )
-  const prevState = usePrevious(state)
 
   React.useEffect(() => {
     const nextState = getState(props, state, values)
@@ -92,32 +102,15 @@ function useMediaQuery(props) {
     }
   })
 
-  React.useEffect(() => {
-    const updateMatches = () => {
-      setState(state => ({ 
-        ...state, 
-        matches: state.mq.matches 
-      }))
-    }
-
-    state.mq.addListener(updateMatches)
-
-    // make sure match is correct since status could have since first render and now
-    updateMatches()
-
-    return () => {
-      state.mq.removeListener(updateMatches)
-      state.mq.dispose()
-    }
-  }, [])
+  const matches = useMatches(state.mq)
 
   React.useEffect(() => {
-    if (props.onChange && prevState.matches !== state.matches) {
-      props.onChange(state.matches)
+    if (props.onChange) {
+      props.onChange(matches)
     }
-  })
+  }, [matches])
 
-  return state.matches
+  return matches
 }
 
 export default useMediaQuery
