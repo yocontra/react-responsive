@@ -36,18 +36,19 @@ const getValues = values => {
   }, {})
 }
 
-function useValues (props) {
+function useHyphenatedValues (values) {
   const contextValues = React.useContext(Context)
-  const newValues = getValues(props.values) || getValues(contextValues)
-  const [values, setValues] = React.useState(newValues)
+  const getHyphenatedValues = () => getValues(values) || getValues(contextValues)
+  const [hyphenatedValues, setHyphenatedValues] = React.useState(getHyphenatedValues)
 
   React.useEffect(() => {
-    if(!areObjectsEqual(values, newValues)) {
-      setValues(newValues)
+    const newHyphenatedValues = getHyphenatedValues()
+    if(!areObjectsEqual(hyphenatedValues, newHyphenatedValues)) {
+      setHyphenatedValues(newHyphenatedValues)
     }
-  })
+  }, [values, contextValues])
 
-  return values
+  return hyphenatedValues
 }
 
 function useQuery(props) {
@@ -113,10 +114,10 @@ function useMatches (mediaQuery) {
 }
 
 function useMediaQuery(props) {
-  const values = useValues(props)
+  const hyphenatedValues = useHyphenatedValues(props.values)
   const query = useQuery(props)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
-  const mq = useMatchMedia(query, values)
+  const mq = useMatchMedia(query, hyphenatedValues)
   const matches = useMatches(mq)
 
   React.useEffect(() => {
