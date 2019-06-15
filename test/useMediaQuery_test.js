@@ -37,7 +37,7 @@ describe('useMediaQuery', () => {
 
   it('builds query from values', () => {
     function Component (props) {
-      const matches = useMediaQuery(props, {
+      const matches = useMediaQuery(props, null, {
         orientation: 'landscape'
       })
       return matches ? <div className="childComponent" /> : null
@@ -61,7 +61,7 @@ describe('useMediaQuery', () => {
 
   it('matches taking values with precedence', () => {
     function Component ({ values }) {
-      const matches = useMediaQuery({ minWidth: 1000 }, values)
+      const matches = useMediaQuery({ minWidth: 1000 }, null, values)
       return matches ? <div className="childComponent"/> : null
     }
     class App extends React.Component {
@@ -95,8 +95,8 @@ describe('useMediaQuery', () => {
 
   it('calls onChange callback on updates', () => {
     const container = document.createElement('div')
-    function App (props) {
-      useMediaQuery(props)
+    function App ({ onChange, ...settings }) {
+      useMediaQuery(settings, onChange)
       return null
     }
     const callback = sinon.spy(() => null)
@@ -169,7 +169,7 @@ describe('useMediaQuery', () => {
 
   it('renders taking direct values prop with precedence to values from context', () => {
     function Component() {
-      const matches = useMediaQuery({ maxWidth: 300 }, {
+      const matches = useMediaQuery({ maxWidth: 300 }, null, {
         width: 100
       })
       return matches ? <div className="childComponent"/> : null

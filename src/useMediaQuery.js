@@ -94,7 +94,7 @@ function useMatches (mediaQuery) {
   return matches
 }
 
-function useMediaQuery({ onChange, ...settings }, values) {
+function useMediaQuery(settings, onChange, values) {
   const hyphenatedValues = useHyphenatedValues(values)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
