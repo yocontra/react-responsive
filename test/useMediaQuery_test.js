@@ -185,4 +185,20 @@ describe('useMediaQuery', () => {
     const tree = TestUtils.renderIntoDocument(<App values={{ width: 300 }} />)
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
   })
+
+  it('should render only once when mounted', () => {
+    let renderCount = 0
+    function App() {
+      useMediaQuery({ maxWidth: 300 })
+      renderCount += 1
+
+      return null
+    }
+
+    TestUtils.act(() => {
+      TestUtils.renderIntoDocument(<App />)
+    })
+
+    assert.equal(renderCount, 1)
+  })
 })
