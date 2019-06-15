@@ -23,8 +23,8 @@ const omit = (object, keys) => {
   return newObject
 }
 
-const getQuery = (props) =>
-  props.query || toQuery(omit(props, excludedQueryKeys))
+const getQuery = settings =>
+  settings.query || toQuery(omit(settings, excludedQueryKeys))
 
 const getValues = values => {
   if (!values) return null
@@ -51,15 +51,15 @@ function useHyphenatedValues (values) {
   return hyphenatedValues
 }
 
-function useQuery(props) {
-  const newQuery = getQuery(props)
+function useQuery(settings) {
+  const newQuery = getQuery(settings)
   const [query, setQuery] = React.useState(newQuery)
 
   React.useEffect(() => {
     if(query !== newQuery) {
       setQuery(newQuery)
     }
-  }, [props])
+  }, [settings])
 
   return query
 }
@@ -113,17 +113,17 @@ function useMatches (mediaQuery) {
   return matches
 }
 
-function useMediaQuery(props) {
-  const hyphenatedValues = useHyphenatedValues(props.values)
-  const query = useQuery(props)
+function useMediaQuery({ onChange, values, ...settings }) {
+  const hyphenatedValues = useHyphenatedValues(values)
+  const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
   const mq = useMatchMedia(query, hyphenatedValues)
   const matches = useMatches(mq)
   const isUpdate = useIsUpdate()
 
   React.useEffect(() => {
-    if (isUpdate && props.onChange) {
-      props.onChange(matches)
+    if (isUpdate && onChange) {
+      onChange(matches)
     }
   }, [matches])
 
