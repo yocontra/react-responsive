@@ -5,7 +5,7 @@ import areObjectsEqual from "shallow-equal/objects"
 import toQuery from './toQuery'
 import Context from './Context'
 
-const getQuery = settings => settings.query || toQuery(settings)
+const makeQuery = settings => settings.query || toQuery(settings)
 
 const getValues = values => {
   if (!values) return null
@@ -15,6 +15,16 @@ const getValues = values => {
     result[hyphenate(key)] = values[key]
     return result
   }, {})
+}
+
+function useIsUpdate() {
+  const ref = React.useRef(false)
+
+  React.useEffect(() => {
+    ref.current = true
+  }, [])
+
+  return ref.current
 }
 
 function useHyphenatedValues (values) {
@@ -33,26 +43,17 @@ function useHyphenatedValues (values) {
 }
 
 function useQuery(settings) {
-  const newQuery = getQuery(settings)
-  const [query, setQuery] = React.useState(newQuery)
+  const getQuery = () => makeQuery(settings)
+  const [query, setQuery] = React.useState(getQuery)
 
   React.useEffect(() => {
+    const newQuery = getQuery()
     if(query !== newQuery) {
       setQuery(newQuery)
     }
   }, [settings])
 
   return query
-}
-
-function useIsUpdate() {
-  const ref = React.useRef(false)
-
-  React.useEffect(() => {
-    ref.current = true
-  }, [])
-
-  return ref.current
 }
 
 function useMatchMedia (query, values) {
@@ -82,8 +83,6 @@ function useMatches (mediaQuery) {
       setMatches(mediaQuery.matches)
     }
     mediaQuery.addListener(updateMatches)
-
-    // make sure match is correct since status could have since first render and now
     updateMatches()
 
     return () => {
