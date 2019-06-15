@@ -1,30 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import matchMedia from 'matchmediaquery'
 import hyphenate from 'hyphenate-style-name'
 import areObjectsEqual from "shallow-equal/objects"
-import mediaQuery from './mediaQuery'
 import toQuery from './toQuery'
 import Context from './Context'
 
-const defaultTypes = {
-  component: PropTypes.node,
-  query: PropTypes.string,
-  values: PropTypes.shape(mediaQuery.matchers),
-  children: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
-  onChange: PropTypes.func
-}
-
-const excludedQueryKeys = Object.keys(defaultTypes)
-
-const omit = (object, keys) => {
-  const newObject = { ...object }
-  keys.forEach(key => delete newObject[key])
-  return newObject
-}
-
-const getQuery = settings =>
-  settings.query || toQuery(omit(settings, excludedQueryKeys))
+const getQuery = settings => settings.query || toQuery(settings)
 
 const getValues = values => {
   if (!values) return null
