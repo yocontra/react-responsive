@@ -26,15 +26,6 @@ const omit = (object, keys) => {
 const getQuery = (props) =>
   props.query || toQuery(omit(props, excludedQueryKeys))
 
-const getState = (props, state) => {
-  const query = getQuery(props)
-  if (!query) throw new Error('Invalid or missing MediaQuery!')
-  if (query === state.query) return // nothing changed
-  return {
-    query
-  }
-}
-
 const getValues = values => {
   if (!values) return null
   const keys = Object.keys(values)
@@ -57,6 +48,19 @@ function useValues (props) {
   })
 
   return values
+}
+
+function useQuery(props) {
+  const newQuery = getQuery(props)
+  const [query, setQuery] = React.useState(newQuery)
+
+  React.useEffect(() => {
+    if(query !== newQuery) {
+      setQuery(newQuery)
+    }
+  }, [props])
+
+  return query
 }
 
 function useIsUpdate() {
@@ -102,7 +106,6 @@ function useMatches (mediaQuery) {
 
     return () => {
       mediaQuery.removeListener(updateMatches)
-      mediaQuery.dispose()
     }
   }, [mediaQuery])
 
@@ -111,24 +114,9 @@ function useMatches (mediaQuery) {
 
 function useMediaQuery(props) {
   const values = useValues(props)
-  const [state, setState] = React.useState(
-    getState(
-      props, 
-      {
-        query: ''
-      }
-    )
-  )
-
-  const mq = useMatchMedia(state.query, values)
-
-  React.useEffect(() => {
-    const nextState = getState(props, state)
-    if (nextState) {
-      setState(nextState)
-    }
-  })
-
+  const query = useQuery(props)
+  if (!query) throw new Error('Invalid or missing MediaQuery!')
+  const mq = useMatchMedia(query, values)
   const matches = useMatches(mq)
 
   React.useEffect(() => {
