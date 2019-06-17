@@ -35,7 +35,7 @@ describe('useMediaQuery', () => {
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
   })
 
-  it('builds query from values', () => {
+  it('builds query from device prop', () => {
     function Component (props) {
       const matches = useMediaQuery(props, null, {
         orientation: 'landscape'
@@ -59,9 +59,9 @@ describe('useMediaQuery', () => {
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
   })
 
-  it('matches taking values with precedence', () => {
-    function Component ({ values }) {
-      const matches = useMediaQuery({ minWidth: 1000 }, null, values)
+  it('matches taking device prop with precedence', () => {
+    function Component ({ device }) {
+      const matches = useMediaQuery({ minWidth: 1000 }, null, device)
       return matches ? <div className="childComponent"/> : null
     }
     class App extends React.Component {
@@ -70,10 +70,10 @@ describe('useMediaQuery', () => {
       }
     }
 
-    const tree = TestUtils.renderIntoDocument(<App values={{ width: 1000 }} />)
+    const tree = TestUtils.renderIntoDocument(<App device={{ width: 1000 }} />)
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
     
-    const tree2 = TestUtils.renderIntoDocument(<App values={{ width: 999 }} />)
+    const tree2 = TestUtils.renderIntoDocument(<App device={{ width: 999 }} />)
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
   })
 
@@ -145,7 +145,7 @@ describe('useMediaQuery', () => {
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree2, 'div')), /Did not find exactly one match/)
   })
 
-  it('renders using values from context', () => {
+  it('renders using device prop from context', () => {
     function Component() {
       const matches = useMediaQuery({ maxWidth: 300 })
       return matches ? <div className="childComponent"/> : null
@@ -153,21 +153,21 @@ describe('useMediaQuery', () => {
     class App extends React.Component {
       render() {
         return (
-          <Context.Provider value={this.props.values}>
+          <Context.Provider value={this.props.device}>
             <Component />
           </Context.Provider>
         )
       }
     }
 
-    const tree1 = TestUtils.renderIntoDocument(<App values={{ width: 300 }} />)
+    const tree1 = TestUtils.renderIntoDocument(<App device={{ width: 300 }} />)
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree1, 'childComponent'))
 
-    const tree2 = TestUtils.renderIntoDocument(<App values={{ width: 301 }} />)
+    const tree2 = TestUtils.renderIntoDocument(<App device={{ width: 301 }} />)
     assert.throws(() => (TestUtils.findRenderedDOMComponentWithClass(tree2, 'childComponent')), /Did not find exactly one match/)
   })
 
-  it('renders taking direct values prop with precedence to values from context', () => {
+  it('renders taking direct device prop with precedence to device prop from context', () => {
     function Component() {
       const matches = useMediaQuery({ maxWidth: 300 }, null, {
         width: 100
@@ -178,13 +178,13 @@ describe('useMediaQuery', () => {
       render() {
         return (
           <Context.Provider value={{ width: 400 }}>
-            <Component values={{ width: 100 }} maxWidth={300} />
+            <Component />
           </Context.Provider>
         )
       }
     }
 
-    const tree = TestUtils.renderIntoDocument(<App values={{ width: 300 }} />)
+    const tree = TestUtils.renderIntoDocument(<App />)
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
   })
 

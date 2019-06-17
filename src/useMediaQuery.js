@@ -7,12 +7,12 @@ import Context from './Context'
 
 const makeQuery = settings => settings.query || toQuery(settings)
 
-const getValues = values => {
-  if (!values) return null
-  const keys = Object.keys(values)
+const hyphenateKeys = obj => {
+  if (!obj) return null
+  const keys = Object.keys(obj)
   if (keys.length === 0) return null
   return keys.reduce((result, key) => {
-    result[hyphenate(key)] = values[key]
+    result[hyphenate(key)] = obj[key]
     return result
   }, {})
 }
@@ -27,19 +27,20 @@ function useIsUpdate() {
   return ref.current
 }
 
-function useHyphenatedValues (values) {
-  const contextValues = React.useContext(Context)
-  const getHyphenatedValues = () => getValues(values) || getValues(contextValues)
-  const [hyphenatedValues, setHyphenatedValues] = React.useState(getHyphenatedValues)
+function useDevice (deviceFromProps) {
+  const deviceFromContext = React.useContext(Context)
+  const getDevice = () => 
+    hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext)
+  const [device, setDevice] = React.useState(getDevice)
 
   React.useEffect(() => {
-    const newHyphenatedValues = getHyphenatedValues()
-    if(!areObjectsEqual(hyphenatedValues, newHyphenatedValues)) {
-      setHyphenatedValues(newHyphenatedValues)
+    const newDevice = getDevice()
+    if(!areObjectsEqual(device, newDevice)) {
+      setDevice(newDevice)
     }
-  }, [values, contextValues])
+  }, [deviceFromProps, deviceFromContext])
 
-  return hyphenatedValues
+  return device
 }
 
 function useQuery(settings) {
@@ -56,8 +57,8 @@ function useQuery(settings) {
   return query
 }
 
-function useMatchMedia (query, values) {
-  const getMatchMedia = () => matchMedia(query, values || {}, !!values)
+function useMatchMedia (query, device) {
+  const getMatchMedia = () => matchMedia(query, device || {}, !!device)
   const [mq, setMq] = React.useState(getMatchMedia)
   const isUpdate = useIsUpdate()
 
@@ -70,7 +71,7 @@ function useMatchMedia (query, values) {
     return () => {
       mq.dispose()
     }
-  }, [query, values])
+  }, [query, device])
 
   return mq
 }
@@ -93,11 +94,11 @@ function useMatches (mediaQuery) {
   return matches
 }
 
-function useMediaQuery(settings, onChange, values) {
-  const hyphenatedValues = useHyphenatedValues(values)
+function useMediaQuery(settings, onChange, device) {
+  const deviceSettings = useDevice(device)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
-  const mq = useMatchMedia(query, hyphenatedValues)
+  const mq = useMatchMedia(query, deviceSettings)
   const matches = useMatches(mq)
   const isUpdate = useIsUpdate()
 
