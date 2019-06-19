@@ -6,7 +6,7 @@ import { assert } from 'chai'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
 
-const sleep = (timeOut) => new Promise(resolve => setTimeout(resolve, timeOut)) 
+const sleep = timeOut => new Promise(resolve => setTimeout(resolve, timeOut)) 
 
 describe('useMediaQuery', () => {
   beforeEach(() => {
@@ -37,9 +37,7 @@ describe('useMediaQuery', () => {
 
   it('builds query from device prop', () => {
     function Component (props) {
-      const matches = useMediaQuery(props, null, {
-        orientation: 'landscape'
-      })
+      const matches = useMediaQuery(props, { orientation: 'landscape' })
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
@@ -61,7 +59,7 @@ describe('useMediaQuery', () => {
 
   it('matches taking device prop with precedence', () => {
     function Component ({ device }) {
-      const matches = useMediaQuery({ minWidth: 1000 }, null, device)
+      const matches = useMediaQuery({ minWidth: 1000 }, device)
       return matches ? <div className="childComponent"/> : null
     }
     class App extends React.Component {
@@ -96,7 +94,7 @@ describe('useMediaQuery', () => {
   it('calls onChange callback on updates', () => {
     const container = document.createElement('div')
     function App ({ onChange, ...settings }) {
-      useMediaQuery(settings, onChange)
+      useMediaQuery(settings, null, onChange)
       return null
     }
     const callback = sinon.spy(() => null)
@@ -169,9 +167,7 @@ describe('useMediaQuery', () => {
 
   it('renders taking direct device prop with precedence to device prop from context', () => {
     function Component() {
-      const matches = useMediaQuery({ maxWidth: 300 }, null, {
-        width: 100
-      })
+      const matches = useMediaQuery({ maxWidth: 300 }, { width: 100 })
       return matches ? <div className="childComponent"/> : null
     }
     class App extends React.Component {

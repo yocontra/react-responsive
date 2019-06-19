@@ -94,7 +94,7 @@ function useMatches (mediaQuery) {
   return matches
 }
 
-function useMediaQuery(settings, onChange, device) {
+function useMediaQuery(settings, device, onChange) {
   const deviceSettings = useDevice(device)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
