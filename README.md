@@ -1,6 +1,5 @@
 # react-responsive [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Support us][gittip-image]][gittip-url]
 
-
 ## Information
 
 <table>
@@ -23,8 +22,7 @@
 
 The best supported, easiest to use react media query module.
 
-
-This module is pretty straightforward: You specify a set of requirements, and the children will be rendered if they are met. Also handles changes so if you resize or flip or whatever it all just works.
+This module is pretty straightforward: You specify a set of requirements and get to know if they are met. Also handles changes so if you resize or flip or whatever it all just works.
 
 ## Install
 
@@ -34,102 +32,79 @@ $ npm install react-responsive --save
 
 ## Usage
 
-A MediaQuery element functions like any other React component, which means you can nest them and do all the normal jazz.
+### `useMediaQuery` hook
 
-### Using CSS Media Queries
+Example below demonstrates how you can use regular CSS media queries using `useMediaQuery` hook:
 
 ```jsx
-import MediaQuery from 'react-responsive';
+import React from "react";
+import { useMediaQuery } from "react-responsive";
 
-const Example = () => (
-  <div>
-    <div>Device Test!</div>
-    <MediaQuery query="(min-device-width: 1224px)">
-      <div>You are a desktop or laptop</div>
-      <MediaQuery query="(min-device-width: 1824px)">
-        <div>You also have a huge screen</div>
-      </MediaQuery>
-      <MediaQuery query="(max-width: 1224px)">
-        <div>You are sized like a tablet or mobile phone though</div>
-      </MediaQuery>
-    </MediaQuery>
-    <MediaQuery query="(max-device-width: 1224px)">
-      <div>You are a tablet or mobile phone</div>
-    </MediaQuery>
-    <MediaQuery query="(orientation: portrait)">
-      <div>You are portrait</div>
-    </MediaQuery>
-    <MediaQuery query="(orientation: landscape)">
-      <div>You are landscape</div>
-    </MediaQuery>
-    <MediaQuery query="(min-resolution: 2dppx)">
-      <div>You are retina</div>
-    </MediaQuery>
-  </div>
-);
+const Example = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1224px)"
+  });
+  const isBigScreen = useMediaQuery({ query: "(min-device-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: "(max-device-width: 1224px)"
+  });
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+
+  return (
+    <div>
+      <h1>Device Test!</h1>
+      {isDesktopOrLaptop && (
+        <>
+          <p>You are a desktop or laptop</p>
+          {isBigScreen && <p>You also have a huge screen</p>}
+          {isTabletOrMobile && (
+            <p>You are sized like a tablet or mobile phone though</p>
+          )}
+        </>
+      )}
+      {isTabletOrMobileDevice && <p>You are a tablet or mobile phone</p>}
+      <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
+      {isRetina && <p>You are retina</p>}
+    </div>
+  );
+};
 ```
 
-### Using Properties
+#### Using Properties
 
-To make things more idiomatic to react, you can use camelcased shorthands to construct media queries.
+To make things more idiomatic to react, you can use camel-cased shorthands to construct media queries.
 
+For a list of all possible shorthands and value types see https://github.com/wearefractal/react-responsive/blob/master/src/mediaQuery.js#L9.
 
-For a list of all possible shorthands and value types see https://github.com/wearefractal/react-responsive/blob/master/src/mediaQuery.js#L9
+Any numbers given as shorthand will be expanded to px (`1234` will become `'1234px'`).
 
-
-Any numbers given as a shorthand will be expanded to px (`1234` will become `'1234px'`)
-
-
-```jsx
-import MediaQuery from 'react-responsive';
-
-const Example = () => (
-  <div>
-    <div>Device Test!</div>
-    <MediaQuery minDeviceWidth={1224}>
-      <div>You are a desktop or laptop</div>
-      <MediaQuery minDeviceWidth={1824}>
-        <div>You also have a huge screen</div>
-      </MediaQuery>
-      <MediaQuery maxWidth={1224}>
-        <div>You are sized like a tablet or mobile phone though</div>
-      </MediaQuery>
-    </MediaQuery>
-    <MediaQuery maxDeviceWidth={1224}>
-      <div>You are a tablet or mobile phone</div>
-    </MediaQuery>
-    <MediaQuery orientation="portrait">
-      <div>You are portrait</div>
-    </MediaQuery>
-    <MediaQuery orientation="landscape">
-      <div>You are landscape</div>
-    </MediaQuery>
-    <MediaQuery minResolution="2dppx">
-      <div>You are retina</div>
-    </MediaQuery>
-  </div>
-);
-```
-
-### Rendering with a child function
-
-You may also specify a function for the child of the MediaQuery component. When the component renders, it is passed whether or not the given media query matches. This function must return a single element or `null`.
+The CSS media queries in the example above could be construct as this:
 
 ```jsx
-<MediaQuery minDeviceWidth={700}>
-  {(matches) => {
-    if (matches) {
-      return <div>Media query matches!</div>;
-    } else {
-      return <div>Media query does not match!</div>;
-    }
-  }}
-</MediaQuery>
+import React from "react";
+import { useMediaQuery } from "react-responsive";
+
+const Example = () => {
+  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
+  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 });
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 });
+  const isPortrait = useMediaQuery({ orientation: "portrait" });
+  const isRetina = useMediaQuery({ minResolution: "2dppx" });
+
+  return (
+    <div>
+      ...
+    </div>
+  );
+};
 ```
 
 ### Forcing device properties with `values` prop
 
-At times you may need to render components with different values than what gets automatically detected. This is especially useful in a Node environment where these settings can't be detected (SSR) or for testing.
+At times you may need to render components with different device settings than what gets automatically detected. This is especially useful in a Node environment where these settings can't be detected (SSR) or for testing.
 
 #### Possible Values
 
@@ -145,45 +120,36 @@ At times you may need to render components with different values than what gets 
 Note: The `values` property always applies, even when values could be detected (where window.matchMedia exists).
 
 ```jsx
-import MediaQuery from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 
-const Example = () => (
-  <div>
-    <div>Device Test!</div>
-    <MediaQuery minDeviceWidth={1224} values={{ deviceWidth: 1600 }}>
-      <div>You are a desktop or laptop</div>
-      <MediaQuery minDeviceWidth={1824}>
-        <div>You also have a huge screen</div>
-      </MediaQuery>
-      <MediaQuery maxWidth={1224}>
-        <div>You are sized like a tablet or mobile phone though</div>
-      </MediaQuery>
-    </MediaQuery>
-    <MediaQuery maxDeviceWidth={1224}>
-      <div>You are a tablet or mobile phone</div>
-    </MediaQuery>
-    <MediaQuery orientation="portrait">
-      <div>You are portrait</div>
-    </MediaQuery>
-    <MediaQuery orientation="landscape">
-      <div>You are landscape</div>
-    </MediaQuery>
-    <MediaQuery minResolution="2dppx">
-      <div>You are retina</div>
-    </MediaQuery>
-  </div>
-);
+const Example = () => {
+  const isDesktopOrLaptop = useMediaQuery(
+     { minDeviceWidth: 1224 },
+     { deviceWidth: 1600 } // `values` prop
+  );
+
+  return (
+    <div>
+      {isDesktopOrLaptop && 
+        <p>
+          this will always get rendered even if device is shorter than 1224px,
+          that's because we overrode device settings with "deviceWidth: 1600".
+        </p>
+      }
+    </div>
+  );
+}
 ```
 
 #### Supplying through Context
 
-You can also pass `values` to all components in the tree through a React [Context](https://reactjs.org/docs/context.html).
+You can also pass `values` to every `useMediaQuery` hook in the components tree through a React [Context](https://reactjs.org/docs/context.html).
 This should ease up server-side-rendering and testing in a Node environment, e.g:
 
-##### Server Side Rendering
+##### Server-Side Rendering
 
-```javascript
-import Responsive, { Context as ResponsiveContext } from 'react-responsive';
+```jsx
+import { Context as ResponsiveContext } from 'react-responsive';
 import { renderToString } from "react-dom/server";
 import App from './App';
 
@@ -199,44 +165,87 @@ import App from './App';
 
 ##### Testing
 
-```javascript
-import Responsive, { Context as ResponsiveContext } from 'react-responsive';
-import { render } from '@testing-library/react';
-import ProductsListing from './ProductsListing';
+```jsx
+import { Context as ResponsiveContext } from "react-responsive";
+import { render } from "@testing-library/react";
+import ProductsListing from "./ProductsListing";
 
-describe('ProductsListing', () => {
-  test('matches the snapshot', () => {
+describe("ProductsListing", () => {
+  test("matches the snapshot", () => {
     const { container: mobile } = render(
       <ResponsiveContext.Provider value={{ deviceWidth: 300 }}>
         <ProductsListing />
-      </ResponsiveContext>  
-    )
+      </ResponsiveContext.Provider>
+    );
     expect(mobile).toMatchSnapshot();
 
     const { container: desktop } = render(
       <ResponsiveContext.Provider value={{ deviceWidth: 1000 }}>
         <ProductsListing />
-      </ResponsiveContext>  
-    )
+      </ResponsiveContext.Provider>
+    );
     expect(desktop).toMatchSnapshot();
-  })
-})
+  });
+});
 ```
 
-Note that if any underlying component already has a `values` prop passed in it will take precedence over the one from context.
+Note that if any underlying hook already has a `values` prop passed in it will take precedence over the one from context.
 
 If this doesn't fit your needs and you are using [redux](http://redux.js.org/) you might want to take a look
 at [react-responsive-redux](https://github.com/modosc/react-responsive-redux) which was made to solve a similar problem.
 
+### `MediaQuery` component
+
+A MediaQuery function like any other React component, which means you can nest them and do all the normal jazz.
+
+```jsx
+import MediaQuery from 'react-responsive';
+
+const Example = () => (
+  <div>
+    <h1>Device Test!</h1>
+    <MediaQuery minDeviceWidth={1224} values={{ deviceWidth: 1600 }}>
+      <p>You are a desktop or laptop</p>
+      <MediaQuery minDeviceWidth={1824}>
+        <p>You also have a huge screen</p>
+      </MediaQuery>
+    </MediaQuery>
+    <MediaQuery minResolution="2dppx">
+      {/* it also supports render prop */}
+      {matches => 
+        matches ?
+          <p>You are retina</p>
+          :
+          <p>You are not retina</p>
+      }
+    </MediaQuery>
+  </div>
+);
+```
+
+Under the hood, it's a component that is "hooked" to `useMediaQuery` so setting `values` trough context still works.
+
 ### Common use cases
 
-```javascript
-import Responsive from 'react-responsive';
+```jsx
+import { useMediaQuery } from "react-responsive";
 
-const Desktop = props => <Responsive {...props} minWidth={992} />;
-const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />;
-const Mobile = props => <Responsive {...props} maxWidth={767} />;
-const Default = props => <Responsive {...props} minWidth={768} />;
+const Desktop = ({ children }) => {
+  const isDesktop = useMediaQuery({ minWidth: 992 })
+  return isDesktop ? children : null
+}
+const Tablet = ({ children }) => {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 })
+  return isTablet ? children : null
+}
+const Mobile = ({ children }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 })
+  return isMobile ? children : null
+}
+const Default = ({ children }) => {
+  const isNotMobile = useMediaQuery({ minWidth: 768 })
+  return isNotMobile ? children : null
+}
 
 const Example = () => (
   <div>
@@ -290,7 +299,6 @@ Pretty much everything. Check out these polyfills:
 
 [gittip-url]: https://www.gittip.com/WeAreFractal/
 [gittip-image]: http://img.shields.io/gittip/WeAreFractal.svg
-
 [downloads-image]: http://img.shields.io/npm/dm/react-responsive.svg
 [npm-url]: https://npmjs.org/package/react-responsive
 [npm-image]: http://img.shields.io/npm/v/react-responsive.svg
