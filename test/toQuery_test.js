@@ -1,5 +1,5 @@
-const assert = require('chai').assert
-const toQuery = require('toQuery')
+import { assert } from 'chai'
+import toQuery from 'toQuery'
 
 describe('toQuery', function () {
   it('makes number rules', function () {

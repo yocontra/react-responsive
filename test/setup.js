@@ -1,5 +1,5 @@
-const JSDOM = require('jsdom').JSDOM
-const matchMedia = require('matchmediaquery')
+import { JSDOM } from 'jsdom'
+import matchMediaMock from 'match-media-mock'
 
 process.env.NODE_ENV = 'test'
 
@@ -10,7 +10,7 @@ global.document = window.document
 global.self = global.window
 global.navigator = global.window.navigator
 
-global.window.matchMedia = matchMedia
+global.window.matchMedia = matchMediaMock.create()
 
 global.requestAnimationFrame = function (callback) {
   setTimeout(callback, 0)
