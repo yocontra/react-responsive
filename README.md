@@ -33,45 +33,41 @@ $ npm install react-responsive --save
 ### With Hooks
 
 ```jsx
-import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1224px)'
-  });
-  const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' });
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  })
+  const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   const isTabletOrMobileDevice = useMediaQuery({
     query: '(max-device-width: 1224px)'
-  });
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
+  })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
   return (
     <div>
       <h1>Device Test!</h1>
-      {isDesktopOrLaptop && (
-        <>
-          <p>You are a desktop or laptop</p>
-          {isBigScreen && <p>You also have a huge screen</p>}
-          {isTabletOrMobile && (
-            <p>You are sized like a tablet or mobile phone though</p>
-          )}
-        </>
-      )}
+      {isDesktopOrLaptop && <>
+        <p>You are a desktop or laptop</p>
+        {isBigScreen && <p>You also have a huge screen</p>}
+        {isTabletOrMobile && <p>You are sized like a tablet or mobile phone though</p>}
+      </>}
       {isTabletOrMobileDevice && <p>You are a tablet or mobile phone</p>}
       <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
       {isRetina && <p>You are retina</p>}
     </div>
-  );
-};
+  )
+}
 ```
 
 ### With Components
 
 ```jsx
-import MediaQuery from 'react-responsive';
+import MediaQuery from 'react-responsive'
 
 const Example = () => (
   <div>
@@ -83,16 +79,15 @@ const Example = () => (
       </MediaQuery>
     </MediaQuery>
     <MediaQuery minResolution='2dppx'>
-      {/* it also supports render prop */}
-      {matches =>
-        matches ?
-          <p>You are retina</p>
-          :
-          <p>You are not retina</p>
+      {/* You can also use a function (render prop) as a child */}
+      {(matches) =>
+        matches
+          ? <p>You are retina</p>
+          : <p>You are not retina</p>
       }
     </MediaQuery>
   </div>
-);
+)
 ```
 
 ## API
@@ -108,23 +103,23 @@ Any numbers given as shorthand will be expanded to px (`1234` will become `'1234
 The CSS media queries in the example above could be constructed like this:
 
 ```jsx
-import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
-  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 });
-  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 });
-  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
-  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 });
-  const isPortrait = useMediaQuery({ orientation: 'portrait' });
-  const isRetina = useMediaQuery({ minResolution: '2dppx' });
+  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 })
+  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 })
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 })
+  const isPortrait = useMediaQuery({ orientation: 'portrait' })
+  const isRetina = useMediaQuery({ minResolution: '2dppx' })
 
   return (
     <div>
       ...
     </div>
-  );
-};
+  )
+}
 ```
 
 ### Forcing a device with the `device` prop
@@ -145,13 +140,13 @@ At times you may need to render components with different device settings than w
 Note: The `device` property always applies, even when it can be detected (where window.matchMedia exists).
 
 ```jsx
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
   const isDesktopOrLaptop = useMediaQuery(
      { minDeviceWidth: 1224 },
      { deviceWidth: 1600 } // `device` prop
-  );
+  )
 
   return (
     <div>
@@ -162,7 +157,7 @@ const Example = () => {
         </p>
       }
     </div>
-  );
+  )
 }
 ```
 
@@ -174,9 +169,9 @@ This should ease up server-side-rendering and testing in a Node environment, e.g
 ##### Server-Side Rendering
 
 ```jsx
-import { Context as ResponsiveContext } from 'react-responsive';
-import { renderToString } from 'react-dom/server';
-import App from './App';
+import { Context as ResponsiveContext } from 'react-responsive'
+import { renderToString } from 'react-dom/server'
+import App from './App'
 
 ...
   // Context is just a regular React Context component, it accepts a `value` prop to be passed to consuming components
@@ -184,16 +179,16 @@ import App from './App';
     <ResponsiveContext.Provider value={{ width: 500 }}>
       <App />
     </ResponsiveContext.Provider>
-  );
+  )
 ...
 ```
 
 ##### Testing
 
 ```jsx
-import { Context as ResponsiveContext } from 'react-responsive';
-import { render } from '@testing-library/react';
-import ProductsListing from './ProductsListing';
+import { Context as ResponsiveContext } from 'react-responsive'
+import { render } from '@testing-library/react'
+import ProductsListing from './ProductsListing'
 
 describe('ProductsListing', () => {
   test('matches the snapshot', () => {
@@ -201,17 +196,17 @@ describe('ProductsListing', () => {
       <ResponsiveContext.Provider value={{ width: 300 }}>
         <ProductsListing />
       </ResponsiveContext.Provider>
-    );
-    expect(mobile).toMatchSnapshot();
+    )
+    expect(mobile).toMatchSnapshot()
 
     const { container: desktop } = render(
       <ResponsiveContext.Provider value={{ width: 1000 }}>
         <ProductsListing />
       </ResponsiveContext.Provider>
-    );
-    expect(desktop).toMatchSnapshot();
-  });
-});
+    )
+    expect(desktop).toMatchSnapshot()
+  })
+})
 ```
 
 Note that if anything has a `device` prop passed in it will take precedence over the one from context.
@@ -221,7 +216,7 @@ Note that if anything has a `device` prop passed in it will take precedence over
 That's it! Now you can create your application specific breakpoints and reuse them easily. Here is an example:
 
 ```jsx
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive'
 
 const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 992 })
@@ -247,9 +242,9 @@ const Example = () => (
     <Mobile>Mobile</Mobile>
     <Default>Not mobile (desktop or laptop or tablet)</Default>
   </div>
-);
+)
 
-export default Example;
+export default Example
 ```
 
 ## Browser Support
