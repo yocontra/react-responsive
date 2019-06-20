@@ -5,5 +5,5 @@ import Context from './Context'
 export {
   MediaQuery as default,
   useMediaQuery,
-  Context,
+  Context
 }

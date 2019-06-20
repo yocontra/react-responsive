@@ -1,7 +1,7 @@
 import useMediaQuery from './useMediaQuery'
 
-export default function MediaQuery ({ children, values, onChange, ...settings }) {
-  const matches = useMediaQuery(settings, values, onChange)
+export default function MediaQuery({ children, device, onChange, ...settings }) {
+  const matches = useMediaQuery(settings, device, onChange)
 
   if (typeof children === 'function') {
     return children(matches)

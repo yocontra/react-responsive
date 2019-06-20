@@ -1,12 +1,12 @@
 import { assert } from 'chai'
 import mediaQuery from 'mediaQuery'
 
-describe('mediaQuery', function () {
-  it('has types and features in [all]', function () {
+describe('mediaQuery', () => {
+  it('has types and features in [all]', () => {
     assert.deepEqual(Object.keys(mediaQuery.all), Object.keys(mediaQuery.types).concat(Object.keys(mediaQuery.features)))
   })
-  it('has all media types', function () {
-    let types = [
+  it('has all media types', () => {
+    const types = [
       'all',
       'grid',
       'aural',
@@ -21,7 +21,7 @@ describe('mediaQuery', function () {
     ]
     assert.deepEqual(Object.keys(mediaQuery.types), types)
   })
-  it('has matchers', function () {
+  it('has matchers', () => {
     const matchers = [
       'orientation',
       'scan',
@@ -39,7 +39,7 @@ describe('mediaQuery', function () {
     matchers.push('type')
     assert.deepEqual(Object.keys(mediaQuery.matchers), matchers)
   })
-  it('has features', function () {
+  it('has features', () => {
     const features = [
       'minAspectRatio',
       'maxAspectRatio',

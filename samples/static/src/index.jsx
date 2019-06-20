@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var MediaQuery = require('../../../src');
-var React = require('react');
+var MediaQuery = require('../../../src')
+var React = require('react')
 
 var App = React.createClass({
   displayName: 'demo',
@@ -32,8 +32,8 @@ var App = React.createClass({
           <div>You are retina</div>
         </MediaQuery>
       </div>
-    );
+    )
   }
-});
+})
 
-console.log(React.renderToString(<App />));
+console.log(React.renderToString(<App />))

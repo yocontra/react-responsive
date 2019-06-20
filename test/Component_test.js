@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
 
-describe('MediaQuery', function () {
+describe('MediaQuery', () => {
   beforeEach(() => {
-    window.matchMedia.setConfig({ 
+    window.matchMedia.setConfig({
       type: 'screen',
       width: 1200,
       height: 800
@@ -16,32 +16,28 @@ describe('MediaQuery', function () {
 
   it('renders when media query matches', () => {
     class App extends React.Component {
-      render() {
-        return (
-          <MediaQuery minWidth={1000}>
-            <div className="childComponent"/>
-          </MediaQuery>
-        )
-      }
+      render = () =>
+        <MediaQuery minWidth={1000}>
+          <div className="childComponent" />
+        </MediaQuery>
+        ;
     }
-  
+
     const tree = TestUtils.renderIntoDocument(<App />)
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree, 'childComponent'))
   })
 
   it('doesnt render when media query doesnt match', () => {
     class App extends React.Component {
-      render() {
-        return (
-          <MediaQuery minWidth={1201}>
-            <div className="childComponent"/>
-          </MediaQuery>
-        )
-      }
+      render = () =>
+        <MediaQuery minWidth={1201}>
+          <div className="childComponent" />
+        </MediaQuery>
+        ;
     }
-  
+
     const tree = TestUtils.renderIntoDocument(<App />)
-    assert.throws(() => (TestUtils.findRenderedDOMComponentWithTag(tree, 'div')), /Did not find exactly one match/)
+    assert.throws(() => TestUtils.findRenderedDOMComponentWithTag(tree, 'div'), /Did not find exactly one match/)
   })
 
   it('works with render prop', () => {
@@ -53,7 +49,7 @@ describe('MediaQuery', function () {
     )
     assert.isTrue(renderFunc.calledOnce)
     assert.isTrue(renderFunc.calledWith(true))
-    
+
     const renderFunc2 = sinon.spy(() => null)
     TestUtils.renderIntoDocument(
       <MediaQuery minWidth={1201}>
@@ -68,8 +64,8 @@ describe('MediaQuery', function () {
     const container = document.createElement('div')
     ReactDOM.render(
       <MediaQuery query="all">
-        <div className="childComponent"/>
-      </MediaQuery>, 
+        <div className="childComponent" />
+      </MediaQuery>,
       container
     )
     assert.doesNotThrow(() => ReactDOM.unmountComponentAtNode(container))

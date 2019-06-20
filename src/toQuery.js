@@ -1,9 +1,9 @@
 import hyphenate from 'hyphenate-style-name'
 import mq from './mediaQuery'
 
-const negate = cond => `not ${cond}`
+const negate = (cond) => `not ${cond}`
 
-function keyVal(k, v) {
+const keyVal = (k, v) => {
   const realKey = hyphenate(k)
 
   // px shorthand
@@ -19,13 +19,11 @@ function keyVal(k, v) {
   return `(${realKey}: ${v})`
 }
 
-function join(conds) {
-  return conds.join(' and ')
-}
+const join = (conds) => conds.join(' and ')
 
-export default function (obj) {
+export default (obj) => {
   const rules = []
-  Object.keys(mq.all).forEach(function (k) {
+  Object.keys(mq.all).forEach((k) => {
     const v = obj[k]
     if (v != null) {
       rules.push(keyVal(k, v))
