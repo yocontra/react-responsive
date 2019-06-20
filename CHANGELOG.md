@@ -1,10 +1,16 @@
 ## Change Log
 
+### v8.0.0
+
+- Adds Hooks API to make everything way easier (Thanks to @Tomekmularczyk)
+  - See README for more info on how to use it
+- [BREAKING] Change `values` prop to `device`
+
 ### v7.0.0
 
 - Adds Context support to make testing and server-side rendering much easier (Thanks to @Tomekmularczyk)
   - See README for more info on how to use it
-- Require React v16.8.0 or higher
+- [BREAKING] Require React v16.8.0 or higher
 
 ### v6.1.2
 
