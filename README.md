@@ -32,6 +32,8 @@ $ npm install react-responsive --save
 
 ### With Hooks
 
+This feature is available on the 8.0.0-beta branch, and will go stable very soon!
+
 ```jsx
 import React from 'react'
 import { useMediaQuery } from 'react-responsive'
