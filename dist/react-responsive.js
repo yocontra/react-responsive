@@ -859,7 +859,7 @@ object-assign
             return target;
         }
         function MediaQuery(_ref) {
-            var children = _ref.children, values = _ref.values, onChange = _ref.onChange, settings = _objectWithoutProperties(_ref, [ "children", "values", "onChange" ]), matches = Object(__WEBPACK_IMPORTED_MODULE_0__useMediaQuery__.a)(settings, values, onChange);
+            var children = _ref.children, device = _ref.device, onChange = _ref.onChange, settings = _objectWithoutProperties(_ref, [ "children", "device", "onChange" ]), matches = Object(__WEBPACK_IMPORTED_MODULE_0__useMediaQuery__.a)(settings, device, onChange);
             return "function" == typeof children ? children(matches) : matches ? children : null;
         }
         __webpack_exports__.a = MediaQuery;

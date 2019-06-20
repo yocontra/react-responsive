@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "7.0.0",
+  "version": "8.0.0-beta.0",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
