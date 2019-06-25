@@ -7,12 +7,12 @@ describe('toQuery', () => {
     assert.equal(q, '(min-width: 760px)')
   })
   it('makes true rules', () => {
-    const q = toQuery({ all: true })
-    assert.equal(q, 'all')
+    const q = toQuery({ colorIndex: true })
+    assert.equal(q, 'color-index')
   })
   it('makes negative rules', () => {
-    const q = toQuery({ all: false })
-    assert.equal(q, 'not all')
+    const q = toQuery({ colorIndex: false })
+    assert.equal(q, 'not color-index')
   })
   it('makes regular rules', () => {
     const q = toQuery({ orientation: 'portrait' })

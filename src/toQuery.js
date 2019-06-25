@@ -11,10 +11,10 @@ const keyVal = (k, v) => {
     v = `${v}px`
   }
   if (v === true) {
-    return k
+    return realKey
   }
   if (v === false) {
-    return negate(k)
+    return negate(realKey)
   }
   return `(${realKey}: ${v})`
 }
