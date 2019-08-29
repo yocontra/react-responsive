@@ -32,7 +32,7 @@ $ npm install react-responsive --save
 
 ### With Hooks
 
-This feature is available on the 8.0.0-beta branch, and will go stable very soon!
+Hooks is a new feature available in 8.0.0!
 
 ```jsx
 import React from 'react'
