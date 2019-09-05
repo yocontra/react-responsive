@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
   "license": "MIT",
   "main": "./dist/react-responsive.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "keywords": [
     "css",

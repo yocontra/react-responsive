@@ -1,5 +1,9 @@
 ## Change Log
 
+### v8.0.1
+
+- Include `src` folder in package for webpack to get proper sourcemaps
+
 ### v8.0.0
 
 - Adds Hooks API to make everything way easier (Thanks to @Tomekmularczyk)
