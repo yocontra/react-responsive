@@ -213,6 +213,49 @@ describe('ProductsListing', () => {
 
 Note that if anything has a `device` prop passed in it will take precedence over the one from context.
 
+### `onChange`
+
+You can use the `onChange` callback to specify a change handler that will be called when the media query's value changes.
+
+```jsx
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
+
+const Example = () => {
+
+  const handleMediaQueryChange = (matches) => {
+    // matches will be true or false based on the value for the media query
+  }
+  const isDesktopOrLaptop = useMediaQuery(
+    { minDeviceWidth: 1224 }, undefined,  handleMediaQueryChange
+  );
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+```jsx
+import React from 'react'
+import { MediaQuery } from 'react-responsive'
+
+const Example = () => {
+
+  const handleMediaQueryChange = (matches) => {
+    // matches will be true or false based on the value for the media query
+  }
+
+  return (
+    <MediaQuery minDeviceWidth={1224} onChange={handleMediaQueryChange}>
+      ...
+    </MediaQuery>
+  )
+}
+```
+
 ## Easy Mode
 
 That's it! Now you can create your application specific breakpoints and reuse them easily. Here is an example:
