@@ -60,7 +60,7 @@
     "should": "^13.2.1",
     "sinon": "^7.0.0",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.0.0"
+    "webpack-dev-server": "^2.11.5"
   },
   "scripts": {
     "preversion": "npm run clean && npm run build",
