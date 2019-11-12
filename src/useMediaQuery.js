@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import matchMedia from 'matchmediaquery'
 import hyphenate from 'hyphenate-style-name'
 import areObjectsEqual from 'shallow-equal/objects'
@@ -94,7 +94,7 @@ const useMatches = (mediaQuery) => {
   return matches
 }
 
-const useMediaQuery = (settings, device, onChange) => {
+const useBasicMediaQuery = (settings, device, onChange) => {
   const deviceSettings = useDevice(device)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
@@ -109,6 +109,31 @@ const useMediaQuery = (settings, device, onChange) => {
   }, [ matches ])
 
   return matches
+}
+
+const useSsrMediaQuery = (setting, device, onChange) => {
+  const [ matched, setMatched ] = useState(null)
+  const newMatched = useBasicMediaQuery(setting, device, onChange)
+
+  useEffect(() => {
+    if (matched === null) {
+      setMatched(newMatched)
+    }
+  })
+
+  if (matched === null) {
+    return matched
+  }
+
+  return newMatched
+}
+
+const useMediaQuery = (settings, device, onChange) => {
+  if (settings.ssr) {
+    return useSsrMediaQuery(settings, device, onChange)
+  } else {
+    return useBasicMediaQuery(settings, device, onChange)
+  }
 }
 
 export default useMediaQuery

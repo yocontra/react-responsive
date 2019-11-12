@@ -66,6 +66,10 @@ const Example = () => {
 }
 ```
 
+Ssr option allow use `react-responsive` hook with ssr. With `ssr: true` option hook at the first
+ synchronous
+ rendering will return `null` and after asynchronously it will return a real value
+
 ### With Components
 
 ```jsx
