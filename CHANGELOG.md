@@ -4,6 +4,7 @@
 
 - Expose only necessary code paths, which will lead to smaller bundles and better source-maps
   - Users who want the prebuilt files for UMD can still use the files available in the `dist` folder
+  - To the best of my knowledge nobody was relying on `require('react-responsive')` exposing UMD code, so this should be a non-breaking change
 
 ### v8.0.2
 
