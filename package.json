@@ -10,7 +10,6 @@
   "author": "Contra <yo@contra.io> (http://contra.io)",
   "license": "MIT",
   "main": "./dist/react-responsive.js",
-  "module": "./src/index.js",
   "files": [
     "dist",
     "src"
