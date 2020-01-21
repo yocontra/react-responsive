@@ -1,5 +1,10 @@
 ## Change Log
 
+### v8.0.3
+
+- Expose only necessary code paths, which will lead to smaller bundles and better source-maps
+  - Users who want the prebuilt files for UMD can still use the files available in the `dist` folder
+
 ### v8.0.2
 
 - Fix webpack build to have proper sourcemaps for UMD users

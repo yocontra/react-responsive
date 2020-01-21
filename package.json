@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -9,10 +9,10 @@
   },
   "author": "Contra <yo@contra.io> (http://contra.io)",
   "license": "MIT",
-  "main": "./dist/react-responsive.js",
+  "main": "./dist-module/react-responsive.js",
   "files": [
     "dist",
-    "src"
+    "dist-modules"
   ],
   "keywords": [
     "css",
@@ -37,7 +37,7 @@
     "react": "^16.8.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
@@ -68,7 +68,8 @@
     "start": "webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
     "build:umd": "cross-env BUILD_MODE=umd webpack",
     "build:umd-min": "cross-env BUILD_MODE=umd-min webpack",
-    "build": "npm run build:umd && npm run build:umd-min",
+    "build:modules": "cross-env babel src --source-maps --out-dir dist-module",
+    "build": "npm run build:umd && npm run build:umd-min && npm run build:modules",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "lint": "eslint src test",
