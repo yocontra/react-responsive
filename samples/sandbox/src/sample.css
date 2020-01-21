@@ -2,11 +2,10 @@ html {
   height: 100%;
   width: 100%;
   font-size: 22px;
-  color: ghostwhite;
-  background-color: darkseagreen;
-  font-family: fantasy;
+  color: #333;
+  background-color: #fff;
 }
 
 body {
-  padding: 5vh 5px;
+  padding: 32px;
 }

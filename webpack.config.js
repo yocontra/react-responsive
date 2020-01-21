@@ -1,42 +1,22 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const isMin = process.env.BUILD_MODE === 'umd-min'
+const mode = isMin ? 'production' : 'development'
 const env = new webpack.EnvironmentPlugin({
-  NODE_ENV: process.env.BUILD_MODE == 'umd-min' ? 'production' : 'development'
-})
-const uglify = new webpack.optimize.UglifyJsPlugin({
-  sourceMap: true,
-  parallel: true,
-  cache: true
-})
-const uglifyLite = new webpack.optimize.UglifyJsPlugin({
-  sourceMap: true,
-  cache: true,
-  parallel: true,
-  compress: {
-    dead_code: true,
-    unused: true
-  },
-  mangle: false,
-  output: {
-    beautify: true
-  }
+  NODE_ENV: mode
 })
 
-const filename = process.env.BUILD_MODE === 'umd'
-  ? './dist/react-responsive.js'
-  : './dist/react-responsive.min.js'
-const plugins = process.env.BUILD_MODE === 'umd-min'
-  ? [ env, uglify ]
-  : [ env, uglifyLite ]
+const filename = isMin
+  ? './react-responsive.min.js'
+  : './react-responsive.js'
 
 module.exports = {
+  mode,
   entry: './src/index.js',
   output: {
     filename,
-    sourceMapFilename: `${filename}.map`,
-    libraryTarget: 'umd',
-    library: 'MediaQuery'
+    libraryTarget: 'umd'
   },
   devtool: 'source-map',
   externals: {
@@ -53,7 +33,7 @@ module.exports = {
       root: 'ReactDOM'
     }
   },
-  plugins,
+  plugins: [ env ],
   resolve: {
     modules: [
       path.resolve('src'),

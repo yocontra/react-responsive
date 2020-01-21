@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const conf = require('./webpack.config')
+
 delete conf.externals
 conf.entry = './samples/sandbox/src/index.js'
 conf.output = {
