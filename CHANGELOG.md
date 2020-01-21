@@ -1,5 +1,10 @@
 ## Change Log
 
+### v8.0.2
+
+- Fix webpack build to have proper sourcemaps for UMD users
+- Add `module` to package.json so webpack users get tree shaking and smaller bundle sizes
+
 ### v8.0.1
 
 - Include `src` folder in package for webpack to get proper sourcemaps

@@ -3,10 +3,10 @@
 		module.exports = factory(require("react"));
 	else if(typeof define === 'function' && define.amd)
 		define(["react"], factory);
-	else {
-		var a = typeof exports === 'object' ? factory(require("react")) : factory(root["React"]);
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
+	else if(typeof exports === 'object')
+		exports["react-responsive"] = factory(require("react"));
+	else
+		root["react-responsive"] = factory(root["React"]);
 })(window, function(__WEBPACK_EXTERNAL_MODULE_react__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

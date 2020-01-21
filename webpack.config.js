@@ -16,7 +16,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename,
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    library: 'react-responsive'
   },
   devtool: 'source-map',
   externals: {
