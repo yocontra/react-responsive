@@ -1,10 +1,10 @@
 ## Change Log
 
-### v8.0.3
+### v9.0.0
 
 - Expose only necessary code paths, which will lead to smaller bundles and better source-maps
   - Users who want the prebuilt files for UMD can still use the files available in the `dist` folder
-  - To the best of my knowledge nobody was relying on `require('react-responsive')` exposing UMD code, so this should be a non-breaking change
+  - To the best of my knowledge nobody was relying on `require('react-responsive')` exposing UMD code, so this should be a non-breaking change. Still, published as a new major release just in case.
 
 ### v8.0.2
 

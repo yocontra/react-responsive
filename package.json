@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "8.0.3",
+  "version": "9.0.0",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -45,10 +45,9 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@stae/linters": "^0.1.2",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
-    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "chai": "^4.1.2",
     "cross-env": "^6.0.0",
     "eslint": "^6.0.0",
