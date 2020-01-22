@@ -7,7 +7,17 @@
 		exports["react-responsive"] = factory(require("react"));
 	else
 		root["react-responsive"] = factory(root["React"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_react__) {
+})((function () {
+        if (typeof self !== 'undefined') {
+            return self;
+        } else if (typeof window !== 'undefined') {
+            return window;
+        } else if (typeof global !== 'undefined') {
+            return global;
+        } else {
+            return Function('return this')();
+        }
+    })(), function(__WEBPACK_EXTERNAL_MODULE_react__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

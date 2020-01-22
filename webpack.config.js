@@ -17,7 +17,18 @@ module.exports = {
   output: {
     filename,
     libraryTarget: 'umd',
-    library: 'react-responsive'
+    library: 'react-responsive',
+    globalObject: `(function () {
+        if (typeof self !== 'undefined') {
+            return self;
+        } else if (typeof window !== 'undefined') {
+            return window;
+        } else if (typeof global !== 'undefined') {
+            return global;
+        } else {
+            return Function('return this')();
+        }
+    })()`
   },
   devtool: 'source-map',
   externals: {
@@ -26,12 +37,6 @@ module.exports = {
       commonjs2: 'react',
       amd: 'react',
       root: 'React'
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'react-dom',
-      root: 'ReactDOM'
     }
   },
   plugins: [ env ],

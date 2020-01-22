@@ -6,9 +6,9 @@
   - Users who want the prebuilt files for UMD can still use the files available in the `dist` folder
   - To the best of my knowledge nobody was relying on `require('react-responsive')` exposing UMD code, so this should be a non-breaking change. Still, published as a new major release just in case.
 
-### v8.0.2
+### v8.0.3
 
-- Fix webpack build to have proper sourcemaps for UMD users
+- Undoes deprecated 8.0.2 which had a bad build file
 
 ### v8.0.1
 
