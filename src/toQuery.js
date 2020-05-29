@@ -21,7 +21,7 @@ const keyVal = (k, v) => {
 
 const join = (conds) => conds.join(' and ')
 
-export default (obj) => {
+const toQuery = (obj) => {
   const rules = []
   Object.keys(mq.all).forEach((k) => {
     const v = obj[k]
@@ -31,3 +31,5 @@ export default (obj) => {
   })
   return join(rules)
 }
+
+export default toQuery
