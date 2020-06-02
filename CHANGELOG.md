@@ -1,5 +1,9 @@
 ## Change Log
 
+### v8.1.0
+
+- Expose `toQuery` function for turning our MediaQuery objects into strings
+
 ### v8.0.3
 
 - Republish of 8.0.1 - version 8.0.2 was causing issues for people and is deprecated.
