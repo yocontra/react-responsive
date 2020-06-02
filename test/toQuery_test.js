@@ -22,4 +22,8 @@ describe('toQuery', () => {
     const q = toQuery({ orientation: 'portrait', minWidth: 760 })
     assert.equal(q, '(min-width: 760px) and (orientation: portrait)')
   })
+  it('handles multiple query rules', () => {
+    const q = toQuery({ minWidth: 640, maxWidth: 760 })
+    assert.equal(q, '(min-width: 640px) and (max-width: 760px)')
+  })
 })
