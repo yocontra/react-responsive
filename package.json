@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "shallow-equal": "^1.1.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
