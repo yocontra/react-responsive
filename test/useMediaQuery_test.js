@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import useMediaQuery from 'useMediaQuery'
@@ -23,9 +24,7 @@ describe('useMediaQuery', () => {
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
-      render() {
-        return <Component {...this.props} />
-      }
+      render = () => <Component {...this.props} />;
     }
 
     const tree = TestUtils.renderIntoDocument(<App minWidth={1200} />)
@@ -41,9 +40,7 @@ describe('useMediaQuery', () => {
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
-      render() {
-        return <Component {...this.props} />
-      }
+      render = () => <Component {...this.props} />;
     }
 
     const tree = TestUtils.renderIntoDocument(
@@ -63,9 +60,7 @@ describe('useMediaQuery', () => {
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
-      render() {
-        return <Component {...this.props} />
-      }
+      render = () => <Component {...this.props} />;
     }
 
     const tree = TestUtils.renderIntoDocument(<App device={{ width: 1000 }} />)
@@ -127,9 +122,7 @@ describe('useMediaQuery', () => {
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
-      render() {
-        return <Component {...this.props} />
-      }
+      render = () => <Component {...this.props} />;
     }
 
     const tree = TestUtils.renderIntoDocument(
@@ -149,13 +142,11 @@ describe('useMediaQuery', () => {
       return matches ? <div className="childComponent" /> : null
     }
     class App extends React.Component {
-      render() {
-        return (
-          <Context.Provider value={this.props.device}>
-            <Component />
-          </Context.Provider>
-        )
-      }
+      render = () =>
+        <Context.Provider value={this.props.device}>
+          <Component />
+        </Context.Provider>
+        ;
     }
 
     const tree1 = TestUtils.renderIntoDocument(<App device={{ width: 300 }} />)

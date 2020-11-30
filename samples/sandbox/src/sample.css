@@ -1,12 +1,21 @@
 html {
   height: 100%;
   width: 100%;
-  font-size: 22px;
-  color: ghostwhite;
-  background-color: darkseagreen;
-  font-family: fantasy;
+  font-size: 32px;
+  font-weight: 300;
+  color: #fff;
+  background-color: #2980b9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+  'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+  'Droid Sans', sans-serif;
 }
 
 body {
-  padding: 5vh 5px;
+  padding: 64px;
+}
+
+
+.header {
+  font-weight: 500;
+  margin-bottom: 32px;
 }

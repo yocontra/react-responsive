@@ -40,7 +40,7 @@ module.exports = {
   },
   devtool: 'source-map',
   externals: {
-    'react': {
+    react: {
       commonjs: 'react',
       commonjs2: 'react',
       amd: 'react',
