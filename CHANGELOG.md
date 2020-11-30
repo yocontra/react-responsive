@@ -1,5 +1,9 @@
 ## Change Log
 
+### v8.2.0
+
+- Repo maintenance - update dev dependencies and linter. Source maps updated.
+
 ### v8.1.0
 
 - Expose `toQuery` function for turning our MediaQuery objects into strings
