@@ -19,3 +19,7 @@ body {
   font-weight: 500;
   margin-bottom: 32px;
 }
+
+.item {
+  margin-bottom: 16px;
+}
