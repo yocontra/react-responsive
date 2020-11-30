@@ -40,29 +40,21 @@ import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1224px)'
+    query: '(min-width: 1224px)'
   })
-  const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-  const isTabletOrMobileDevice = useMediaQuery({
-    query: '(max-device-width: 1224px)'
-  })
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
-  return (
-    <div>
-      <h1>Device Test!</h1>
-      {isDesktopOrLaptop && <>
-        <p>You are a desktop or laptop</p>
-        {isBigScreen && <p>You also have a huge screen</p>}
-        {isTabletOrMobile && <p>You are sized like a tablet or mobile phone though</p>}
-      </>}
-      {isTabletOrMobileDevice && <p>You are a tablet or mobile phone</p>}
-      <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
-      {isRetina && <p>You are retina</p>}
-    </div>
-  )
+  return <div>
+    <h1>Device Test!</h1>
+    {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
+    {isBigScreen && <p>You  have a huge screen</p>}
+    {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
+    <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
+    {isRetina && <p>You are retina</p>}
+  </div>
 }
 ```
 
@@ -74,13 +66,13 @@ import MediaQuery from 'react-responsive'
 const Example = () => (
   <div>
     <h1>Device Test!</h1>
-    <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
+    <MediaQuery minWidth={1224}>
       <p>You are a desktop or laptop</p>
-      <MediaQuery minDeviceWidth={1824}>
+      <MediaQuery minWidth={1824}>
         <p>You also have a huge screen</p>
       </MediaQuery>
     </MediaQuery>
-    <MediaQuery minResolution='2dppx'>
+    <MediaQuery minResolution="2dppx">
       {/* You can also use a function (render prop) as a child */}
       {(matches) =>
         matches
@@ -109,10 +101,9 @@ import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
-  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 })
-  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 })
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1224 })
+  const isBigScreen = useMediaQuery({ minWidth: 1824 })
   const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
-  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 })
   const isPortrait = useMediaQuery({ orientation: 'portrait' })
   const isRetina = useMediaQuery({ minResolution: '2dppx' })
 
@@ -227,7 +218,7 @@ const Example = () => {
     // matches will be true or false based on the value for the media query
   }
   const isDesktopOrLaptop = useMediaQuery(
-    { minDeviceWidth: 1224 }, undefined,  handleMediaQueryChange
+    { minWidth: 1224 }, undefined,  handleMediaQueryChange
   );
 
   return (
@@ -249,7 +240,7 @@ const Example = () => {
   }
 
   return (
-    <MediaQuery minDeviceWidth={1224} onChange={handleMediaQueryChange}>
+    <MediaQuery minWidth={1224} onChange={handleMediaQueryChange}>
       ...
     </MediaQuery>
   )
