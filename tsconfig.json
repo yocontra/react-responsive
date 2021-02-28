@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES5",
+    "lib": ["dom", "es6"],
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "sourceMap": false,
+    "strict": true,
+    "rootDir": ".",
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+  },
+  "include": ["src", "global.d.ts"],
+  "exclude": ["test", "node_modules"],
+}

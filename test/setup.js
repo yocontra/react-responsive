@@ -1,5 +1,5 @@
-import { JSDOM } from 'jsdom'
-import matchMediaMock from 'match-media-mock'
+const { JSDOM } = require('jsdom')
+const matchMediaMock = require('match-media-mock')
 
 process.env.NODE_ENV = 'test'
 

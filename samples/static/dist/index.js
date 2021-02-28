@@ -168,7 +168,7 @@ function toPx(length) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -679,7 +679,7 @@ process.umask = function() { return 0; };
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule KeyEscapeUtils
- * 
+ *
  */
 
 'use strict';
@@ -3923,7 +3923,7 @@ module.exports = checkReactTypeSpec;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getIteratorFn
- * 
+ *
  */
 
 'use strict';
@@ -4007,7 +4007,7 @@ module.exports = onlyChild;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule reactProdInvariant
- * 
+ *
  */
 'use strict';
 
@@ -4223,28 +4223,28 @@ var App = React.createClass({
   displayName: 'demo',
   render: function(){
     return (
-      React.createElement("div", null, 
-        React.createElement("div", null, "Device Test!"), 
-        React.createElement(MediaQuery, {minDeviceWidth: 1224, values: {deviceWidth: 1230}}, 
-          React.createElement("div", null, "You are a desktop or laptop"), 
-          React.createElement(MediaQuery, {minDeviceWidth: 1824}, 
+      React.createElement("div", null,
+        React.createElement("div", null, "Device Test!"),
+        React.createElement(MediaQuery, {minDeviceWidth: 1224, values: {deviceWidth: 1230}},
+          React.createElement("div", null, "You are a desktop or laptop"),
+          React.createElement(MediaQuery, {minDeviceWidth: 1824},
             React.createElement("div", null, "You also have a huge screen")
-          ), 
-          React.createElement(MediaQuery, {maxWidth: 1224}, 
+          ),
+          React.createElement(MediaQuery, {maxWidth: 1224},
             React.createElement("div", null, "You are sized like a tablet or mobile phone though")
           )
-        ), 
-        React.createElement(MediaQuery, {maxDeviceWidth: 1224}, 
+        ),
+        React.createElement(MediaQuery, {maxDeviceWidth: 1224},
           React.createElement("div", null, "You are a tablet or mobile phone")
-        ), 
+        ),
 
-        React.createElement(MediaQuery, {orientation: "portrait"}, 
+        React.createElement(MediaQuery, {orientation: "portrait"},
           React.createElement("div", null, "You are portrait")
-        ), 
-         React.createElement(MediaQuery, {orientation: "landscape"}, 
+        ),
+         React.createElement(MediaQuery, {orientation: "landscape"},
           React.createElement("div", null, "You are landscape")
-        ), 
-        React.createElement(MediaQuery, {minResolution: "2dppx"}, 
+        ),
+        React.createElement(MediaQuery, {minResolution: "2dppx"},
           React.createElement("div", null, "You are retina")
         )
       )
@@ -4528,4 +4528,4 @@ module.exports = function(obj){
 });
 
 
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map
