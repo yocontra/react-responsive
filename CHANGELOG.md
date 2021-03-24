@@ -1,5 +1,12 @@
 ## Change Log
 
+### v9.0.0
+
+- Convert project to typescript
+- Remove UMD build from project
+- Remove samples from project
+- Add docs webpage
+
 ### v8.2.0
 
 - Repo maintenance - update dev dependencies and linter. Source maps updated.

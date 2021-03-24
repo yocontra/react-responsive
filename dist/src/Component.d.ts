@@ -1,5 +1,5 @@
-import * as React from "react";
-import { MediaQueryAllQueryable, MediaQueryMatchers } from "./types";
+import * as React from 'react';
+import { MediaQueryAllQueryable, MediaQueryMatchers } from './types';
 interface MediaQueryProps extends MediaQueryAllQueryable {
     component?: string | React.FC<any> | React.ClassType<any, any, any> | React.ComponentClass<any>;
     query?: string;
@@ -7,8 +7,8 @@ interface MediaQueryProps extends MediaQueryAllQueryable {
     className?: string;
     device?: MediaQueryMatchers;
     values?: Partial<MediaQueryMatchers>;
-    onBeforeChange?: (matches: boolean) => void;
-    onChange?: (matches: boolean) => void;
+    onBeforeChange?: (_matches: boolean) => void;
+    onChange?: (_matches: boolean) => void;
 }
 declare const MediaQuery: React.FC<MediaQueryProps>;
 export default MediaQuery;

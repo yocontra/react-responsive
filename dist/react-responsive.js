@@ -183,7 +183,7 @@
                 mql && mql.removeListener(listener);
             }
             function update(evt) {
-                console.log(evt, "wowow"), self.matches = evt.matches, self.media = evt.media;
+                self.matches = evt.matches, self.media = evt.media;
             }
             function dispose() {
                 mql && mql.removeListener(update);
@@ -192,7 +192,7 @@
             if (dynamicMatch && !forceStatic) {
                 var mql = dynamicMatch.call(window, query);
                 this.matches = mql.matches, this.media = mql.media, mql.addListener(update);
-            } else console.log("static match"), this.matches = staticMatch(query, values), this.media = query;
+            } else this.matches = staticMatch(query, values), this.media = query;
             this.addListener = addListener, this.removeListener = removeListener, this.dispose = dispose;
         }
         function matchMedia(query, values, forceStatic) {

@@ -1,13 +1,13 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "8.2.0",
+  "version": "9.0.0-beta.1",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
     "url": "git://github.com/contra/react-responsive.git"
   },
-  "author": "Contra <yo@contra.io> (http://contra.io)",
+  "author": "Contra <yo@contra.io> (https://contra.io)",
   "license": "MIT",
   "main": "./dist/react-responsive.js",
   "files": [
@@ -69,11 +69,9 @@
   "scripts": {
     "preversion": "npm run clean && npm run build",
     "postpublish": "npm run tag && npm run docs",
-    "start": "webpack-dev-server --config webpack.config.samples.js  --content-base samples/sandbox/src --host 0.0.0.0 --hot --inline --port 3333",
-    "build:samples": "cross-env webpack --config webpack.config.samples.js --output-path samples/sandbox/dist",
     "build:umd": "cross-env BUILD_MODE=umd webpack",
     "build:umd-min": "cross-env BUILD_MODE=umd-min webpack",
-    "build": "npm run build:umd && npm run build:umd-min && npm run build:samples",
+    "build": "npm run build:umd && npm run build:umd-min",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "tag": "git tag -a \"v$npm_package_version\" -m \"tag version $npm_package_version\" && git push origin master --tags",
