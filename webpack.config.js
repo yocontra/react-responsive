@@ -31,7 +31,7 @@ const plugins = process.env.BUILD_MODE === 'umd-min'
   : [ env, uglifyLite ]
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     filename,
     sourceMapFilename: `${filename}.map`,
@@ -58,13 +58,14 @@ module.exports = {
     modules: [
       path.resolve('src'),
       'node_modules'
-    ]
+    ],
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   module: {
     rules: [
       {
-        test: [ /\.js$/, /\.jsx$/ ],
-        use: 'babel-loader',
+        test: [ /\.ts$/, /\.tsx$/ ],
+        loader: 'ts-loader',
         exclude: /node_modules/
       }
     ]

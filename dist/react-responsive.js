@@ -30,89 +30,55 @@
         }, __webpack_require__.o = function(object, property) {
             return Object.prototype.hasOwnProperty.call(object, property);
         }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 7);
-    }([ function(module, __webpack_exports__, __webpack_require__) {
+    }([ function(module, exports, __webpack_require__) {
         "use strict";
-        function _slicedToArray(arr, i) {
-            return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-        }
-        function _nonIterableRest() {
-            throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-        }
-        function _unsupportedIterableToArray(o, minLen) {
-            if (o) {
-                if ("string" == typeof o) return _arrayLikeToArray(o, minLen);
-                var n = Object.prototype.toString.call(o).slice(8, -1);
-                return "Object" === n && o.constructor && (n = o.constructor.name), "Map" === n || "Set" === n ? Array.from(o) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? _arrayLikeToArray(o, minLen) : void 0;
-            }
-        }
-        function _arrayLikeToArray(arr, len) {
-            (null == len || len > arr.length) && (len = arr.length);
-            for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-            return arr2;
-        }
-        function _iterableToArrayLimit(arr, i) {
-            if ("undefined" != typeof Symbol && Symbol.iterator in Object(arr)) {
-                var _arr = [], _n = !0, _d = !1, _e = void 0;
-                try {
-                    for (var _s, _i = arr[Symbol.iterator](); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), 
-                    !i || _arr.length !== i); _n = !0) ;
-                } catch (err) {
-                    _d = !0, _e = err;
-                } finally {
-                    try {
-                        _n || null == _i.return || _i.return();
-                    } finally {
-                        if (_d) throw _e;
-                    }
-                }
-                return _arr;
-            }
-        }
-        function _arrayWithHoles(arr) {
-            if (Array.isArray(arr)) return arr;
-        }
-        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), __WEBPACK_IMPORTED_MODULE_1_matchmediaquery__ = __webpack_require__(8), __WEBPACK_IMPORTED_MODULE_1_matchmediaquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_matchmediaquery__), __WEBPACK_IMPORTED_MODULE_2_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_3_shallow_equal_objects__ = __webpack_require__(10), __WEBPACK_IMPORTED_MODULE_3_shallow_equal_objects___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_shallow_equal_objects__), __WEBPACK_IMPORTED_MODULE_4__toQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_5__Context__ = __webpack_require__(6), makeQuery = function(settings) {
-            return settings.query || Object(__WEBPACK_IMPORTED_MODULE_4__toQuery__.a)(settings);
+        var __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+        var react_1 = __importDefault(__webpack_require__(1)), matchmediaquery_1 = __importDefault(__webpack_require__(8)), hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), shallow_equal_1 = __webpack_require__(10), toQuery_1 = __importDefault(__webpack_require__(3)), Context_1 = __importDefault(__webpack_require__(6)), makeQuery = function(settings) {
+            return settings.query || toQuery_1.default(settings);
         }, hyphenateKeys = function(obj) {
             if (!obj) return null;
             var keys = Object.keys(obj);
             return 0 === keys.length ? null : keys.reduce(function(result, key) {
-                return result[Object(__WEBPACK_IMPORTED_MODULE_2_hyphenate_style_name__.a)(key)] = obj[key], 
-                result;
+                return result[hyphenate_style_name_1.default(key)] = obj[key], result;
             }, {});
         }, useIsUpdate = function() {
-            var ref = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useRef(!1);
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
+            var ref = react_1.default.useRef(!1);
+            return react_1.default.useEffect(function() {
                 ref.current = !0;
             }, []), ref.current;
         }, useDevice = function(deviceFromProps) {
-            var deviceFromContext = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useContext(__WEBPACK_IMPORTED_MODULE_5__Context__.a), getDevice = function() {
-                return hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext);
-            }, _React$useState = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useState(getDevice), _React$useState2 = _slicedToArray(_React$useState, 2), device = _React$useState2[0], setDevice = _React$useState2[1];
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
+            var deviceFromContext = react_1.default.useContext(Context_1.default), getDevice = function() {
+                return hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext) || {};
+            }, _a = react_1.default.useState(getDevice), device = _a[0], setDevice = _a[1];
+            return react_1.default.useEffect(function() {
                 var newDevice = getDevice();
-                __WEBPACK_IMPORTED_MODULE_3_shallow_equal_objects___default()(device, newDevice) || setDevice(newDevice);
+                shallow_equal_1.shallowEqualObjects(device, newDevice) || setDevice(newDevice);
             }, [ deviceFromProps, deviceFromContext ]), device;
         }, useQuery = function(settings) {
             var getQuery = function() {
                 return makeQuery(settings);
-            }, _React$useState3 = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useState(getQuery), _React$useState4 = _slicedToArray(_React$useState3, 2), query = _React$useState4[0], setQuery = _React$useState4[1];
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
+            }, _a = react_1.default.useState(getQuery), query = _a[0], setQuery = _a[1];
+            return react_1.default.useEffect(function() {
                 var newQuery = getQuery();
                 query !== newQuery && setQuery(newQuery);
             }, [ settings ]), query;
         }, useMatchMedia = function(query, device) {
             var getMatchMedia = function() {
-                return __WEBPACK_IMPORTED_MODULE_1_matchmediaquery___default()(query, device || {}, !!device);
-            }, _React$useState5 = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useState(getMatchMedia), _React$useState6 = _slicedToArray(_React$useState5, 2), mq = _React$useState6[0], setMq = _React$useState6[1], isUpdate = useIsUpdate();
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
-                return isUpdate && setMq(getMatchMedia()), function() {
-                    mq.dispose();
-                };
+                return matchmediaquery_1.default(query);
+            }, _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1], isUpdate = useIsUpdate();
+            return react_1.default.useEffect(function() {
+                isUpdate && setMq(getMatchMedia());
             }, [ query, device ]), mq;
         }, useMatches = function(mediaQuery) {
-            var _React$useState7 = __WEBPACK_IMPORTED_MODULE_0_react___default.a.useState(mediaQuery.matches), _React$useState8 = _slicedToArray(_React$useState7, 2), matches = _React$useState8[0], setMatches = _React$useState8[1];
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
+            var _a = react_1.default.useState(mediaQuery.matches), matches = _a[0], setMatches = _a[1];
+            return react_1.default.useEffect(function() {
                 var updateMatches = function() {
                     setMatches(mediaQuery.matches);
                 };
@@ -124,11 +90,11 @@
             var deviceSettings = useDevice(device), query = useQuery(settings);
             if (!query) throw new Error("Invalid or missing MediaQuery!");
             var mq = useMatchMedia(query, deviceSettings), matches = useMatches(mq), isUpdate = useIsUpdate();
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.useEffect(function() {
+            return react_1.default.useEffect(function() {
                 isUpdate && onChange && onChange(matches);
             }, [ matches ]), matches;
         };
-        __webpack_exports__.a = useMediaQuery;
+        exports.default = useMediaQuery;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
     }, function(module, __webpack_exports__, __webpack_require__) {
@@ -141,50 +107,72 @@
             var hName = name.replace(uppercasePattern, toHyphenLower);
             return cache[name] = msPattern.test(hName) ? "-" + hName : hName;
         }
+        Object.defineProperty(__webpack_exports__, "__esModule", {
+            value: !0
+        });
         var uppercasePattern = /[A-Z]/g, msPattern = /^ms-/, cache = {};
-        __webpack_exports__.a = hyphenateStyleName;
-    }, function(module, __webpack_exports__, __webpack_require__) {
+        __webpack_exports__.default = hyphenateStyleName;
+    }, function(module, exports, __webpack_require__) {
         "use strict";
-        var __WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__ = __webpack_require__(2), __WEBPACK_IMPORTED_MODULE_1__mediaQuery__ = __webpack_require__(11), negate = function(cond) {
-            return "not ".concat(cond);
+        var __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+        var hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), mediaQuery_1 = __importDefault(__webpack_require__(11)), negate = function(cond) {
+            return "not " + cond;
         }, keyVal = function(k, v) {
-            var realKey = Object(__WEBPACK_IMPORTED_MODULE_0_hyphenate_style_name__.a)(k);
-            return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? realKey : !1 === v ? negate(realKey) : "(".concat(realKey, ": ").concat(v, ")");
+            var realKey = hyphenate_style_name_1.default(k);
+            return "number" == typeof v && (v += "px"), !0 === v ? realKey : !1 === v ? negate(realKey) : "(" + realKey + ": " + v + ")";
         }, join = function(conds) {
             return conds.join(" and ");
         }, toQuery = function(obj) {
             var rules = [];
-            return Object.keys(__WEBPACK_IMPORTED_MODULE_1__mediaQuery__.a.all).forEach(function(k) {
+            return Object.keys(mediaQuery_1.default.all).forEach(function(k) {
                 var v = obj[k];
                 null != v && rules.push(keyVal(k, v));
             }), join(rules);
         };
-        __webpack_exports__.a = toQuery;
+        exports.default = toQuery;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = __webpack_require__(13);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
-    }, function(module, __webpack_exports__, __webpack_require__) {
+    }, function(module, exports, __webpack_require__) {
         "use strict";
-        var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1), __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__), Context = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createContext();
-        __webpack_exports__.a = Context;
-    }, function(module, __webpack_exports__, __webpack_require__) {
-        "use strict";
-        Object.defineProperty(__webpack_exports__, "__esModule", {
+        var __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var __WEBPACK_IMPORTED_MODULE_0__useMediaQuery__ = __webpack_require__(0), __WEBPACK_IMPORTED_MODULE_1__Component__ = __webpack_require__(17), __WEBPACK_IMPORTED_MODULE_2__toQuery__ = __webpack_require__(3), __WEBPACK_IMPORTED_MODULE_3__Context__ = __webpack_require__(6);
-        __webpack_require__.d(__webpack_exports__, "default", function() {
-            return __WEBPACK_IMPORTED_MODULE_1__Component__.a;
-        }), __webpack_require__.d(__webpack_exports__, "useMediaQuery", function() {
-            return __WEBPACK_IMPORTED_MODULE_0__useMediaQuery__.a;
-        }), __webpack_require__.d(__webpack_exports__, "toQuery", function() {
-            return __WEBPACK_IMPORTED_MODULE_2__toQuery__.a;
-        }), __webpack_require__.d(__webpack_exports__, "Context", function() {
-            return __WEBPACK_IMPORTED_MODULE_3__Context__.a;
-        });
+        var react_1 = __importDefault(__webpack_require__(1)), Context = react_1.default.createContext({});
+        exports.default = Context;
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        var __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        }), exports.Context = exports.toQuery = exports.useMediaQuery = exports.default = void 0;
+        var useMediaQuery_1 = __importDefault(__webpack_require__(0));
+        exports.useMediaQuery = useMediaQuery_1.default;
+        var Component_1 = __importDefault(__webpack_require__(17));
+        exports.default = Component_1.default;
+        var toQuery_1 = __importDefault(__webpack_require__(3));
+        exports.toQuery = toQuery_1.default;
+        var Context_1 = __importDefault(__webpack_require__(6));
+        exports.Context = Context_1.default;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         function Mql(query, values, forceStatic) {
@@ -195,7 +183,7 @@
                 mql && mql.removeListener(listener);
             }
             function update(evt) {
-                self.matches = evt.matches, self.media = evt.media;
+                console.log(evt, "wowow"), self.matches = evt.matches, self.media = evt.media;
             }
             function dispose() {
                 mql && mql.removeListener(update);
@@ -204,7 +192,7 @@
             if (dynamicMatch && !forceStatic) {
                 var mql = dynamicMatch.call(window, query);
                 this.matches = mql.matches, this.media = mql.media, mql.addListener(update);
-            } else this.matches = staticMatch(query, values), this.media = query;
+            } else console.log("static match"), this.matches = staticMatch(query, values), this.media = query;
             this.addListener = addListener, this.removeListener = removeListener, this.dispose = dispose;
         }
         function matchMedia(query, values, forceStatic) {
@@ -324,7 +312,7 @@
         }
         exports.match = matchQuery, exports.parse = parseQuery;
         var RE_MEDIA_QUERY = /(?:(only|not)?\s*([^\s\(\)]+)(?:\s*and)?\s*)?(.+)?/i, RE_MQ_EXPRESSION = /\(\s*([^\s\:\)]+)\s*(?:\:\s*([^\s\)]+))?\s*\)/, RE_MQ_FEATURE = /^(?:(min|max)-)?(.+)/, RE_LENGTH_UNIT = /(em|rem|px|cm|mm|in|pt|pc)?$/, RE_RESOLUTION_UNIT = /(dpi|dpcm|dppx)?$/;
-    }, function(module, exports, __webpack_require__) {
+    }, function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
         function shallowEqualObjects(objA, objB) {
             if (objA === objB) return !0;
@@ -337,56 +325,75 @@
             }
             return !0;
         }
-        module.exports = shallowEqualObjects;
-    }, function(module, __webpack_exports__, __webpack_require__) {
+        function shallowEqualArrays(arrA, arrB) {
+            if (arrA === arrB) return !0;
+            if (!arrA || !arrB) return !1;
+            var len = arrA.length;
+            if (arrB.length !== len) return !1;
+            for (var i = 0; i < len; i++) if (arrA[i] !== arrB[i]) return !1;
+            return !0;
+        }
+        Object.defineProperty(__webpack_exports__, "__esModule", {
+            value: !0
+        }), __webpack_require__.d(__webpack_exports__, "shallowEqualArrays", function() {
+            return shallowEqualArrays;
+        }), __webpack_require__.d(__webpack_exports__, "shallowEqualObjects", function() {
+            return shallowEqualObjects;
+        });
+    }, function(module, exports, __webpack_require__) {
         "use strict";
-        function ownKeys(object, enumerableOnly) {
-            var keys = Object.keys(object);
-            if (Object.getOwnPropertySymbols) {
-                var symbols = Object.getOwnPropertySymbols(object);
-                enumerableOnly && (symbols = symbols.filter(function(sym) {
-                    return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-                })), keys.push.apply(keys, symbols);
-            }
-            return keys;
-        }
-        function _objectSpread(target) {
-            for (var i = 1; i < arguments.length; i++) {
-                var source = null != arguments[i] ? arguments[i] : {};
-                i % 2 ? ownKeys(Object(source), !0).forEach(function(key) {
-                    _defineProperty(target, key, source[key]);
-                }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
-                    Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-                });
-            }
-            return target;
-        }
-        function _defineProperty(obj, key, value) {
-            return key in obj ? Object.defineProperty(obj, key, {
-                value: value,
-                enumerable: !0,
-                configurable: !0,
-                writable: !0
-            }) : obj[key] = value, obj;
-        }
-        var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(12), __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__), stringOrNumber = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([ __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number ]), matchers = {
-            orientation: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "portrait", "landscape" ]),
-            scan: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf([ "progressive", "interlace" ]),
-            aspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-            deviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+        var __assign = this && this.__assign || function() {
+            return __assign = Object.assign || function(t) {
+                for (var s, i = 1, n = arguments.length; i < n; i++) {
+                    s = arguments[i];
+                    for (var p in s) Object.prototype.hasOwnProperty.call(s, p) && (t[p] = s[p]);
+                }
+                return t;
+            }, __assign.apply(this, arguments);
+        }, __rest = this && this.__rest || function(s, e) {
+            var t = {};
+            for (var p in s) Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0 && (t[p] = s[p]);
+            if (null != s && "function" == typeof Object.getOwnPropertySymbols) for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]) && (t[p[i]] = s[p[i]]);
+            return t;
+        }, __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+        var prop_types_1 = __importDefault(__webpack_require__(12)), stringOrNumber = prop_types_1.default.oneOfType([ prop_types_1.default.string, prop_types_1.default.number ]), types = {
+            all: prop_types_1.default.bool,
+            grid: prop_types_1.default.bool,
+            aural: prop_types_1.default.bool,
+            braille: prop_types_1.default.bool,
+            handheld: prop_types_1.default.bool,
+            print: prop_types_1.default.bool,
+            projection: prop_types_1.default.bool,
+            screen: prop_types_1.default.bool,
+            tty: prop_types_1.default.bool,
+            tv: prop_types_1.default.bool,
+            embossed: prop_types_1.default.bool
+        }, matchers = {
+            orientation: prop_types_1.default.oneOf([ "portrait", "landscape" ]),
+            scan: prop_types_1.default.oneOf([ "progressive", "interlace" ]),
+            aspectRatio: prop_types_1.default.string,
+            deviceAspectRatio: prop_types_1.default.string,
             height: stringOrNumber,
             deviceHeight: stringOrNumber,
             width: stringOrNumber,
             deviceWidth: stringOrNumber,
-            color: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            colorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            monochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            resolution: stringOrNumber
-        }, features = _objectSpread({
-            minAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-            maxAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-            minDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-            maxDeviceAspectRatio: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+            color: prop_types_1.default.bool,
+            colorIndex: prop_types_1.default.bool,
+            monochrome: prop_types_1.default.bool,
+            resolution: stringOrNumber,
+            type: Object.keys(types)
+        }, featureMatchers = __rest(matchers, [ "type" ]), features = __assign({
+            minAspectRatio: prop_types_1.default.string,
+            maxAspectRatio: prop_types_1.default.string,
+            minDeviceAspectRatio: prop_types_1.default.string,
+            maxDeviceAspectRatio: prop_types_1.default.string,
             minHeight: stringOrNumber,
             maxHeight: stringOrNumber,
             minDeviceHeight: stringOrNumber,
@@ -395,28 +402,16 @@
             maxWidth: stringOrNumber,
             minDeviceWidth: stringOrNumber,
             maxDeviceWidth: stringOrNumber,
-            minColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-            maxColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-            minColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-            maxColorIndex: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-            minMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
-            maxMonochrome: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number,
+            minColor: prop_types_1.default.number,
+            maxColor: prop_types_1.default.number,
+            minColorIndex: prop_types_1.default.number,
+            maxColorIndex: prop_types_1.default.number,
+            minMonochrome: prop_types_1.default.number,
+            maxMonochrome: prop_types_1.default.number,
             minResolution: stringOrNumber,
             maxResolution: stringOrNumber
-        }, matchers), types = {
-            all: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            grid: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            aural: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            braille: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            handheld: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            print: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            projection: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            screen: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            tty: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            tv: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool,
-            embossed: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool
-        }, all = _objectSpread(_objectSpread({}, types), features);
-        matchers.type = Object.keys(types), __webpack_exports__.a = {
+        }, featureMatchers), all = __assign(__assign({}, types), features);
+        exports.default = {
             all: all,
             types: types,
             matchers: matchers,
@@ -847,29 +842,26 @@ object-assign
         }, checkPropTypes.resetWarningCache = function() {
             loggedTypeFailures = {};
         }, module.exports = checkPropTypes;
-    }, function(module, __webpack_exports__, __webpack_require__) {
+    }, function(module, exports, __webpack_require__) {
         "use strict";
-        function _objectWithoutProperties(source, excluded) {
-            if (null == source) return {};
-            var key, i, target = _objectWithoutPropertiesLoose(source, excluded);
-            if (Object.getOwnPropertySymbols) {
-                var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-                for (i = 0; i < sourceSymbolKeys.length; i++) key = sourceSymbolKeys[i], excluded.indexOf(key) >= 0 || Object.prototype.propertyIsEnumerable.call(source, key) && (target[key] = source[key]);
-            }
-            return target;
-        }
-        function _objectWithoutPropertiesLoose(source, excluded) {
-            if (null == source) return {};
-            var key, i, target = {}, sourceKeys = Object.keys(source);
-            for (i = 0; i < sourceKeys.length; i++) key = sourceKeys[i], excluded.indexOf(key) >= 0 || (target[key] = source[key]);
-            return target;
-        }
-        function MediaQuery(_ref) {
-            var children = _ref.children, device = _ref.device, onChange = _ref.onChange, settings = _objectWithoutProperties(_ref, [ "children", "device", "onChange" ]), matches = Object(__WEBPACK_IMPORTED_MODULE_0__useMediaQuery__.a)(settings, device, onChange);
+        var __rest = this && this.__rest || function(s, e) {
+            var t = {};
+            for (var p in s) Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0 && (t[p] = s[p]);
+            if (null != s && "function" == typeof Object.getOwnPropertySymbols) for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]) && (t[p[i]] = s[p[i]]);
+            return t;
+        }, __importDefault = this && this.__importDefault || function(mod) {
+            return mod && mod.__esModule ? mod : {
+                default: mod
+            };
+        };
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+        var useMediaQuery_1 = __importDefault(__webpack_require__(0)), MediaQuery = function(_a) {
+            var children = _a.children, device = _a.device, onChange = _a.onChange, settings = __rest(_a, [ "children", "device", "onChange" ]), matches = useMediaQuery_1.default(settings, device, onChange);
             return "function" == typeof children ? children(matches) : matches ? children : null;
-        }
-        __webpack_exports__.a = MediaQuery;
-        var __WEBPACK_IMPORTED_MODULE_0__useMediaQuery__ = __webpack_require__(0);
+        };
+        exports.default = MediaQuery;
     } ]);
 });
 //# sourceMappingURL=react-responsive.js.map
