@@ -90,7 +90,7 @@ const Example = () => (
 
 To make things more idiomatic to react, you can use camel-cased shorthands to construct media queries.
 
-For a list of all possible shorthands and value types see https://github.com/contra/react-responsive/blob/master/src/mediaQuery.js#L9.
+For a list of all possible shorthands and value types see https://github.com/contra/react-responsive/blob/master/src/mediaQuery.ts#L9.
 
 Any numbers given as shorthand will be expanded to px (`1234` will become `'1234px'`).
 
