@@ -71,7 +71,7 @@
             }, [ settings ]), query;
         }, useMatchMedia = function(query, device) {
             var getMatchMedia = function() {
-                return matchmediaquery_1.default(query);
+                return matchmediaquery_1.default(query, device);
             }, _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1], isUpdate = useIsUpdate();
             return react_1.default.useEffect(function() {
                 isUpdate && setMq(getMatchMedia());
