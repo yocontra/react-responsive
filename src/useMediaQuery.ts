@@ -69,7 +69,14 @@ const useMatchMedia = (query: string, device: MediaQueryMatchers) => {
   React.useEffect(() => {
     if (isUpdate) {
       // skip on mounting, it has already been set
-      setMq(getMatchMedia())
+      const newMq = getMatchMedia();
+      setMq(newMq);
+
+      return () => {
+        if (newMq) {
+          newMq.dispose();
+        }
+      }
     }
   }, [ query, device ])
 
@@ -98,8 +105,8 @@ const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers
   const deviceSettings = useDevice(device)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
-  const mq = useMatchMedia(query, deviceSettings) as unknown as MediaQueryList
-  const matches = useMatches(mq)
+  const mq = useMatchMedia(query, deviceSettings)
+  const matches = useMatches(mq as unknown as MediaQueryList)
   const isUpdate = useIsUpdate()
 
   React.useEffect(() => {
@@ -107,6 +114,14 @@ const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers
       onChange(matches)
     }
   }, [ matches ])
+
+  React.useEffect(() => {
+    return () => {
+      if (mq) {
+        mq.dispose();
+      }
+    }
+  }, []);
 
   return matches
 }

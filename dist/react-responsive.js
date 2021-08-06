@@ -74,7 +74,12 @@
                 return matchmediaquery_1.default(query, device);
             }, _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1], isUpdate = useIsUpdate();
             return react_1.default.useEffect(function() {
-                isUpdate && setMq(getMatchMedia());
+                if (isUpdate) {
+                    var newMq_1 = getMatchMedia();
+                    return setMq(newMq_1), function() {
+                        newMq_1 && newMq_1.dispose();
+                    };
+                }
             }, [ query, device ]), mq;
         }, useMatches = function(mediaQuery) {
             var _a = react_1.default.useState(mediaQuery.matches), matches = _a[0], setMatches = _a[1];
@@ -92,7 +97,11 @@
             var mq = useMatchMedia(query, deviceSettings), matches = useMatches(mq), isUpdate = useIsUpdate();
             return react_1.default.useEffect(function() {
                 isUpdate && onChange && onChange(matches);
-            }, [ matches ]), matches;
+            }, [ matches ]), react_1.default.useEffect(function() {
+                return function() {
+                    mq && mq.dispose();
+                };
+            }, []), matches;
         };
         exports.default = useMediaQuery;
     }, function(module, exports) {
