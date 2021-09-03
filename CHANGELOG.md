@@ -6,6 +6,7 @@
 - Remove UMD build from project
 - Remove samples from project
 - Add docs webpage
+- Fix a memory leak with useMediaQuery hook
 
 ### v8.2.0
 
