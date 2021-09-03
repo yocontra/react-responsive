@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "9.0.0-beta.3",
+  "version": "9.0.0-beta.4",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -55,7 +55,7 @@
     "cross-env": "^7.0.0",
     "eslint": "^7.0.0",
     "gh-pages": "^3.1.0",
-    "jsdom": "^16.0.0",
+    "jsdom": "^17.0.0",
     "match-media-mock": "^0.1.1",
     "mocha": "^9.0.0",
     "react": "^17.0.0",

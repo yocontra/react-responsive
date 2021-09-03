@@ -41,12 +41,12 @@
             value: !0
         });
         var react_1 = __importDefault(__webpack_require__(1)), matchmediaquery_1 = __importDefault(__webpack_require__(8)), hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), shallow_equal_1 = __webpack_require__(10), toQuery_1 = __importDefault(__webpack_require__(3)), Context_1 = __importDefault(__webpack_require__(6)), makeQuery = function(settings) {
-            return settings.query || toQuery_1.default(settings);
+            return settings.query || (0, toQuery_1.default)(settings);
         }, hyphenateKeys = function(obj) {
             if (!obj) return null;
             var keys = Object.keys(obj);
             return 0 === keys.length ? null : keys.reduce(function(result, key) {
-                return result[hyphenate_style_name_1.default(key)] = obj[key], result;
+                return result[(0, hyphenate_style_name_1.default)(key)] = obj[key], result;
             }, {});
         }, useIsUpdate = function() {
             var ref = react_1.default.useRef(!1);
@@ -59,7 +59,7 @@
             }, _a = react_1.default.useState(getDevice), device = _a[0], setDevice = _a[1];
             return react_1.default.useEffect(function() {
                 var newDevice = getDevice();
-                shallow_equal_1.shallowEqualObjects(device, newDevice) || setDevice(newDevice);
+                (0, shallow_equal_1.shallowEqualObjects)(device, newDevice) || setDevice(newDevice);
             }, [ deviceFromProps, deviceFromContext ]), device;
         }, useQuery = function(settings) {
             var getQuery = function() {
@@ -71,7 +71,7 @@
             }, [ settings ]), query;
         }, useMatchMedia = function(query, device) {
             var getMatchMedia = function() {
-                return matchmediaquery_1.default(query, device);
+                return (0, matchmediaquery_1.default)(query, device);
             }, _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1], isUpdate = useIsUpdate();
             return react_1.default.useEffect(function() {
                 if (isUpdate) {
@@ -134,7 +134,7 @@
         var hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), mediaQuery_1 = __importDefault(__webpack_require__(11)), negate = function(cond) {
             return "not " + cond;
         }, keyVal = function(k, v) {
-            var realKey = hyphenate_style_name_1.default(k);
+            var realKey = (0, hyphenate_style_name_1.default)(k);
             return "number" == typeof v && (v += "px"), !0 === v ? realKey : !1 === v ? negate(realKey) : "(" + realKey + ": " + v + ")";
         }, join = function(conds) {
             return conds.join(" and ");
@@ -867,7 +867,8 @@ object-assign
             value: !0
         });
         var useMediaQuery_1 = __importDefault(__webpack_require__(0)), MediaQuery = function(_a) {
-            var children = _a.children, device = _a.device, onChange = _a.onChange, settings = __rest(_a, [ "children", "device", "onChange" ]), matches = useMediaQuery_1.default(settings, device, onChange);
+            var children = _a.children, device = _a.device, onChange = _a.onChange, settings = __rest(_a, [ "children", "device", "onChange" ]), matches = (0, 
+            useMediaQuery_1.default)(settings, device, onChange);
             return "function" == typeof children ? children(matches) : matches ? children : null;
         };
         exports.default = MediaQuery;
