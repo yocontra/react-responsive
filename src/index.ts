@@ -9,3 +9,10 @@ export {
   toQuery,
   Context
 }
+
+export type {
+  MediaQueryTypes,
+  MediaQueryType,
+  MediaQueryFeatures,
+  MediaQueryAllQueryable
+} from './types'
