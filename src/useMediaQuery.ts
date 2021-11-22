@@ -69,12 +69,12 @@ const useMatchMedia = (query: string, device: MediaQueryMatchers) => {
   React.useEffect(() => {
     if (isUpdate) {
       // skip on mounting, it has already been set
-      const newMq = getMatchMedia();
-      setMq(newMq);
+      const newMq = getMatchMedia()
+      setMq(newMq)
 
       return () => {
         if (newMq) {
-          newMq.dispose();
+          newMq.dispose()
         }
       }
     }
@@ -115,13 +115,11 @@ const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers
     }
   }, [ matches ])
 
-  React.useEffect(() => {
-    return () => {
-      if (mq) {
-        mq.dispose();
-      }
+  React.useEffect(() => () => {
+    if (mq) {
+      mq.dispose()
     }
-  }, []);
+  }, [])
 
   return matches
 }

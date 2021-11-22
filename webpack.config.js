@@ -24,8 +24,9 @@ const uglifyLite = new webpack.optimize.UglifyJsPlugin({
 })
 
 const filename = process.env.BUILD_MODE === 'umd'
-  ? './dist/react-responsive.js'
-  : './dist/react-responsive.min.js'
+  ? 'react-responsive.js'
+  : 'react-responsive.min.js'
+
 const plugins = process.env.BUILD_MODE === 'umd-min'
   ? [ env, uglify ]
   : [ env, uglifyLite ]
@@ -33,6 +34,7 @@ const plugins = process.env.BUILD_MODE === 'umd-min'
 module.exports = {
   entry: './src/index.ts',
   output: {
+    path: path.join(__dirname, 'dist'),
     filename,
     sourceMapFilename: `${filename}.map`,
     libraryTarget: 'umd',

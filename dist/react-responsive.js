@@ -132,10 +132,10 @@
             value: !0
         });
         var hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), mediaQuery_1 = __importDefault(__webpack_require__(11)), negate = function(cond) {
-            return "not " + cond;
+            return "not ".concat(cond);
         }, keyVal = function(k, v) {
             var realKey = (0, hyphenate_style_name_1.default)(k);
-            return "number" == typeof v && (v += "px"), !0 === v ? realKey : !1 === v ? negate(realKey) : "(" + realKey + ": " + v + ")";
+            return "number" == typeof v && (v = "".concat(v, "px")), !0 === v ? realKey : !1 === v ? negate(realKey) : "(".concat(realKey, ": ").concat(v, ")");
         }, join = function(conds) {
             return conds.join(" and ");
         }, toQuery = function(obj) {
