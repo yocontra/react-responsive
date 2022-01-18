@@ -62,7 +62,7 @@ const useQuery = (settings: MediaQuerySettings) => {
 }
 
 const useMatchMedia = (query: string, device: MediaQueryMatchers) => {
-  const getMatchMedia = () => matchMedia(query, device)
+  const getMatchMedia = () => matchMedia(query, device || {}, !!device)
   const [ mq, setMq ] = React.useState(getMatchMedia)
   const isUpdate = useIsUpdate()
 
