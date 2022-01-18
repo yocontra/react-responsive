@@ -13,7 +13,7 @@ declare module 'shallow-equal' {
     [key: string]: primitives;
   }
   export function shallowEqualObjects(
-    obj1: primitiveObject,
-    obj2: primitiveObject
+    obj1: primitiveObject | undefined,
+    obj2: primitiveObject | undefined
   ): boolean;
 }

@@ -8,7 +8,7 @@ import { MatchMediaMock } from 'match-media-mock'
 
 interface MockWindow extends Window { matchMedia: MatchMediaMock; }
 
-describe('MediaQuery', () => {
+describe('Component', () => {
   beforeEach(() => {
     (window as unknown as MockWindow).matchMedia.setConfig({
       type: 'screen',
@@ -44,7 +44,7 @@ describe('MediaQuery', () => {
   })
 
   it('works with render prop', () => {
-    const renderFunc = sinon.spy()
+    const renderFunc = sinon.stub().returns(null)
     TestUtils.renderIntoDocument(
       <MediaQuery minWidth={1000}>
         {renderFunc}
@@ -53,7 +53,7 @@ describe('MediaQuery', () => {
     assert.isTrue(renderFunc.calledOnce)
     assert.isTrue(renderFunc.calledWith(true))
 
-    const renderFunc2 = sinon.spy()
+    const renderFunc2 = sinon.stub().returns(null)
     TestUtils.renderIntoDocument(
       <MediaQuery minWidth={1201}>
         {renderFunc2}

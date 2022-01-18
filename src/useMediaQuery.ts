@@ -10,10 +10,9 @@ type MediaQuerySettings = Partial<MediaQueryAllQueryable & { query?: string }>
 
 const makeQuery = (settings: Record<string, any>) => settings.query || toQuery(settings)
 
-const hyphenateKeys = (obj?: Record<string, any>): Record<string, any> | null => {
-  if (!obj) return null
+const hyphenateKeys = (obj?: Record<string, any>): Record<string, any> | undefined => {
+  if (!obj) return undefined
   const keys = Object.keys(obj)
-  if (keys.length === 0) return null
 
   return keys.reduce((result, key) => {
     result[hyphenate(key)] = obj[key]
@@ -31,10 +30,10 @@ const useIsUpdate = () => {
   return ref.current
 }
 
-const useDevice = (deviceFromProps?: MediaQueryMatchers): Partial<MediaQueryAllQueryable> => {
+const useDevice = (deviceFromProps?: MediaQueryMatchers): Partial<MediaQueryAllQueryable> | undefined => {
   const deviceFromContext = React.useContext(Context)
   const getDevice = () =>
-    hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext) || {}
+    hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext)
   const [ device, setDevice ] = React.useState(getDevice)
 
   React.useEffect(() => {
@@ -61,8 +60,8 @@ const useQuery = (settings: MediaQuerySettings) => {
   return query
 }
 
-const useMatchMedia = (query: string, device: MediaQueryMatchers) => {
-  const getMatchMedia = () => matchMedia(query, device)
+const useMatchMedia = (query: string, device?: MediaQueryMatchers) => {
+  const getMatchMedia = () => matchMedia(query, device || {}, !!device)
   const [ mq, setMq ] = React.useState(getMatchMedia)
   const isUpdate = useIsUpdate()
 

@@ -12,6 +12,9 @@
     "declaration": true,
     "esModuleInterop": true,
     "outDir": "./",
+    "paths": {
+      "shallow-equal": ["./src/@types/shallow-equal"]
+    }
   },
   "include": ["src"],
   "exclude": ["test", "node_modules"],
