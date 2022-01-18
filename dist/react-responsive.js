@@ -29,7 +29,7 @@
             return __webpack_require__.d(getter, "a", getter), getter;
         }, __webpack_require__.o = function(object, property) {
             return Object.prototype.hasOwnProperty.call(object, property);
-        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 7);
+        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 8);
     }([ function(module, exports, __webpack_require__) {
         "use strict";
         var __importDefault = this && this.__importDefault || function(mod) {
@@ -40,14 +40,14 @@
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var react_1 = __importDefault(__webpack_require__(1)), matchmediaquery_1 = __importDefault(__webpack_require__(8)), hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), shallow_equal_1 = __webpack_require__(10), toQuery_1 = __importDefault(__webpack_require__(3)), Context_1 = __importDefault(__webpack_require__(6)), makeQuery = function(settings) {
+        var react_1 = __importDefault(__webpack_require__(1)), matchmediaquery_1 = __importDefault(__webpack_require__(9)), hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), shallow_equal_1 = __webpack_require__(11), toQuery_1 = __importDefault(__webpack_require__(3)), Context_1 = __importDefault(__webpack_require__(7)), makeQuery = function(settings) {
             return settings.query || (0, toQuery_1.default)(settings);
         }, hyphenateKeys = function(obj) {
-            if (!obj) return null;
-            var keys = Object.keys(obj);
-            return 0 === keys.length ? null : keys.reduce(function(result, key) {
-                return result[(0, hyphenate_style_name_1.default)(key)] = obj[key], result;
-            }, {});
+            if (obj) {
+                return Object.keys(obj).reduce(function(result, key) {
+                    return result[(0, hyphenate_style_name_1.default)(key)] = obj[key], result;
+                }, {});
+            }
         }, useIsUpdate = function() {
             var ref = react_1.default.useRef(!1);
             return react_1.default.useEffect(function() {
@@ -55,7 +55,7 @@
             }, []), ref.current;
         }, useDevice = function(deviceFromProps) {
             var deviceFromContext = react_1.default.useContext(Context_1.default), getDevice = function() {
-                return hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext) || {};
+                return hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext);
             }, _a = react_1.default.useState(getDevice), device = _a[0], setDevice = _a[1];
             return react_1.default.useEffect(function() {
                 var newDevice = getDevice();
@@ -71,7 +71,7 @@
             }, [ settings ]), query;
         }, useMatchMedia = function(query, device) {
             var getMatchMedia = function() {
-                return (0, matchmediaquery_1.default)(query, device);
+                return (0, matchmediaquery_1.default)(query, device || {}, !!device);
             }, _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1], isUpdate = useIsUpdate();
             return react_1.default.useEffect(function() {
                 if (isUpdate) {
@@ -131,7 +131,7 @@
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), mediaQuery_1 = __importDefault(__webpack_require__(11)), negate = function(cond) {
+        var hyphenate_style_name_1 = __importDefault(__webpack_require__(2)), mediaQuery_1 = __importDefault(__webpack_require__(12)), negate = function(cond) {
             return "not ".concat(cond);
         }, keyVal = function(k, v) {
             var realKey = (0, hyphenate_style_name_1.default)(k);
@@ -148,10 +148,12 @@
         exports.default = toQuery;
     }, function(module, exports, __webpack_require__) {
         "use strict";
-        module.exports = __webpack_require__(13);
+        module.exports = __webpack_require__(14);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+    }, function(module, exports) {
+        module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         var __importDefault = this && this.__importDefault || function(mod) {
@@ -162,7 +164,7 @@
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var react_1 = __importDefault(__webpack_require__(1)), Context = react_1.default.createContext({});
+        var react_1 = __importDefault(__webpack_require__(1)), Context = react_1.default.createContext(void 0);
         exports.default = Context;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -176,11 +178,11 @@
         }), exports.Context = exports.toQuery = exports.useMediaQuery = exports.default = void 0;
         var useMediaQuery_1 = __importDefault(__webpack_require__(0));
         exports.useMediaQuery = useMediaQuery_1.default;
-        var Component_1 = __importDefault(__webpack_require__(17));
+        var Component_1 = __importDefault(__webpack_require__(18));
         exports.default = Component_1.default;
         var toQuery_1 = __importDefault(__webpack_require__(3));
         exports.toQuery = toQuery_1.default;
-        var Context_1 = __importDefault(__webpack_require__(6));
+        var Context_1 = __importDefault(__webpack_require__(7));
         exports.Context = Context_1.default;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -207,7 +209,7 @@
         function matchMedia(query, values, forceStatic) {
             return new Mql(query, values, forceStatic);
         }
-        var staticMatch = __webpack_require__(9).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
+        var staticMatch = __webpack_require__(10).match, dynamicMatch = "undefined" != typeof window ? window.matchMedia : null;
         module.exports = matchMedia;
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -372,7 +374,7 @@
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var prop_types_1 = __importDefault(__webpack_require__(12)), stringOrNumber = prop_types_1.default.oneOfType([ prop_types_1.default.string, prop_types_1.default.number ]), types = {
+        var prop_types_1 = __importDefault(__webpack_require__(13)), stringOrNumber = prop_types_1.default.oneOfType([ prop_types_1.default.string, prop_types_1.default.number ]), types = {
             all: prop_types_1.default.bool,
             grid: prop_types_1.default.bool,
             aural: prop_types_1.default.bool,
@@ -428,7 +430,7 @@
         };
     }, function(module, exports, __webpack_require__) {
         var ReactIs = __webpack_require__(4);
-        module.exports = __webpack_require__(14)(ReactIs.isElement, !0);
+        module.exports = __webpack_require__(15)(ReactIs.isElement, !0);
     }, function(module, exports, __webpack_require__) {
         "use strict";
         !function() {
@@ -528,7 +530,7 @@
         function emptyFunctionThatReturnsNull() {
             return null;
         }
-        var ReactIs = __webpack_require__(4), assign = __webpack_require__(15), ReactPropTypesSecret = __webpack_require__(5), checkPropTypes = __webpack_require__(16), has = Function.call.bind(Object.prototype.hasOwnProperty), printWarning = function() {};
+        var ReactIs = __webpack_require__(4), assign = __webpack_require__(16), ReactPropTypesSecret = __webpack_require__(5), has = __webpack_require__(6), checkPropTypes = __webpack_require__(17), printWarning = function() {};
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
@@ -543,8 +545,9 @@
             function is(x, y) {
                 return x === y ? 0 !== x || 1 / x == 1 / y : x !== x && y !== y;
             }
-            function PropTypeError(message) {
-                this.message = message, this.stack = "";
+            function PropTypeError(message, data) {
+                this.message = message, this.data = data && "object" == typeof data ? data : {}, 
+                this.stack = "";
             }
             function createChainableTypeChecker(validate) {
                 function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
@@ -568,7 +571,9 @@
             function createPrimitiveTypeChecker(expectedType) {
                 function validate(props, propName, componentName, location, propFullName, secret) {
                     var propValue = props[propName];
-                    if (getPropType(propValue) !== expectedType) return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + getPreciseType(propValue) + "` supplied to `" + componentName + "`, expected `" + expectedType + "`.");
+                    if (getPropType(propValue) !== expectedType) return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + getPreciseType(propValue) + "` supplied to `" + componentName + "`, expected `" + expectedType + "`.", {
+                        expectedType: expectedType
+                    });
                     return null;
                 }
                 return createChainableTypeChecker(validate);
@@ -624,10 +629,12 @@
             }
             function createUnionTypeChecker(arrayOfTypeCheckers) {
                 function validate(props, propName, componentName, location, propFullName) {
-                    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-                        if (null == (0, arrayOfTypeCheckers[i])(props, propName, componentName, location, propFullName, ReactPropTypesSecret)) return null;
+                    for (var expectedTypes = [], i = 0; i < arrayOfTypeCheckers.length; i++) {
+                        var checker = arrayOfTypeCheckers[i], checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+                        if (null == checkerResult) return null;
+                        checkerResult.data && has(checkerResult.data, "expectedType") && expectedTypes.push(checkerResult.data.expectedType);
                     }
-                    return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to `" + componentName + "`.");
+                    return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to `" + componentName + "`" + (expectedTypes.length > 0 ? ", expected one of type [" + expectedTypes.join(", ") + "]" : "") + ".");
                 }
                 if (!Array.isArray(arrayOfTypeCheckers)) return printWarning("Invalid argument supplied to oneOfType, expected an instance of array."), 
                 emptyFunctionThatReturnsNull;
@@ -638,16 +645,18 @@
                 }
                 return createChainableTypeChecker(validate);
             }
+            function invalidValidatorError(componentName, location, propFullName, key, type) {
+                return new PropTypeError((componentName || "React class") + ": " + location + " type `" + propFullName + "." + key + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + type + "`.");
+            }
             function createShapeTypeChecker(shapeTypes) {
                 function validate(props, propName, componentName, location, propFullName) {
                     var propValue = props[propName], propType = getPropType(propValue);
                     if ("object" !== propType) return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + propType + "` supplied to `" + componentName + "`, expected `object`.");
                     for (var key in shapeTypes) {
                         var checker = shapeTypes[key];
-                        if (checker) {
-                            var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
-                            if (error) return error;
-                        }
+                        if ("function" != typeof checker) return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+                        var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
+                        if (error) return error;
                     }
                     return null;
                 }
@@ -660,6 +669,7 @@
                     var allKeys = assign({}, props[propName], shapeTypes);
                     for (var key in allKeys) {
                         var checker = shapeTypes[key];
+                        if (has(shapeTypes, key) && "function" != typeof checker) return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
                         if (!checker) return new PropTypeError("Invalid " + location + " `" + propFullName + "` key `" + key + "` supplied to `" + componentName + "`.\nBad object: " + JSON.stringify(props[propName], null, "  ") + "\nValid keys: " + JSON.stringify(Object.keys(shapeTypes), null, "  "));
                         var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
                         if (error) return error;
@@ -733,6 +743,7 @@
             }
             var ITERATOR_SYMBOL = "function" == typeof Symbol && Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator", ANONYMOUS = "<<anonymous>>", ReactPropTypes = {
                 array: createPrimitiveTypeChecker("array"),
+                bigint: createPrimitiveTypeChecker("bigint"),
                 bool: createPrimitiveTypeChecker("boolean"),
                 func: createPrimitiveTypeChecker("function"),
                 number: createPrimitiveTypeChecker("number"),
@@ -826,7 +837,7 @@ object-assign
                 var error;
                 try {
                     if ("function" != typeof typeSpecs[typeSpecName]) {
-                        var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.");
+                        var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                         throw err.name = "Invariant Violation", err;
                     }
                     error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
@@ -841,7 +852,7 @@ object-assign
                 }
             }
         }
-        var printWarning = function() {}, ReactPropTypesSecret = __webpack_require__(5), loggedTypeFailures = {}, has = Function.call.bind(Object.prototype.hasOwnProperty);
+        var printWarning = function() {}, ReactPropTypesSecret = __webpack_require__(5), loggedTypeFailures = {}, has = __webpack_require__(6);
         printWarning = function(text) {
             var message = "Warning: " + text;
             "undefined" != typeof console && console.error(message);
