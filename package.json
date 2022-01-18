@@ -78,7 +78,7 @@
     "clean": "rimraf dist",
     "tag": "git tag -a \"v$npm_package_version\" -m \"tag version $npm_package_version\" && git push origin master --tags",
     "lint": "eslint --ext=ts,tsx src test --fix",
-    "test": "cross-env NODE_PATH=$NODE_PATkH:$PWD/src ts-node ./node_modules/.bin/mocha -R spec --require ./test/setup.js test/*_test.ts",
+    "test": "cross-env NODE_PATH=$NODE_PATkH:$PWD/src ts-node ./node_modules/.bin/mocha -R spec --require ./test/setup.js test/*_test.{ts,tsx}",
     "docs": "typedoc src/index.ts --theme minimal && gh-pages -d docs"
   },
   "engines": {

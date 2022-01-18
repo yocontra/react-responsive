@@ -117,7 +117,7 @@ describe('useMediaQuery', () => {
 
   it('uses query prop if it has one', () => {
     (window as unknown as MockWindow).matchMedia.setConfig({
-      orientation: 'landscape'
+      width: 500
     })
 
     function Component({ query }: any) {
@@ -129,12 +129,12 @@ describe('useMediaQuery', () => {
     }
 
     const tree = TestUtils.renderIntoDocument(
-      <App query="(orientation: landscape)" />
+      <App query="(min-width: 500)" />
     )
     assert.isNotNull(TestUtils.findRenderedDOMComponentWithClass(tree as unknown as Component, 'childComponent'))
 
     const tree2 = TestUtils.renderIntoDocument(
-      <App query="(orientation: portrait)" />
+      <App query="(min-width: 501)" />
     )
     assert.throws(() => TestUtils.findRenderedDOMComponentWithTag(tree2 as unknown as Component, 'div'), /Did not find exactly one match/)
   })
