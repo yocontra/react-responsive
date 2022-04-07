@@ -9,6 +9,7 @@ interface MediaQueryProps extends MediaQueryAllQueryable {
     values?: Partial<MediaQueryMatchers>;
     onBeforeChange?: (_matches: boolean) => void;
     onChange?: (_matches: boolean) => void;
+    children?: React.ReactNode
 }
 declare const MediaQuery: React.FC<MediaQueryProps>;
 export default MediaQuery;
