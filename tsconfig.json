@@ -6,16 +6,16 @@
     "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "Node",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "rootDir": "./src",
     "declaration": true,
     "esModuleInterop": true,
-    "outDir": "./",
+    "outDir": "./ts-build",
     "paths": {
       "shallow-equal": ["./src/@types/shallow-equal"]
     }
   },
   "include": ["src"],
-  "exclude": ["test", "node_modules"],
+  "exclude": ["test", "node_modules"]
 }

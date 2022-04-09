@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import useMediaQuery from '../src/useMediaQuery'
 import Context from '../src/Context'
 import { assert } from 'chai'
@@ -91,6 +90,7 @@ describe('useMediaQuery', () => {
 
   it('calls onChange callback on updates', () => {
     const container = document.createElement('div')
+    const root = ReactDOM.createRoot(container);
     function App({ onChange, ...settings }: any) {
       useMediaQuery(settings, undefined, onChange)
       return null
@@ -98,16 +98,16 @@ describe('useMediaQuery', () => {
     const callback = sinon.spy(() => null)
 
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="100" onChange={callback} />, container)
+      root.render(<App minWidth="100" onChange={callback} />)
     })
 
     // should still match so nothing has changed
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="200" onChange={callback} />, container)
+      root.render(<App minWidth="200" onChange={callback} />)
     })
 
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="1201" onChange={callback} />, container)
+      root.render(<App minWidth="1201" onChange={callback} />)
     })
 
     return sleep(0).then(() => {
