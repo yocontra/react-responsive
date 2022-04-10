@@ -2,11 +2,21 @@
 
 ### v9.0.0
 
+#### Beta7
+
+- (Typescript) Improve typescript typings
+- (React) Add typing support for React 18
+- (Example) Example setup with React 18
+- (Build) Upgrade to Webpack 5
+
+#### Beta6
+
 - Convert project to typescript
 - Remove UMD build from project
 - Remove samples from project
 - Add docs webpage
 - Fix a memory leak with useMediaQuery hook
+
 
 ### v8.2.0
 

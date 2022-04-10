@@ -12,7 +12,7 @@ const makeQuery = (settings: MediaQuerySettings) => settings.query || toQuery(se
 
 type HypenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable;
 
-const hyphenateKeys = (obj?: HypenateKeyTypes | undefined)  => {
+const hyphenateKeys = (obj?: HypenateKeyTypes)  => {
   if (!obj) return undefined
   const keys = Object.keys(obj) as Array<keyof typeof obj>
 
