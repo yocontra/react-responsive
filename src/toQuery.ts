@@ -4,7 +4,7 @@ import { MediaQueryAllQueryable } from './types'
 
 const negate = (cond: string) => `not ${cond}`
 
-const keyVal = (k: string, v: any): string => {
+const keyVal = (k: string, v: unknown): string => {
   const realKey = hyphenate(k)
 
   // px shorthand

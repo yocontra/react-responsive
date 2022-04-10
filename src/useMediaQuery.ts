@@ -8,16 +8,18 @@ import { MediaQueryAllQueryable, MediaQueryMatchers } from './types'
 
 type MediaQuerySettings = Partial<MediaQueryAllQueryable & { query?: string }>
 
-const makeQuery = (settings: Record<string, any>) => settings.query || toQuery(settings)
+const makeQuery = (settings: MediaQuerySettings) => settings.query || toQuery(settings)
 
-const hyphenateKeys = (obj?: Record<string, any>): Record<string, any> | undefined => {
+type HypenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable;
+
+const hyphenateKeys = (obj?: HypenateKeyTypes | undefined)  => {
   if (!obj) return undefined
-  const keys = Object.keys(obj)
+  const keys = Object.keys(obj) as Array<keyof typeof obj>
 
   return keys.reduce((result, key) => {
     result[hyphenate(key)] = obj[key]
     return result
-  }, {} as Record<string, any>)
+  }, {} as Record<string, typeof obj[keyof typeof obj]>)
 }
 
 const useIsUpdate = () => {

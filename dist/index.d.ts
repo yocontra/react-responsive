@@ -1,6 +1,6 @@
 import * as React from "react";
 interface MediaQueryProps extends MediaQueryAllQueryable {
-    component?: string | React.FC<any> | React.ClassType<any, any, any> | React.ComponentClass<any>;
+    component?: ReactNode;
     children?: ReactNode | undefined | Function;
     query?: string;
     style?: React.CSSProperties;

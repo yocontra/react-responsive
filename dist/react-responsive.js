@@ -1476,7 +1476,7 @@ var useMediaQuery_1 = __importDefault(__webpack_require__(/*! ./useMediaQuery */
 var MediaQuery = function (_a) {
     var children = _a.children, device = _a.device, onChange = _a.onChange, settings = __rest(_a, ["children", "device", "onChange"]);
     var matches = (0, useMediaQuery_1.default)(settings, device, onChange);
-    if (typeof children === "function") {
+    if (typeof children === 'function') {
         return children(matches);
     }
     return matches ? children : null;
@@ -1605,6 +1605,7 @@ var matchers = {
     resolution: stringOrNumber,
     type: Object.keys(types)
 };
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 var type = matchers.type, featureMatchers = __rest(matchers
 // media features
 , ["type"]);

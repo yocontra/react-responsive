@@ -4,11 +4,7 @@ import { MediaQueryAllQueryable, MediaQueryMatchers } from './types';
 import { ReactNode } from 'react';
 
 interface MediaQueryProps extends MediaQueryAllQueryable {
-  component?:
-    | string
-    | React.FC
-    | React.ClassType<any, any, any>
-    | React.ComponentClass<any>;
+  component?: ReactNode
   // eslint-disable-next-line @typescript-eslint/ban-types
   children?: ReactNode | undefined | Function;
   query?: string;
