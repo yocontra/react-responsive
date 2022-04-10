@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 interface MediaQueryProps extends MediaQueryAllQueryable {
   component?: ReactNode
   // eslint-disable-next-line @typescript-eslint/ban-types
-  children?: ReactNode | undefined | Function;
+  children?: ReactNode | Function;
   query?: string;
   style?: React.CSSProperties;
   className?: string;

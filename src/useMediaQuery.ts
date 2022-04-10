@@ -7,19 +7,20 @@ import Context from './Context'
 import { MediaQueryAllQueryable, MediaQueryMatchers } from './types'
 
 type MediaQuerySettings = Partial<MediaQueryAllQueryable & { query?: string }>
+type HyphenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable;
 
 const makeQuery = (settings: MediaQuerySettings) => settings.query || toQuery(settings)
 
-type HypenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable;
+const hyphenateKeys = (obj?: HyphenateKeyTypes)  => {
+  type K = keyof HyphenateKeyTypes;
 
-const hyphenateKeys = (obj?: HypenateKeyTypes)  => {
   if (!obj) return undefined
-  const keys = Object.keys(obj) as Array<keyof typeof obj>
+  const keys = Object.keys(obj) as K[]
 
   return keys.reduce((result, key) => {
     result[hyphenate(key)] = obj[key]
     return result
-  }, {} as Record<string, typeof obj[keyof typeof obj]>)
+  }, {} as Record<string, typeof obj[K]>)
 }
 
 const useIsUpdate = () => {
