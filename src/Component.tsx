@@ -11,9 +11,10 @@ interface MediaQueryProps extends MediaQueryAllQueryable {
   values?: Partial<MediaQueryMatchers>;
   onBeforeChange?: (_matches: boolean) => void;
   onChange?: (_matches: boolean) => void;
+  children?: React.ReactNode | undefined | Function;
 }
 
-const MediaQuery: React.FC<MediaQueryProps> = ({ children, device, onChange, ...settings }) => {
+const MediaQuery: React.FC<MediaQueryProps> = ({ children, device, onChange, ...settings }: MediaQueryProps) => {
   const matches = useMediaQuery(settings, device, onChange)
 
   if (typeof children === 'function') {
