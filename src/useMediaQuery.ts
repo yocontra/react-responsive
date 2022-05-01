@@ -86,8 +86,8 @@ const useMatches = (mediaQuery: MediaQueryList): boolean => {
   const [ matches, setMatches ] = React.useState<boolean>(mediaQuery.matches)
 
   React.useEffect(() => {
-    const updateMatches = () => {
-      setMatches(mediaQuery.matches)
+    const updateMatches = (ev?: MediaQueryListEvent) => {
+      setMatches(ev ? ev.matches : false)
     }
     mediaQuery.addListener(updateMatches)
     updateMatches()
