@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MediaQuery from '../src/Component'
 import { assert } from 'chai'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
 import { MatchMediaMock } from 'match-media-mock'
@@ -65,12 +65,13 @@ describe('Component', () => {
 
   it('does not throw on unmount', () => {
     const container = document.createElement('div')
-    ReactDOM.render(
+    const root = ReactDOM.createRoot(container);
+
+    root.render(
       <MediaQuery query="all">
         <div className="childComponent" />
-      </MediaQuery>,
-      container
+      </MediaQuery>
     )
-    assert.doesNotThrow(() => ReactDOM.unmountComponentAtNode(container))
+    assert.doesNotThrow(() => root.unmount())
   })
 })

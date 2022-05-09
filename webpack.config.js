@@ -1,79 +1,68 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const TypescriptDeclarationPlugin = require('typescript-declaration-webpack-plugin');
+
+const mode = process.env.BUILD_MODE == 'umd-min' ? 'production' : 'development';
 
 const env = new webpack.EnvironmentPlugin({
-  NODE_ENV: process.env.BUILD_MODE == 'umd-min' ? 'production' : 'development'
-})
-const uglify = new webpack.optimize.UglifyJsPlugin({
-  sourceMap: true,
-  parallel: true,
-  cache: true
-})
-const uglifyLite = new webpack.optimize.UglifyJsPlugin({
-  sourceMap: true,
-  cache: true,
-  parallel: true,
-  compress: {
-    dead_code: true,
-    unused: true
-  },
-  mangle: false,
-  output: {
-    beautify: true
-  }
-})
+  NODE_ENV: mode,
+});
 
-const filename = process.env.BUILD_MODE === 'umd'
-  ? 'react-responsive.js'
-  : 'react-responsive.min.js'
+const filename =
+  process.env.BUILD_MODE === 'umd'
+    ? 'react-responsive.js'
+    : 'react-responsive.min.js';
 
-const plugins = process.env.BUILD_MODE === 'umd-min'
-  ? [ env, uglify ]
-  : [ env, uglifyLite ]
+const plugins = [
+  env,
+  new TypescriptDeclarationPlugin({ removeComments: false }),
+];
+const optimization =
+  process.env.BUILD_MODE === 'umd-min'
+    ? {}
+    : {
+        mangleExports: false,
+        minimize: false,
+      };
 
 module.exports = {
   entry: './src/index.ts',
+  mode: mode,
   output: {
     path: path.join(__dirname, 'dist'),
     filename,
     sourceMapFilename: `${filename}.map`,
     libraryTarget: 'umd',
-    library: 'MediaQuery'
+    library: 'MediaQuery',
   },
+  optimization: optimization,
   devtool: 'source-map',
   externals: {
     react: {
       commonjs: 'react',
       commonjs2: 'react',
       amd: 'react',
-      root: 'React'
+      root: 'React',
     },
     'react-dom': {
       commonjs: 'react-dom',
       commonjs2: 'react-dom',
       amd: 'react-dom',
-      root: 'ReactDOM'
-    }
+      root: 'ReactDOM',
+    },
   },
   plugins,
   resolve: {
-    modules: [
-      path.resolve('src'),
-      'node_modules'
-    ],
-    extensions: [ '.tsx', '.ts', '.js' ]
+    modules: [path.resolve('src'), 'node_modules'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
       {
-        test: [ /\.ts$/, /\.tsx$/ ],
+        test: [/\.ts$/, /\.tsx$/],
         loader: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
-  node: {
-    process: false,
-    setImmediate: false
-  }
-}
+};

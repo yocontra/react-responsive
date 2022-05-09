@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import useMediaQuery from '../src/useMediaQuery'
 import Context from '../src/Context'
 import { assert } from 'chai'
 import sinon from 'sinon'
 import TestUtils from 'react-dom/test-utils'
 import { MatchMediaMock } from 'match-media-mock'
+import { MediaQueryAllQueryable } from '../src/types'
 
 interface MockWindow extends Window { matchMedia: MatchMediaMock; }
 
@@ -22,11 +22,12 @@ describe('useMediaQuery', () => {
   })
 
   it('builds query from props', () => {
-    function Component(props: any) {
+    type ComponentProps = Partial<MediaQueryAllQueryable & {query?: string;  }>
+    function Component(props: ComponentProps) {
       const matches = useMediaQuery(props)
       return matches ? <div className="childComponent" /> : null
     }
-    class App extends React.Component<any> {
+    class App extends React.Component<ComponentProps> {
       render = () => <Component {...this.props} />;
     }
 
@@ -38,11 +39,12 @@ describe('useMediaQuery', () => {
   })
 
   it('builds query from device prop', () => {
-    function Component(props: any) {
+    type ComponentProps = Partial<MediaQueryAllQueryable & {query?: string;  }>
+    function Component(props: ComponentProps) {
       const matches = useMediaQuery(props, { orientation: 'landscape' })
       return matches ? <div className="childComponent" /> : null
     }
-    class App extends React.Component<any> {
+    class App extends React.Component<ComponentProps> {
       render = () => <Component {...this.props} />;
     }
 
@@ -58,11 +60,13 @@ describe('useMediaQuery', () => {
   })
 
   it('matches taking device prop with precedence', () => {
-    function Component({ device }: any) {
+    type ComponentProps = Partial<MediaQueryAllQueryable & {query?: string; device: { width:number }  }>
+
+    function Component({ device }: ComponentProps) {
       const matches = useMediaQuery({ minWidth: 1000 }, device)
       return matches ? <div className="childComponent" /> : null
     }
-    class App extends React.Component<any> {
+    class App extends React.Component<ComponentProps> {
       render = () => <Component {...this.props} />;
     }
 
@@ -91,23 +95,25 @@ describe('useMediaQuery', () => {
 
   it('calls onChange callback on updates', () => {
     const container = document.createElement('div')
-    function App({ onChange, ...settings }: any) {
+    const root = ReactDOM.createRoot(container);
+    type ComponentProps = Partial<MediaQueryAllQueryable & { onChange():void  }>
+    function App({ onChange, ...settings }: ComponentProps) {
       useMediaQuery(settings, undefined, onChange)
       return null
     }
     const callback = sinon.spy(() => null)
 
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="100" onChange={callback} />, container)
+      root.render(<App minWidth="100" onChange={callback} />)
     })
 
     // should still match so nothing has changed
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="200" onChange={callback} />, container)
+      root.render(<App minWidth="200" onChange={callback} />)
     })
 
     TestUtils.act(() => {
-      ReactDOM.render(<App minWidth="1201" onChange={callback} />, container)
+      root.render(<App minWidth="1201" onChange={callback} />)
     })
 
     return sleep(0).then(() => {
@@ -120,11 +126,13 @@ describe('useMediaQuery', () => {
       width: 500
     })
 
-    function Component({ query }: any) {
+    type ComponentProps = Partial<MediaQueryAllQueryable & { query:string  }>
+
+    function Component({ query }: ComponentProps) {
       const matches = useMediaQuery({ query })
       return matches ? <div className="childComponent" /> : null
     }
-    class App extends React.Component<any> {
+    class App extends React.Component<ComponentProps> {
       render = () => <Component {...this.props} />;
     }
 
@@ -144,7 +152,10 @@ describe('useMediaQuery', () => {
       const matches = useMediaQuery({ maxWidth: 300 })
       return matches ? <div className="childComponent" /> : null
     }
-    class App extends React.Component<any> {
+
+    type ComponentProps = Partial<MediaQueryAllQueryable & { device:{width:number} }>
+
+    class App extends React.Component<ComponentProps> {
       render = () =>
         <Context.Provider value={this.props.device}>
           <Component />
