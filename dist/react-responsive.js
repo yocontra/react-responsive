@@ -1748,11 +1748,11 @@ var useMatchMedia = function (query, device) {
 var useMatches = function (mediaQuery) {
     var _a = react_1.default.useState(mediaQuery.matches), matches = _a[0], setMatches = _a[1];
     react_1.default.useEffect(function () {
-        var updateMatches = function () {
-            setMatches(mediaQuery.matches);
+        var updateMatches = function (ev) {
+            setMatches(ev.matches);
         };
         mediaQuery.addListener(updateMatches);
-        updateMatches();
+        setMatches(mediaQuery.matches);
         return function () {
             mediaQuery.removeListener(updateMatches);
         };

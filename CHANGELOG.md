@@ -4,10 +4,11 @@
 
 #### Beta7
 
-- (Typescript) Improve typescript typings
-- (React) Add typing support for React 18
-- (Example) Example setup with React 18
-- (Build) Upgrade to Webpack 5
+- Improve typescript typings
+- Add typing support for React 18
+- Example setup with React 18
+- Upgrade to Webpack 5
+- Fix a bug with React 18 not re-rendering
 
 #### Beta6
 
