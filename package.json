@@ -81,7 +81,7 @@
     "tag": "git tag -a \"v$npm_package_version\" -m \"tag version $npm_package_version\" && git push origin master --tags",
     "lint": "eslint --ext=ts,tsx src test --fix",
     "test": "npx mocha -R spec --require ts-node/register ./test/setup.js ./test/setup.js test/*_test.{ts,tsx}",
-    "docs": "typedoc src/index.ts --theme minimal && gh-pages -d docs"
+    "docs": "typedoc src/index.ts && gh-pages -d docs"
   },
   "engines": {
     "node": ">=0.10"
