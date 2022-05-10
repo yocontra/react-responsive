@@ -34,6 +34,7 @@ module.exports = {
     sourceMapFilename: `${filename}.map`,
     libraryTarget: 'umd',
     library: 'MediaQuery',
+    globalObject: 'this',
   },
   optimization: optimization,
   devtool: 'source-map',
