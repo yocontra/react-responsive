@@ -7,7 +7,7 @@
 		exports["MediaQuery"] = factory(require("react"));
 	else
 		root["MediaQuery"] = factory(root["React"]);
-})(self, (__WEBPACK_EXTERNAL_MODULE_react__) => {
+})(this, (__WEBPACK_EXTERNAL_MODULE_react__) => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
