@@ -1,6 +1,6 @@
-import React from 'react'
+import { createContext } from 'react'
 import { MediaQueryAllQueryable } from './types'
 
-const Context = React.createContext<Partial<MediaQueryAllQueryable> | undefined>(undefined)
+const Context = createContext<Partial<MediaQueryAllQueryable> | undefined>(undefined)
 
 export default Context

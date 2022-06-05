@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const TypescriptDeclarationPlugin = require('typescript-declaration-webpack-plugin');
 
 const mode = process.env.BUILD_MODE == 'umd-min' ? 'production' : 'development';
 
@@ -14,8 +13,7 @@ const filename =
     : 'react-responsive.min.js';
 
 const plugins = [
-  env,
-  new TypescriptDeclarationPlugin({ removeComments: false }),
+  env
 ];
 const optimization =
   process.env.BUILD_MODE === 'umd-min'

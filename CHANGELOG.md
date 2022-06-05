@@ -2,6 +2,10 @@
 
 ### v9.0.0
 
+#### Beta9
+
+- Fix typescript output
+
 #### Beta8
 
 - Fix webpack bundle issue (self is not defined)

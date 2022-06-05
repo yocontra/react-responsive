@@ -1,14 +1,13 @@
 import useMediaQuery from './useMediaQuery';
-import * as React from 'react';
+import { ReactNode, FC, CSSProperties } from 'react';
 import { MediaQueryAllQueryable, MediaQueryMatchers } from './types';
-import { ReactNode } from 'react';
 
 interface MediaQueryProps extends MediaQueryAllQueryable {
   component?: ReactNode
   // eslint-disable-next-line @typescript-eslint/ban-types
   children?: ReactNode | Function;
   query?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   className?: string;
   device?: MediaQueryMatchers;
   values?: Partial<MediaQueryMatchers>;
@@ -16,7 +15,7 @@ interface MediaQueryProps extends MediaQueryAllQueryable {
   onChange?: (_matches: boolean) => void;
 }
 
-const MediaQuery: React.FC<MediaQueryProps> = ({
+const MediaQuery: FC<MediaQueryProps> = ({
   children,
   device,
   onChange,

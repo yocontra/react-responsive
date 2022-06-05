@@ -1449,10 +1449,10 @@ function shallowEqualArrays(arrA, arrB) {
 
 /***/ }),
 
-/***/ "./src/Component.tsx":
-/*!***************************!*\
-  !*** ./src/Component.tsx ***!
-  \***************************/
+/***/ "./src/Component.ts":
+/*!**************************!*\
+  !*** ./src/Component.ts ***!
+  \**************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -1490,16 +1490,13 @@ exports["default"] = MediaQuery;
 /*!************************!*\
   !*** ./src/Context.ts ***!
   \************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var react_1 = __importDefault(__webpack_require__(/*! react */ "react"));
-var Context = react_1.default.createContext(undefined);
+var react_1 = __webpack_require__(/*! react */ "react");
+var Context = (0, react_1.createContext)(undefined);
 exports["default"] = Context;
 
 
@@ -1520,7 +1517,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Context = exports.toQuery = exports.useMediaQuery = exports["default"] = void 0;
 var useMediaQuery_1 = __importDefault(__webpack_require__(/*! ./useMediaQuery */ "./src/useMediaQuery.ts"));
 exports.useMediaQuery = useMediaQuery_1.default;
-var Component_1 = __importDefault(__webpack_require__(/*! ./Component */ "./src/Component.tsx"));
+var Component_1 = __importDefault(__webpack_require__(/*! ./Component */ "./src/Component.ts"));
 exports["default"] = Component_1.default;
 var toQuery_1 = __importDefault(__webpack_require__(/*! ./toQuery */ "./src/toQuery.ts"));
 exports.toQuery = toQuery_1.default;
@@ -1679,7 +1676,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var react_1 = __importDefault(__webpack_require__(/*! react */ "react"));
+var react_1 = __webpack_require__(/*! react */ "react");
 var matchmediaquery_1 = __importDefault(__webpack_require__(/*! matchmediaquery */ "./node_modules/matchmediaquery/index.js"));
 var hyphenate_style_name_1 = __importDefault(__webpack_require__(/*! hyphenate-style-name */ "./node_modules/hyphenate-style-name/index.js"));
 var shallow_equal_1 = __webpack_require__(/*! shallow-equal */ "./node_modules/shallow-equal/dist/index.esm.js");
@@ -1696,19 +1693,19 @@ var hyphenateKeys = function (obj) {
     }, {});
 };
 var useIsUpdate = function () {
-    var ref = react_1.default.useRef(false);
-    react_1.default.useEffect(function () {
+    var ref = (0, react_1.useRef)(false);
+    (0, react_1.useEffect)(function () {
         ref.current = true;
     }, []);
     return ref.current;
 };
 var useDevice = function (deviceFromProps) {
-    var deviceFromContext = react_1.default.useContext(Context_1.default);
+    var deviceFromContext = (0, react_1.useContext)(Context_1.default);
     var getDevice = function () {
         return hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext);
     };
-    var _a = react_1.default.useState(getDevice), device = _a[0], setDevice = _a[1];
-    react_1.default.useEffect(function () {
+    var _a = (0, react_1.useState)(getDevice), device = _a[0], setDevice = _a[1];
+    (0, react_1.useEffect)(function () {
         var newDevice = getDevice();
         if (!(0, shallow_equal_1.shallowEqualObjects)(device, newDevice)) {
             setDevice(newDevice);
@@ -1718,8 +1715,8 @@ var useDevice = function (deviceFromProps) {
 };
 var useQuery = function (settings) {
     var getQuery = function () { return makeQuery(settings); };
-    var _a = react_1.default.useState(getQuery), query = _a[0], setQuery = _a[1];
-    react_1.default.useEffect(function () {
+    var _a = (0, react_1.useState)(getQuery), query = _a[0], setQuery = _a[1];
+    (0, react_1.useEffect)(function () {
         var newQuery = getQuery();
         if (query !== newQuery) {
             setQuery(newQuery);
@@ -1729,9 +1726,9 @@ var useQuery = function (settings) {
 };
 var useMatchMedia = function (query, device) {
     var getMatchMedia = function () { return (0, matchmediaquery_1.default)(query, device || {}, !!device); };
-    var _a = react_1.default.useState(getMatchMedia), mq = _a[0], setMq = _a[1];
+    var _a = (0, react_1.useState)(getMatchMedia), mq = _a[0], setMq = _a[1];
     var isUpdate = useIsUpdate();
-    react_1.default.useEffect(function () {
+    (0, react_1.useEffect)(function () {
         if (isUpdate) {
             // skip on mounting, it has already been set
             var newMq_1 = getMatchMedia();
@@ -1746,8 +1743,8 @@ var useMatchMedia = function (query, device) {
     return mq;
 };
 var useMatches = function (mediaQuery) {
-    var _a = react_1.default.useState(mediaQuery.matches), matches = _a[0], setMatches = _a[1];
-    react_1.default.useEffect(function () {
+    var _a = (0, react_1.useState)(mediaQuery.matches), matches = _a[0], setMatches = _a[1];
+    (0, react_1.useEffect)(function () {
         var updateMatches = function (ev) {
             setMatches(ev.matches);
         };
@@ -1767,12 +1764,12 @@ var useMediaQuery = function (settings, device, onChange) {
     var mq = useMatchMedia(query, deviceSettings);
     var matches = useMatches(mq);
     var isUpdate = useIsUpdate();
-    react_1.default.useEffect(function () {
+    (0, react_1.useEffect)(function () {
         if (isUpdate && onChange) {
             onChange(matches);
         }
     }, [matches]);
-    react_1.default.useEffect(function () { return function () {
+    (0, react_1.useEffect)(function () { return function () {
         if (mq) {
             mq.dispose();
         }

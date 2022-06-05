@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useEffect, useContext, useState } from 'react'
 import matchMedia from 'matchmediaquery'
 import hyphenate from 'hyphenate-style-name'
 import { shallowEqualObjects } from 'shallow-equal'
@@ -24,9 +24,9 @@ const hyphenateKeys = (obj?: HyphenateKeyTypes)  => {
 }
 
 const useIsUpdate = () => {
-  const ref = React.useRef(false)
+  const ref = useRef(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     ref.current = true
   }, [])
 
@@ -34,12 +34,12 @@ const useIsUpdate = () => {
 }
 
 const useDevice = (deviceFromProps?: MediaQueryMatchers): Partial<MediaQueryAllQueryable> | undefined => {
-  const deviceFromContext = React.useContext(Context)
+  const deviceFromContext = useContext(Context)
   const getDevice = () =>
     hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext)
-  const [ device, setDevice ] = React.useState(getDevice)
+  const [ device, setDevice ] = useState(getDevice)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const newDevice = getDevice()
     if (!shallowEqualObjects(device, newDevice)) {
       setDevice(newDevice)
@@ -51,9 +51,9 @@ const useDevice = (deviceFromProps?: MediaQueryMatchers): Partial<MediaQueryAllQ
 
 const useQuery = (settings: MediaQuerySettings) => {
   const getQuery = () => makeQuery(settings)
-  const [ query, setQuery ] = React.useState(getQuery)
+  const [ query, setQuery ] = useState(getQuery)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const newQuery = getQuery()
     if (query !== newQuery) {
       setQuery(newQuery)
@@ -65,10 +65,10 @@ const useQuery = (settings: MediaQuerySettings) => {
 
 const useMatchMedia = (query: string, device?: MediaQueryMatchers) => {
   const getMatchMedia = () => matchMedia(query, device || {}, !!device)
-  const [ mq, setMq ] = React.useState(getMatchMedia)
+  const [ mq, setMq ] = useState(getMatchMedia)
   const isUpdate = useIsUpdate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isUpdate) {
       // skip on mounting, it has already been set
       const newMq = getMatchMedia()
@@ -86,9 +86,9 @@ const useMatchMedia = (query: string, device?: MediaQueryMatchers) => {
 }
 
 const useMatches = (mediaQuery: MediaQueryList): boolean => {
-  const [ matches, setMatches ] = React.useState<boolean>(mediaQuery.matches)
+  const [ matches, setMatches ] = useState<boolean>(mediaQuery.matches)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const updateMatches = (ev: MediaQueryListEvent) => {
       setMatches(ev.matches)
     }
@@ -111,13 +111,13 @@ const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers
   const matches = useMatches(mq as unknown as MediaQueryList)
   const isUpdate = useIsUpdate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isUpdate && onChange) {
       onChange(matches)
     }
   }, [ matches ])
 
-  React.useEffect(() => () => {
+  useEffect(() => () => {
     if (mq) {
       mq.dispose()
     }

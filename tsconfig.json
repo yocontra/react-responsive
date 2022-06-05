@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
-    "composite": true,
     "target": "ES5",
     "lib": ["dom", "es6"],
     "jsx": "react",
     "module": "commonjs",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "sourceMap": true,
     "strict": true,
     "rootDir": "./src",
     "declaration": true,
     "esModuleInterop": true,
-    "outDir": "./ts-build",
+    "outDir": "./types",
     "paths": {
       "shallow-equal": ["./src/@types/shallow-equal"]
     }
