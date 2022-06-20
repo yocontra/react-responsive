@@ -2,7 +2,7 @@ import { ReactNode, FC, CSSProperties } from 'react';
 import { MediaQueryAllQueryable, MediaQueryMatchers } from './types';
 interface MediaQueryProps extends MediaQueryAllQueryable {
     component?: ReactNode;
-    children?: ReactNode | Function;
+    children?: ReactNode | ((matches: boolean) => ReactNode);
     query?: string;
     style?: CSSProperties;
     className?: string;
