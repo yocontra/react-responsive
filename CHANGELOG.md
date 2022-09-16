@@ -2,15 +2,23 @@
 
 ### v9.0.0
 
-#### Beta9
+- Convert project to typescript
+- Upgrade to Webpack 5
+- Fix a memory leak with useMediaQuery hook
+- Add support for React 18
+- Add docs webpage
+
+### v9.0.0-beta
+
+#### Beta 9
 
 - Fix typescript output
 
-#### Beta8
+#### Beta 8
 
 - Fix webpack bundle issue (self is not defined)
 
-#### Beta7
+#### Beta 7
 
 - Improve typescript typings
 - Add typing support for React 18
@@ -18,7 +26,7 @@
 - Upgrade to Webpack 5
 - Fix a bug with React 18 not re-rendering
 
-#### Beta6
+#### Beta 6
 
 - Convert project to typescript
 - Remove UMD build from project
