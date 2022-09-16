@@ -1473,6 +1473,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var useMediaQuery_1 = __importDefault(__webpack_require__(/*! ./useMediaQuery */ "./src/useMediaQuery.ts"));
+// ReactNode and ReactElement typings are a little funky for functional components, so the ReactElement cast is needed on the return
 var MediaQuery = function (_a) {
     var children = _a.children, device = _a.device, onChange = _a.onChange, settings = __rest(_a, ["children", "device", "onChange"]);
     var matches = (0, useMediaQuery_1.default)(settings, device, onChange);
