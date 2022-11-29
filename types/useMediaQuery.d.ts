@@ -1,5 +1,5 @@
 import { MediaQueryAllQueryable, MediaQueryMatchers } from './types';
-declare type MediaQuerySettings = Partial<MediaQueryAllQueryable & {
+type MediaQuerySettings = Partial<MediaQueryAllQueryable & {
     query?: string;
 }>;
 declare const useMediaQuery: (settings: MediaQuerySettings, device?: MediaQueryMatchers, onChange?: ((_: boolean) => void) | undefined) => boolean;

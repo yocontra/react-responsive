@@ -1,5 +1,9 @@
 ## Change Log
 
+### v9.0.1
+
+- Export MediaQueryMatchers type
+
 ### v9.0.0
 
 - Convert project to typescript

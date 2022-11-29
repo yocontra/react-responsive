@@ -11,7 +11,7 @@ export interface MediaQueryTypes {
     tv?: boolean;
     embossed?: boolean;
 }
-export declare type MediaQueryType = keyof MediaQueryTypes;
+export type MediaQueryType = keyof MediaQueryTypes;
 export interface MediaQueryMatchers {
     aspectRatio?: string;
     deviceAspectRatio?: string;
