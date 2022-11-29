@@ -14,5 +14,6 @@ export type {
   MediaQueryTypes,
   MediaQueryType,
   MediaQueryFeatures,
+  MediaQueryMatchers,
   MediaQueryAllQueryable
 } from './types'
