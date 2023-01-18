@@ -10,7 +10,8 @@
   "author": "Contra <yo@contra.io> (https://contra.io)",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "sideEffects": false,
   "files": [
     "dist",
