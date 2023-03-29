@@ -1,7 +1,7 @@
 {
   "name": "react-responsive",
   "description": "Media queries in react for responsive design",
-  "version": "9.0.2",
+  "version": "10.0.0-beta.1",
   "homepage": "http://github.com/contra/react-responsive",
   "repository": {
     "type": "git",
@@ -44,10 +44,10 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/chai": "^4.3.1",
     "@types/hyphenate-style-name": "^1.0.0",
-    "@types/jsdom": "^20.0.0",
+    "@types/jsdom": "^21.0.0",
     "@types/match-media-mock": "^0.1.5",
     "@types/matchmediaquery": "^0.3.0",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^10.0.0",
     "@types/react": "^18.0.4",
     "@types/react-dom": "^18.0.0",
     "@types/sinon": "^10.0.0",
@@ -58,19 +58,19 @@
     "eslint": "^8.13.0",
     "eslint-plugin-compat": "^4.0.2",
     "gh-pages": "^4.0.0",
-    "jsdom": "^20.0.0",
+    "jsdom": "^21.0.0",
     "match-media-mock": "^0.1.1",
     "mocha": "^10.0.0",
+    "prettier": "^2.8.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rollup": "^3.10.0",
     "rollup-plugin-node-externals": "^5.1.0",
     "should": "^13.2.1",
-    "sinon": "^14.0.0",
-    "ts-loader": "^9.2.8",
+    "sinon": "^15.0.0",
     "ts-node": "^10.0.0",
     "typedoc": "^0.23.14",
-    "typescript": "^4.8.3"
+    "typescript": "^5.0.0"
   },
   "scripts": {
     "preversion": "npm run clean && npm run build",
@@ -82,8 +82,8 @@
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "tag": "git tag -a \"v$npm_package_version\" -m \"tag version $npm_package_version\" && git push origin master --tags",
-    "lint": "eslint --ext=ts,tsx src test --fix",
-    "test": "npx mocha -R spec --require ts-node/register ./test/setup.js ./test/setup.js test/*_test.{ts,tsx}",
+    "lint": "eslint --ext=ts,tsx . src test --fix && prettier . src test --write",
+    "test": "npx mocha -R spec --require ts-node/register ./test/setup.js test/*_test.{ts,tsx}",
     "docs": "typedoc src/index.ts && gh-pages -d docs"
   },
   "engines": {

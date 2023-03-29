@@ -14,7 +14,6 @@
 <td>Browser Version</td>
 <td>>= IE6*</td>
 </tr>
-</tr>
 <tr>
 <td colspan='2'><a href='http://contra.io/react-responsive/'>Demo</a></td>
 </tr>
@@ -47,14 +46,16 @@ const Example = () => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
-  return <div>
-    <h1>Device Test!</h1>
-    {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
-    {isBigScreen && <p>You  have a huge screen</p>}
-    {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
-    <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
-    {isRetina && <p>You are retina</p>}
-  </div>
+  return (
+    <div>
+      <h1>Device Test!</h1>
+      {isDesktopOrLaptop && <p>You are a desktop or laptop</p>}
+      {isBigScreen && <p>You have a huge screen</p>}
+      {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
+      <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
+      {isRetina && <p>You are retina</p>}
+    </div>
+  )
 }
 ```
 
@@ -75,9 +76,7 @@ const Example = () => (
     <MediaQuery minResolution="2dppx">
       {/* You can also use a function (render prop) as a child */}
       {(matches) =>
-        matches
-          ? <p>You are retina</p>
-          : <p>You are not retina</p>
+        matches ? <p>You are retina</p> : <p>You are not retina</p>
       }
     </MediaQuery>
   </div>
@@ -107,11 +106,7 @@ const Example = () => {
   const isPortrait = useMediaQuery({ orientation: 'portrait' })
   const isRetina = useMediaQuery({ minResolution: '2dppx' })
 
-  return (
-    <div>
-      ...
-    </div>
-  )
+  return <div>...</div>
 }
 ```
 
@@ -137,18 +132,18 @@ import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
   const isDesktopOrLaptop = useMediaQuery(
-     { minDeviceWidth: 1224 },
-     { deviceWidth: 1600 } // `device` prop
+    { minDeviceWidth: 1224 },
+    { deviceWidth: 1600 } // `device` prop
   )
 
   return (
     <div>
-      {isDesktopOrLaptop &&
+      {isDesktopOrLaptop && (
         <p>
           this will always get rendered even if device is shorter than 1224px,
           that's because we overrode device settings with 'deviceWidth: 1600'.
         </p>
-      }
+      )}
     </div>
   )
 }
@@ -213,19 +208,16 @@ import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 const Example = () => {
-
   const handleMediaQueryChange = (matches) => {
     // matches will be true or false based on the value for the media query
   }
   const isDesktopOrLaptop = useMediaQuery(
-    { minWidth: 1224 }, undefined,  handleMediaQueryChange
-  );
-
-  return (
-    <div>
-      ...
-    </div>
+    { minWidth: 1224 },
+    undefined,
+    handleMediaQueryChange
   )
+
+  return <div>...</div>
 }
 ```
 
@@ -234,7 +226,6 @@ import React from 'react'
 import MediaQuery from 'react-responsive'
 
 const Example = () => {
-
   const handleMediaQueryChange = (matches) => {
     // matches will be true or false based on the value for the media query
   }
@@ -286,13 +277,13 @@ export default Example
 And if you want a combo (the DRY way):
 
 ```js
-import { useMediaQuery } from "react-responsive"
+import { useMediaQuery } from 'react-responsive'
 
 const useDesktopMediaQuery = () =>
-  useMediaQuery({ query: "(min-width: 1280px)" })
+  useMediaQuery({ query: '(min-width: 1280px)' })
 
 const useTabletAndBelowMediaQuery = () =>
-  useMediaQuery({ query: "(max-width: 1279px)" })
+  useMediaQuery({ query: '(max-width: 1279px)' })
 
 const Desktop = ({ children }) => {
   const isDesktop = useDesktopMediaQuery()
@@ -306,7 +297,6 @@ const TabletAndBelow = ({ children }) => {
   return isTabletAndBelow ? children : null
 }
 ```
-
 
 ## Browser Support
 

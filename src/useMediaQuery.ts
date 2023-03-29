@@ -7,12 +7,13 @@ import Context from './Context'
 import { MediaQueryAllQueryable, MediaQueryMatchers } from './types'
 
 type MediaQuerySettings = Partial<MediaQueryAllQueryable & { query?: string }>
-type HyphenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable;
+type HyphenateKeyTypes = MediaQueryMatchers | MediaQueryAllQueryable
 
-const makeQuery = (settings: MediaQuerySettings) => settings.query || toQuery(settings)
+const makeQuery = (settings: MediaQuerySettings) =>
+  settings.query || toQuery(settings)
 
-const hyphenateKeys = (obj?: HyphenateKeyTypes)  => {
-  type K = keyof HyphenateKeyTypes;
+const hyphenateKeys = (obj?: HyphenateKeyTypes) => {
+  type K = keyof HyphenateKeyTypes
 
   if (!obj) return undefined
   const keys = Object.keys(obj) as K[]
@@ -20,7 +21,7 @@ const hyphenateKeys = (obj?: HyphenateKeyTypes)  => {
   return keys.reduce((result, key) => {
     result[hyphenate(key)] = obj[key]
     return result
-  }, {} as Record<string, typeof obj[K]>)
+  }, {} as Record<string, (typeof obj)[K]>)
 }
 
 const useIsUpdate = () => {
@@ -33,39 +34,41 @@ const useIsUpdate = () => {
   return ref.current
 }
 
-const useDevice = (deviceFromProps?: MediaQueryMatchers): Partial<MediaQueryAllQueryable> | undefined => {
+const useDevice = (
+  deviceFromProps?: MediaQueryMatchers
+): Partial<MediaQueryAllQueryable> | undefined => {
   const deviceFromContext = useContext(Context)
   const getDevice = () =>
     hyphenateKeys(deviceFromProps) || hyphenateKeys(deviceFromContext)
-  const [ device, setDevice ] = useState(getDevice)
+  const [device, setDevice] = useState(getDevice)
 
   useEffect(() => {
     const newDevice = getDevice()
     if (!shallowEqualObjects(device, newDevice)) {
       setDevice(newDevice)
     }
-  }, [ deviceFromProps, deviceFromContext ])
+  }, [deviceFromProps, deviceFromContext])
 
   return device
 }
 
 const useQuery = (settings: MediaQuerySettings) => {
   const getQuery = () => makeQuery(settings)
-  const [ query, setQuery ] = useState(getQuery)
+  const [query, setQuery] = useState(getQuery)
 
   useEffect(() => {
     const newQuery = getQuery()
     if (query !== newQuery) {
       setQuery(newQuery)
     }
-  }, [ settings ])
+  }, [settings])
 
   return query
 }
 
 const useMatchMedia = (query: string, device?: MediaQueryMatchers) => {
   const getMatchMedia = () => matchMedia(query, device || {}, !!device)
-  const [ mq, setMq ] = useState(getMatchMedia)
+  const [mq, setMq] = useState(getMatchMedia)
   const isUpdate = useIsUpdate()
 
   useEffect(() => {
@@ -80,13 +83,13 @@ const useMatchMedia = (query: string, device?: MediaQueryMatchers) => {
         }
       }
     }
-  }, [ query, device ])
+  }, [query, device])
 
   return mq
 }
 
 const useMatches = (mediaQuery: MediaQueryList): boolean => {
-  const [ matches, setMatches ] = useState<boolean>(mediaQuery.matches)
+  const [matches, setMatches] = useState<boolean>(mediaQuery.matches)
 
   useEffect(() => {
     const updateMatches = (ev: MediaQueryListEvent) => {
@@ -98,12 +101,16 @@ const useMatches = (mediaQuery: MediaQueryList): boolean => {
     return () => {
       mediaQuery.removeListener(updateMatches)
     }
-  }, [ mediaQuery ])
+  }, [mediaQuery])
 
   return matches
 }
 
-const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers, onChange?: (_: boolean) => void) => {
+const useMediaQuery = (
+  settings: MediaQuerySettings,
+  device?: MediaQueryMatchers,
+  onChange?: (_: boolean) => void
+) => {
   const deviceSettings = useDevice(device)
   const query = useQuery(settings)
   if (!query) throw new Error('Invalid or missing MediaQuery!')
@@ -115,13 +122,16 @@ const useMediaQuery = (settings: MediaQuerySettings, device?: MediaQueryMatchers
     if (isUpdate && onChange) {
       onChange(matches)
     }
-  }, [ matches ])
+  }, [matches])
 
-  useEffect(() => () => {
-    if (mq) {
-      mq.dispose()
-    }
-  }, [])
+  useEffect(
+    () => () => {
+      if (mq) {
+        mq.dispose()
+      }
+    },
+    []
+  )
 
   return matches
 }

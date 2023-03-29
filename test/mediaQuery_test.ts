@@ -3,7 +3,10 @@ import mediaQuery from '../src/mediaQuery'
 
 describe('mediaQuery', () => {
   it('has types and features in [all]', () => {
-    assert.deepEqual(Object.keys(mediaQuery.all), Object.keys(mediaQuery.types).concat(Object.keys(mediaQuery.features)))
+    assert.deepEqual(
+      Object.keys(mediaQuery.all),
+      Object.keys(mediaQuery.types).concat(Object.keys(mediaQuery.features))
+    )
   })
   it('has all media types', () => {
     const types = [

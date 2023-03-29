@@ -6,14 +6,17 @@ declare module 'shallow-equal' {
     | bigint
     | undefined
     | symbol
-    | null;
-  export function shallowEqualArrays(arr1: primitives[], arr2: primitives[]): boolean;
+    | null
+  export function shallowEqualArrays(
+    arr1: primitives[],
+    arr2: primitives[]
+  ): boolean
 
   interface primitiveObject {
-    [key: string]: primitives;
+    [key: string]: primitives
   }
   export function shallowEqualObjects(
     obj1: primitiveObject | undefined,
     obj2: primitiveObject | undefined
-  ): boolean;
+  ): boolean
 }

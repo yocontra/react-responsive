@@ -1,5 +1,11 @@
 ## Change Log
 
+### v10.0.0-beta.1
+
+- Package with rollup
+- Adds ESM support
+- Removes UMD support
+
 ### v9.0.1
 
 - Export MediaQueryMatchers type
@@ -37,7 +43,6 @@
 - Remove samples from project
 - Add docs webpage
 - Fix a memory leak with useMediaQuery hook
-
 
 ### v8.2.0
 
@@ -89,31 +94,38 @@
 - Thanks to @whatknight for doing the work here.
 
 ### v5.0.0
+
 - New changelog system, all manual now since the automated system was overcomplicated and missed things.
 - Breaking: `values` property always takes precedence when provided, no matter what (https://github.com/contra/react-responsive/issues/161)
 
 ### v4.0.5 (2018/03/07 17:11 +00:00)
+
 - [e61ec94](https://github.com/contra/react-responsive/commit/e61ec9482ae6ff17d3b73fab1fbcc445aab9e9aa) 4.0.5 (@contra)
 - [a8ec8e6](https://github.com/contra/react-responsive/commit/a8ec8e63221fccaef245366cd707aae3c19cb233) pre-release (@contra)
 - [#146](https://github.com/contra/react-responsive/pull/146) Guard against null children (@lunaleaps)
 - [3b40652](https://github.com/contra/react-responsive/commit/3b40652acbca56dc644e1b36fa50cabdb106ccdb) Guard against null children (@lunaleaps)
 
 ### v4.0.4 (2018/02/09 22:43 +00:00)
+
 - [77d37de](https://github.com/contra/react-responsive/commit/77d37de00c8ebeffe478ab0ef748d10b7862975a) 4.0.4 (@contra)
 - [19191ed](https://github.com/contra/react-responsive/commit/19191ed2522460109bfff19f22d6b879925599d3) closes #140 (@contra)
 
 ### v4.0.3 (2017/11/22 03:26 +00:00)
+
 - [191d938](https://github.com/contra/react-responsive/commit/191d9380d288b8de3dd6eeafd903db46b73d820a) 4.0.3 (@contra)
 - [a035cc5](https://github.com/contra/react-responsive/commit/a035cc5be9e01dc42bffacb0d8b68c916a8d0637) closes #134 (@contra)
 
 ### v4.0.2 (2017/11/21 19:55 +00:00)
+
 - [6e1a359](https://github.com/contra/react-responsive/commit/6e1a359f4f0c55db6823d321c86c10a2b76052a3) 4.0.2 (@contra)
 
 ### v4.0.1 (2017/11/21 15:54 +00:00)
+
 - [2aa6b94](https://github.com/contra/react-responsive/commit/2aa6b94dfb6104d111f38c07eb99b13b9616ac37) 4.0.1 (@contra)
 - [6908332](https://github.com/contra/react-responsive/commit/6908332218359646416d568c75bf6ef7e974b82f) maybe fixes #134 (@contra)
 
 ### v4.0.0 (2017/11/16 00:14 +00:00)
+
 - [b78938d](https://github.com/contra/react-responsive/commit/b78938d9f51dea13cc14e3227fce3694cde9dc63) 4.0.0 (@contra)
 - [bd1c554](https://github.com/contra/react-responsive/commit/bd1c5547a30483367479803799f264d160d86a1e) deps (@contra)
 - [#132](https://github.com/contra/react-responsive/pull/132) fix: support React 16 fragments (@jessepinho)
@@ -129,6 +141,7 @@
 - [edbd8e7](https://github.com/contra/react-responsive/commit/edbd8e7ce8d757ef902d0f59b3d29679ac9e2616) 3.0 (@contra)
 
 ### v3.0.0 (2017/10/18 00:14 +00:00)
+
 - [8a318fe](https://github.com/contra/react-responsive/commit/8a318fe9ddf363b6a4e917a13d99b1098670175a) 3.0.0 (@contra)
 - [6bf6814](https://github.com/contra/react-responsive/commit/6bf681491e6ed260f89db85f6dad191a84cd523b) deps (@contra)
 - [#128](https://github.com/contra/react-responsive/pull/128) Fix linter and tests (@refinery29)
@@ -141,6 +154,7 @@
 - [fb23be4](https://github.com/contra/react-responsive/commit/fb23be4358654eb6c614b9766fbcbd4a5daac304) log (@contra)
 
 ### v2.0.0 (2017/10/02 21:11 +00:00)
+
 - [dee5570](https://github.com/contra/react-responsive/commit/dee55700f31e4fc54ab3faf1e974c3ee3c7abf21) 2.0.0 (@contra)
 - [24ff262](https://github.com/contra/react-responsive/commit/24ff2623d0a9d4a864c1635190d7fa1da37f3eb0) stupid lock file (@contra)
 - [cb120f8](https://github.com/contra/react-responsive/commit/cb120f8953c2e05aeac03530918a31d86d3be828) house clean (@contra)
@@ -164,6 +178,7 @@
 - [c55a77e](https://github.com/contra/react-responsive/commit/c55a77ec86c2db7d2aae4a3e67a08dba09a3a455) closes #116 (@contra)
 
 ### v1.3.4 (2017/07/14 21:36 +00:00)
+
 - [c93ac7a](https://github.com/contra/react-responsive/commit/c93ac7a696a8d3f0f8a5b71ce7836375de13a28d) 1.3.4 (@contra)
 - [#109](https://github.com/contra/react-responsive/pull/109) fix Cannot read property 'removeListener' of undefined (@modosc)
 - [ea3d577](https://github.com/contra/react-responsive/commit/ea3d5774bc59fa06ad50d60e582a9f6da94b9bd5) update matchmediaquery@^0.2.1
@@ -171,6 +186,7 @@
 - [83c2409](https://github.com/contra/react-responsive/commit/83c24092225fa20c96c4bded03e845cb4baf5bec) 1.3.3 (@contra)
 
 ### v1.3.3 (2017/07/14 19:32 +00:00)
+
 - [58fdb89](https://github.com/contra/react-responsive/commit/58fdb89893de8a9ec5495624c19f54bcced220c3) 1.3.3 (@contra)
 - [e3781d2](https://github.com/contra/react-responsive/commit/e3781d208f7d7528add58b9b69fb998fe8f1e94e) diff (@contra)
 - [#108](https://github.com/contra/react-responsive/pull/108) fix PropTypes warnings, fix react-addons-test-utils deprecation, fix … (@modosc)
@@ -178,6 +194,7 @@
 - [9957f24](https://github.com/contra/react-responsive/commit/9957f2445bd4d16b8d2ae1ae8a335dc2c95d476f) 1.3.2 (@contra)
 
 ### v1.3.2 (2017/07/14 14:47 +00:00)
+
 - [a595593](https://github.com/contra/react-responsive/commit/a595593f413b5012de57f8ca7eabec5490a7426c) 1.3.2 (@contra)
 - [516f270](https://github.com/contra/react-responsive/commit/516f2703dd4f35611d60a399ebd61273140ff88e) merge (@contra)
 - [40fe34e](https://github.com/contra/react-responsive/commit/40fe34e003669f44692aedb054079126bedc5bc4) build (@contra)
@@ -197,6 +214,7 @@
 - [b917322](https://github.com/contra/react-responsive/commit/b917322352dbb68939f2e1f140a89e4836dad4d4) Document common use cases (@sonaye)
 
 ### v1.3.0 (2017/05/09 01:13 +00:00)
+
 - [44a7bf8](https://github.com/contra/react-responsive/commit/44a7bf8bd6f4289c4a644d4d1cdefbc5b01523c2) 1.3.0 (@contra)
 - [#97](https://github.com/contra/react-responsive/pull/97) Add onChange and onChangeBefore callbacks (@hiddenboox)
 - [6cb52b1](https://github.com/contra/react-responsive/commit/6cb52b15a452f1189bd4f89a4c5ce41bee21fe02) Add onBeforeChange callback (@hiddenboox)
@@ -205,10 +223,12 @@
 - [2c6b00d](https://github.com/contra/react-responsive/commit/2c6b00da63091b3bada0b8fe6105e50e29b37fde) Add onChange callback (@d4rky-pl)
 
 ### v1.2.10 (2017/04/19 18:32 +00:00)
+
 - [ab7ff5c](https://github.com/contra/react-responsive/commit/ab7ff5cddcba1f22f3ace26dd777bbc530449c6c) 1.2.10 (@contra)
 - [4f8f916](https://github.com/contra/react-responsive/commit/4f8f91612d389b06cfed42723b3fe0b8e1a66f8c) build (@contra)
 
 ### v1.2.9 (2017/04/19 03:27 +00:00)
+
 - [07849af](https://github.com/contra/react-responsive/commit/07849afe0f7aee32c4db3dd4323bb93dbf23f1d1) 1.2.9 (@contra)
 - [#90](https://github.com/contra/react-responsive/pull/90) Replace proptypes in index file (@rmdort)
 - [a4a9120](https://github.com/contra/react-responsive/commit/a4a912073dff91401196fd8bc0ff41253573c49d) Removed React proptype in index (@rmdort)
@@ -217,6 +237,7 @@
 - [48c303f](https://github.com/contra/react-responsive/commit/48c303f7c47e1d553f4e4d5d639073e72f7822e7) build (@contra)
 
 ### v1.2.8 (2017/04/18 18:45 +00:00)
+
 - [4778c1e](https://github.com/contra/react-responsive/commit/4778c1e3793bffe15fd66cc0f7c8cb30c7cc59f0) 1.2.8 (@contra)
 - [#88](https://github.com/contra/react-responsive/pull/88) Added prop-type library for React 16 (@rmdort)
 - [7039ef6](https://github.com/contra/react-responsive/commit/7039ef6e30e409d83a8cf5e3a894cfdb136d3582) Added prop-type library for react 16 (@rmdort)
@@ -225,6 +246,7 @@
 - [8c53639](https://github.com/contra/react-responsive/commit/8c536392459673d46e0df3682adf42c8196b17e0) changelog (@contra)
 
 ### v1.2.7 (2017/03/14 16:17 +00:00)
+
 - [ee6b142](https://github.com/contra/react-responsive/commit/ee6b1429caa0fefd6e6f7c9313fe54fe13a61d82) 1.2.7 (@contra)
 - [#83](https://github.com/contra/react-responsive/pull/83) Add react 0.14.x as potential peer dep (@jesstelford)
 - [29266f0](https://github.com/contra/react-responsive/commit/29266f0db6598feaebcd4dc9dc907cdda3bafc2f) Peer dep on all react versions (@jesstelford)
@@ -232,6 +254,7 @@
 - [bc69299](https://github.com/contra/react-responsive/commit/bc692990d149f8a08bad4a12df78691816f75e81) changes (@contra)
 
 ### v1.2.6 (2017/01/19 03:06 +00:00)
+
 - [342621d](https://github.com/contra/react-responsive/commit/342621d0407ae2e590a33c280ec2ca39d8bf3e8e) 1.2.6 (@contra)
 - [#78](https://github.com/contra/react-responsive/pull/78) Removed babel-polyfill (@vjancik)
 - [ebfeec0](https://github.com/contra/react-responsive/commit/ebfeec0473b2ca8040dbe13e698fa08366a7808b) Removed babel-polyfill (@vjancik)
@@ -239,15 +262,18 @@
 - [56b794a](https://github.com/contra/react-responsive/commit/56b794a0fcac2a28c7bd87e7263ad2b93c52e348) dist fix (@contra)
 
 ### v1.2.4 (2016/11/24 00:51 +00:00)
+
 - [5e8ae33](https://github.com/contra/react-responsive/commit/5e8ae33d53e390193cf289b9f2ce7a6f95c47d90) 1.2.4 (@contra)
 - [708e250](https://github.com/contra/react-responsive/commit/708e25030963d967db7dcfa5b21f95bcd84832ed) only publish dist (@contra)
 - [2b36c54](https://github.com/contra/react-responsive/commit/2b36c54847f084e1830a1bcd1c885b6ab5102185) changelog (@contra)
 
 ### v1.2.3 (2016/11/23 00:26 +00:00)
+
 - [7d95ef1](https://github.com/contra/react-responsive/commit/7d95ef1d83e6acba43ac15aedda03eecdf66f6bf) 1.2.3 (@contra)
 - [404924f](https://github.com/contra/react-responsive/commit/404924ff302378a30dbb4f438b237c955b5528b0) changelog fix (@contra)
 
 ### v1.2.2 (2016/11/22 23:57 +00:00)
+
 - [d337ce3](https://github.com/contra/react-responsive/commit/d337ce35a00bbb383a656d7453e8b28a2b30ea87) 1.2.2 (@contra)
 - [#70](https://github.com/contra/react-responsive/pull/70) Wrap children if it's single-element array (@Instamotor-Labs)
 - [341fdec](https://github.com/contra/react-responsive/commit/341fdecc2c3f7f56529dc9941768690457a27c30) Wrap children if it's single-element array (@skydan)
@@ -269,6 +295,7 @@
 - [80fddd9](https://github.com/contra/react-responsive/commit/80fddd971f9239ba885fa9892a80cd5081f7e401) Add ability to render with a function as the component child. (@whatknight)
 
 ### v1.1.5 (2016/09/15 04:13 +00:00)
+
 - [b6364b6](https://github.com/contra/react-responsive/commit/b6364b6157a9fca972cdb9170bed494b805948da) 1.1.5 (@contra)
 - [#62](https://github.com/contra/react-responsive/pull/62) Fix for Uncaught Invariant Violation #56. (@rhavill)
 - [3199bef](https://github.com/contra/react-responsive/commit/3199bef42f9d715701e276740bb997c2b474b51c) Added unit test to make sure MediaQuery render function can handle an empty array as children.
@@ -280,6 +307,7 @@
 - [df33365](https://github.com/contra/react-responsive/commit/df333655bdb658d2046289ac19e7153594cb8cd9) doesnt throw error with empty children (@nkov)
 
 ### v1.1.3 (2016/04/25 17:03 +00:00)
+
 - [ba1cb39](https://github.com/contra/react-responsive/commit/ba1cb39afa5259bda12ffe0dd7c57919c535397e) 1.1.3 (@contra)
 - [#53](https://github.com/contra/react-responsive/pull/53) Always wrap children if it's a string. (@whatknight)
 - [23f35cb](https://github.com/contra/react-responsive/commit/23f35cb2f4b9c906c267854077cb00f298c89e41) Always wrap children if it's a string. (@whatknight)
@@ -290,6 +318,7 @@
 - [7dacb42](https://github.com/contra/react-responsive/commit/7dacb423884bc00aefc5579674f498af0eede79a) Fix bug where string would cause invariant error. (@whatknight)
 
 ### v1.1.2 (2016/04/08 05:07 +00:00)
+
 - [8d03ff0](https://github.com/contra/react-responsive/commit/8d03ff03e69d2c967a4c0c522523d0dc7af7c960) 1.1.2 (@contra)
 - [#47](https://github.com/contra/react-responsive/pull/47) Bump react peer dependency to allow v15 (@cesarandreu)
 - [87619fe](https://github.com/contra/react-responsive/commit/87619fe29ab529cd9e6b4e8a1a22dfc820b11a34) Bump react peer dependency to allow v15 (@cesarandreu)
@@ -300,6 +329,7 @@
 - [ce639c9](https://github.com/contra/react-responsive/commit/ce639c9b61944add8a9a51e2b0accbdf89e7dea2) fixed usage of Object.assign for older browsers (@pekeler)
 
 ### v1.1.0 (2016/01/10 23:53 +00:00)
+
 - [cfff39a](https://github.com/contra/react-responsive/commit/cfff39a73e1f8ffa48d8a74ac2a1d5816255e4ca) 1.1.0 (@contra)
 - [#37](https://github.com/contra/react-responsive/pull/37) Without lodash (@pekeler)
 - [ea47d21](https://github.com/contra/react-responsive/commit/ea47d21e49b91693c3aaecbc7af2706459dbfa0e) reverted spelling, dist (@pekeler)
@@ -314,11 +344,13 @@
 - [29d0d08](https://github.com/contra/react-responsive/commit/29d0d081a352f8723507245ea9f223a144895650) more readme info (@contra)
 
 ### v1.0.1 (2015/11/13 20:28 +00:00)
+
 - [b4ce24e](https://github.com/contra/react-responsive/commit/b4ce24ea423c062dfd4bace514b5614e119eb96c) 1.0.1 (@contra)
 - [#32](https://github.com/contra/react-responsive/pull/32) Add children to excluded keys (@ch2ch3)
 - [30b3f9f](https://github.com/contra/react-responsive/commit/30b3f9f8278bad15aad8b3fa8f393138c99b5610) Add children to excluded keys (@ch2ch3)
 
 ### v1.0.0 (2015/11/09 23:48 +00:00)
+
 - [a20d7f3](https://github.com/contra/react-responsive/commit/a20d7f3f43758400cb266a8aadab7b4dede843e6) 1.0.0 (@contra)
 - [#30](https://github.com/contra/react-responsive/pull/30) Do not require a component to wrap MediaQuery children (@jdlehman)
 - [27c09e5](https://github.com/contra/react-responsive/commit/27c09e565d98f902d798ffd2f7348f1b5d71d54f) Pass props to single child even if not using a wrapper (@jdlehman)
@@ -326,6 +358,7 @@
 - [4543f17](https://github.com/contra/react-responsive/commit/4543f172a744402c5dd4a686acfad49baf9ee47a) Do not require a component to wrap MediaQuery children (@jdlehman)
 
 ### v0.0.10 (2015/10/08 22:50 +00:00)
+
 - [62af1d5](https://github.com/contra/react-responsive/commit/62af1d564767e7997af628b4764e330b8d29dae1) 0.0.10 (@contra)
 - [#28](https://github.com/contra/react-responsive/pull/28) support react 0.14 (@0x80)
 - [d1dc1e9](https://github.com/contra/react-responsive/commit/d1dc1e9d0a3c67427a368c9cc3f27f6493a4f2c6) support react 0.14 (@0x80)
@@ -333,6 +366,7 @@
 - [b3e687d](https://github.com/contra/react-responsive/commit/b3e687d96fc6fbe28ddf421e6b7ca62e6434142e) Allow for react 0.14.0-rc1 as peer-dependency (@npasserini)
 
 ### v0.0.8 (2015/08/13 20:18 +00:00)
+
 - [969736a](https://github.com/contra/react-responsive/commit/969736a6c4583fbf41a30bfeb94b470f01af9a2f) 0.0.8 (@contra)
 - [#18](https://github.com/contra/react-responsive/pull/18) There is possible memory leak and bug leads to many listeners. It is … (@vavdav)
 - [d435265](https://github.com/contra/react-responsive/commit/d4352658b07718d7286b71603eb4fef790d8bf12) There is possible memory leak and bug leads to many listeners. It is necessary to remove listener before creating new object. (@vavdav)
@@ -343,11 +377,13 @@
 - [7046106](https://github.com/contra/react-responsive/commit/704610624d1ede95c0043e43a4be8fa6346315c3) Use `hyphenate-style-name` module instead of React internal (@rexxars)
 
 ### v0.0.7 (2015/07/22 06:22 +00:00)
+
 - [4050ab3](https://github.com/contra/react-responsive/commit/4050ab3041ea7075e2f59c5a5acd95451d648aaa) 0.0.7 (@contra)
 - [413b4e0](https://github.com/contra/react-responsive/commit/413b4e0c6b42b2f7ecf3d6a26566c4bc12d18c40) fix version range (@contra)
 - [e1dc870](https://github.com/contra/react-responsive/commit/e1dc870ef10573b063248b105788dcbe8c3953af) Update package.json (@contra)
 
 ### v0.0.6 (2015/03/30 17:12 +00:00)
+
 - [e9214ce](https://github.com/contra/react-responsive/commit/e9214cecfe74be5c5f9d8a7ba7d2e49c3221794c) 0.0.6 (@contra)
 - [7bcb9b5](https://github.com/contra/react-responsive/commit/7bcb9b5595f1a6b759b2231717b97cfe4a111630) fix linting (@contra)
 - [#12](https://github.com/contra/react-responsive/pull/12) Provide more flexible React peer dependency range (@colindresj)
@@ -360,6 +396,7 @@
 - [759154b](https://github.com/contra/react-responsive/commit/759154bfb098aed3be707086d0448ec39cc42ffe) switch to matchmedia module for client/server abstraction (@phated)
 
 ### v0.0.5 (2015/02/17 23:42 +00:00)
+
 - [72f4e25](https://github.com/contra/react-responsive/commit/72f4e250a311dfae0e2de95de6ae337a6a67cc9b) 0.0.5 (@contra)
 - [acef7f0](https://github.com/contra/react-responsive/commit/acef7f0a437cba4c23e72e9c4e6bbf4bb0c6ccf9) lint fixes (@contra)
 - [#10](https://github.com/contra/react-responsive/pull/10) fix usage of idiomatic react props (@ChrisSki)
@@ -369,6 +406,7 @@
 - [207a385](https://github.com/contra/react-responsive/commit/207a385ce17b2e21d22206d6dbfb9e09594c8c9b) fix usage of idiomatic react props (@ChrisSki)
 
 ### v0.0.4 (2015/02/09 09:15 +00:00)
+
 - [4f91d06](https://github.com/contra/react-responsive/commit/4f91d063f1d4b3f739e261aa54d090a5bb5cb402) 0.0.4 (@contra)
 - [609e3ae](https://github.com/contra/react-responsive/commit/609e3ae14dcbb8d0d99337c54ffbaba5514e77be) fix linter (@contra)
 - [#9](https://github.com/contra/react-responsive/pull/9) mergeInto removed and window checked (@fvitullo)
@@ -376,10 +414,12 @@
 - [26f2e95](https://github.com/contra/react-responsive/commit/26f2e95b811ae4b81bc7654723b9d8fc57fc8e50) mergeInto replaced with object-assign
 
 ### v0.0.3 (2015/02/04 01:12 +00:00)
+
 - [dcdb812](https://github.com/contra/react-responsive/commit/dcdb81278f20ede8e8e51fae07c8182ddd149cc3) 0.0.3 (@contra)
 - [33fbeff](https://github.com/contra/react-responsive/commit/33fbeff74c3388d14765f8ee5a1125a09b676d8a) closes #6 (@contra)
 
 ### v0.0.2 (2015/01/27 20:11 +00:00)
+
 - [085d2f3](https://github.com/contra/react-responsive/commit/085d2f353d0d0457359c199381f152796c5e155c) 0.0.2 (@contra)
 - [f5674b6](https://github.com/contra/react-responsive/commit/f5674b602f575f9c50e1a37f0cbdd6ede2216fec) react 0.12 (@contra)
 - [d6c4a4b](https://github.com/contra/react-responsive/commit/d6c4a4b29529a53e0a0c44358c23195dd0314f84) readme (@contra)

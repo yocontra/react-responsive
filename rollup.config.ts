@@ -1,6 +1,6 @@
-import typescript from '@rollup/plugin-typescript';
-import { defineConfig } from 'rollup';
-import { externals } from 'rollup-plugin-node-externals';
+import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rollup'
+import { externals } from 'rollup-plugin-node-externals'
 
 export default defineConfig({
   input: './src/index.ts',
@@ -10,13 +10,13 @@ export default defineConfig({
       dir: 'dist/cjs',
       format: 'commonjs',
       sourcemap: true,
-      exports: 'named',
+      exports: 'named'
     },
     {
       dir: 'dist/esm',
       format: 'esm',
-      sourcemap: true,
-    },
+      sourcemap: true
+    }
   ],
-  plugins: [externals(), typescript()],
-});
+  plugins: [externals(), typescript()]
+})

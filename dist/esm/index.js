@@ -4,10 +4,7 @@ import hyphenate from 'hyphenate-style-name';
 import { shallowEqualObjects } from 'shallow-equal';
 import PropTypes from 'prop-types';
 
-const stringOrNumber = PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-]);
+const stringOrNumber = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 // media types
 const types = {
     all: PropTypes.bool,
@@ -24,14 +21,8 @@ const types = {
 };
 // properties that match media queries
 const matchers = {
-    orientation: PropTypes.oneOf([
-        'portrait',
-        'landscape'
-    ]),
-    scan: PropTypes.oneOf([
-        'progressive',
-        'interlace'
-    ]),
+    orientation: PropTypes.oneOf(['portrait', 'landscape']),
+    scan: PropTypes.oneOf(['progressive', 'interlace']),
     aspectRatio: PropTypes.string,
     deviceAspectRatio: PropTypes.string,
     height: stringOrNumber,
