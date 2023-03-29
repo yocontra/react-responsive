@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2020",
     "lib": ["dom", "es6"],
     "jsx": "react",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "sourceMap": true,
     "strict": true,
     "rootDir": "./src",
-    "declaration": true,
+    "declaration": false,
     "esModuleInterop": true,
-    "outDir": "./types",
     "paths": {
       "shallow-equal": ["./src/@types/shallow-equal"]
     }
