@@ -15,5 +15,10 @@
     }
   },
   "include": ["src"],
-  "exclude": ["test", "node_modules"]
+  "exclude": ["test", "node_modules"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
