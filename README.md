@@ -171,6 +171,15 @@ import App from './App'
 ...
 ```
 
+If you use next.js, structure your import like this to disable server-side rendering for components that use this library:
+
+```js
+import dynamic from "next/dynamic"
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false
+})
+```
+
 ##### Testing
 
 ```jsx
