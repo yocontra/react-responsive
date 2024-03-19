@@ -1,6 +1,6 @@
 import typescript from '@rollup/plugin-typescript'
+import externals from 'rollup-plugin-node-externals'
 import { defineConfig } from 'rollup'
-import { externals } from 'rollup-plugin-node-externals'
 
 export default defineConfig({
   input: './src/index.ts',

@@ -17,7 +17,7 @@ const sleep = (timeOut: number) =>
 
 describe('useMediaQuery', () => {
   beforeEach(() => {
-    (window as unknown as MockWindow).matchMedia.setConfig({
+    ;(window as unknown as MockWindow).matchMedia.setConfig({
       type: 'screen',
       width: 1200,
       height: 800

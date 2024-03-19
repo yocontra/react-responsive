@@ -89,7 +89,7 @@ const Example = () => (
 
 To make things more idiomatic to react, you can use camel-cased shorthands to construct media queries.
 
-For a list of all possible shorthands and value types see https://github.com/contra/react-responsive/blob/master/src/mediaQuery.ts#L9.
+For a list of all possible shorthands and value types see https://github.com/yocontra/react-responsive/blob/master/src/mediaQuery.ts#L9.
 
 Any numbers given as shorthand will be expanded to px (`1234` will become `'1234px'`).
 
@@ -174,8 +174,8 @@ import App from './App'
 If you use next.js, structure your import like this to disable server-side rendering for components that use this library:
 
 ```js
-import dynamic from "next/dynamic"
-const MediaQuery = dynamic(() => import("react-responsive"), {
+import dynamic from 'next/dynamic'
+const MediaQuery = dynamic(() => import('react-responsive'), {
   ssr: false
 })
 ```

@@ -1,10 +1,13 @@
 ## Change Log
 
-### v10.0.0-beta.1
+### v10.0.0
 
 - Package with rollup
 - Adds ESM support
-- Removes UMD support
+- Removes UMD support - CJS support still exists
+  - Still need UMD support? Stick with v9.0.1
+- Upgraded all dependencies to latest
+- Bumps minimum node version to 14 (dependencies are all at 14 anyways)
 
 ### v9.0.1
 

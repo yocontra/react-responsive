@@ -12,7 +12,7 @@ interface MockWindow extends Window {
 
 describe('Component', () => {
   beforeEach(() => {
-    (window as unknown as MockWindow).matchMedia.setConfig({
+    ;(window as unknown as MockWindow).matchMedia.setConfig({
       type: 'screen',
       width: 1200,
       height: 800

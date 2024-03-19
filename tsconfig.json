@@ -9,16 +9,8 @@
     "strict": true,
     "rootDir": "./src",
     "declaration": false,
-    "esModuleInterop": true,
-    "paths": {
-      "shallow-equal": ["./src/@types/shallow-equal"]
-    }
+    "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["test", "node_modules"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  }
+  "exclude": ["test", "node_modules"]
 }

@@ -18,10 +18,13 @@ const hyphenateKeys = (obj?: HyphenateKeyTypes) => {
   if (!obj) return undefined
   const keys = Object.keys(obj) as K[]
 
-  return keys.reduce((result, key) => {
-    result[hyphenate(key)] = obj[key]
-    return result
-  }, {} as Record<string, (typeof obj)[K]>)
+  return keys.reduce(
+    (result, key) => {
+      result[hyphenate(key)] = obj[key]
+      return result
+    },
+    {} as Record<string, (typeof obj)[K]>
+  )
 }
 
 const useIsUpdate = () => {
