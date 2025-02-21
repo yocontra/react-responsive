@@ -200,5 +200,5 @@ const MediaQuery = ({ children, device, onChange, ...settings }) => {
     return matches ? children : null;
 };
 
-export { Context, MediaQuery as default, toQuery, useMediaQuery };
+export { Context, MediaQuery, MediaQuery as default, toQuery, useMediaQuery };
 //# sourceMappingURL=index.js.map
