@@ -1,5 +1,10 @@
 ## Change Log
 
+### v10.0.1
+
+- Expose a MediaQuery named export, instead of just having it as the default export
+- Updates dev dependencies
+
 ### v10.0.0
 
 - Package with rollup
