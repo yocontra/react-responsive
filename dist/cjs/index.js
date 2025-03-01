@@ -205,6 +205,7 @@ const MediaQuery = ({ children, device, onChange, ...settings }) => {
 };
 
 exports.Context = Context;
+exports.MediaQuery = MediaQuery;
 exports.default = MediaQuery;
 exports.toQuery = toQuery;
 exports.useMediaQuery = useMediaQuery;
